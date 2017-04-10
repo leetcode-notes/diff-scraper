@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html class="google" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script>
+    (function(H){H.className=H.className.replace(/\bgoogle\b/,'google-js')})(document.documentElement)
+    </script>
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+    <title>
+      Mobile Systems - Research at Google
+    </title>
+    <script src="//www.google.com/js/google.js">
+    </script>
+    <script>
+    new gweb.analytics.AutoTrack({profile:"UA-5974346-1"});
+    </script>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" rel=
+    "stylesheet">
+    <link href="/css/research.css" rel="stylesheet">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href=
+    '//fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic|Product+Sans:400'
+    rel='stylesheet' type='text/css'>
+    <link href="/app/app.css" rel="stylesheet">
+    <style>
+    .app-scope a{color:#4285f4}.app-scope a:hover{color:#3367D6}.app-scope .button-primary{background-color:#4285F4;color:rga(255,255,255,.89);font-weight:400}.app-scope .button-primary:hover{background-color:#3367D6}.app-scope .button-dark{background-color:#005F71;color:#fff;font-weight:400}.app-scope .button-dark:hover{background-color:#004f61;color:#fff}.app-scope header{height:80px}.app-scope header nav{width:635px}.app-scope .header-subnav ul li a{font-weight:400}.app-scope .header-title{padding-top:40px}.app-scope .logo{background:url("/app/images/logo.2x.png");background-size:290px 43px;height:43px;position:relative;top:40px;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);width:290px}@media(min-width:768px){.app-scope .logo{background:url("/app/images/logo.mini.2x.png");background-size:40px 43px;height:43px;width:40px}}@media(min-width:1024px){.app-scope .logo{background:url("/app/images/logo.2x.png");background-size:290px 43px;height:43px;width:290px}}.app-scope .logo img{display:none}.app-scope .nav-toggle.hamburger{height:20px;top:40px;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);width:20px}.app-scope .quote p{color:#445a64}.app-scope .slick-slider{-khtml-user-select:all;-moz-user-select:all;-ms-user-select:all;-webkit-user-select:all;user-select:all;-webkit-touch-callout:default;-ms-touch-action:auto;touch-action:auto}.app-scope a.text-link,.app-scope span.text-link{font-weight:400}@media (min-width:768px){.app-scope .search{float:left;width:16px;height:80px;margin-top:0;margin-left:10px;line-height:80px;overflow:hidden}.app-scope .search.search-open{width:auto}.app-scope .search.transition{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form{width:16px;height:50px;margin-top:15px}.app-scope .search.search-open .search-form{width:150px}.app-scope .search.transition .search-form{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form:after{width:0}.app-scope .search.search-open .search-form:after{width:100%}.app-scope .search.transition .search-form:after{-webkit-transition:width .4s cubic-bezier(.7,0,.3,1) .1s;transition:width .4s cubic-bezier(.7,0,.3,1) .1s}.app-scope .search-input{position:absolute;top:0;right:0;margin:0;width:100%;opacity:0}.app-scope .search.search-open .search-input{opacity:1}.app-scope .search.transition .search-input{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-submit,.app-scope .search-toggle{bottom:17px}.app-scope .search.transition .search-submit,.app-scope .search.transition .search-toggle{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-toggle{visibility:visible;z-index:5;opacity:.8}.app-scope .search-submit,.app-scope .search.search-open .search-toggle{z-index:4;opacity:0}.app-scope .search.search-open .search-submit{z-index:5;opacity:1}.app-scope .search-close{opacity:0}.app-scope .search.search-open .search-close{opacity:.8}.app-scope .search.transition .search-close{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .flyout-container{position:relative;right:auto;width:100%;height:80px;padding:0;background:0 0;overflow:hidden}.app-scope .nav-wrapper{float:right}.app-scope .nav-wrapper>ul{float:left;display:inline-block;height:80px;line-height:80px}.app-scope .nav-wrapper>ul li{display:inline-block;margin-left:10px}.app-scope .nav-wrapper>ul li+li{margin-top:0}.app-scope .nav-wrapper>ul li a{font-size:13px;font-weight:400;color:rgba(255,255,255,.8)}.app-scope .nav-wrapper>ul a:hover,.app-scope .nav-wrapper>ul li.active a{color:#fff}.app-scope .nav-toggle{display:none}.app-scope .flyout-secondary-nav{display:none}}@media (min-width:1024px){.app-scope .search{float:left;width:16px;height:80px;margin-top:0;margin-left:10px;line-height:80px;overflow:hidden}.app-scope .search.search-open{width:auto}.app-scope .search.transition{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form{width:16px;height:50px;margin-top:15px}.app-scope .search.search-open .search-form{width:150px}.app-scope .search.transition .search-form{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form:after{width:0}.app-scope .search.search-open .search-form:after{width:100%}.app-scope .search.transition .search-form:after{-webkit-transition:width .4s cubic-bezier(.7,0,.3,1) .1s;transition:width .4s cubic-bezier(.7,0,.3,1) .1s}.app-scope .search-input{position:absolute;top:0;right:0;margin:0;width:100%;opacity:0}.app-scope .search.search-open .search-input{opacity:1}.app-scope .search.transition .search-input{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-submit,.app-scope .search-toggle{bottom:17px}.app-scope .search.transition .search-submit,.app-scope .search.transition .search-toggle{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-toggle{visibility:visible;z-index:5;opacity:.8}.app-scope .search-submit,.app-scope .search.search-open .search-toggle{z-index:4;opacity:0}.app-scope .search.search-open .search-submit{z-index:5;opacity:1}.app-scope .search-close{opacity:0}.app-scope .search.search-open .search-close{opacity:.8}.app-scope .search.transition .search-close{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .flyout-container{position:relative;right:auto;width:100%;height:80px;padding:0;background:0 0;overflow:hidden}.app-scope .nav-wrapper{float:right}.app-scope .nav-wrapper>ul{float:left;display:inline-block;height:80px;line-height:80px}.app-scope .nav-wrapper>ul li{display:inline-block;margin-left:10px}.app-scope .nav-wrapper>ul li+li{margin-top:0}.app-scope .nav-wrapper>ul li a{font-size:13px;font-weight:400;color:rgba(255,255,255,.8)}.app-scope .nav-wrapper>ul a:hover,.app-scope .nav-wrapper>ul li.active a{color:#fff}.app-scope .nav-toggle{display:none}.app-scope .flyout-secondary-nav{display:none}}@media (min-width:1170px){.app-scope .search{float:left;width:16px;height:80px;margin-top:0;margin-left:10px;line-height:80px;overflow:hidden}.app-scope .search.search-open{width:auto}.app-scope .search.transition{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form{width:16px;height:50px;margin-top:15px}.app-scope .search.search-open .search-form{width:150px}.app-scope .search.transition .search-form{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form:after{width:0}.app-scope .search.search-open .search-form:after{width:100%}.app-scope .search.transition .search-form:after{-webkit-transition:width .4s cubic-bezier(.7,0,.3,1) .1s;transition:width .4s cubic-bezier(.7,0,.3,1) .1s}.app-scope .search-input{position:absolute;top:0;right:0;margin:0;width:100%;opacity:0}.app-scope .search.search-open .search-input{opacity:1}.app-scope .search.transition .search-input{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-submit,.app-scope .search-toggle{bottom:17px}.app-scope .search.transition .search-submit,.app-scope .search.transition .search-toggle{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-toggle{visibility:visible;z-index:5;opacity:.8}.app-scope .search-submit,.app-scope .search.search-open .search-toggle{z-index:4;opacity:0}.app-scope .search.search-open .search-submit{z-index:5;opacity:1}.app-scope .search-close{opacity:0}.app-scope .search.search-open .search-close{opacity:.8}.app-scope .search.transition .search-close{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .flyout-container{position:relative;right:auto;width:100%;height:80px;padding:0;background:0 0;overflow:hidden}.app-scope .nav-wrapper{float:right}.app-scope .nav-wrapper>ul{float:left;display:inline-block;height:80px;line-height:80px}.app-scope .nav-wrapper>ul li{display:inline-block;margin-left:10px}.app-scope .nav-wrapper>ul li+li{margin-top:0}.app-scope .nav-wrapper>ul li a{font-size:13px;font-weight:400;color:rgba(255,255,255,.8)}.app-scope .nav-wrapper>ul a:hover,.app-scope .nav-wrapper>ul li.active a{color:#fff}.app-scope .nav-toggle{display:none}.app-scope .flyout-secondary-nav{display:none}}
+    </style>
+    <style>
+    .app-scope.header-v2 .body{position:fixed;top:0;width:100%;background-color:#fff;z-index:1000}.app-scope.header-v2 .body.is-scrolled{box-shadow:0 1px 2px #ddd}.app-scope.header-v2 .top-padding{height:75px}.app-scope.header-v2 .top-padding.subnav-active{height:106px}@media (min-width:650px){.app-scope.header-v2 .top-padding{height:117px}.app-scope.header-v2 .top-padding.subnav-active{height:148px}}.app-scope.header-v2 .logo-wrapper-v2{border-bottom:1px solid #ddd}.app-scope.header-v2 .nav-wrapper-v2{border-bottom:1px solid #ddd}.app-scope.header-v2 .subnav-wrapper-v2{border-bottom:1px solid #ddd}.app-scope.header-v2 .logo-wrapper-v2,.app-scope.header-v2 .subnav-wrapper-v2{background:#fafafa;background:-moz-linear-gradient(top,#fafafa,#f5f5f5);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fafafa),color-stop(1,#f5f5f5));background:-webkit-linear-gradient(top,#fafafa,#f5f5f5);background:-o-linear-gradient(top,#fafafa,#f5f5f5 100%);background:-ms-linear-gradient(top,#fafafa,#f5f5f5 100%);background:linear-gradient(to top,#fafafa,#f5f5f5);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#f5f5f5',GradientType=1)}.app-scope.header-v2 .logo-v2{display:inline-block;margin:13px 0 13px 0}.app-scope.header-v2 .logo-v2 .wide-logo{display:none;height:43px;width:315px}.app-scope.header-v2 .logo-v2 .narrow-logo{display:block;height:43px;width:40px}@media (min-width:400px){.app-scope.header-v2 .logo-v2 .wide-logo{display:block}.app-scope.header-v2 .logo-v2 .narrow-logo{display:none}}.app-scope.header-v2 .search-v2{display:none;position:absolute;right:15px;top:22px}@media (min-width:650px){.app-scope.header-v2 .search-v2{display:block}}@media (min-width:768px){.app-scope.header-v2 .search-v2{right:30px}}@media (min-width:1230px){.app-scope.header-v2 .search-v2{right:0}}.app-scope.header-v2 .search-v2 .search-button{background:url(/app/images/search-icon.png);background-color:#4285F4;background-size:15px 15px;background-position:center;background-repeat:no-repeat;border:none;border-top-right-radius:2px;border-bottom-right-radius:2px;width:30px;height:30px;vertical-align:top}.app-scope.header-v2 .search-v2 .search-box{width:160px;height:30px;padding:3px;border:solid 1px #ccc;border-top-left-radius:2px;border-bottom-left-radius:2px;vertical-align:top}.app-scope.header-v2 .hamburger-v2{display:block;position:absolute;right:15px;top:30px;font-size:16px}@media (min-width:650px){.app-scope.header-v2 .hamburger-v2{display:none}}.app-scope.header-v2 .nav-wrapper-v2{display:none}@media (min-width:650px){.app-scope.header-v2 .nav-wrapper-v2{display:block}}.app-scope.header-v2 .nav-wrapper-v2 li{display:inline-block}.app-scope.header-v2 .nav-wrapper-v2 li a{color:#63666a;font-size:16px;font-weight:400;padding:7px 0;margin-right:20px;display:block;-webkit-transition:border-color .4s ease-in-out;-moz-transition:border-color .4s ease-in-out;-ms-transition:border-color .4s ease-in-out;-o-transition:border-color .4s ease-in-out;transition:border-color .4s ease-in-out;border-bottom:4px solid #fff}.app-scope.header-v2 .nav-wrapper-v2 li a.active{border-bottom:4px solid #4285F4}.app-scope.header-v2 .nav-wrapper-v2 li a:hover{border-bottom:4px solid #4285F4}.app-scope.header-v2 .subnav-wrapper-v2{display:none;overflow-x:auto}.app-scope.header-v2 .subnav-wrapper-v2>.inner{min-width:768px}.app-scope.header-v2 .subnav-wrapper-v2.active{display:block}.app-scope.header-v2 .subnav-wrapper-v2 li{display:inline-block}.app-scope.header-v2 .subnav-wrapper-v2 li a{color:#63666a;font-size:13px;font-weight:400;padding:7px 0;margin-right:20px;display:block;-webkit-transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-ms-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out;transition:color .4s ease-in-out}.app-scope.header-v2 .subnav-wrapper-v2 li a.active{color:#4285F4}.app-scope.header-v2 .subnav-wrapper-v2 li a:hover{color:#4285F4}.app-scope.header-v2 .flyout-container{position:fixed;width:300px;right:-300px;height:100%}.app-scope.header-v2 .flyout-secondary-nav .secondary-nav-block{margin:10px 0}.app-scope.header-v2 .expanding-list .title{font-size:16px;color:#fff;text-transform:uppercase;letter-spacing:.02em}.app-scope.header-v2 .expanding-list .svg-icon{float:right;width:inherit;height:inherit;color:#fff}.app-scope.header-v2 .expanding-list .icon-chevron-down{-webkit-transition:transform .3s linear,color .3s linear;-ms-transition:transform .3s linear,color .3s linear;transition:transform .3s linear,color .3s linear}.app-scope.header-v2 .expanding-list .links-visible .icon-chevron-down{-webkit-transform:translateY(-50%) rotateX(180deg);-ms-transform:translateY(-50%) rotate(180deg);transform:translateY(-50%) rotateX(180deg)}.app-scope.header-v2 .expanding-list ul{margin-top:15px}.app-scope.header-v2 .expanding-list ul li{margin-left:10px}.app-scope.header-v2 .expanding-list ul li:before{content:"-";color:#fff}.app-scope.header-v2 .expanding-list ul a{text-transform:none;font-size:14px}.ng-cloak{display:none !important}
+    </style>
+  </head>
+  <body>
+    <div class="app-scope header-v2" ng-controller="HeaderCtrlV2 as vm">
+      <div class="body" ng-class="{'is-scrolled': isScrolled}">
+        <div class="logo-wrapper-v2">
+          <div class="inner">
+            <a class="logo-v2" href="/"><img alt="Research at Google" class="narrow-logo" src=
+            "/app/images/logo.mini.2x.png"> <img alt="Research at Google" class="wide-logo" src=
+            "/app/images/logo-v2.2x.png"></a>
+            <div class="search-v2">
+              <form ng-submit="vm.search()">
+                <input class="search-box" ng-model="vm.searchText" placeholder=
+                " Search"><button class="search-button" ng-click="vm.search()">&nbsp;</button>
+              </form>
+            </div>
+            <div class="hamburger-v2">
+              <span class="svg-icon icon-hamburger" ng-click="toggle = !toggle">&nbsp;</span>
+            </div>
+          </div>
+        </div>
+        <div class="nav-wrapper-v2 ng-cloak">
+          <div class="inner">
+            <ul>
+              <li ng-repeat="link in mainLinks">
+                <a gr-main-nav-active-link="true" href="{{link.href}}" target=
+                "{{link.target || '_self'}}">{{link.text}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="subnav-wrapper-v2 ng-cloak" ng-class="{'active': subNavActive}">
+          <div class="inner">
+            <ul>
+              <li ng-repeat="link in subNavLinks">
+                <a gr-sub-nav-active-link="true" href="{{link.href}}">{{link.text}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <nav ng-class="{'open' : toggle}">
+        <div class="flyout-container" id="flyoutMenu">
+          <div class="nav-wrapper">
+            <ul>
+              <li>
+                <a class="dark" gr-active-link="true" href="/">Home</a>
+              </li>
+              <li>
+                <a gr-active-link="true" href="/pubs/papers.html" ng-click=
+                "toggle = false; searchToggle = false">Publications</a>
+              </li>
+              <li>
+                <a gr-active-link="true" href="/researchers.html" ng-click=
+                "toggle = false; searchToggle = false">People</a>
+              </li>
+              <li>
+                <a gr-active-link="true" href="/teams/" ng-click=
+                "toggle = false; searchToggle = false">Teams</a>
+              </li>
+              <li>
+                <div expanding-list="true" links="outreachLinks" title="Outreach">
+                  &nbsp;
+                </div>
+              </li>
+              <li>
+                <a href="http://googleresearch.blogspot.com/" ng-click=
+                "toggle = false; searchToggle = false" target="_blank">Blog</a>
+              </li>
+              <li>
+                <a gr-active-link="true" href="/workatgoogle.html" ng-click=
+                "toggle = false; searchToggle = false">Work at Google</a>
+              </li>
+            </ul>
+            <div class="search transition" ng-class="{'search-open' : searchToggle}">
+              <form class="search-form" ng-submit="vm.search();">
+                <input class="search-input" id="search" name="search" ng-model="vm.searchText"
+                placeholder="Search" type="search" value=""> <input class="search-submit" ng-click=
+                "toggle = false" type="submit" value=""> <label class="search-toggle" for="search"
+                ng-click="searchToggle = !searchToggle">&nbsp;</label>
+                <div class="search-close" ng-click="searchToggle = false">
+                  <span class="svg-icon icon-close">&nbsp;</span>
+                </div>
+              </form>
+            </div>
+            <div class="flyout-secondary-nav">
+              <div class="secondary-nav-block">
+                <span>More</span>
+                <ul>
+                  <li>
+                    <a class="dark" href="http://scholar.google.com/" target="_blank">Google
+                    Scholar</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://www.youtube.com/user/GoogleTechTalks/featured"
+                    target="_blank">YouTube Tech Talks</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="secondary-nav-block">
+                <span>Follow Us</span>
+                <ul>
+                  <li>
+                    <a class="dark" href="https://plus.google.com/+ResearchatGoogle" target=
+                    "_blank">Google+</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://twitter.com/googleresearch" target=
+                    "_blank">Twitter</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="secondary-nav-block">
+                <span>Google</span>
+                <ul>
+                  <li>
+                    <a class="dark" href="http://google.com" target="_blank">Google</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://www.google.com/intl/en/about/" target=
+                    "_blank">About Google</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://www.google.com/intl/en/policies/privacy/" target=
+                    "_blank">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://www.google.com/intl/en/policies/terms/" target=
+                    "_blank">Terms</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="nav-toggle close" ng-click="toggle = !toggle">
+            <span class="svg-icon icon-close">&nbsp;</span>
+          </div>
+        </div>
+      </nav>
+      <div class="top-padding" ng-class="{'subnav-active': subNavActive}">
+        &nbsp;
+      </div>
+    </div>
+    <div id="maia-main" role="main">
+      <div class="maia-teleport" id="content"></div>
+      <div id="cse">
+        &nbsp;
+      </div>
+      <h1>
+        Mobile Systems
+      </h1>
+      <div class="maia-cols">
+        <div class="maia-col-4">
+          <div>
+            <div class="sidebar">
+              <p>
+                Mobile devices are the prevalent computing device in many parts of the world, and
+                over the next few years it is expected that mobile Internet usage will outpace
+                desktop usage worldwide. Google is committed to realizing the potential of the
+                mobile web to transform how people interact with computing technology. Google
+                engineers and researchers work on a wide range of problems in mobile computing and
+                networking, including new operating systems and programming platforms (such as
+                Android and ChromeOS); new interaction paradigms between people and devices;
+                advanced wireless communications; and optimizing the web for mobile settings. In
+                addition, many of Google’s core product teams, such as Search, Gmail, and Maps,
+                have groups focused on optimizing the mobile experience, making it faster and more
+                seamless. We take a cross-layer approach to research in mobile systems and
+                networking, cutting across applications, networks, operating systems, and hardware.
+                The tremendous scale of Google’s products and the Android and Chrome platforms make
+                this a very exciting place to work on these problems.
+              </p>
+              <p>
+                Some representative projects include mobile web performance optimization, new
+                features in Android to greatly reduce network data usage and energy consumption;
+                new platforms for developing high performance web applications on mobile devices;
+                wireless communication protocols that will yield vastly greater performance over
+                today’s standards; and multi-device interaction based on Android, which is now
+                available on a wide variety of consumer electronics.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="maia-col-8">
+          <div class="mainbar">
+            <h2>
+              63 Publications
+            </h2>
+            <div class="section">
+              <ul class="pub-list">
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=EYEORG:+A+Platform+For+Crowdsourcing+Web+Quality+Of+Experience+Measurements+Papagiannaki"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45635.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45635.html">EYEORG: A Platform For Crowdsourcing Web Quality
+                    Of Experience Measurements</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/105042.html">Dina Papagiannaki</a>
+                  </p>
+                  <p>
+                    ACM CoNEXT 2016 (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Taking+the+Internet+to+the+Next+Physical+Level+Senges+Want+Cerf"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45892.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45892.html">Taking the Internet to the Next Physical
+                    Level</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/MaxSenges.html">Max Senges</a>, <a href="/pubs/RoyWant.html">Roy
+                    Want</a>, <a href="/pubs/author32412.html">Vint Cerf</a>
+                  </p>
+                  <p>
+                    IEEE Computer Society (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Understanding+the+Challenges+of+Designing++and+Developing+Multi-Device+Experiences+Dong+Churchill+Nichols"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dl.acm.org/citation.cfm?id=2901851" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45453.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45453.html">Understanding the Challenges of Designing and
+                    Developing Multi-Device Experiences</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/TaoDong.html">Tao Dong</a>, <a href=
+                    "/pubs/104978.html">Elizabeth F. Churchill</a>, Jeffrey Nichols
+                  </p>
+                  <p>
+                    DIS '16 Proceedings of the 2016 Conference on Designing Interactive Systems
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=(Smart)+watch+your+taps:+side-channel+keystroke+inference+attacks+using+smartwatches+Maiti+Jadliwala+He+Bilogrevic"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dl.acm.org/citation.cfm?id=2808397" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44642.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44642.html">(Smart) watch your taps: side-channel keystroke
+                    inference attacks using smartwatches</a>
+                  </p>
+                  <p>
+                    Anindya Maiti, Murtuza Jadliwala, Jibo He, <a href=
+                    "/pubs/IgorBilogrevic.html">Igor Bilogrevic</a>
+                  </p>
+                  <p>
+                    ACM International Symposium on Wearable Computers (2015), pp. 27-30
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=CQIC:+Revisiting+Cross-Layer+Congestion+Control+f+or+Cellular+Networks+Lu+Du+Jain+Voelker+Snoeren+Terzis"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43311.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43311.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43311.html">CQIC: Revisiting Cross-Layer Congestion Control f
+                    or Cellular Networks</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/FengLu.html">Feng Lu</a>, Hao Du, Ankur Jain, Geoffrey M.
+                    Voelker, Alex C. Snoeren, <a href="/pubs/AndreasTerzis.html">Andreas Terzis</a>
+                  </p>
+                  <p>
+                    Proceedings of The 16th International Workshop on Mobile Computing Systems and
+                    Applications (HotMobile), ACM (2015), pp. 45-50
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Effects+of+Language+Modeling+and+its+Personalization+on+Touchscreen+Typing+Performance+Fowler+Partridge+Chelba+Bi+Ouyang+Zhai"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43272.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43272.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43272.html">Effects of Language Modeling and its
+                    Personalization on Touchscreen Typing Performance</a>
+                  </p>
+                  <p>
+                    Andrew Fowler, Kurt Partridge, <a href="/pubs/author6342.html">Ciprian
+                    Chelba</a>, <a href="/pubs/XiaojunBi.html">Xiaojun Bi</a>, <a href=
+                    "/pubs/TomOuyang.html">Tom Ouyang</a>, <a href="/pubs/author9128.html">Shumin
+                    Zhai</a>
+                  </p>
+                  <p>
+                    Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (CHI
+                    2015), ACM, New York, NY, USA, pp. 649-658
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Flywheel:+Google's+Data+Compression+Proxy+for+the+Mobile+Web+Agababov+Buettner+Chudnovsky+Cogan+Greenstein+McDaniel+Piatek+Scott+Welsh+Yin"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43447.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43447.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43447.html">Flywheel: Google's Data Compression Proxy for the
+                    Mobile Web</a>
+                  </p>
+                  <p>
+                    Victor Agababov, Michael Buettner, Victor Chudnovsky, Mark Cogan, Ben
+                    Greenstein, Shane McDaniel, <a href="/pubs/MichaelPiatek.html">Michael
+                    Piatek</a>, Colin Scott, <a href="/pubs/author672.html">Matt Welsh</a>, Bolian
+                    Yin
+                  </p>
+                  <p>
+                    Proceedings of the 12th USENIX Symposium on Networked Systems Design and
+                    Implementation (NSDI 2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Gesture+On:+Always-On+Touch+Gestures+for+Fast+Mobile+Access+from+Device+Standby+Mode+Lu+Li"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dl.acm.org/citation.cfm?id=2702610" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44263.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44263.html">Gesture On: Always-On Touch Gestures for Fast
+                    Mobile Access from Device Standby Mode</a>
+                  </p>
+                  <p>
+                    Hao Lu, <a href="/pubs/author38946.html">Yang Li</a>
+                  </p>
+                  <p>
+                    CHI 2015: ACM Conference on Human Factors in Computing Systems, ACM, pp.
+                    3355-3364
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=GyroPen:+Gyroscopes+for+Pen-input+with+Mobile+Phones+Deselaers+Keysers+Hosang+Rowley"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43127.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43127.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43127.html">GyroPen: Gyroscopes for Pen-input with Mobile
+                    Phones</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/ThomasDeselaers.html">Thomas Deselaers</a>, <a href=
+                    "/pubs/DanielKeysers.html">Daniel Keysers</a>, Jan Hosang, <a href=
+                    "/pubs/author37.html">Henry Rowley</a>
+                  </p>
+                  <p>
+                    IEEE Transactions on Human-Machine Systems, vol. 45 (2015), pp. 263-271
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Mantis:+Efficient+Predictions+of+Execution+Time,+Energy+Usage,+Memory+Usage+and+Network+Usage+on+Smart+Mobile+Devices+Kwon+Lee+Yi+Kwon+Yang+Chun+Huang+Maniatis+Naik+Paek"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://doi.ieeecomputersociety.org/10.1109/TMC.2014.2374153" target=
+                  "_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub44311.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44311.html">Mantis: Efficient Predictions of Execution Time,
+                    Energy Usage, Memory Usage and Network Usage on Smart Mobile Devices</a>
+                  </p>
+                  <p>
+                    Yongin Kwon, Sangmin Lee, Hayoon Yi, Donghyun Kwon, Seungjun Yang, Byung-Gon
+                    Chun, Ling Huang, <a href="/pubs/PetrosManiatis.html">Petros Maniatis</a>,
+                    Mayur Naik, Yunheung Paek
+                  </p>
+                  <p>
+                    IEEE Transactions on Mobile Computing, vol. 14 (2015), pp. 2059-2072
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Optimizing+Touchscreen+Keyboards+for+Gesture+Typing+Smith+Bi+Zhai"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43271.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43271.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43271.html">Optimizing Touchscreen Keyboards for Gesture
+                    Typing</a>
+                  </p>
+                  <p>
+                    Brian Smith, <a href="/pubs/XiaojunBi.html">Xiaojun Bi</a>, <a href=
+                    "/pubs/author9128.html">Shumin Zhai</a>
+                  </p>
+                  <p>
+                    Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (CHI
+                    2015), ACM, New York, NY, USA, pp. 3365-3374
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=RFC7710+-+Captive-Portal+Identification+Using+DHCP+or+Router+Advertisements+(RAs)+Kumari+Gudmundsson"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44318.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44318.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44318.html">RFC7710 - Captive-Portal Identification Using
+                    DHCP or Router Advertisements (RAs)</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/WarrenKumari.html">Warren Kumari</a>, Olafur Gudmundsson
+                  </p>
+                  <p>
+                    IETF RFC, Internet Engineering Task Force (2015), pp. 8
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=SpecTrans:+Versatile+Material+Classification+for+Interaction+with+Textureless,+Specular+and+Transparent+Surfaces+Sato+Yoshida+Olwal+Shi+Hiyama+Tanikawa+Hirose+Raskar"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43828.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43828.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43828.html">SpecTrans: Versatile Material Classification for
+                    Interaction with Textureless, Specular and Transparent Surfaces</a>
+                  </p>
+                  <p>
+                    Munehiko Sato, Shigeo Yoshida, <a href="/pubs/AlexOlwal.html">Alex Olwal</a>,
+                    Boxin Shi, Atsushi Hiyama, Tomohiro Tanikawa, Michitaka Hirose, Ramesh Raskar
+                  </p>
+                  <p>
+                    SIGCHI Conference on Human Factors in Computing Systems, ACM (2015), pp.
+                    2191-2200
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Structured+Transforms+for+Small-footprint+Deep+Learning+Sindhwani+Sainath+Kumar"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/pdf/1510.01722v1.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44671.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44671.html">Structured Transforms for Small-footprint Deep
+                    Learning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/VikasSindhwani.html">Vikas Sindhwani</a>, <a href=
+                    "/pubs/TaraSainath.html">Tara N. Sainath</a>, <a href=
+                    "/pubs/author11555.html">Sanjiv Kumar</a>
+                  </p>
+                  <p>
+                    Neural Information Processing Systems (NIPS) (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Weave:+Scripting+Cross-Device+Wearable+Interaction+Chi+Li"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub44264.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44264.html">Weave: Scripting Cross-Device Wearable
+                    Interaction</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/104956.html">Pei-Yu (Peggy) Chi</a>, <a href=
+                    "/pubs/author38946.html">Yang Li</a>
+                  </p>
+                  <p>
+                    CHI 2015: ACM Conference on Human Factors in Computing Systems, ACM, pp.
+                    3923-3932
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Both+Complete+and+Correct?++Multi-Objective+Optimization+of+Touchscreen+Keyboard+Bi+Ouyang+Zhai"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/41877.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Both Complete and Correct? Multi-Objective Optimization of Touchscreen Keyboard
+                  </p>
+                  <p>
+                    <a href="/pubs/XiaojunBi.html">Xiaojun Bi</a>, <a href=
+                    "/pubs/TomOuyang.html">Tom Ouyang</a>, <a href="/pubs/author9128.html">Shumin
+                    Zhai</a>
+                  </p>
+                  <p>
+                    Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (CHI
+                    2014), ACM, New York, NY, USA, pp. 2297-2306
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Designing+an+Energy-Efficient+Could+Messaging+Service+for+Smartphones+Sharma+Eastham+Nerieri"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Designing an Energy-Efficient Could Messaging Service for Smartphones
+                  </p>
+                  <p>
+                    <a href="/pubs/AshishSharma.html">Ashish Sharma</a>, Paul Eastham, Francesco
+                    Nerieri
+                  </p>
+                  <p>
+                    IEEE Pervasive Computing (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Designing+for+Healthy+Lifestyles:+Design+Considerations+for+Mobile+Technologies+to+Encourage+Consumer+Health+and+Wellness+Consolvo+Klasnja+McDonald+Landay"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42488.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42488.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42488.html">Designing for Healthy Lifestyles: Design
+                    Considerations for Mobile Technologies to Encourage Consumer Health and
+                    Wellness</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/SunnyConsolvo.html">Sunny Consolvo</a>, Predrag Klasnja, David
+                    W. McDonald, James A. Landay
+                  </p>
+                  <p>
+                    Foundations and Trends® in Human-Computer Interaction, vol. 6 (2014), 167–315
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Detecting+Tapping+Motion+on+the+Side+of+Mobile+Devices+By+Probabilistically+Combining+Hand+Postures+McGrath+Li"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Detecting Tapping Motion on the Side of Mobile Devices By Probabilistically
+                    Combining Hand Postures
+                  </p>
+                  <p>
+                    William McGrath, <a href="/pubs/author38946.html">Yang Li</a>
+                  </p>
+                  <p>
+                    UIST 2014: ACM Symposium on User Interface Software and Technology, ACM
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=InkAnchor:+Enhancing+Informal+Ink-Based+Note+Taking+on+Touchscreen+Mobile+Phones+Ren+Li+Lank"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    InkAnchor: Enhancing Informal Ink-Based Note Taking on Touchscreen Mobile
+                    Phones
+                  </p>
+                  <p>
+                    Yi Ren, <a href="/pubs/author38946.html">Yang Li</a>, Edward Lank
+                  </p>
+                  <p>
+                    CHI 2014: ACM Conference on Human Factors in Computing Systems
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Optimistic+Programming+of+Touch+Interaction+Li+Lu+Zhang"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Optimistic Programming of Touch Interaction
+                  </p>
+                  <p>
+                    <a href="/pubs/author38946.html">Yang Li</a>, Hao Lu, Haimo Zhang
+                  </p>
+                  <p>
+                    TOCHI: ACM Transactions on Computer-Human Interaction (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Reflection:+Enabling+Event+Prediction+As+an+On-Device+Service+for+Mobile+Interaction+Li"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Reflection: Enabling Event Prediction As an On-Device Service for Mobile
+                    Interaction
+                  </p>
+                  <p>
+                    <a href="/pubs/author38946.html">Yang Li</a>
+                  </p>
+                  <p>
+                    UIST 2014: ACM Symposium on User Interface Software and Technology
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=T(ether):+Spatially-Aware+Handhelds,+Gestures+and+Proprioception+for+Multi-User+3D+Modeling+and+Animation+Lakatos+Blackshaw+Olwal+Barryte+Perlin+Ishii"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43152.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43152.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43152.html">T(ether): Spatially-Aware Handhelds, Gestures and
+                    Proprioception for Multi-User 3D Modeling and Animation</a>
+                  </p>
+                  <p>
+                    Dávid Lakatos, Matthew Blackshaw, <a href="/pubs/AlexOlwal.html">Alex
+                    Olwal</a>, Zachary Barryte, Ken Perlin, Hiroshi Ishii
+                  </p>
+                  <p>
+                    ACM Symposium on Spatial User Interaction, ACM (2014), pp. 90-93
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Teaching+Motion+Gestures+via+Recognizer+Feedback+Kamal+Li+Lank"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Teaching Motion Gestures via Recognizer Feedback
+                  </p>
+                  <p>
+                    Ankit Kamal, <a href="/pubs/author38946.html">Yang Li</a>, Edward Lank
+                  </p>
+                  <p>
+                    IUI 2014: International Conference on Intelligent User Interfaces
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=The+Power+of+Smartphones+Want"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42922.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42922.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42922.html">The Power of Smartphones</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/RoyWant.html">Roy Want</a>
+                  </p>
+                  <p>
+                    IEEE Pervasive Computing, vol. 13-03 (2014), pp. 76-79
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Bayesian+Touch+-+A+Statistic+Criterion+of+Target+Selection+with+Finger+Touch+Bi+Zhai"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/41644.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41644.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41644.html">Bayesian Touch - A Statistic Criterion of Target
+                    Selection with Finger Touch</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/XiaojunBi.html">Xiaojun Bi</a>, <a href=
+                    "/pubs/author9128.html">Shumin Zhai</a>
+                  </p>
+                  <p>
+                    Proceedings of UIST 2013 – The ACM Symposium on User Interface Software and
+                    Technology, ACM, New York, NY, USA, pp. 51-60
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Behavior-Oriented+Data+Resource+Management+in+Medical+Sensing+Systems+Noshadi+Dabiri+Meguerdichian+Potkonjak+Sarrafzadeh"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dl.acm.org/citation.cfm?id=2422969" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41346.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41346.html">Behavior-Oriented Data Resource Management in
+                    Medical Sensing Systems</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/HydukeNoshadi.html">Hyduke Noshadi</a>, <a href=
+                    "/pubs/FoadDabiri.html">Foad Dabiri</a>, Saro Meguerdichian, Miodrag Potkonjak,
+                    Majid Sarrafzadeh
+                  </p>
+                  <p>
+                    ACM Transactions on Sensor Networks (TOSN), vol. 9 (2013), 12:1-12:26
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Capturing+Mobile+Experience+in+the+Wild:+A+Tale+of+Two+Apps+Patro+Rayanchu+Griepentrog"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/41590.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41590.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41590.html">Capturing Mobile Experience in the Wild: A Tale
+                    of Two Apps</a>
+                  </p>
+                  <p>
+                    Ashish Patro, <a href="/pubs/ShravanRayanchu.html">Shravan Rayanchu</a>,
+                    Michael Griepentrog
+                  </p>
+                  <p>
+                    8th International Conference on emerging Networking EXperiments and
+                    Technologies (CoNEXT), ACM (Association for Computing Machinery) (2013), NA (to
+                    appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Chale,+How+Much+it+Cost+to+Browse?+Results+from+a+Mobile+Data+Price+Transparency+Trial+in+Ghana+Sambasivan+Lee+Hecht+Aoki+Carrera+Chen+Cohn+Kruskall+Wetchler+Youssefmir+Larssen"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/41878.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41878.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41878.html">Chale, How Much it Cost to Browse? Results from a
+                    Mobile Data Price Transparency Trial in Ghana</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/NithyaSambasivan.html">Nithya Sambasivan</a>, <a href=
+                    "/pubs/PaulLee.html">Paul Lee</a>, <a href="/pubs/GregHecht.html">Greg
+                    Hecht</a>, <a href="/pubs/PaulAoki.html">Paul M. Aoki</a>, <a href=
+                    "/pubs/MariaInesCarrera.html">Maria-Ines Carrera</a>, <a href=
+                    "/pubs/JennyChen.html">Jenny Chen</a>, <a href="/pubs/DavidCohn.html">David
+                    Pablo Cohn</a>, Pete Kruskall, Everett Wetchler, Michael Youssefmir, Astrid
+                    Twenebowa Larssen
+                  </p>
+                  <p>
+                    Proceedings of the Sixth International Conference on Information and
+                    Communication Technologies and Development: Full Papers - Volume 1 (ICTD '13),
+                    ACM, New York, NY, USA (2013), pp. 13-23
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=CrowdLearner:+Rapidly+Creating+Mobile+Recognizers+Using+Crowdsourcing+Amini+Li"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://yangl.org/pdf/crowdlearner.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    CrowdLearner: Rapidly Creating Mobile Recognizers Using Crowdsourcing
+                  </p>
+                  <p>
+                    Shahriyar Amini, <a href="/pubs/author38946.html">Yang Li</a>
+                  </p>
+                  <p>
+                    UIST'13: Proceedings of the 26th annual ACM symposium on User interface
+                    software and technology (2013), pp. 163-172
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=HERMES:+Mobile+system+for+instability+analysis+and+balance+assessment+Noshadi+Dabiri+Ahmadian+Amini+Sarrafzadeh"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dl.acm.org/citation.cfm?id=2435253" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41347.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41347.html">HERMES: Mobile system for instability analysis
+                    and balance assessment</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/HydukeNoshadi.html">Hyduke Noshadi</a>, <a href=
+                    "/pubs/FoadDabiri.html">Foad Dabiri</a>, Shaun Ahmadian, Navid Amini, Majid
+                    Sarrafzadeh
+                  </p>
+                  <p>
+                    ACM Transactions on Embedded Computing Systems (TECS), vol. 12 (2013),
+                    57:1-57:24
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Open+project:+a+lightweight+framework+for+remote+sharing+of+mobile+applications+Negulescu+Li"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://yangl.org/pdf/openproject.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Open project: a lightweight framework for remote sharing of mobile applications
+                  </p>
+                  <p>
+                    Matei Negulescu, <a href="/pubs/author38946.html">Yang Li</a>
+                  </p>
+                  <p>
+                    UIST '13: Proceedings of the 26th annual ACM symposium on User interface
+                    software and technology (2013), pp. 281-290
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Swipe+vs.+scroll:+web+page+switching+on+mobile+browsers+Warr+Chi"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/41201.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41201.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41201.html">Swipe vs. scroll: web page switching on mobile
+                    browsers</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/AndrewWarr.html">Andrew Warr</a>, <a href="/pubs/EdChi.html">Ed
+                    H. Chi</a>
+                  </p>
+                  <p>
+                    In Proc. of CHI2013, ACM, pp. 2171-2174
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=ADEL:+An+automatic+detector+of+energy+leaks+for+smartphone+applications+Zhang+Gordon+Dick+Mao+Dinda+Yang"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    ADEL: An automatic detector of energy leaks for smartphone applications
+                  </p>
+                  <p>
+                    Lide Zhang, M. S. Gordon, Robert P. Dick, Z. Morley Mao, Peter Dinda, <a href=
+                    "/pubs/LeiYang.html">Lei Yang</a>
+                  </p>
+                  <p>
+                    Proceeding of International Conference on Hardware/Software Codesign and System
+                    Synthesis, (2012) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Bimanual+gesture+keyboard+Bi+Chelba+Ouyang+Partridge+Zhai"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dl.acm.org/citation.cfm?id=2380116.2380136&amp;coll=DL&amp;dl=ACM&amp;CFID=244634215&amp;CFTOKEN=16005854"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub41647.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41647.html">Bimanual gesture keyboard</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/XiaojunBi.html">Xiaojun Bi</a>, <a href=
+                    "/pubs/author6342.html">Ciprian Chelba</a>, <a href="/pubs/TomOuyang.html">Tom
+                    Ouyang</a>, Kurt Partridge, <a href="/pubs/author9128.html">Shumin Zhai</a>
+                  </p>
+                  <p>
+                    Proceeding of UIST 2012 – The ACM Symposium on User Interface Software and
+                    Technology, ACM, New York, NY, USA, pp. 137-146
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Bridging+communications+and+the+physical+world+Boyaci+Martinez+Schulzrinne"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://www.computer.org/portal/web/csdl/doi/10.1109/MIC.2012.18" target=
+                  "_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub39962.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub39962.html">Bridging communications and the physical
+                    world</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/OmerBoyaci.html">Omer Boyaci</a>, Victoria Beltran Martinez,
+                    Henning Schulzrinne
+                  </p>
+                  <p>
+                    IEEE Internet Computing, vol. 16 (2012), pp. 35-43
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Cost-effective+voting+Zheng"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Cost-effective voting
+                  </p>
+                  <p>
+                    <a href="/pubs/LantianZheng.html">Lantian Zheng</a>
+                  </p>
+                  <p>
+                    Patent (2012)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=DIPLOMA:+Consistent+and+Coherent+Shared+Memory+over+Mobile+Phones+Agarwal"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/40367.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    DIPLOMA: Consistent and Coherent Shared Memory over Mobile Phones
+                  </p>
+                  <p>
+                    <a href="/pubs/NiketAgarwal.html">Niket Agarwal</a>
+                  </p>
+                  <p>
+                    30th IEEE International Conference on Computer Design (2012)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Gesture-based+interaction:+a+new+dimension+for+mobile+user+interfaces+Li"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dx.doi.org/10.1145/2254556.2254560" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Gesture-based interaction: a new dimension for mobile user interfaces
+                  </p>
+                  <p>
+                    <a href="/pubs/author38946.html">Yang Li</a>
+                  </p>
+                  <p>
+                    Proceedings of the International Working Conference on Advanced Visual
+                    Interfaces, ACM, New York, NY, USA (2012), pp. 6-6
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Google's+C/C%2B%2B+toolchain+for+smart+handheld+devices+Kwan+Yu+Janakiraman"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/40355.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub40355.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub40355.html">Google's C/C++ toolchain for smart handheld
+                    devices</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/DougKwan.html">Doug Kwan</a>, Jing Yu, Bhaskar Janakiraman
+                  </p>
+                  <p>
+                    VLSI Design, Automation, and Test (VLSI-DAT), 2012 International Symposium on,
+                    IEEE
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Inter-contact+Routing+for+Energy-constrained+Disaster+Response+Networks+Uddin+Ahmadi+Abdelzaher+Kravets"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Inter-contact Routing for Energy-constrained Disaster Response Networks
+                  </p>
+                  <p>
+                    Md Yusuf S Uddin, <a href="/pubs/HosseinAhmadi.html">Hossein Ahmadi</a>, Tarek
+                    Abdelzaher, Robin Kravets
+                  </p>
+                  <p>
+                    IEEE Transaction on Mobile Computing (2012) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Interactive+Digital+Signage+Want+Schilit"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://doi.ieeecomputersociety.org/10.1109/MC.2012.169" target=
+                  "_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Interactive Digital Signage
+                  </p>
+                  <p>
+                    <a href="/pubs/RoyWant.html">Roy Want</a>, <a href=
+                    "/pubs/author27501.html">Bill Schilit</a>
+                  </p>
+                  <p>
+                    Computer, vol. 45(5) (2012), pp. 21-24
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=MOIST:+A+Scalable+and+Parallel+Moving+Object+Indexer+with+School+Tracking+Jiang+Bao+Chang+Li"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    MOIST: A Scalable and Parallel Moving Object Indexer with School Tracking
+                  </p>
+                  <p>
+                    Junchen Jiang, <a href="/pubs/HongjiBao.html">Hongji Bao</a>, Edward Y. Chang,
+                    Yuqian Li
+                  </p>
+                  <p>
+                    Proceedings of VLDB 2012, 38th International Conference on Very Large Data
+                    Bases, pp. 1838-1849
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Notification+of+event+by+mobile+communications+device+using+radio+frequency+transmitter+Zheng+Weng"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42920.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Notification of event by mobile communications device using radio frequency
+                    transmitter
+                  </p>
+                  <p>
+                    <a href="/pubs/LantianZheng.html">Lantian Zheng</a>, Zhi D. Weng
+                  </p>
+                  <p>
+                    Patent (2012)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Tap,+swipe,+or+move:+attentional+demands+for+distracted+smartphone+input+Negulescu+Ruiz+Li+Lank"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dx.doi.org/10.1145/2254556.2254589" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Tap, swipe, or move: attentional demands for distracted smartphone input
+                  </p>
+                  <p>
+                    Matei Negulescu, Jaime Ruiz, <a href="/pubs/author38946.html">Yang Li</a>,
+                    Edward Lank
+                  </p>
+                  <p>
+                    Proceedings of the International Working Conference on Advanced Visual
+                    Interfaces, ACM, New York, NY, USA (2012), pp. 173-180
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Ubiquitous+search+for+smart+workspaces+Russell"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Ubiquitous search for smart workspaces
+                  </p>
+                  <p>
+                    <a href="/pubs/author173.html">Daniel M. Russell</a>
+                  </p>
+                  <p>
+                    Universal Access in the Information Society, vol. 10 (2012), pp. 11-20
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Mobile+Computing:+Looking+to+the+Future+Schilit"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/37634.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Mobile Computing: Looking to the Future
+                  </p>
+                  <p>
+                    <a href="/pubs/author27501.html">Bill N. Schilit</a>
+                  </p>
+                  <p>
+                    IEEE Computer, vol. 44 (2011), pp. 28-29
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Programming+Micro-Aerial+Vehicle+Swarms+With+Karma+Dantu+Kate+Waterman+Bailis+Welsh"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/37262.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Programming Micro-Aerial Vehicle Swarms With Karma
+                  </p>
+                  <p>
+                    Karthik Dantu, Bryan Kate, Jason Waterman, Peter Bailis, <a href=
+                    "/pubs/author672.html">Matt Welsh</a>
+                  </p>
+                  <p>
+                    Proceedings of ACM SenSys 2011
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Accurate+Online+Power+Estimation+and+Automatic+Battery+Behavior+Based+Power+Model+Generation+for+Smartphones+Zhang+Tiwana+Qian+Wang+Dick+Mao+Yang"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/39990.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub39990.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub39990.html">Accurate Online Power Estimation and Automatic
+                    Battery Behavior Based Power Model Generation for Smartphones</a>
+                  </p>
+                  <p>
+                    Lide Zhang, Birjodh Tiwana, Zhiyun Qian, Zhaoguang Wang, Robert P. Dick, Z.
+                    Morley Mao, <a href="/pubs/LeiYang.html">Lei Yang</a>
+                  </p>
+                  <p>
+                    Proceeding of Internation Conference on Hardware/Software Codesign and System
+                    Synthesis (2010), pp. 105-114
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Energy+Optimization+in+Wireless+Medical+Systems+Using+Physiological+Behavior+Noshadi+Dabiri+Meguerdichian+Potkonjak+Sarrafzadeh"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dl.acm.org/citation.cfm?id=1921097" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41366.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41366.html">Energy Optimization in Wireless Medical Systems
+                    Using Physiological Behavior</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/HydukeNoshadi.html">Hyduke Noshadi</a>, <a href=
+                    "/pubs/FoadDabiri.html">Foad Dabiri</a>, Saro Meguerdichian, Miodrag Potkonjak,
+                    Majid Sarrafzadeh
+                  </p>
+                  <p>
+                    In Proceedings of the ACM, BMES conference of Wireless Health, ACM (2010), pp.
+                    128-136
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Juggler:+Virtual+Networks+for+Fun+and+Profit+Nicholson+Wolchok+Noble"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/36598.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub36598.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub36598.html">Juggler: Virtual Networks for Fun and Profit</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/author27277.html">Anthony J. Nicholson</a>, Scott Wolchok, Brian
+                    D. Noble
+                  </p>
+                  <p>
+                    IEEE Transactions on Mobile Computing, vol. 9 (2010), pp. 31-43
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Usage+Patterns+in+an+Urban+WiFi+Network+Afanasyev+Chen"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/39965.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub39965.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub39965.html">Usage Patterns in an Urban WiFi Network</a>
+                  </p>
+                  <p>
+                    Mikhail Afanasyev, <a href="/pubs/TsuweiChen.html">Tsuwei Chen</a>
+                  </p>
+                  <p>
+                    IEEE/ACM Transactions on Networking, vol. 18 , Issue: 5 (2010), 1359 - 1372
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=CENTAUR:+realizing+the+full+potential+of+centralized+wlans+through+a+hybrid+data+path+Shrivastava+Ahmed+Rayanchu+Banerjee+Keshav+Papagiannaki+Mishra"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://doi.acm.org/10.1145/1614320.1614353" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    CENTAUR: realizing the full potential of centralized wlans through a hybrid
+                    data path
+                  </p>
+                  <p>
+                    Vivek Shrivastava, Nabeel Ahmed, <a href="/pubs/ShravanRayanchu.html">Shravan
+                    Rayanchu</a>, Suman Banerjee, Srinivasan Keshav, Konstantina Papagiannaki,
+                    Arunesh Mishra
+                  </p>
+                  <p>
+                    MobiCom '09: Proceedings of the 15th annual international conference on Mobile
+                    computing and networking, ACM, New York (2009), pp. 297-308
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Activity+Recognition+for+the+Digital+Home+Yang+Schilit+McDonald"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://doi.ieeecomputersociety.org/10.1109/MC.2008.106" target=
+                  "_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Activity Recognition for the Digital Home
+                  </p>
+                  <p>
+                    Jeonghwa Yang, <a href="/pubs/author27501.html">Bill N. Schilit</a>, David W.
+                    McDonald
+                  </p>
+                  <p>
+                    IEEE Computer, vol. 41 (2008), pp. 102-104
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Analysis+of+a+Mixed-Use+Urban+WiFi+Network:+When+Metropolitan+becomes+Neapolitan+Afanasyev+Chen+Voelker+Snoeren"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/34430.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub34430.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub34430.html">Analysis of a Mixed-Use Urban WiFi Network: When
+                    Metropolitan becomes Neapolitan</a>
+                  </p>
+                  <p>
+                    Mikhail Afanasyev, <a href="/pubs/TsuweiChen.html">Tsuwei Chen</a>, Geoffrey M.
+                    Voelker, Alex C. Snoeren
+                  </p>
+                  <p>
+                    IMC '08 Proceedings of the 8th ACM SIGCOMM conference on Internet measurement,
+                    ACM, New York, NY, USA (2008), pp. 85-98
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Architecture-Driven+Software+Mobility+in+Support+of+QoS+Requirements+Mikic-Rakic+Malek+Medvidovic"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://doi.acm.org/10.1145/1370888.1370891" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Architecture-Driven Software Mobility in Support of QoS Requirements
+                  </p>
+                  <p>
+                    <a href="/pubs/author17372.html">Marija Mikic-Rakic</a>, Sam Malek, Nenad
+                    Medvidovic
+                  </p>
+                  <p>
+                    Proc. 1st International Workshop on Software Architectures and Mobility, ACM,
+                    Leipzig (2008), pp. 3-8
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=RFID+(Radio+Frequency+Identification)+Weis"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    RFID (Radio Frequency Identification)
+                  </p>
+                  <p>
+                    Stephen A. Weis
+                  </p>
+                  <p>
+                    Wiley Publishing (2008)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Deciphering+Trends+in+Mobile+Search+Kamvar+Baluja"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/33270.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Deciphering Trends in Mobile Search
+                  </p>
+                  <p>
+                    <a href="/pubs/author34.html">Maryam Kamvar</a>, <a href=
+                    "/pubs/author35.html">Shumeet Baluja</a>
+                  </p>
+                  <p>
+                    IEEE Computer, vol. 40, no. 8 (2007), pp. 58-62
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=TOLB:+A+Traffic-Oblivious+Load-Balancing+Protocol+for+Next-Generation+Sensornets+Aly+Gopalan"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    TOLB: A Traffic-Oblivious Load-Balancing Protocol for Next-Generation
+                    Sensornets
+                  </p>
+                  <p>
+                    Mohamed Aly, Anandha Gopalan
+                  </p>
+                  <p>
+                    Proceedings of the International Conference on Distributed Computing in Sensor
+                    Networks (DCOSS) (2007)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=The+Role+of+Context+in+Query+Input:+Using+contexual+signals+to+complete+queries+on+mobile+devices+Kamvar+Baluja"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    The Role of Context in Query Input: Using contexual signals to complete queries
+                    on mobile devices
+                  </p>
+                  <p>
+                    <a href="/pubs/author34.html">Maryam Kamvar</a>, <a href=
+                    "/pubs/author35.html">Shumeet Baluja</a>
+                  </p>
+                  <p>
+                    Human Computer Interaction with Mobile Devices and Services (Mobile HCI) (2007)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=A+Large+Scale+Study+of+Wireless+Search+Behavior:+Google+Mobile+Search+Kamvar+Baluja"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://www.esprockets.com/papers/kamvar-baluja.chi06.pdf" target=
+                  "_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    A Large Scale Study of Wireless Search Behavior: Google Mobile Search
+                  </p>
+                  <p>
+                    <a href="/pubs/author34.html">Maryam Kamvar</a>, <a href=
+                    "/pubs/author35.html">Shumeet Baluja</a>
+                  </p>
+                  <p>
+                    Proceedings of the SIGCHI conference on Human Factors in computing systems
+                    (CHI) (2006)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Pervasive+Computing+in+the+Home+and+Community+Patterson+Liao+Kautz+Fox"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Pervasive Computing in the Home and Community
+                  </p>
+                  <p>
+                    Don Patterson, <a href="/pubs/author16399.html">Lin Liao</a>, Henry Kautz,
+                    Dieter Fox
+                  </p>
+                  <p>
+                    Pervasive Computing in Healthcare (2006), pp. 79-103
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Report+on+the+Mobile+Search+Workshop+at+WWW+2002+Soffer+Maarek+Chang"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://www.acm.org/sigmod/record/issues/0209/r1.mobile-search-workshop-report.pdf"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Report on the Mobile Search Workshop at WWW 2002
+                  </p>
+                  <p>
+                    Aya Soffer, Yoelle S. Maarek, <a href="/pubs/author100.html">Bay-Wei Chang</a>
+                  </p>
+                  <p>
+                    SIGMOD Record, vol. 31 (2002), pp. 68-71
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+    .app-scope footer{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;clear:both;position:relative;width:100%;font-size:14px;background:#fafafa;background:-moz-linear-gradient(top,#fafafa,#f5f5f5);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fafafa),color-stop(1,#f5f5f5));background:-webkit-linear-gradient(top,#fafafa,#f5f5f5);background:-o-linear-gradient(top,#fafafa,#f5f5f5 100%);background:-ms-linear-gradient(top,#fafafa,#f5f5f5 100%);background:linear-gradient(to top,#fafafa,#f5f5f5);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#f5f5f5',GradientType=1)}.columns{padding:16px}.app-scope footer .secondary-nav-block{margin:0 32px 32px 0}@media (min-width:768px){.app-scope footer .secondary-nav{width:968px;margin:auto}.app-scope footer .secondary-nav-block{float:left;width:20%;margin:0 32px 0 0}.app-scope footer .secondary-nav-block:first-of-type{width:30%}.app-scope footer .secondary-nav-block:nth-of-type(3n){margin-right:0}}@media (min-width:768px){.app-scope footer .secondary-nav-block+.secondary-nav-block{margin-top:0}}.app-scope footer .secondary-nav-block span{text-transform:uppercase;font-weight:400;margin-left:16px;white-space:nowrap;color:#616161}.app-scope footer ul.first-column{margin-bottom:8px}@media (min-width:768px){.app-scope footer ul.first-column{float:left;width:50%}.app-scope footer ul.second-column{float:right;width:50%}}.app-scope footer .secondary-nav-block li{padding-left:16px}.app-scope footer .secondary-nav-block li+li{margin-top:8px}.app-scope footer .secondary-nav-block li a{color:#616161;font-weight:300;font-size:12px}.app-scope footer .secondary-nav-block li a:hover{text-decoration:underline}.app-scope footer .secondary-nav-block .svg-icon{display:inline-block;width:20px;margin-right:5px;vertical-align:middle}.app-scope footer .secondary-nav-block .icon-google-plus{font-size:18px;vertical-align:text-bottom}@media (min-width:768px){.app-scope footer .secondary-nav-block::before{content:'';display:block;position:absolute;top:0;bottom:0;border-left:1px solid #e0e0e0;z-index:1}.app-scope footer .secondary-nav-block:first-of-type::before{display:none}}.app-scope footer .section-nav{padding:36px 0;margin:auto}.app-scope footer .section-logo{padding:16px 0 0 0;background-color:#eceff1}.app-scope footer .section-logo .footer-items{width:100%}.app-scope footer .section-logo .footer-logo{float:left}.app-scope footer .section-logo .footer-logo img{opacity:.54}.app-scope footer .section-logo .footer-links{float:right}.app-scope footer .section-logo .footer-links a{font-size:12px;font-weight:300}.app-scope footer .section-logo .footer-links a::after{content:'\b7';padding:6px;font-weight:400}.app-scope footer .section-logo .footer-links a:last-of-type::after{display:none}.app-scope footer .ribbon{position:absolute;top:-36px;right:0;height:4px;width:128px}.app-scope footer .ribbon table{height:100%}.app-scope footer .ribbon-color{width:32px;height:100%;border:0}.ribbon-color.blue{background-color:#4285f4}.ribbon-color.red{background-color:#db4437}.ribbon-color.yellow{background-color:#f4b400}.ribbon-color.green{background-color:#0f9d58}
+    </style>
+    <div class="app-scope">
+      <div class="body">
+        <footer>
+          <section class="section-nav">
+            <div class="inner">
+              <div class="secondary-nav">
+                <div class="secondary-nav-block">
+                  <span>Research At Google</span>
+                  <div class="columns">
+                    <ul class="first-column">
+                      <li>
+                        <a href="/">Home</a>
+                      </li>
+                      <li>
+                        <a href="/pubs/papers.html">Publications</a>
+                      </li>
+                      <li>
+                        <a href="/researchers.html">People</a>
+                      </li>
+                      <li>
+                        <a href="/teams/">Teams</a>
+                      </li>
+                    </ul>
+                    <ul class="second-column">
+                      <li>
+                        <a href="/research-outreach.html#/research-outreach">Outreach</a>
+                      </li>
+                      <li>
+                        <a href="http://googleresearch.blogspot.com/" target="_blank">Blog</a>
+                      </li>
+                      <li>
+                        <a href="/workatgoogle.html">Work at Google</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="secondary-nav-block">
+                  <span>More</span>
+                  <div class="columns">
+                    <ul>
+                      <li>
+                        <a href="http://scholar.google.com/" target="_blank">Google Scholar</a>
+                      </li>
+                      <li>
+                        <a href="http://www.youtube.com/user/GoogleTechTalks/featured" target=
+                        "_blank">YouTube Tech Talks</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="secondary-nav-block">
+                  <span>Follow Us</span>
+                  <div class="columns">
+                    <ul>
+                      <li>
+                        <a href="https://plus.google.com/+ResearchatGoogle" target=
+                        "_blank">Google+</a>
+                      </li>
+                      <li>
+                        <a href="http://twitter.com/googleresearch" target="_blank">Twitter</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="ribbon">
+                <table>
+                  <tr>
+                    <td class="ribbon-color blue"></td>
+                    <td class="ribbon-color red"></td>
+                    <td class="ribbon-color yellow"></td>
+                    <td class="ribbon-color green"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </section>
+          <section class="section-logo">
+            <div class="inner">
+              <div class="footer-items">
+                <div class="footer-logo">
+                  <a href="https://www.google.com"><img alt="Google" src=
+                  "https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_dark_color_42x16dp.png"></a>
+                </div>
+                <div class="footer-links">
+                  <a href="https://www.google.com">Google</a> <a href=
+                  "https://www.google.com/intl/en/about/">About Google</a> <a href=
+                  "https://www.google.com/intl/en/policies/privacy/">Privacy</a> <a href=
+                  "http://www.google.com/intl/en/policies/terms/">Terms</a> <a href="" onclick=
+                  "sendFeedback()">Feedback</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </footer>
+      </div>
+    </div>
+    <script>
+    function sendFeedback() {
+    var config = {
+      'productId': '720193',
+      'bucket': 'site',
+      'allowNonLoggedInFeedback' : true
+    };
+    userfeedback.api.startFeedback(config);
+  }
+    </script> 
+    <script src="//www.google.com/jsapi">
+    </script> 
+    <script src="/js/research.view.js">
+    </script> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script> 
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js">
+    </script> 
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js">
+    </script> 
+    <script src="//rgc-deps.appspot.com/slick-carousel/1.5.9/slick.min.js">
+    </script> 
+    <script src=
+    "//rgc-deps.appspot.com/angular-slick/1d3215bb32fbdd2ccf311fd49e80db1f1ec415df/slick.js">
+    </script> 
+    <script src=
+    "//rgc-deps.appspot.com/angularUtils/5fd576f747f9f233ab9752fdc38908f5899ddc9c/dirPagination.js">
+    </script> 
+    <script src="/app/app.js">
+    </script> 
+    <script src="/app/research-outreach/research-outreach.js">
+    </script> 
+    <script src="/app/research-outreach/research-outreach.service.js">
+    </script> 
+    <script src="/app/research-outreach/faq/faq.controller.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/faculty-engagement/visiting-faculty-program/visiting-faculty.controller.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/faculty-engagement/visiting-faculty-program/visiting-faculty.service.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/faculty-engagement/faculty-research-award-recipients/faculty-research-award-recipients.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/faculty-engagement/faculty-research-award-recipients/faculty-research-award-recipients.service.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/graduate-fellowship-award-recipients/graduate-fellowship-award-recipients.js">
+    </script> 
+    <script src="/app/components/subnav.directive.js">
+    </script> 
+    <script src="/app/components/active-links.directive.js">
+    </script> 
+    <script src="/app/components/header-v2.js">
+    </script> 
+    <script src="/app/components/to-trusted.filter.js">
+    </script> 
+    <script src="/app/components/faq-item.directive.js">
+    </script> 
+    <script src="/app/components/sidebar-nav.directive.js">
+    </script> 
+    <script src="/app/components/cards.directive.js">
+    </script> 
+    <script>
+    var videoUnit= new gweb.ui.LightBox('video-lightbox', 'Some tech-talks in Mobile Systems');
+  videoUnit.setAnimate(true);
+  videoUnit.setScaleImages(true);
+  videoUnit.setOutsideNav(true);
+  videoUnit.setCloseText('CLOSE');
+  videoUnit.setItemCount(true);
+  videoUnit.init();
+    </script> 
+    <script>
+    angular.bootstrap(document, ['googleResearch']);
+    </script> 
+    <script src="//www.gstatic.com/feedback/api.js">
+    </script> 
+    <script src="//www.google.com/js/maia.js">
+    </script>
+  </body>
+</html>
