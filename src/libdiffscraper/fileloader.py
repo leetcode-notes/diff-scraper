@@ -8,6 +8,7 @@
 import sys
 import os
 
+
 def load_document(path, preferred_encoding, logger=None):
     try:
         with open(path, "rb") as f:
@@ -32,6 +33,6 @@ def load_documents(paths, logger=None):
             pass
         else:
             if logger is not None:
-                logger.info("Opening {}, size: {} bytes".format(path, file_size))
+                logger.info("Opening '{}' ({} bytes)".format(path, file_size))
             docs.append((path, content, file_size))
     return docs
