@@ -11,9 +11,6 @@ from html.parser import HTMLParser
 class RawHTMLParser(HTMLParser):
     tokens = []
 
-    def __init__(self):
-        self.clear()
-
     def clear(self):
         self.tokens = []
 

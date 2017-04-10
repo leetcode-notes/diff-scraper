@@ -9,7 +9,7 @@ import hashlib
 import bisect
 
 from enum import Enum
-from .htmlparser import RawHTMLParser
+
 from .selector import *
 from .util import *
 
@@ -20,38 +20,7 @@ class DecisionOfWhichToken(Enum):
     UNIQUE_INVARIANT = 2
 
 
-def get_tokens_from(raw_html):
-    parser = RawHTMLParser()
-    parser.clear()
-    parser.feed(raw_html)
-    parser.close()
 
-    customized_delimiter = "\n"
-    lines = raw_html.split(customized_delimiter)
-
-    prev_token_metadata = None
-    tokens = []
-    tokens_metadata = []
-    metadata_index = 0
-    _, first_line_number, first_offset = parser.tokens[0]
-    if not (first_line_number == 1 and first_offset == 0):
-        #print("!!!")
-        parser.tokens.insert(0, ("<doc_start>", 1, 0))
-        parser.metadata_tokens.insert(0, {})
-    for token_metadata in parser.tokens:
-        token_type, line_number, offset = token_metadata
-        # print(token_metadata)
-
-        if not prev_token_metadata is None:
-            prev_token_type, prev_line_number, prev_offset = prev_token_metadata
-            token = extract_from(lines, prev_line_number, prev_offset, line_number, offset, customized_delimiter)
-            tokens.append(token)
-            tokens_metadata.append(parser.metadata_tokens[metadata_index])
-            metadata_index += 1
-
-        prev_token_metadata = token_metadata
-
-    return tokens, tokens_metadata
 
 
 def compute_hash(token):
@@ -61,24 +30,7 @@ def compute_hash(token):
     return hashlib.new("md5", token.encode("utf-8")).hexdigest()
 
 
-def extract_from(line_buffer, prev_line_number, prev_offset, line_number, offset, customized_delimiter):
-    # To make sure the offset begins from zero
-    prev_line_number -= 1
-    line_number -= 1
-    buffer = ""
 
-    if prev_line_number == line_number:
-        buffer = line_buffer[prev_line_number][prev_offset:offset] # In case that the number of lines is 1
-        return buffer
-    else:
-        for current_line_number in range(prev_line_number, line_number + 1):
-            if current_line_number == prev_line_number:  # more than one line
-                buffer += (line_buffer[current_line_number][prev_offset:] + customized_delimiter)
-            elif current_line_number == line_number:  # line ends
-                buffer += line_buffer[current_line_number][:offset]
-            else:
-                buffer += (line_buffer[current_line_number] + customized_delimiter)
-        return buffer
 
 
 def helper_expand_segment(chunks_of, decision, invariant, rightward=True):
