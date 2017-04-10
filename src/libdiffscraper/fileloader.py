@@ -34,5 +34,5 @@ def load_documents(paths, logger=None):
         else:
             if logger is not None:
                 logger.info("Opening '{}' ({} bytes)".format(path, file_size))
-            docs.append((path, content, file_size))
+            docs.append({"path": path, "content": content, "file_size": file_size})
     return docs

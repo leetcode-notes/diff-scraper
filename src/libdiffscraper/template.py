@@ -5,9 +5,6 @@
     Author: Seunghyun Yoo (shyoo1st@cs.ucla.edu)
 """
 
-## TODO: 1a328a5541b6056b: incremental template generation
-#import difflib --> the built-in diff algorithm is not useful.
-
 import hashlib
 import bisect
 
