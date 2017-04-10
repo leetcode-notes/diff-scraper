@@ -12,7 +12,7 @@ class Engine(object):
     def __init__(self, logger=None):
         self.logger = logger
 
-    def extract(self, input_docs, output_template, force=False):
+    def generate(self, input_docs, output_template, force=False):
         if force is False:
             if os.path.exists(output_template):
                 return False, "The output file already exists."

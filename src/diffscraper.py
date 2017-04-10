@@ -26,7 +26,7 @@ def assert_condition(cond, msg):
 
 def init_arg_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--extract",
+    parser.add_argument("--generate",
                         nargs=1,
                         help="generate a template file from input documents")
     parser.add_argument("--incremental",
@@ -55,7 +55,7 @@ def init_arg_parser():
 def main():
     # Basic Features
     # ==============
-    # <docs...> --extract <template_OUTPUT>
+    # <docs...> --generate <template_OUTPUT>
     # <doc> --incremental <template_OUTPUT> --template <template_INPUT>
     # <docs...> --compress --template <template_INPUT>
     # <diff...> --decompress --template <template_INPUT>
@@ -70,7 +70,7 @@ def main():
     parser = init_arg_parser()
     args = parser.parse_args()
 
-    is_extract = args.extract is not None
+    is_generate = args.generate is not None
     is_incremental = args.incremental is not None
     is_compress = args.compress is True
     is_decompress = args.decompress is True
@@ -78,14 +78,14 @@ def main():
 
     engine = libdiffscraper.Engine(logger)
 
-    num_of_commands = int(is_extract) + int(is_incremental) + int(is_compress) + int(is_decompress)
+    num_of_commands = int(is_generate) + int(is_incremental) + int(is_compress) + int(is_decompress)
     if num_of_commands == 1:
         try:
             ret = None
 
-            if is_extract:
+            if is_generate:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
-                ret = engine.extract(input_docs=args.files, output_template=args.extract[0], force=is_force)
+                ret = engine.generate(input_docs=args.files, output_template=args.generate[0], force=is_force)
             elif is_incremental:
                 assert_condition(len(args.files) == 1, "Only one input file is required.")
                 ret = engine.incremental(input_docs=args.files, input_template=args.template[0], output_template=args.incremental[0], force=is_force)
@@ -107,7 +107,7 @@ def main():
             logger.exception("Exception caught: {}".format(sys.exc_info()[1]))
             pass
     elif num_of_commands == 0:
-        logger.warning("Nothing to do. Which command do you want to run? {compress, decompress, incremental, extract}")
+        logger.warning("Nothing to do. Which command do you want to run? {generate, incremental, compress, decompress}")
         parser.print_usage()
     else:
         logger.warning("Ambiguous command. Please choose a single command to be executed.")
