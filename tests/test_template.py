@@ -6,7 +6,7 @@
 """
 
 from unittest import TestCase
-from .template import *
+from src.libdiffscraper.template import *
 
 class TestTemplate(TestCase):
     def test_extract(self):

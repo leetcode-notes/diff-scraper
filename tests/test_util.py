@@ -7,7 +7,7 @@
 
 from unittest import TestCase
 
-from .util import *
+from src.libdiffscraper.util import *
 
 
 class TestMake_empty_arrays(TestCase):

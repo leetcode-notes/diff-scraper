@@ -19,9 +19,9 @@ class Engine(object):
             if os.path.exists(output_template):
                 return False, "The output file already exists."
         docs = fileloader.load_documents(input_docs, logger=self.logger)
+        contents = []
         for d in docs:
-            content = d['content']
-            tokens = self.engine_impl.tokenize("html", content)
+            contents.append(d['content'])
 
         self.logger.info("extract: {} files are loaded.".format(len(docs)))
         return True, ""
