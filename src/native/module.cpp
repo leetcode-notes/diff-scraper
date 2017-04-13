@@ -4,7 +4,7 @@ char const* greet(){
     return "hello world";
 }
 
-BOOST_PYTHON_MODULE(module)
+BOOST_PYTHON_MODULE(nativediffscraper)
 {
     using namespace boost::python;
     def("greet", greet);
