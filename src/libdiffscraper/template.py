@@ -20,9 +20,6 @@ class DecisionOfWhichToken(Enum):
     UNIQUE_INVARIANT = 2
 
 
-
-
-
 def compute_hash(token):
     # Factors to be considered.
     # 1. To reduce the collision rate (md5 is negligible though)
@@ -30,10 +27,15 @@ def compute_hash(token):
     return hashlib.new("md5", token.encode("utf-8")).hexdigest()
 
 
-
-
-
 def helper_expand_segment(chunks_of, decision, invariant, rightward=True):
+    """
+    What does this function do??? -_-)))
+    :param chunks_of: 
+    :param decision: 
+    :param invariant: 
+    :param rightward: 
+    :return: 
+    """
     current_invariant = list(invariant)
     is_expanding = True
 
@@ -50,6 +52,7 @@ def helper_expand_segment(chunks_of, decision, invariant, rightward=True):
                 is_all_in_range = False
                 break
 
+        # What if the flag is false?
         if is_all_in_range:
             is_all_variant = True
             for content_index in range(len(chunks_of)):
@@ -134,65 +137,6 @@ def invariant_matching_algorithm(documents):
         if invariant_segment.strip() != "":
             final_invariant_segments_text.append(invariant_segment)
             final_invariant_segments_metadata.append(invariant_segments_metadata[i])
-    #
-    # import sys
-    # import numpy
-    # collected = {}
-    # collected["cnt_variant"] = []
-    # collected["cnt_invariant"] = []
-    # collected["cnt_unique_invariant"] = []
-    # collected["cnt_tokens"] = []
-    # collected["len_variant"] = []
-    # collected["len_invariant"] = []
-    # collected["len_unique_invariant"] = []
-    # collected["len_document"] = []
-    #
-    # for document_index in range(len(decision)):
-    #     cnt_variant = 0
-    #     cnt_invariant = 0
-    #     cnt_unique_invariant = 0
-    #     len_variant = 0
-    #     len_invariant = 0
-    #     len_unique_invariant = 0
-    #
-    #     sys.stdout.write("\n")
-    #     for i , e in enumerate(decision[document_index]):
-    #         if e == DecisionOfWhichToken.VARIANT:
-    #             sys.stdout.write("\033[40m \033[0m")
-    #             cnt_variant += 1
-    #             len_variant += len(tokens_of[document_index][i])
-    #         elif e == DecisionOfWhichToken.UNIQUE_INVARIANT:
-    #             sys.stdout.write("\033[47m\033[30m.\033[0m")
-    #             cnt_unique_invariant += 1
-    #             len_unique_invariant += len(tokens_of[document_index][i])
-    #         elif e == DecisionOfWhichToken.NOT_UNIQUE_INVARIANT:
-    #             sys.stdout.write("\033[47m \033[0m")
-    #             cnt_invariant += 1
-    #             len_invariant += len(tokens_of[document_index][i])
-    #     sys.stdout.write("\n")
-    #
-    #     collected["cnt_variant"].append(cnt_variant)
-    #     collected["cnt_invariant"].append(cnt_invariant)
-    #     collected["cnt_unique_invariant"].append(cnt_unique_invariant)
-    #     collected["cnt_tokens"].append(len(tokens_of[document_index]))
-    #     collected["len_variant"].append(len_variant)
-    #     collected["len_invariant"].append(len_invariant)
-    #     collected["len_unique_invariant"].append(len_unique_invariant)
-    #     collected["len_document"].append(len(documents[document_index]))
-    #
-    # sys.stdout.write("\n")
-    # print("cnt_variant: ", numpy.average(collected["cnt_variant"]))
-    # print("cnt_invariant: ", numpy.average(collected["cnt_invariant"]))
-    # print("cnt_unique_invariant: ", numpy.average(collected["cnt_unique_invariant"]))
-    # print("cnt_tokens: ", numpy.average(collected["cnt_tokens"]))
-    # print("cnt_variant / cnt_tokens: ", numpy.average(collected["cnt_variant"]) / numpy.average(collected["cnt_tokens"]))
-    # print("len_variant: ", numpy.average(collected["len_variant"]))
-    # print("len_invariant: ", numpy.average(collected["len_invariant"]))
-    # print("len_unique_invariant: ", numpy.average(collected["len_unique_invariant"]))
-    # print("len_document: ", numpy.average(collected["len_document"]))
-    # print("len_variant / len_document: ",
-    #       numpy.average(collected["len_variant"]) / numpy.average(collected["len_document"]))
-    # sys.exit(-1)
 
     return final_invariant_segments_text, final_invariant_segments_metadata
 
@@ -505,57 +449,3 @@ def helper_next_line(current_scanline):
     for line_no in current_scanline:
         next_line.append(line_no + 1)
     return next_line
-
-
-# def identical_scanline(scanline_of, saved_scanline_of):
-#     for i,v in enumerate(scanline_of):
-#         if v != saved_scanline_of[i]:
-#             return False
-#     return True
-#
-#
-# def compute_score_of(scanline_of, saved_scanline_of):
-#     score = 0
-#     for i in range(len(scanline_of)):
-#         score += (scanline_of[i] - saved_scanline_of[i])
-#     return score
-#
-# def compute_height_of(scanline_of, saved_scanline_of):
-#     diff = -1
-#     for i,v in enumerate(scanline_of):
-#         tmp_diff = v - saved_scanline_of[i]
-#         if diff == -1:
-#             diff = tmp_diff
-#         else:
-#             if tmp_diff > diff:
-#                 diff = tmp_diff
-#     return diff
-
-#
-#
-# def analyze_pattern(html_contents):
-#     chunks_of = tokenize(html_contents)
-#     line_num_of = get_line_num_of(chunks_of)
-#
-#     current_line = 0
-#     while True:
-#         line_buf = "{}:".format(current_line)
-#         for content_index in chunks_of:
-#             hash = get_hash_of(chunks_of[content_index][current_line])
-#             print(line_num_of[hash][content_index])
-#             freq = calc_freq(line_num_of[hash][content_index], current_line)
-#             line_buf += "{}({})\t".format(hash, freq)
-#         print (line_buf)
-#
-#         line_buf = "Details {}\n".format(current_line)
-#         for content_index in chunks_of:
-#             line_buf += "\033[1;34m[{}]:\033[34m{}\033[0m\n".format(content_index, chunks_of[content_index][current_line].strip())
-#         print (line_buf)
-#
-#         current_line += 1
-#
-#
-#
-#
-# def reconstruct_html_from(chunks):
-#     return "".join(chunks)
