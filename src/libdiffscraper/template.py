@@ -20,9 +20,6 @@ class DecisionOfWhichToken(Enum):
     UNIQUE_INVARIANT = 2
 
 
-
-
-
 def helper_expand_segment(chunks_of, decision, invariant, rightward=True):
     """
     What does this function do??? -_-)))

@@ -7,6 +7,7 @@
 
 from . import htmlparser, textparser
 
+
 class Tokenizer(object):
     def __init__(self):
         pass
@@ -47,14 +48,16 @@ class Tokenizer(object):
             token_type, token_line_number, token_offset = token_meta_data
             if not prev_token_meta_data is None:
                 prev_token_type, prev_token_line_number, prev_token_offset = prev_token_meta_data
-                output_token = get_string_token_from(lines, prev_token_line_number, prev_token_offset, token_line_number,
-                                             token_offset, delimiter)
+                output_token = Tokenizer.get_string_token_from(lines, prev_token_line_number, prev_token_offset,
+                                                               token_line_number,
+                                                               token_offset, delimiter)
                 output_tokens.append(output_token)
             prev_token_meta_data = token_meta_data
         return output_tokens
 
     @staticmethod
-    def get_string_token_from(lines, prev_token_line_number, prev_token_offset, token_line_number, token_offset, delimiter):
+    def get_string_token_from(lines, prev_token_line_number, prev_token_offset, token_line_number, token_offset,
+                              delimiter):
         """
         Get a string token from split lines using metadata of line number and offset.        
         :param lines: the split lines
@@ -72,12 +75,12 @@ class Tokenizer(object):
         if prev_token_line_number == token_line_number:
             return lines[prev_token_line_number][prev_token_offset:token_offset]
         else:
-            buffer = ""
+            temp_buf = ""
             for current_line_number in range(prev_token_line_number, token_line_number + 1):
                 if current_line_number == prev_token_line_number:
-                    buffer += (lines[current_line_number][prev_token_offset:] + delimiter)
+                    temp_buf += (lines[current_line_number][prev_token_offset:] + delimiter)
                 elif current_line_number == token_line_number:
-                    buffer += lines[current_line_number][:token_offset]
+                    temp_buf += lines[current_line_number][:token_offset]
                 else:
-                    buffer += (lines[current_line_number] + delimiter)
-            return buffer
+                    temp_buf += (lines[current_line_number] + delimiter)
+            return temp_buf
