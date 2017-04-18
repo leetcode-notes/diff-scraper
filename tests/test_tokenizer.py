@@ -14,5 +14,5 @@ class TestTokenizer(TestCase):
         pass
 
 class TestTokenizer2(TestCase):
-    def test_2(self):
+    def test_2(self)h:
         pass

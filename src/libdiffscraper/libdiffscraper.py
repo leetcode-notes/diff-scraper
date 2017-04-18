@@ -41,8 +41,3 @@ class Engine(object):
         return True, ""
 
 
-class EngineImpl(object):
-    def __init__(self):
-        pass
-
-
