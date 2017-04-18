@@ -20,11 +20,7 @@ class DecisionOfWhichToken(Enum):
     UNIQUE_INVARIANT = 2
 
 
-def compute_hash(token):
-    # Factors to be considered.
-    # 1. To reduce the collision rate (md5 is negligible though)
-    # 2. To speed up; sha-128 or sha-256 might be too expensive.
-    return hashlib.new("md5", token.encode("utf-8")).hexdigest()
+
 
 
 def helper_expand_segment(chunks_of, decision, invariant, rightward=True):
