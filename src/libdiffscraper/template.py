@@ -40,9 +40,9 @@ def expand_segment(pivots, tokens_of, tentative_decision, rightward):
 
     while is_valid_pivots:
         if rightward:
-            current_pivots = [c + 1 for c in list(current_pivots)]
+            current_pivots = get_next_line(current_pivots)
         else:
-            current_pivots = [c - 1 for c in list(current_pivots)]
+            current_pivots = get_prev_line(current_pivots)
 
         # First of all, pivot points should be in the valid range.
         for doc_index in range(len(tokens_of)):
@@ -78,37 +78,33 @@ def expand_segment(pivots, tokens_of, tentative_decision, rightward):
                 break
 
 
-def helper_find_next_invariant(tokens_of, current_scanline, token_loc):
-    """
-    :param tokens_of: A list of tokenized documents
-    :param current_scanline: Current scanline position
-    :param token_loc: The cached line no. of each hashed tokens
-    :return: return the possible common strings
-    """
-    current_scanline = list(current_scanline)
+def find_next_candidates(tokens_of, current_line, token_loc):
+
+
+    current_line = list(current_line)
     decision = ["candidate"] * len(tokens_of)
 
     for document_index, tokens in enumerate(tokens_of):
-        if current_scanline[document_index] < len(tokens):
-            token_current = tokens[current_scanline[document_index]]
+        if current_line[document_index] < len(tokens):
+            token_current = tokens[current_line[document_index]]
             hash_current = compute_hash(token_current)
 
             for another_document_index, _ in enumerate(tokens_of):
                 if document_index != another_document_index:
-                    freq = helper_compute_freq(token_loc[hash_current][another_document_index], current_scanline[another_document_index])
+                    freq = compute_freq(token_loc[hash_current][another_document_index], current_line[another_document_index])
                     if freq == 0:
                         decision[document_index] = "data"
                         break
 
     # Get the list of scanline candidates
-    saved_scanline = list(current_scanline)
+    saved_scanline = list(current_line)
     scanline_candidates = []
     considered_candidates = set()
 
     for document_index, tokens in enumerate(tokens_of):
         if decision[document_index] == "candidate":
-            if current_scanline[document_index] < len(tokens):
-                token_current = tokens[current_scanline[document_index]]
+            if current_line[document_index] < len(tokens):
+                token_current = tokens[current_line[document_index]]
                 hash_current = compute_hash(token_current)
                 if hash_current not in considered_candidates:
                     considered_candidates.add(hash_current)
@@ -116,12 +112,12 @@ def helper_find_next_invariant(tokens_of, current_scanline, token_loc):
                     for another_document_index, _ in enumerate(tokens_of):
                         # Binary search for the faster search
                         next_token_idx = bisect.bisect_left(token_loc[hash_current][another_document_index],
-                                                            current_scanline[another_document_index])
+                                                            current_line[another_document_index])
                         next_token_pos = token_loc[hash_current][another_document_index][next_token_idx]
-                        current_scanline[another_document_index] = next_token_pos
+                        current_line[another_document_index] = next_token_pos
 
-                    scanline_candidates.append(current_scanline)
-                    current_scanline = list(saved_scanline)  # To restore the previous location
+                    scanline_candidates.append(current_line)
+                    current_line = list(saved_scanline)  # To restore the previous location
 
     return scanline_candidates
 
@@ -215,12 +211,12 @@ def helper_mark_unique_invariant(token_loc, tokens_of):
     is_looping = True
     while is_looping:
         next_invariant = None
-        candidates = helper_find_next_invariant(tokens_of, current_scanline, token_loc)
+        candidates = find_next_candidates(tokens_of, current_scanline, token_loc)
         for candidate in candidates:
             is_unique = True
             for document_index, invariant_loc in enumerate(candidate):
                 token_hash = compute_hash(tokens_of[document_index][invariant_loc])
-                token_freq = helper_compute_freq(token_loc[token_hash][document_index], invariant_loc)
+                token_freq = compute_freq(token_loc[token_hash][document_index], invariant_loc)
                 is_unique = is_unique and (token_freq == 1)
             if is_unique:
                 next_invariant = list(candidate)
@@ -311,7 +307,10 @@ def find_repeating_pattern(data):
     #     tokens_of = []
     #     tokens_metadata_of = []
     #     helper_tokenize(data_segment, tokens_of, tokens_metadata_of)
-    #     for document_index, tokens in enumerate(tokens_of):
+    #     for document_indexbuffer = []
+    # for line_no in current_line:
+    #     buffer.append(line_no + 1)
+    # return buffer, tokens in enumerate(tokens_of):
     #         print(document_index, len(tokens))
     #         edges = {}
     #         outgoing_count = {}
@@ -350,6 +349,7 @@ def find_repeating_pattern(data):
 
     # print(tokens_of)
     pass
+
 
 
 def generate(documents, depth=0, prev_text=[], prev_metadata=[]):
@@ -427,33 +427,6 @@ def helper_compute_token_loc(tokens_of):
     return line_num_of
 
 
-def count(items):
-    cnt = dict()
-    for item in items:
-        if item not in cnt:
-            cnt[item] = 0
-        cnt[item] += 1
-    max_cnt = 0
-    for item in cnt:
-        if max_cnt < cnt[item]:
-            max_cnt = cnt[item]
-    return cnt, max_cnt
 
 
-def helper_compute_freq(token_loc, current_loc):
-    """
-    Compute the number of occurrence for the given token.
-    :param token_loc:
-    :param current_loc:
-    :return:
-    """
-    freq = len(token_loc)
-    freq -= bisect.bisect_left(token_loc, current_loc)
-    return freq
 
-
-def helper_next_line(current_scanline):
-    next_line = []
-    for line_no in current_scanline:
-        next_line.append(line_no + 1)
-    return next_line

@@ -55,3 +55,55 @@ class TestHexDigestFrom(TestCase):
         digest = b'\xde\xad\xbe\xef'
         if hex_digest_from(digest).decode('utf-8') != "deadbeef":
             self.fail()
+
+
+class TestGetPrevNextLine(TestCase):
+    def test_default(self):
+        lines = [1,2,3]
+        if get_prev_line(lines) != [0,1,2]:
+            self.fail()
+        if get_next_line(lines) != [2,3,4]:
+            self.fail()
+
+
+class TestComputeFreq(TestCase):
+    def test_default(self):
+        if compute_freq([10, 20, 30, 40, 50], 25) != 3:
+            self.fail()
+        if compute_freq([10, 20, 30, 40, 50], 20) != 4:
+            self.fail()
+        if compute_freq([10, 20, 30, 40, 50], 30) != 3:
+            self.fail()
+        if compute_freq([10, 20, 30, 40, 50], 31) != 2:
+            self.fail()
+        if compute_freq([], 1) != 0:
+            self.fail()
+        if compute_freq([1], 0) != 1:
+            self.fail()
+        if compute_freq([1], 1) != 1:
+            self.fail()
+        if compute_freq([1], 2) != 0:
+            self.fail()
+
+
+class TestCount(TestCase):
+    def test_1(self):
+        count_for, maximum_count = count([123,123,456])
+        if count_for[123] != 2:
+            self.fail()
+        if count_for[456] != 1:
+            self.fail()
+        if maximum_count != 2:
+            self.fail()
+
+    def test_2(self):
+        count_for, maximum_count = count([123,123,123])
+        if count_for[123] != 3:
+            self.fail()
+        if maximum_count != 3:
+            self.fail()
+
+    def test_3(self):
+        count_for, maximum_count = count([])
+        if maximum_count != 0:
+            self.fail()

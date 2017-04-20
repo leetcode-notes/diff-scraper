@@ -27,25 +27,25 @@ class TestTemplate(TestCase):
 
 class TestTemplateUtil(TestCase):
     def test_compute_freq(self):
-        if helper_compute_freq([], 0) != 0:
+        if compute_freq([], 0) != 0:
             self.fail()
-        if helper_compute_freq([10], 0) != 1:
+        if compute_freq([10], 0) != 1:
             self.fail()
-        if helper_compute_freq([10, 20], 0) != 2:
+        if compute_freq([10, 20], 0) != 2:
             self.fail()
-        if helper_compute_freq([10, 20], 10) != 2:
+        if compute_freq([10, 20], 10) != 2:
             self.fail()
-        if helper_compute_freq([10, 20], 20) != 1:
+        if compute_freq([10, 20], 20) != 1:
             self.fail()
-        if helper_compute_freq([10, 20, 30], 0) != 3:
+        if compute_freq([10, 20, 30], 0) != 3:
             self.fail()
-        if helper_compute_freq([10, 20, 30], 10) != 3:
+        if compute_freq([10, 20, 30], 10) != 3:
             self.fail()
-        if helper_compute_freq([10, 20, 30], 20) != 2:
+        if compute_freq([10, 20, 30], 20) != 2:
             self.fail()
-        if helper_compute_freq([10, 20, 30], 30) != 1:
+        if compute_freq([10, 20, 30], 30) != 1:
             self.fail()
-        if helper_compute_freq([10, 20, 30], 40) != 0:
+        if compute_freq([10, 20, 30], 40) != 0:
             self.fail()
 
 
