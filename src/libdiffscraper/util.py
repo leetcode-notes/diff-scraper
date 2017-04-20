@@ -29,3 +29,4 @@ def compute_hash(token):
 
 def hex_digest_from(digest):
     return binascii.hexlify(digest)
+

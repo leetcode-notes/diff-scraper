@@ -14,65 +14,68 @@ from .selector import *
 from .util import *
 
 
-class DecisionOfWhichToken(Enum):
+class TokenType(Enum):
     VARIANT = 0
     NOT_UNIQUE_INVARIANT = 1
     UNIQUE_INVARIANT = 2
 
 
-def expand_segment(chunks_of, tentative_decision, invariants, rightward=True):
+def expand_segment(pivots, tokens_of, tentative_decision, rightward):
     """
-    As invariant tokens are given, it tries to expand segmentation by looking at adjacent tokens.
-    :param chunks_of: 
+    This function tries to expand a segment by looking at adjacent tokens from pivot points.
+    If the adjacent tokens have the same value, they can be regarded as invariant tokens (promoted).
+    :param pivots: 
+    :param tokens_of: 
     :param tentative_decision: 
-    :param invariants: 
-    :param rightward: 
+    :param rightward:
     :return: 
     """
+    current_pivots = list(pivots)
+    is_valid_pivots = True
 
+    # Validating the input
+    for doc_index in range(len(tokens_of)):
+        if tentative_decision[doc_index][pivots[doc_index]] != TokenType.UNIQUE_INVARIANT:
+            return
 
-    """
-    What does this function do??? -_-)))
-    :param chunks_of: 
-    :param tentative_decision: 
-    :param invariants: 
-    :param rightward: 
-    :return: 
-    """
-    current_invariant = list(invariants)
-    is_expanding = True
-
-    while is_expanding:
-        is_expanding = False
+    while is_valid_pivots:
         if rightward:
-            current_invariant = [c + 1 for c in list(current_invariant)]
+            current_pivots = [c + 1 for c in list(current_pivots)]
         else:
-            current_invariant = [c - 1 for c in list(current_invariant)]
+            current_pivots = [c - 1 for c in list(current_pivots)]
 
-        is_all_in_range = True
-        for content_index in range(len(chunks_of)):
-            if not in_range(current_invariant[content_index], 0, len(chunks_of[content_index])):
-                is_all_in_range = False
+        # First of all, pivot points should be in the valid range.
+        for doc_index in range(len(tokens_of)):
+            if not in_range(current_pivots[doc_index], 0, len(tokens_of[doc_index])):
+                is_valid_pivots = False
                 break
 
-        # What if the flag is false?
-        if is_all_in_range:
+        if is_valid_pivots:
+            # In order to expand the segment, every token must have the same value.
+            temp_token = None
+            is_identical = True
+            for doc_index in range(len(tokens_of)):
+                current_token = tokens_of[doc_index][current_pivots[doc_index]]
+                if temp_token is None:
+                    temp_token = current_token
+                else:
+                    if temp_token != current_token:
+                        is_identical = False
+                        break
+
+            # Let's stop at the moment that invariant tokens are found.
             is_all_variant = True
-            for content_index in range(len(chunks_of)):
-                if not tentative_decision[content_index][current_invariant[content_index]] == DecisionOfWhichToken.VARIANT:
+            for doc_index in range(len(tokens_of)):
+                current_type = tentative_decision[doc_index][current_pivots[doc_index]]
+                if current_type != TokenType.VARIANT:
                     is_all_variant = False
                     break
-
-            if is_all_variant:
-                hashes = []
-                for content_index in range(len(chunks_of)):
-                    hashes.append(compute_hash(chunks_of[content_index][current_invariant[content_index]]))
-
-                _, max_count = count(hashes)
-                if max_count == len(chunks_of):
-                    for content_index in range(len(chunks_of)):
-                        tentative_decision[content_index][current_invariant[content_index]] = DecisionOfWhichToken.NOT_UNIQUE_INVARIANT
-                    is_expanding = True
+            if is_identical and is_all_variant:
+                for doc_index in range(len(tokens_of)):
+                    # Type promotion
+                    tentative_decision[doc_index][current_pivots[doc_index]] = TokenType.NOT_UNIQUE_INVARIANT
+            else:
+                break
 
 
 def helper_find_next_invariant(tokens_of, current_scanline, token_loc):
@@ -153,7 +156,7 @@ def helper_invariant_segments(decision, num_of_documents, tokens_of, tokens_meta
     is_searching = True
     while is_searching:
         for document_index in range(num_of_documents):
-            while decision[document_index][current_loc[document_index]] == DecisionOfWhichToken.VARIANT:
+            while decision[document_index][current_loc[document_index]] == TokenType.VARIANT:
                 if in_range(current_loc[document_index], 0, len(tokens_of[document_index]) - 1):
                     current_loc[document_index] += 1
                 else:
@@ -163,7 +166,7 @@ def helper_invariant_segments(decision, num_of_documents, tokens_of, tokens_meta
         while is_searching:
             is_invariant = True
             for document_index in range(num_of_documents):
-                if decision[document_index][current_loc[document_index]] == DecisionOfWhichToken.VARIANT:
+                if decision[document_index][current_loc[document_index]] == TokenType.VARIANT:
                     is_invariant = False
                     break
 
@@ -198,12 +201,12 @@ def helper_invariant_segments(decision, num_of_documents, tokens_of, tokens_meta
 def helper_find_all_invariants(decision, searched_invariants, tokens_of):
     for unique_invariant in searched_invariants:
         for document_index in range(len(tokens_of)):
-            decision[document_index][unique_invariant[document_index]] = DecisionOfWhichToken.NOT_UNIQUE_INVARIANT
+            decision[document_index][unique_invariant[document_index]] = TokenType.NOT_UNIQUE_INVARIANT
         expand_segment(tokens_of, decision, unique_invariant, rightward=True)
         expand_segment(tokens_of, decision, unique_invariant, rightward=False)
     for unique_invariant in searched_invariants:
         for document_index in range(len(tokens_of)):
-            decision[document_index][unique_invariant[document_index]] = DecisionOfWhichToken.UNIQUE_INVARIANT
+            decision[document_index][unique_invariant[document_index]] = TokenType.UNIQUE_INVARIANT
 
 
 def helper_mark_unique_invariant(token_loc, tokens_of):
@@ -237,13 +240,14 @@ def helper_mark_unique_invariant(token_loc, tokens_of):
 def helper_init_decision(tokens_of):
     decision = make_empty_arrays(len(tokens_of))
     for document_index, tokens in enumerate(tokens_of):
-        decision[document_index] = [DecisionOfWhichToken.VARIANT] * len(tokens)
+        decision[document_index] = [TokenType.VARIANT] * len(tokens)
     return decision
 
 
 def helper_tokenize(documents, tokens_of, tokens_metadata_of):
     for index, raw_html in enumerate(documents):
-        # print(raw_html)
+        # print(raw_html)    """
+
         tokens, tokens_metadata = get_tokens_from(raw_html)
         # print(tokens)
         # print(list(map(lambda x: compute_hash(x), tokens)))
@@ -327,7 +331,8 @@ def find_repeating_pattern(data):
     #                     edges[prev_token_hash] = {}
     #                 if token_hash not in edges[prev_token_hash]:
     #                     edges[prev_token_hash][token_hash] = 0
-    #                 edges[prev_token_hash][token_hash] += 1
+    #                 edges[prev_token_hash][token_hash] += 1    """
+
     #             prev_token_hash = token_hash
     #
     #         candidates = candidates_pattern_repetition(edges, outgoing_count, incoming_count)
