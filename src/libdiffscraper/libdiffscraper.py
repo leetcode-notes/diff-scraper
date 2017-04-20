@@ -12,7 +12,6 @@ from . import fileloader, htmlparser, textparser
 class Engine(object):
     def __init__(self, logger=None):
         self.logger = logger
-        self.engine_impl= EngineImpl()
 
     def generate(self, input_docs, output_template, force=False):
         if force is False:

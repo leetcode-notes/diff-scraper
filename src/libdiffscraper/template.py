@@ -20,16 +20,26 @@ class DecisionOfWhichToken(Enum):
     UNIQUE_INVARIANT = 2
 
 
-def helper_expand_segment(chunks_of, decision, invariant, rightward=True):
+def expand_segment(chunks_of, tentative_decision, invariants, rightward=True):
     """
-    What does this function do??? -_-)))
+    As invariant tokens are given, it tries to expand segmentation by looking at adjacent tokens.
     :param chunks_of: 
-    :param decision: 
-    :param invariant: 
+    :param tentative_decision: 
+    :param invariants: 
     :param rightward: 
     :return: 
     """
-    current_invariant = list(invariant)
+
+
+    """
+    What does this function do??? -_-)))
+    :param chunks_of: 
+    :param tentative_decision: 
+    :param invariants: 
+    :param rightward: 
+    :return: 
+    """
+    current_invariant = list(invariants)
     is_expanding = True
 
     while is_expanding:
@@ -49,7 +59,7 @@ def helper_expand_segment(chunks_of, decision, invariant, rightward=True):
         if is_all_in_range:
             is_all_variant = True
             for content_index in range(len(chunks_of)):
-                if not decision[content_index][current_invariant[content_index]] == DecisionOfWhichToken.VARIANT:
+                if not tentative_decision[content_index][current_invariant[content_index]] == DecisionOfWhichToken.VARIANT:
                     is_all_variant = False
                     break
 
@@ -61,7 +71,7 @@ def helper_expand_segment(chunks_of, decision, invariant, rightward=True):
                 _, max_count = count(hashes)
                 if max_count == len(chunks_of):
                     for content_index in range(len(chunks_of)):
-                        decision[content_index][current_invariant[content_index]] = DecisionOfWhichToken.NOT_UNIQUE_INVARIANT
+                        tentative_decision[content_index][current_invariant[content_index]] = DecisionOfWhichToken.NOT_UNIQUE_INVARIANT
                     is_expanding = True
 
 
@@ -189,8 +199,8 @@ def helper_find_all_invariants(decision, searched_invariants, tokens_of):
     for unique_invariant in searched_invariants:
         for document_index in range(len(tokens_of)):
             decision[document_index][unique_invariant[document_index]] = DecisionOfWhichToken.NOT_UNIQUE_INVARIANT
-        helper_expand_segment(tokens_of, decision, unique_invariant, rightward=True)
-        helper_expand_segment(tokens_of, decision, unique_invariant, rightward=False)
+        expand_segment(tokens_of, decision, unique_invariant, rightward=True)
+        expand_segment(tokens_of, decision, unique_invariant, rightward=False)
     for unique_invariant in searched_invariants:
         for document_index in range(len(tokens_of)):
             decision[document_index][unique_invariant[document_index]] = DecisionOfWhichToken.UNIQUE_INVARIANT
