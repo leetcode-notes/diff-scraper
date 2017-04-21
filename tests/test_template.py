@@ -73,3 +73,20 @@ class TestExpandSegment(TestCase):
             self.fail()
         if tentative_decision[1][0] != TokenType.NOT_UNIQUE_INVARIANT or tentative_decision[1][2] != TokenType.NOT_UNIQUE_INVARIANT:
             self.fail()
+
+
+class TestFindNextCandidates(TestCase):
+    def test_1(self):
+        tokens_of = [["a", "b", "c", "c"], ["b", "c", "a"], ["c", "b", "a"]]
+        tokens_with_loc = compute_tokens_with_loc(tokens_of)
+        candidates = find_next_candidates(tokens_of, [0, 0, 0], tokens_with_loc)
+        if candidates != [[0, 2, 2], [1, 0, 1], [2, 1, 0]]:
+            self.fail()
+
+    def test_2(self):
+        tokens_of = [["a", "b", "c", "c"], ["b", "c", "a"], ["d", "b", "a"]]
+        tokens_with_loc = compute_tokens_with_loc(tokens_of)
+        candidates = find_next_candidates(tokens_of, [0, 0, 0], tokens_with_loc)
+        if candidates != [[0, 2, 2], [1, 0, 1]]:
+            self.fail()
+

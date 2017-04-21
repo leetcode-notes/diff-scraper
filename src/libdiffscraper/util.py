@@ -65,16 +65,16 @@ def get_prev_line(current_line):
     return [c - 1 for c in current_line]
 
 
-def compute_freq(token_loc, current_loc):
+def compute_freq(locs, current_loc):
     """
     To compute the number of occurrence for the given token.
-    The 'token_loc' must be sorted in ascending order as binary search improves the performance.
-    :param token_loc:
+    The 'locs' must be sorted in ascending order as binary search improves the performance.
+    :param locs:
     :param current_loc:
     :return:
     """
-    freq = len(token_loc)
-    freq -= bisect.bisect_left(token_loc, current_loc)
+    freq = len(locs)
+    freq -= bisect.bisect_left(locs, current_loc)
     return freq
 
 
@@ -94,3 +94,16 @@ def count(items):
         if maximum_count < count_for[item]:
             maximum_count = count_for[item]
     return count_for, maximum_count
+
+
+def compute_tokens_with_loc(tokens_of):
+    tokens_with_loc = {}
+    for doc_index, tokens in enumerate(tokens_of):
+        for token_index, token in enumerate(tokens):
+            token_hash = compute_hash(token)
+            if token_hash not in tokens_with_loc:
+                tokens_with_loc[token_hash] = make_empty_array(len(tokens_of))
+            tokens_with_loc[token_hash][doc_index].append(token_index)
+    return tokens_with_loc
+
+

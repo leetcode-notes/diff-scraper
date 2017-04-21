@@ -78,48 +78,36 @@ def expand_segment(pivots, tokens_of, tentative_decision, rightward):
                 break
 
 
-def find_next_candidates(tokens_of, current_line, token_loc):
-
-
-    current_line = list(current_line)
-    decision = ["candidate"] * len(tokens_of)
-
-    for document_index, tokens in enumerate(tokens_of):
-        if current_line[document_index] < len(tokens):
-            token_current = tokens[current_line[document_index]]
+def find_next_candidates(tokens_of, current_line, tokens_with_loc):
+    """
+    To find next possible candidates base on the current line
+    :param tokens_of: 
+    :param current_line: 
+    :param tokens_with_loc: an associative array containing key-value pairs of each token and corresponding locations 
+    :return: 
+    """
+    candidates = []
+    for doc_index, tokens in enumerate(tokens_of):
+        if current_line[doc_index] < len(tokens):
+            token_current = tokens[current_line[doc_index]]
             hash_current = compute_hash(token_current)
-
-            for another_document_index, _ in enumerate(tokens_of):
-                if document_index != another_document_index:
-                    freq = compute_freq(token_loc[hash_current][another_document_index], current_line[another_document_index])
-                    if freq == 0:
-                        decision[document_index] = "data"
-                        break
-
-    # Get the list of scanline candidates
-    saved_scanline = list(current_line)
-    scanline_candidates = []
-    considered_candidates = set()
-
-    for document_index, tokens in enumerate(tokens_of):
-        if decision[document_index] == "candidate":
-            if current_line[document_index] < len(tokens):
-                token_current = tokens[current_line[document_index]]
-                hash_current = compute_hash(token_current)
-                if hash_current not in considered_candidates:
-                    considered_candidates.add(hash_current)
-
-                    for another_document_index, _ in enumerate(tokens_of):
-                        # Binary search for the faster search
-                        next_token_idx = bisect.bisect_left(token_loc[hash_current][another_document_index],
-                                                            current_line[another_document_index])
-                        next_token_pos = token_loc[hash_current][another_document_index][next_token_idx]
-                        current_line[another_document_index] = next_token_pos
-
-                    scanline_candidates.append(current_line)
-                    current_line = list(saved_scanline)  # To restore the previous location
-
-    return scanline_candidates
+            is_data_token = False
+            for another_doc_index, _ in enumerate(tokens_of):
+                if compute_freq(tokens_with_loc[hash_current][another_doc_index], current_line[another_doc_index]) == 0:
+                    is_data_token = True
+                    break
+            if is_data_token:
+                # Ignoring the token (classified as a data token) as it doesn't appear in the other documents.
+                continue
+            candidate = list(current_line)
+            for another_doc_index, _ in enumerate(tokens_of):
+                locs = tokens_with_loc[hash_current][another_doc_index]
+                # There must be at least one element.
+                next_token_idx = bisect.bisect_left(locs, current_line[another_doc_index])
+                next_token_pos = locs[next_token_idx]
+                candidate[another_doc_index] = next_token_pos
+            candidates.append(candidate)
+    return candidates
 
 
 def invariant_matching_algorithm(documents):
@@ -127,7 +115,7 @@ def invariant_matching_algorithm(documents):
     tokens_metadata_of = []
     num_of_documents = len(documents)
     helper_tokenize(documents, tokens_of, tokens_metadata_of)
-    token_loc = helper_compute_token_loc(tokens_of)  # To cache the corresponding line number of the given token
+    token_loc = compute_tokens_with_loc(tokens_of)  # To cache the corresponding line number of the given token
     decision = helper_init_decision(tokens_of)
     searched_invariants = helper_mark_unique_invariant(token_loc, tokens_of)
     helper_find_all_invariants(decision, searched_invariants, tokens_of)
@@ -413,18 +401,6 @@ def reconstruct(invariant_segments, variant_segments):
         return buffer
     else:
         return None
-
-
-def helper_compute_token_loc(tokens_of):
-    line_num_of = {}
-    for document_index, tokens in enumerate(tokens_of):
-        for token_index, token in enumerate(tokens):
-            token_hash = compute_hash(token)
-            if token_hash not in line_num_of:
-                # in order to avoid shallow copy
-                line_num_of[token_hash] = make_empty_arrays(len(tokens_of))
-            line_num_of[token_hash][document_index].append(token_index)
-    return line_num_of
 
 
 
