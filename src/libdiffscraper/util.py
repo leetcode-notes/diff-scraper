@@ -96,14 +96,4 @@ def count(items):
     return count_for, maximum_count
 
 
-def compute_tokens_with_loc(tokens_of):
-    tokens_with_loc = {}
-    for doc_index, tokens in enumerate(tokens_of):
-        for token_index, token in enumerate(tokens):
-            token_hash = compute_hash(token)
-            if token_hash not in tokens_with_loc:
-                tokens_with_loc[token_hash] = make_empty_array(len(tokens_of))
-            tokens_with_loc[token_hash][doc_index].append(token_index)
-    return tokens_with_loc
-
 

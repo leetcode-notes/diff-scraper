@@ -6,7 +6,7 @@
 """
 
 import os
-from . import fileloader, htmlparser, textparser
+from . import fileloader, template
 
 
 class Engine(object):
@@ -21,8 +21,10 @@ class Engine(object):
         contents = []
         for d in docs:
             contents.append(d['content'])
-
         self.logger.info("extract: {} files are loaded.".format(len(docs)))
+
+        template.invariant_matching_algorithm(contents)
+
         return True, ""
 
     def incremental(self, input_docs, input_template, output_template, force=False):

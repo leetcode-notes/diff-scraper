@@ -109,16 +109,3 @@ class TestCount(TestCase):
             self.fail()
 
 
-class TestComputeTokensWithLoc(TestCase):
-    def test_default(self):
-        tokens_of = [["a", "b", "c", "c"], ["b", "c", "a"], ["c", "b", "a"]]
-        tokens_with_loc = compute_tokens_with_loc(tokens_of)
-        hash_of_a = compute_hash("a")
-        hash_of_b = compute_hash("b")
-        hash_of_c = compute_hash("c")
-        if (tokens_with_loc[hash_of_a]) != [[0], [2], [2]]:
-            self.fail()
-        if (tokens_with_loc[hash_of_b]) != [[1], [0], [1]]:
-            self.fail()
-        if (tokens_with_loc[hash_of_c]) != [[2, 3], [1], [0]]:
-            self.fail()
