@@ -67,10 +67,9 @@ def get_prev_line(current_line):
 
 def compute_freq(locs, current_loc):
     """
-    To compute the number of occurrence for the given token.
-    The 'locs' must be sorted in ascending order as binary search improves the performance.
-    :param locs:
-    :param current_loc:
+    To compute the number of occurrences of the given token right after the current line (current_loc). 
+    :param locs: a list of locations that must be sorted in ascending order
+    :param current_loc: the current line number
     :return:
     """
     freq = len(locs)

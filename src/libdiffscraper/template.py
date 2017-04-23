@@ -13,6 +13,7 @@ from enum import Enum
 from .selector import *
 from .util import *
 from .tokenizer import *
+from .tree import *
 
 
 class TokenType(Enum):
@@ -79,12 +80,12 @@ def expand_segment(pivots, tokens_of, tentative_decision, rightward):
                 break
 
 
-def find_next_candidates(tokens_of, current_line, tokens_with_loc):
+def find_next_candidates(tokens_of, tokens_with_loc, current_line):
     """
-    To find next possible candidates base on the current line
+    To find next candidates from the current line
     :param tokens_of: 
+    :param tokens_with_loc: an associative array containing key-value pairs of each token and corresponding locations
     :param current_line: 
-    :param tokens_with_loc: an associative array containing key-value pairs of each token and corresponding locations 
     :return: 
     """
     candidates = []
@@ -98,20 +99,34 @@ def find_next_candidates(tokens_of, current_line, tokens_with_loc):
                     is_data_token = True
                     break
             if is_data_token:
-                # Ignoring the token (classified as a data token) as it doesn't appear in the other documents.
+                # Ignoring a data token (variant) as it doesn't appear in other documents.
                 continue
-            candidate = list(current_line)
+            invariant_token = list(current_line)
             for another_doc_index, _ in enumerate(tokens_of):
                 locs = tokens_with_loc[hash_current][another_doc_index]
                 # There must be at least one element.
                 next_token_idx = bisect.bisect_left(locs, current_line[another_doc_index])
                 next_token_pos = locs[next_token_idx]
-                candidate[another_doc_index] = next_token_pos
-            candidates.append(candidate)
+                invariant_token[another_doc_index] = next_token_pos
+            candidates.append(invariant_token)
     return candidates
 
 
+def compute_matching_tree(tokens_of, tokens_with_loc, current_line):
+    candidates = find_next_candidates(tokens_of, tokens_with_loc, current_line)
+    for candidate in candidates:
+
+
+    pass
+
+
+
 def compute_tokens_with_loc(tokens_of):
+    """
+    To make an associative array containing a pair of a token hash and its locations. (cache)  
+    :param tokens_of: 
+    :return: 
+    """
     tokens_with_loc = {}
     for doc_index, tokens in enumerate(tokens_of):
         for token_index, token in enumerate(tokens):
@@ -128,9 +143,50 @@ def invariant_matching_algorithm(documents):
         tokens = Tokenizer.tokenize("html", raw_html)
         tokens_of.append(tokens)
     tokens_with_loc = compute_tokens_with_loc(tokens_of)
-    tentative_decision = make_empty_array(len(tokens_of))
-    for doc_index, tokens in enumerate(tokens_of):
-        tentative_decision[doc_index] = [TokenType.VARIANT] * len(tokens)
+    matching_tree = compute_matching_tree(tokens_of, tokens_with_loc, [0] * len(tokens_of))
+
+
+
+
+    # # tentative_decision = make_empty_array(len(tokens_of))
+    # # for doc_index, tokens in enumerate(tokens_of):
+    # #     tentative_decision[doc_index] = [TokenType.VARIANT] * len(tokens)
+    # # Preparing initial candidates
+    # current_scanline = [0] * len(documents)
+    # candidates = find_next_candidates(tokens_of, current_scanline, tokens_with_loc)
+
+
+
+
+
+#
+# def helper_mark_unique_invariant(token_loc, tokens_of):
+#     current_scanline = [0] * len(tokens_of)
+#     searched_invariants = []
+#     is_looping = True
+#     while is_looping:
+#         next_invariant = None
+#         candidates = find_next_candidates(tokens_of, current_scanline, token_loc)
+#         for candidate in candidates:
+#             is_unique = True
+#             for document_index, invariant_loc in enumerate(candidate):
+#                 token_hash = compute_hash(tokens_of[document_index][invariant_loc])
+#                 token_freq = compute_freq(token_loc[token_hash][document_index], invariant_loc)
+#                 is_unique = is_unique and (token_freq == 1)
+#             if is_unique:
+#                 next_invariant = list(candidate)
+#                 break
+#
+#         if next_invariant is not None:
+#             searched_invariants.append(next_invariant)
+#             current_scanline = next_invariant
+#
+#         current_scanline = helper_next_line(current_scanline)
+#         for document_index, tokens in enumerate(tokens_of):
+#             if current_scanline[document_index] >= len(tokens):
+#                 is_looping = False
+#     return searched_invariants
+#
 
 #
 #     # searched_invariants = helper_mark_unique_invariant(token_loc, tokens_of)
@@ -208,34 +264,7 @@ def invariant_matching_algorithm(documents):
 #         for document_index in range(len(tokens_of)):
 #             decision[document_index][unique_invariant[document_index]] = TokenType.UNIQUE_INVARIANT
 #
-#
-# def helper_mark_unique_invariant(token_loc, tokens_of):
-#     current_scanline = [0] * len(tokens_of)
-#     searched_invariants = []
-#     is_looping = True
-#     while is_looping:
-#         next_invariant = None
-#         candidates = find_next_candidates(tokens_of, current_scanline, token_loc)
-#         for candidate in candidates:
-#             is_unique = True
-#             for document_index, invariant_loc in enumerate(candidate):
-#                 token_hash = compute_hash(tokens_of[document_index][invariant_loc])
-#                 token_freq = compute_freq(token_loc[token_hash][document_index], invariant_loc)
-#                 is_unique = is_unique and (token_freq == 1)
-#             if is_unique:
-#                 next_invariant = list(candidate)
-#                 break
-#
-#         if next_invariant is not None:
-#             searched_invariants.append(next_invariant)
-#             current_scanline = next_invariant
-#
-#         current_scanline = helper_next_line(current_scanline)
-#         for document_index, tokens in enumerate(tokens_of):
-#             if current_scanline[document_index] >= len(tokens):
-#                 is_looping = False
-#     return searched_invariants
-#
+
 #
 
 #
