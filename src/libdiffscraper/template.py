@@ -82,9 +82,9 @@ def expand_segment(pivots, tokens_of, tentative_decision, rightward):
 
 def find_next_candidates(tokens_of, tokens_with_loc, current_line):
     """
-    To find next candidates from the current line
+    To find the next candidates from the current line
     :param tokens_of: 
-    :param tokens_with_loc: an associative array containing key-value pairs of each token and corresponding locations
+    :param tokens_with_loc: an associative array containing key-value pairs of each token and its locations
     :param current_line: 
     :return: 
     """
@@ -108,17 +108,44 @@ def find_next_candidates(tokens_of, tokens_with_loc, current_line):
                 next_token_idx = bisect.bisect_left(locs, current_line[another_doc_index])
                 next_token_pos = locs[next_token_idx]
                 invariant_token[another_doc_index] = next_token_pos
-            candidates.append(invariant_token)
+            if invariant_token not in candidates:
+                candidates.append(tuple(invariant_token))
     return candidates
 
 
-def compute_matching_tree(tokens_of, tokens_with_loc, current_line):
+def find_unique_invariants(tokens_of, tokens_with_loc, current_line, candidate_tree, node_cache):
+    """
+    In order to find the candidate tree quickly
+    :param tokens_of: 
+    :param tokens_with_loc: 
+    :param current_line: 
+    :param candidate_tree: 
+    :param node_cache: 
+    :return: 
+    """
+
+    # current_line must be in the range of documents
+    for doc_index, tokens in enumerate(tokens_of):
+        if current_line[doc_index] >= len(tokens):
+            return
+
     candidates = find_next_candidates(tokens_of, tokens_with_loc, current_line)
     for candidate in candidates:
+        freq = []
+        for doc_index, token_index in enumerate(candidate):
+            token_hash = compute_hash(tokens_of[doc_index][token_index])
+            token_freq = compute_freq(tokens_with_loc[token_hash][doc_index], token_index)
+            freq.append(token_freq)
+        if all(freq):
+            if candidate not in node_cache:
+                new_branch = nary_tree()
+                new_branch.set_value(candidate)
+                node_cache[candidate] = new_branch
+                find_unique_invariants(tokens_of, tokens_with_loc, get_next_line(candidate), new_branch, node_cache)
 
-
-    pass
-
+            candidate_tree.insert(node_cache[candidate])
+    if not candidates:
+        find_unique_invariants(tokens_of, tokens_with_loc, get_next_line(current_line), candidate_tree, node_cache)
 
 
 def compute_tokens_with_loc(tokens_of):
@@ -143,7 +170,11 @@ def invariant_matching_algorithm(documents):
         tokens = Tokenizer.tokenize("html", raw_html)
         tokens_of.append(tokens)
     tokens_with_loc = compute_tokens_with_loc(tokens_of)
-    matching_tree = compute_matching_tree(tokens_of, tokens_with_loc, [0] * len(tokens_of))
+   
+    candidate_tree = nary_tree() # a root node of candidate tree
+    candidate_tree.set_value("<root>")
+    find_unique_invariants(tokens_of, tokens_with_loc, (0,) * len(tokens_of), candidate_tree, dict())
+    candidate_tree.debug_print("")
 
 
 

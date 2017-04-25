@@ -59,10 +59,10 @@ class TestHexDigestFrom(TestCase):
 
 class TestGetPrevNextLine(TestCase):
     def test_default(self):
-        lines = [1,2,3]
-        if get_prev_line(lines) != [0,1,2]:
+        lines = (1, 2, 3)
+        if get_prev_line(lines) != (0, 1, 2):
             self.fail()
-        if get_next_line(lines) != [2,3,4]:
+        if get_next_line(lines) != (2, 3, 4):
             self.fail()
 
 
@@ -88,7 +88,7 @@ class TestComputeFreq(TestCase):
 
 class TestCount(TestCase):
     def test_1(self):
-        count_for, maximum_count = count([123,123,456])
+        count_for, maximum_count = count([123, 123, 456])
         if count_for[123] != 2:
             self.fail()
         if count_for[456] != 1:
@@ -97,7 +97,7 @@ class TestCount(TestCase):
             self.fail()
 
     def test_2(self):
-        count_for, maximum_count = count([123,123,123])
+        count_for, maximum_count = count([123, 123, 123])
         if count_for[123] != 3:
             self.fail()
         if maximum_count != 3:
@@ -107,5 +107,3 @@ class TestCount(TestCase):
         count_for, maximum_count = count([])
         if maximum_count != 0:
             self.fail()
-
-

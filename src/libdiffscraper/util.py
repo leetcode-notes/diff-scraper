@@ -53,7 +53,7 @@ def get_next_line(current_line):
     :param current_line: 
     :return: 
     """
-    return [c + 1 for c in current_line]
+    return tuple([c + 1 for c in current_line])
 
 
 def get_prev_line(current_line):
@@ -62,7 +62,7 @@ def get_prev_line(current_line):
     :param current_line: 
     :return: 
     """
-    return [c - 1 for c in current_line]
+    return tuple([c - 1 for c in current_line])
 
 
 def compute_freq(locs, current_loc):

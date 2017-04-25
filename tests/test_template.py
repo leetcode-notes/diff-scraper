@@ -94,15 +94,15 @@ class TestFindNextCandidates(TestCase):
     def test_1(self):
         tokens_of = [["a", "b", "c", "c"], ["b", "c", "a"], ["c", "b", "a"]]
         tokens_with_loc = compute_tokens_with_loc(tokens_of)
-        candidates = find_next_candidates(tokens_of, tokens_with_loc, [0, 0, 0])
-        if candidates != [[0, 2, 2], [1, 0, 1], [2, 1, 0]]:
+        candidates = find_next_candidates(tokens_of, tokens_with_loc, (0, 0, 0))
+        if candidates != [(0, 2, 2), (1, 0, 1), (2, 1, 0)]:
             self.fail()
 
     def test_2(self):
         tokens_of = [["a", "b", "c", "c"], ["b", "c", "a"], ["d", "b", "a"]]
         tokens_with_loc = compute_tokens_with_loc(tokens_of)
-        candidates = find_next_candidates(tokens_of, tokens_with_loc, [0, 0, 0])
-        if candidates != [[0, 2, 2], [1, 0, 1]]:
+        candidates = find_next_candidates(tokens_of, tokens_with_loc, (0, 0, 0))
+        if candidates != [(0, 2, 2), (1, 0, 1)]:
             self.fail()
 
 
@@ -111,7 +111,15 @@ class TestInvariantMatchingAlgorithm(TestCase):
         docs = ["<a/><b/><c/>", "<b/><c/><a/>", "<c/><b/><a/>"]
         invariant_matching_algorithm(docs)
 
-    def test_2(self):
-        docs = ["<a/><b/><c/><d/><a/>", "<c/><b/><a/>", "<d/><b/><c/><a/>"]
-        invariant_matching_algorithm(docs)
+    # def test_2(self):
+    #     docs = ["<a/><b/><c/><d/><a/>", "<c/><b/><a/>", "<d/><b/><c/><a/>"]
+    #     invariant_matching_algorithm(docs)
+
+    # def test_3(self):
+    #     docs = ["<a><b><c><d><e><e><a>", "<b><c><d><e><e><a>", "<b><c><d><e><e><a>"]
+    #     invariant_matching_algorithm(docs)
+
+    # def test_4(self):
+    #     docs = ["<g><a><b><c><d><e>", "<h><b><c><a><d><e>", "<g><c><b><a><d><e>"]
+    #     invariant_matching_algorithm(docs)
 

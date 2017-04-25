@@ -11,6 +11,7 @@ class nary_tree(object):
     def __init__(self):
         self.children = []
         self.value = None
+        self.tag = object()
 
     def children(self):
         return self.children
@@ -24,4 +25,19 @@ class nary_tree(object):
     def insert(self, tree):
         if self.children is None:
             self.children = []
-        self.children.append(tree)
+        if type(tree) is nary_tree:
+            if tree not in self.children:
+                self.children.append(tree)
+        else:
+            raise Exception("Invalid type")
+
+    def debug_print(self, prefix=""):
+        if self.children:
+            temp_str = "{}\033[1;32m{}\033[0m@\033[32m{}\033[0m->".format(prefix, self.get_value(),hex(id(self.tag)))
+        else:
+            temp_str = "{}\033[1;32m{}\033[0m@\033[32m{}\033[0m".format(prefix, self.get_value(),hex(id(self.tag)))
+        for child in self.children:
+            child.debug_print(temp_str)
+        if not self.children:
+            print(temp_str)
+
