@@ -120,6 +120,6 @@ class TestInvariantMatchingAlgorithm(TestCase):
     #     invariant_matching_algorithm(docs)
 
     # def test_4(self):
-    #     docs = ["<g><a><b><c><d><e>", "<h><b><c><a><d><e>", "<g><c><b><a><d><e>"]
+    #     docs = ["<g><a><b><c><d><e><data1><img/><f><f><f><f><a><b><c>", "<h><b><c><a><d><e><data2><img/><f><f><f><f><a><b><c>", "<g><c><b><a><d><e><data3><img/><f><f><f><f><a><b><c>"]
     #     invariant_matching_algorithm(docs)
 

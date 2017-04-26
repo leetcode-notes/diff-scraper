@@ -32,13 +32,8 @@ def expand_segment(pivots, tokens_of, tentative_decision, rightward):
     :param rightward:
     :return: 
     """
-    current_pivots = list(pivots)
+    current_pivots = pivots
     is_valid_pivots = True
-
-    # Validating the input
-    for doc_index in range(len(tokens_of)):
-        if tentative_decision[doc_index][pivots[doc_index]] != TokenType.UNIQUE_INVARIANT:
-            return
 
     while is_valid_pivots:
         if rightward:
@@ -128,7 +123,7 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line, candidate_t
     for doc_index, tokens in enumerate(tokens_of):
         if current_line[doc_index] >= len(tokens):
             return
-
+    is_detected = False
     candidates = find_next_candidates(tokens_of, tokens_with_loc, current_line)
     for candidate in candidates:
         freq = []
@@ -136,15 +131,15 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line, candidate_t
             token_hash = compute_hash(tokens_of[doc_index][token_index])
             token_freq = compute_freq(tokens_with_loc[token_hash][doc_index], token_index)
             freq.append(token_freq)
-        if all(freq):
+        if all(map(lambda x:x == 1, freq)):
             if candidate not in node_cache:
                 new_branch = nary_tree()
                 new_branch.set_value(candidate)
                 node_cache[candidate] = new_branch
                 find_unique_invariants(tokens_of, tokens_with_loc, get_next_line(candidate), new_branch, node_cache)
-
+                is_detected = True
             candidate_tree.insert(node_cache[candidate])
-    if not candidates:
+    if not is_detected:
         find_unique_invariants(tokens_of, tokens_with_loc, get_next_line(current_line), candidate_tree, node_cache)
 
 
@@ -170,54 +165,52 @@ def invariant_matching_algorithm(documents):
         tokens = Tokenizer.tokenize("html", raw_html)
         tokens_of.append(tokens)
     tokens_with_loc = compute_tokens_with_loc(tokens_of)
-   
+
     candidate_tree = nary_tree() # a root node of candidate tree
     candidate_tree.set_value("<root>")
     find_unique_invariants(tokens_of, tokens_with_loc, (0,) * len(tokens_of), candidate_tree, dict())
-    candidate_tree.debug_print("")
+    candidates = list()
+    candidate_tree.update_candidates(candidates)
+
+    # To choose the best candidate (greedy algorithm)
+    max_length_of = 0
+    best_candidate = None
+    for candidate in candidates:
+        if max_length_of < len(candidate):
+            max_length_of = len(candidate)
+            best_candidate = candidate
+
+    tentative_decision = make_empty_array(len(tokens_of))
+    for doc_index, tokens in enumerate(tokens_of):
+        tentative_decision[doc_index] = [TokenType.VARIANT] * len(tokens)
+
+    for c in best_candidate:
+        for doc_index, loc in enumerate(c):
+            tentative_decision[doc_index][loc] = TokenType.NOT_UNIQUE_INVARIANT
+        expand_segment(c, tokens_of, tentative_decision, True)
+        expand_segment(c, tokens_of, tentative_decision, False)
+
+    for c in best_candidate:
+        for doc_index, loc in enumerate(c):
+            tentative_decision[doc_index][loc] = TokenType.UNIQUE_INVARIANT
+
+    __print_decision(tentative_decision)
+
+def __print_decision(tentative_decision):
+    print("Decision")
+    for doc_index, decisions in enumerate(tentative_decision):
+        print("{}:".format(doc_index), end="")
+        for decision in decisions:
+            if decision == TokenType.VARIANT:
+                print ("\033[41m.\033[0m", end="")
+            elif decision == TokenType.NOT_UNIQUE_INVARIANT:
+                print ("\033[42m.\033[0m", end="")
+            elif decision == TokenType.UNIQUE_INVARIANT:
+                print ("\033[42mi\033[0m", end="")
+        print("")
 
 
 
-
-    # # tentative_decision = make_empty_array(len(tokens_of))
-    # # for doc_index, tokens in enumerate(tokens_of):
-    # #     tentative_decision[doc_index] = [TokenType.VARIANT] * len(tokens)
-    # # Preparing initial candidates
-    # current_scanline = [0] * len(documents)
-    # candidates = find_next_candidates(tokens_of, current_scanline, tokens_with_loc)
-
-
-
-
-
-#
-# def helper_mark_unique_invariant(token_loc, tokens_of):
-#     current_scanline = [0] * len(tokens_of)
-#     searched_invariants = []
-#     is_looping = True
-#     while is_looping:
-#         next_invariant = None
-#         candidates = find_next_candidates(tokens_of, current_scanline, token_loc)
-#         for candidate in candidates:
-#             is_unique = True
-#             for document_index, invariant_loc in enumerate(candidate):
-#                 token_hash = compute_hash(tokens_of[document_index][invariant_loc])
-#                 token_freq = compute_freq(token_loc[token_hash][document_index], invariant_loc)
-#                 is_unique = is_unique and (token_freq == 1)
-#             if is_unique:
-#                 next_invariant = list(candidate)
-#                 break
-#
-#         if next_invariant is not None:
-#             searched_invariants.append(next_invariant)
-#             current_scanline = next_invariant
-#
-#         current_scanline = helper_next_line(current_scanline)
-#         for document_index, tokens in enumerate(tokens_of):
-#             if current_scanline[document_index] >= len(tokens):
-#                 is_looping = False
-#     return searched_invariants
-#
 
 #
 #     # searched_invariants = helper_mark_unique_invariant(token_loc, tokens_of)
