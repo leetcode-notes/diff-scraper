@@ -160,19 +160,25 @@ def compute_tokens_with_loc(tokens_of):
 
 
 def invariant_matching_algorithm(documents):
+    num_of_docs = len(documents)
+
+    # Tokenize raw documents
     tokens_of = []
     for doc_index, raw_html in enumerate(documents):
         tokens = Tokenizer.tokenize("html", raw_html)
         tokens_of.append(tokens)
+
+    # Cache each token's locations
     tokens_with_loc = compute_tokens_with_loc(tokens_of)
 
-    candidate_tree = nary_tree() # a root node of candidate tree
+    # Search unique invariant tokens and construct a candidate tree
+    candidate_tree = nary_tree() # the root node
     candidate_tree.set_value("<root>")
-    find_unique_invariants(tokens_of, tokens_with_loc, (0,) * len(tokens_of), candidate_tree, dict())
+    find_unique_invariants(tokens_of, tokens_with_loc, (0,) * num_of_docs, candidate_tree, dict())
     candidates = list()
     candidate_tree.update_candidates(candidates)
 
-    # To choose the best candidate (greedy algorithm)
+    # Choose the best one from the candidate tree (almost optimal)
     max_length_of = 0
     best_candidate = None
     for candidate in candidates:
@@ -180,7 +186,7 @@ def invariant_matching_algorithm(documents):
             max_length_of = len(candidate)
             best_candidate = candidate
 
-    tentative_decision = make_empty_array(len(tokens_of))
+    tentative_decision = make_empty_array(num_of_docs)
     for doc_index, tokens in enumerate(tokens_of):
         tentative_decision[doc_index] = [TokenType.VARIANT] * len(tokens)
 
@@ -196,103 +202,59 @@ def invariant_matching_algorithm(documents):
 
     __print_decision(tentative_decision)
 
+    # Segmentation
+    is_searching = True
+    invariant_tokens = list()
+    invariant_segments_text = list()
+    current_loc = [0] * num_of_docs
+    while is_searching:
+        for doc_index in range(num_of_docs):
+            while tentative_decision[doc_index][current_loc[doc_index]] == TokenType.VARIANT:
+                if in_range(current_loc[doc_index], 0, len(tokens_of[doc_index]) - 1):
+                    current_loc[doc_index] += 1  # Skipping variant tokens (they can't be a part of the template)
+                else:
+                    is_searching = False
+                    break
+        while is_searching:
+            is_invariant = True
+            for doc_index in range(num_of_docs):
+                if tentative_decision[doc_index][current_loc[doc_index]] == TokenType.VARIANT:
+                    is_invariant = False
+                    break
+            if is_invariant:
+                invariant_tokens.append(tokens_of[0][current_loc[0]])
+                for doc_index in range(num_of_docs):
+                    current_loc[doc_index] += 1
+                is_in_range = True
+                for doc_index in range(num_of_docs):
+                    if not in_range(current_loc[doc_index], 0, len(tokens_of[doc_index])):
+                        is_in_range = False
+                        break
+                if not is_in_range:
+                    is_searching = False
+                    break
+            else:
+                invariant_segments_text.append("".join(invariant_tokens))
+                invariant_tokens = list()
+                break
+        if len(invariant_tokens) > 0:
+            invariant_segments_text.append("".join(invariant_tokens))
+    print (invariant_segments_text)
+    return invariant_segments_text
+
 def __print_decision(tentative_decision):
     print("Decision")
     for doc_index, decisions in enumerate(tentative_decision):
-        print("{}:".format(doc_index), end="")
+        print("Doc {}:".format(doc_index), end="")
         for decision in decisions:
             if decision == TokenType.VARIANT:
-                print ("\033[41m.\033[0m", end="")
+                print ("\033[41m\033[1;37m.\033[0m", end="")
             elif decision == TokenType.NOT_UNIQUE_INVARIANT:
-                print ("\033[42m.\033[0m", end="")
+                print ("\033[32m.\033[0m", end="")
             elif decision == TokenType.UNIQUE_INVARIANT:
-                print ("\033[42mi\033[0m", end="")
+                print ("\033[1;32mi\033[0m", end="")
         print("")
 
-
-
-
-#
-#     # searched_invariants = helper_mark_unique_invariant(token_loc, tokens_of)
-#     # helper_find_all_invariants(decision, searched_invariants, tokens_of)
-#     # invariant_segments_text, invariant_segments_metadata = helper_invariant_segments(decision, num_of_documents, tokens_of, tokens_metadata_of)
-#     # # Filter out meaningless tokens
-#     # final_invariant_segments_text = []
-#     # final_invariant_segments_metadata = []
-#     # for i, invariant_segment in enumerate(invariant_segments_text):
-#     #     if invariant_segment.strip() != "":
-#     #         final_invariant_segments_text.append(invariant_segment)
-#     #         final_invariant_segments_metadata.append(invariant_segments_metadata[i])
-#     #
-#     # return final_invariant_segments_text, final_invariant_segments_metadata
-#
-#
-# def helper_invariant_segments(decision, num_of_documents, tokens_of, tokens_metadata_of):
-#     invariant_segments_text = []
-#     invariant_segments_metadata = []
-#     invariant_tokens = []
-#     invariant_metadata = []
-#     current_loc = [0] * num_of_documents
-#     is_searching = True
-#     while is_searching:
-#         for document_index in range(num_of_documents):
-#             while decision[document_index][current_loc[document_index]] == TokenType.VARIANT:
-#                 if in_range(current_loc[document_index], 0, len(tokens_of[document_index]) - 1):
-#                     current_loc[document_index] += 1
-#                 else:
-#                     is_searching = False
-#                     break
-#
-#         while is_searching:
-#             is_invariant = True
-#             for document_index in range(num_of_documents):
-#                 if decision[document_index][current_loc[document_index]] == TokenType.VARIANT:
-#                     is_invariant = False
-#                     break
-#
-#             if is_invariant:
-#                 invariant_tokens.append(tokens_of[0][current_loc[0]])
-#                 invariant_metadata.append(tokens_metadata_of[0][current_loc[0]])
-#
-#                 for document_index in range(num_of_documents):
-#                     current_loc[document_index] += 1
-#
-#                 is_in_range = True
-#                 for document_index in range(num_of_documents):
-#                     if not in_range(current_loc[document_index], 0, len(tokens_of[document_index])):
-#                         is_in_range = False
-#
-#                 if not is_in_range:
-#                     is_searching = False
-#                     break
-#             else:
-#                 invariant_segments_text.append("".join(invariant_tokens))
-#                 invariant_segments_metadata.append(invariant_metadata)
-#                 invariant_tokens = []
-#                 invariant_metadata = []
-#                 break
-#         if len(invariant_tokens) > 0:
-#             invariant_segments_text.append("".join(invariant_tokens))
-#         if len(invariant_metadata) > 0:
-#             invariant_segments_metadata.append(invariant_metadata)
-#     return invariant_segments_text, invariant_segments_metadata
-#
-#
-# def helper_find_all_invariants(decision, searched_invariants, tokens_of):
-#     for unique_invariant in searched_invariants:
-#         for document_index in range(len(tokens_of)):
-#             decision[document_index][unique_invariant[document_index]] = TokenType.NOT_UNIQUE_INVARIANT
-#         expand_segment(tokens_of, decision, unique_invariant, rightward=True)
-#         expand_segment(tokens_of, decision, unique_invariant, rightward=False)
-#     for unique_invariant in searched_invariants:
-#         for document_index in range(len(tokens_of)):
-#             decision[document_index][unique_invariant[document_index]] = TokenType.UNIQUE_INVARIANT
-#
-
-#
-
-#
-#
 # def candidates_pattern_repetition(edges, outgoing_count, incoming_count):
 #     cnt = {}
 #     for prev_token_hash in edges:

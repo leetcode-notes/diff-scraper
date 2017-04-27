@@ -107,9 +107,9 @@ class TestFindNextCandidates(TestCase):
 
 
 class TestInvariantMatchingAlgorithm(TestCase):
-    def test_1(self):
-        docs = ["<a/><b/><c/>", "<b/><c/><a/>", "<c/><b/><a/>"]
-        invariant_matching_algorithm(docs)
+    # def test_1(self):
+    #     docs = ["<a/><b/><c/>", "<b/><c/><a/>", "<c/><b/><a/>"]
+    #     invariant_matching_algorithm(docs)
 
     # def test_2(self):
     #     docs = ["<a/><b/><c/><d/><a/>", "<c/><b/><a/>", "<d/><b/><c/><a/>"]
@@ -119,7 +119,7 @@ class TestInvariantMatchingAlgorithm(TestCase):
     #     docs = ["<a><b><c><d><e><e><a>", "<b><c><d><e><e><a>", "<b><c><d><e><e><a>"]
     #     invariant_matching_algorithm(docs)
 
-    # def test_4(self):
-    #     docs = ["<g><a><b><c><d><e><data1><img/><f><f><f><f><a><b><c>", "<h><b><c><a><d><e><data2><img/><f><f><f><f><a><b><c>", "<g><c><b><a><d><e><data3><img/><f><f><f><f><a><b><c>"]
-    #     invariant_matching_algorithm(docs)
+    def test_4(self):
+        docs = ["<g><a><b><c><d><e><data1><img/><f><f><f><f><a><b><c>", "<h><b><c><a><d><e><data2><img/><f><f><f><f><a><b><c>", "<g><c><b><a><d><e><data3><img/><f><f><f><f><a><b><c>"]
+        invariant_matching_algorithm(docs)
 
