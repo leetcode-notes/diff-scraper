@@ -160,6 +160,12 @@ def compute_tokens_with_loc(tokens_of):
 
 
 def invariant_matching_algorithm(documents):
+    """
+    Matching segments by referring to unique invariant tokens
+    This algorithm can be applied to documents recursively.
+    :param documents: 
+    :return: a pair of invariant segment text and tentative decisions, which are for debug purpose. 
+    """
     num_of_docs = len(documents)
 
     # Tokenize raw documents
@@ -200,8 +206,6 @@ def invariant_matching_algorithm(documents):
         for doc_index, loc in enumerate(c):
             tentative_decision[doc_index][loc] = TokenType.UNIQUE_INVARIANT
 
-    __print_decision(tentative_decision)
-
     # Segmentation
     is_searching = True
     invariant_tokens = list()
@@ -239,8 +243,7 @@ def invariant_matching_algorithm(documents):
                 break
         if len(invariant_tokens) > 0:
             invariant_segments_text.append("".join(invariant_tokens))
-    print (invariant_segments_text)
-    return invariant_segments_text
+    return invariant_segments_text, tentative_decision
 
 def __print_decision(tentative_decision):
     print("Decision")
