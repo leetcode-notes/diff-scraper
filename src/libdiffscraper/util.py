@@ -97,6 +97,11 @@ def count(items):
 
 
 def merkle_tree(items):
+    """
+    To build a merkle tree of items (we will use the root node to verify the template file)
+    :param items: 
+    :return: 
+    """
     hashes = list(map(lambda x: compute_hash(str(x)), items))
     tree = merkle.MerkleTree(piece_size=1, total_length=len(hashes), root_hash=None, hashes=hashes)
     return tree
