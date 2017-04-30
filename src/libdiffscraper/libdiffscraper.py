@@ -23,7 +23,7 @@ class Engine(object):
             contents.append(d['content'])
         self.logger.info("extract: {} files are loaded.".format(len(docs)))
 
-        template.invariant_matching_algorithm(contents)
+        template.generate(contents)
 
         return True, ""
 

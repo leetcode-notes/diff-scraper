@@ -196,6 +196,9 @@ def invariant_matching_algorithm(documents):
     for doc_index, tokens in enumerate(tokens_of):
         tentative_decision[doc_index] = [TokenType.VARIANT] * len(tokens)
 
+    if best_candidate is None:
+        return [], tentative_decision
+
     for c in best_candidate:
         for doc_index, loc in enumerate(c):
             tentative_decision[doc_index][loc] = TokenType.NOT_UNIQUE_INVARIANT
@@ -243,6 +246,7 @@ def invariant_matching_algorithm(documents):
                 break
         if len(invariant_tokens) > 0:
             invariant_segments_text.append("".join(invariant_tokens))
+    # __print_decision(tentative_decision)
     return invariant_segments_text, tentative_decision
 
 def __print_decision(tentative_decision):
@@ -253,10 +257,61 @@ def __print_decision(tentative_decision):
             if decision == TokenType.VARIANT:
                 print ("\033[41m\033[1;37m.\033[0m", end="")
             elif decision == TokenType.NOT_UNIQUE_INVARIANT:
-                print ("\033[32m.\033[0m", end="")
+                print ("\033[44m\033[37m.\033[0m", end="")
             elif decision == TokenType.UNIQUE_INVARIANT:
-                print ("\033[1;32mi\033[0m", end="")
+                print ("\033[44m\033[1;37mi\033[0m", end="")
         print("")
+
+
+def generate(documents, prev_text = []):
+    """
+    To get the template recursively
+    :param documents: 
+    :param prev_text: 
+    :return: 
+    """
+    text, _ = invariant_matching_algorithm(documents)
+    data_segments = list(map(lambda x: extract(text, x), documents))
+    data = [list(i) for i in zip(*data_segments)]
+    final_text = []
+    for seg_index in range(len(data)):
+        if prev_text != text:
+            data_len = list(map(lambda x:len(x), data[seg_index]))
+            if 0 not in data_len:
+                text_sub = generate(data[seg_index], text)
+                if len(text_sub) > 0:
+                    final_text.extend(text_sub)
+        else:
+            pass
+
+        if seg_index < len(text):
+            final_text.append(text[seg_index])
+
+    return final_text
+
+
+def extract(invariant_segments_text, document):
+    """
+    To get data segments by removing invariant segments from the original document
+    :param invariant_segments_text: 
+    :param document: 
+    :return: 
+    """
+    cur_segment_offset = 0
+    prev_segment_offset = 0
+    data_segments = []
+    for index, invariant_segment in enumerate(invariant_segments_text):
+        cur_segment_offset = document.find(invariant_segment, cur_segment_offset)
+        if cur_segment_offset == -1:
+            # The invariant segment MUST be found in the document.
+            return None
+        else:
+            data_segments.append(document[prev_segment_offset:cur_segment_offset])
+        cur_segment_offset += len(invariant_segment)
+        prev_segment_offset = cur_segment_offset
+    data_segments.append(document[cur_segment_offset:len(document)])
+    return data_segments
+
 
 # def candidates_pattern_repetition(edges, outgoing_count, incoming_count):
 #     cnt = {}
@@ -360,69 +415,4 @@ def __print_decision(tentative_decision):
 
 
 
-# def generate(documents, depth=0, prev_text=[], prev_metadata=[]):
-#     text, metadata = invariant_matching_algorithm(documents)
-#     data_segments_of = list(map(lambda x: extract(text, x), documents))
-#     data = [list(i) for i in zip(*data_segments_of)]
-#     final_text = []
-#     final_metadata = []
-#     for data_segment_index in range(len(data)):
-#         if prev_text != text:
-#             data_len = list(map(lambda x: len(x), data[data_segment_index]))
-#             if 0 not in data_len:
-#                 text_sub, metadata_sub = generate(data[data_segment_index], depth+1, text, metadata)
-#                 if len(text_sub) > 0:
-#                      final_text.extend(text_sub)
-#                      final_metadata.extend(metadata_sub)
-#         else:
-#             find_repeating_pattern(data)
-#
-#         invariant_segment_index = data_segment_index
-#         if invariant_segment_index < len(text):
-#             final_text.append(text[invariant_segment_index])
-#             final_metadata.append(metadata[invariant_segment_index])
-#
-#     return final_text, final_metadata
-#
-#
-# def extract(invariant_segments_text, document):
-#     segment_offset = 0
-#     prev_segment_offset = 0
-#     extracted_data = []
-#     for index, invariant_segment in enumerate(invariant_segments_text):
-#         # Index if found and -1 otherwise.
-#         segment_offset = document.find(invariant_segment, segment_offset)
-#         if segment_offset == -1:
-#             # The invariant segment MUST be shown in the document.
-#             return None
-#         else:
-#             extracted_data.append(document[prev_segment_offset:segment_offset])
-#         segment_offset += len(invariant_segment)
-#         prev_segment_offset = segment_offset
-#
-#     extracted_data.append(document[segment_offset:len(document)])
-#     return extracted_data
-#
-#
-# def select(invariant_segments_metadata, filter_logic, offset):
-#     selector_status, index_found = selector_impl(invariant_segments_metadata, filter_logic)
-#     if selector_status == SelectorStatus.SUCCESS:
-#         return index_found + offset
-#     else:
-#         return None
-#
-#
-# def reconstruct(invariant_segments, variant_segments):
-#     buffer = ""
-#     if len(variant_segments) == len(invariant_segments) + 1:
-#         for index in range(len(invariant_segments)):
-#             buffer += (variant_segments[index] + invariant_segments[index])
-#         buffer += variant_segments[len(invariant_segments)]
-#         return buffer
-#     else:
-#         return None
-#
-#
-#
-#
-#
+
