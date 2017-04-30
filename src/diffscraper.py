@@ -26,27 +26,39 @@ def assert_condition(cond, msg):
 
 def init_arg_parser():
     parser = argparse.ArgumentParser()
+
     parser.add_argument("--generate",
                         nargs=1,
                         help="generate a template file from input documents")
+
     parser.add_argument("--incremental",
                         nargs=1,
                         help="update an old template file with new input files")
+
     parser.add_argument("--compress",
                         action="store_true",
                         help="compress input files by using a template file")
+
     parser.add_argument("--decompress",
                         action="store_true",
                         help="decompress (reconstruct) input files by using a template file")
+
+    parser.add_argument("--print-unified",
+                        action="store_true",
+                        help="print a unified input documents")
+
     parser.add_argument("--template",
                         nargs=1,
                         help="specify a template file for incremental/compress/decompress commands")
+
     parser.add_argument("--output-dir",
                         nargs=1,
                         help="specify an output directory for compress/decompress commands")
+
     parser.add_argument("--force",
                         action="store_true",
                         help="force to execute a command -- safety check will not be performed")
+
     parser.add_argument("files",
                         metavar="<input...>",
                         type=str,
@@ -62,11 +74,11 @@ def main():
     # <doc> --incremental <template_OUTPUT> --template <template_INPUT>
     # <docs...> --compress --template <template_INPUT> --output-dir <directory>
     # <diff...> --decompress --template <template_INPUT> --output-dir <directory>
-    # TODO: verify the template file
 
     # Debugging features
     # ==================
     # --force
+    # <docs...> --print-unified
 
     print("\033[35mDiff-Scraper v0.1\033[0m")
 
@@ -77,11 +89,12 @@ def main():
     is_incremental = args.incremental is not None
     is_compress = args.compress is True
     is_decompress = args.decompress is True
+    is_print_unified = args.print_unified is True
     is_force = args.force is True
 
     engine = libdiffscraper.Engine(logger)
 
-    num_of_commands = int(is_generate) + int(is_incremental) + int(is_compress) + int(is_decompress)
+    num_of_commands = int(is_generate) + int(is_incremental) + int(is_compress) + int(is_decompress) + int(is_print_unified)
     if num_of_commands == 1:
         try:
             ret = None
@@ -98,6 +111,9 @@ def main():
             elif is_decompress:
                 assert_condition(len(args.files) >= 1, "At least one input file is required.")
                 ret = engine.decompress(input_docs=args.files, input_template=args.template[0], output_dir=args.output_dir[0], force=is_force)
+            elif is_print_unified:
+                assert_condition(len(args.files) >= 2, "At least two input files are required.")
+                ret = engine.print_unified(input_docs=args.files)
             else:
                 raise Exception("Unreachable code")
 

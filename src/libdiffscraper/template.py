@@ -323,6 +323,7 @@ def reconstruct(invariant_segments, data_segments):
     else:
         return None
 
+
 def serialize_object(template_object):
     return pickle.dumps(template_object)
 

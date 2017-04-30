@@ -33,6 +33,25 @@ class Engine(object):
 
         return True, ""
 
+    def print_unified(self, input_docs):
+        color_set = {"invariant_seg": "\033[0;32m",
+                     "data_seg": ["\033[41m\033[30m",
+                                  "\033[42m\033[30m",
+                                  "\033[43m\033[30m",
+                                  "\033[44m\033[30m",
+                                  "\033[45m\033[30m"]}
+        documents, _ = self.load_documents(input_docs, "text", "print_unified")
+        invariant_segments = template.generate(documents)
+        data = []
+        for document in documents:
+            data.append(template.extract(invariant_segments, document))
+        for seg_index in range(len(invariant_segments)+1):
+            for doc_index, data_segments in enumerate(data):
+                print("{}{}\033[0m".format(color_set["data_seg"][doc_index % len(color_set["data_seg"])], data_segments[seg_index]))
+            if seg_index < len(invariant_segments):
+                print("{}{}\033[0m".format(color_set["invariant_seg"],
+                                           invariant_segments[seg_index]))
+
     def verbose_template_file(self, template_object, serialized, module_name):
         self.logger.debug("({}) template: the size of serialized data: \033[1;32m{}\033[0m".format(module_name, len(serialized)))
         self.logger.debug("({}) template: # of invariant segments: \033[1;32m{}\033[0m".format(module_name, len(template_object["inv_seg"])))
@@ -144,5 +163,4 @@ class Engine(object):
 
 
         return True, ""
-
 
