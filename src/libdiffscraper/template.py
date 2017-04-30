@@ -323,19 +323,22 @@ def reconstruct(invariant_segments, data_segments):
     else:
         return None
 
-def serialize_template(template_object):
+def serialize_object(template_object):
     return pickle.dumps(template_object)
 
 
-def deserialize_template(serialized):
+def deserialize_object(serialized):
     return pickle.loads(serialized)
 
 
 def make_template_object(invariant_segments=None, merkle_root=None):
-    template_object = {"is": invariant_segments, "mr":merkle_root}
+    template_object = {"inv_seg": invariant_segments, "mk_root":merkle_root}
     return template_object
 
 
+def make_data_object(data_segments=None, template_merkle_root=None, data_merkle_root=None):
+    data_object = {"data_seg": data_segments, "mk_root_template":template_merkle_root, "mk_root_data":data_merkle_root}
+    return data_object
 
 
 # def candidates_pattern_repetition(edges, outgoing_count, incoming_count):

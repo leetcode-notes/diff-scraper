@@ -9,6 +9,8 @@
 import hashlib
 import binascii
 import bisect
+import errno
+import os
 
 from .thirdparty import merkle
 
@@ -107,3 +109,16 @@ def merkle_tree(items):
     return tree
 
 
+def mkdir_p(path):
+    """
+    Reference: http://stackoverflow.com/questions/600268/mkdir-p-functionality-in-python
+    :param path: 
+    :return: 
+    """
+    try:
+        os.makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise

@@ -41,6 +41,9 @@ def init_arg_parser():
     parser.add_argument("--template",
                         nargs=1,
                         help="specify a template file for incremental/compress/decompress commands")
+    parser.add_argument("--output-dir",
+                        nargs=1,
+                        help="specify an output directory for compress/decompress commands")
     parser.add_argument("--force",
                         action="store_true",
                         help="force to execute a command -- safety check will not be performed")
@@ -57,8 +60,8 @@ def main():
     # ==============
     # <docs...> --generate <template_OUTPUT>
     # <doc> --incremental <template_OUTPUT> --template <template_INPUT>
-    # <docs...> --compress --template <template_INPUT>
-    # <diff...> --decompress --template <template_INPUT>
+    # <docs...> --compress --template <template_INPUT> --output-dir <directory>
+    # <diff...> --decompress --template <template_INPUT> --output-dir <directory>
     # TODO: verify the template file
 
     # Debugging features
@@ -91,10 +94,10 @@ def main():
                 ret = engine.incremental(input_docs=args.files, input_template=args.template[0], output_template=args.incremental[0], force=is_force)
             elif is_compress:
                 assert_condition(len(args.files) >= 1, "At least one input file is required.")
-                ret = engine.compress(input_docs=args.files, input_template=args.template[0], force=is_force)
+                ret = engine.compress(input_docs=args.files, input_template=args.template[0], output_dir=args.output_dir[0], force=is_force)
             elif is_decompress:
                 assert_condition(len(args.files) >= 1, "At least one input file is required.")
-                ret = engine.decompress(input_docs=args.files, input_template=args.template[0], force=is_force)
+                ret = engine.decompress(input_docs=args.files, input_template=args.template[0], output_dir=args.output_dir[0], force=is_force)
             else:
                 raise Exception("Unreachable code")
 
