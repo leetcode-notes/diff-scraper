@@ -53,7 +53,7 @@ class TestComputeHash(TestCase):
 class TestHexDigestFrom(TestCase):
     def test_default(self):
         digest = b'\xde\xad\xbe\xef'
-        if hex_digest_from(digest).decode('utf-8') != "deadbeef":
+        if hex_digest_from(digest) != "deadbeef":
             self.fail()
 
 
