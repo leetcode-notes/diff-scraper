@@ -1,4 +1,5 @@
 build/*
+intermediate/*
 .idea
 *.pyc
 __pycache__
