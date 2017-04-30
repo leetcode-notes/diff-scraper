@@ -10,6 +10,7 @@ import hashlib
 import binascii
 import bisect
 
+from .thirdparty import merkle
 
 def make_empty_array(length):
     """
@@ -94,5 +95,10 @@ def count(items):
             maximum_count = count_for[item]
     return count_for, maximum_count
 
+
+def merkle_tree(items):
+    hashes = list(map(lambda x: compute_hash(str(x)), items))
+    tree = merkle.MerkleTree(piece_size=1, total_length=len(hashes), root_hash=None, hashes=hashes)
+    return tree
 
 

@@ -107,3 +107,19 @@ class TestCount(TestCase):
         count_for, maximum_count = count([])
         if maximum_count != 0:
             self.fail()
+
+
+class TestMerkleTree(TestCase):
+    def test_1(self):
+        tree_1 = merkle_tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        tree_2 = merkle_tree([1, 2, 3, 4, 5, 6, 7, 8.5, 9, 10])
+        if tree_1.get_root_hash() == tree_2.get_root_hash():
+            self.fail()
+
+    def test_2(self):
+        tree_1 = merkle_tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        tree_2 = merkle_tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        if tree_1.get_root_hash() != tree_2.get_root_hash():
+            self.fail()
+
+
