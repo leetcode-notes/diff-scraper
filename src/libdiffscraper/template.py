@@ -7,7 +7,7 @@
 
 import hashlib
 import bisect
-
+import pickle
 from enum import Enum
 
 from .selector import *
@@ -322,6 +322,21 @@ def reconstruct(invariant_segments, data_segments):
         return buffer
     else:
         return None
+
+def serialize_template(template_object):
+    return pickle.dumps(template_object)
+
+
+def deserialize_template(serialized):
+    return pickle.loads(serialized)
+
+
+def make_template_object(invariant_segments=None, merkle_root=None):
+    template_object = {"is": invariant_segments, "mr":merkle_root}
+    return template_object
+
+
+
 
 # def candidates_pattern_repetition(edges, outgoing_count, incoming_count):
 #     cnt = {}

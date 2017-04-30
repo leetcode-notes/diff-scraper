@@ -45,7 +45,7 @@ def hex_digest_from(digest):
     :param digest: 
     :return: 
     """
-    return binascii.hexlify(digest)
+    return binascii.hexlify(digest).decode("ascii")
 
 
 def get_next_line(current_line):

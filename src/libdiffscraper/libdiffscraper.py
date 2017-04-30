@@ -6,7 +6,7 @@
 """
 
 import os
-from . import fileloader, template
+from . import fileloader, template, util
 
 
 class Engine(object):
@@ -21,9 +21,21 @@ class Engine(object):
         contents = []
         for d in docs:
             contents.append(d['content'])
-        self.logger.info("extract: {} files are loaded.".format(len(docs)))
+        self.logger.info("generate: {} files are loaded.".format(len(docs)))
 
-        template.generate(contents)
+        invariant_segments = template.generate(contents)
+        self.logger.info("generate: # of invariant segments: {}".format(len(invariant_segments)))
+
+        merkle_tree = util.merkle_tree(invariant_segments)
+        self.logger.info("generate: merkle_root_hash: {}".format(util.hex_digest_from(merkle_tree.get_root_hash())))
+
+        template_object = template.make_template_object(invariant_segments, merkle_tree.get_root_hash())
+        serialized = template.serialize_template(template_object)
+        self.logger.info("generate: the size of serialized data: {}".format(len(serialized)))
+
+        with open(output_template, "wb") as f:
+            f.write(serialized)
+            f.flush()
 
         return True, ""
 
