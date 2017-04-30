@@ -131,6 +131,7 @@ class TestInvariantMatchingAlgorithm(TestCase):
         if invariant_segments_text != ['<d><e>', '<img/><f><f><f><f><a><b><c>']:
             self.fail()
 
+
 class TestGenerate(TestCase):
     def test_1(self):
         docs = ["<a/><b/><c/>", "<b/><c/><a/>", "<c/><b/><a/>"]
@@ -156,4 +157,48 @@ class TestGenerate(TestCase):
                 "<g><c><b><a><d><e><data3><img/><f><f><f><f><a><b><c>"]
         template = generate(docs)
         if template != ['<a>', '<d><e>', '<img/><f><f><f><f><a><b><c>']:
+            self.fail()
+
+
+class TestExtractAndReconstruct(TestCase):
+    def test_1(self):
+        docs = ["<a/><b/><c/>", "<b/><c/><a/>", "<c/><b/><a/>"]
+        template = generate(docs)
+        data_segments = list(map(lambda x:extract(template, x), docs))
+        if data_segments != [['', '<b/><c/>'], ['<b/><c/>', ''], ['<c/><b/>', '']]:
+            self.fail()
+        reconstructed_docs = list(map(lambda x: reconstruct(template, x), data_segments))
+        if reconstructed_docs != docs:
+            self.fail()
+
+    def test_2(self):
+        docs = ["<a/><b/><c/><d/><a/>", "<c/><b/><a/>", "<d/><b/><c/><a/>"]
+        template = generate(docs)
+        data_segments = list(map(lambda x: extract(template, x), docs))
+        if data_segments != [['<a/><b/>', '<d/>', ''], ['', '<b/>', ''], ['<d/><b/>', '', '']]:
+            self.fail()
+        reconstructed_docs = list(map(lambda x: reconstruct(template, x), data_segments))
+        if reconstructed_docs != docs:
+            self.fail()
+
+    def test_3(self):
+        docs = ["<a><b><c><d><e><e><a>", "<b><c><d><e><e><a>", "<b><c><d><e><e><a>"]
+        template = generate(docs)
+        data_segments = list(map(lambda x: extract(template, x), docs))
+        if data_segments != [['<a>', ''], ['', ''], ['', '']]:
+            self.fail()
+        reconstructed_docs = list(map(lambda x: reconstruct(template, x), data_segments))
+        if reconstructed_docs != docs:
+            self.fail()
+
+    def test_4(self):
+        docs = ["<g><a><b><c><d><e><data1><img/><f><f><f><f><a><b><c>",
+                "<h><b><c><a><d><e><data2><img/><f><f><f><f><a><b><c>",
+                "<g><c><b><a><d><e><data3><img/><f><f><f><f><a><b><c>"]
+        template = generate(docs)
+        data_segments = list(map(lambda x: extract(template, x), docs))
+        if data_segments != [['<g>', '<b><c>', '<data1>', ''], ['<h><b><c>', '', '<data2>', ''], ['<g><c><b>', '', '<data3>', '']]:
+            self.fail()
+        reconstructed_docs = list(map(lambda x: reconstruct(template, x), data_segments))
+        if reconstructed_docs != docs:
             self.fail()

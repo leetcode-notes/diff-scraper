@@ -313,6 +313,16 @@ def extract(invariant_segments_text, document):
     return data_segments
 
 
+def reconstruct(invariant_segments, data_segments):
+    buffer = ""
+    if len(data_segments) == len(invariant_segments) + 1:
+        for index in range(len(invariant_segments)):
+            buffer += (data_segments[index] + invariant_segments[index])
+        buffer += data_segments[-1]
+        return buffer
+    else:
+        return None
+
 # def candidates_pattern_repetition(edges, outgoing_count, incoming_count):
 #     cnt = {}
 #     for prev_token_hash in edges:
