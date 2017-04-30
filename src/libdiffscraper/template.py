@@ -336,8 +336,11 @@ def make_template_object(invariant_segments=None, merkle_root=None):
     return template_object
 
 
-def make_data_object(data_segments=None, template_merkle_root=None, data_merkle_root=None):
-    data_object = {"data_seg": data_segments, "mk_root_template":template_merkle_root, "mk_root_data":data_merkle_root}
+def make_data_object(data_segments=None, template_merkle_root=None, data_merkle_root=None, original_hash=None):
+    data_object = {"data_seg": data_segments,
+                   "mk_root_template": template_merkle_root,
+                   "mk_root_data": data_merkle_root,
+                   "original_hash": original_hash}
     return data_object
 
 

@@ -25,10 +25,29 @@ def load_document(path, preferred_encoding, logger=None):
     return None, 0
 
 
-def load_documents(paths, logger=None):
+def load_binary(path, logger=None):
+    try:
+        with open(path, "rb") as f:
+            content = f.read()
+            stat_info = os.stat(path)
+            return content, stat_info.st_size
+    except KeyboardInterrupt:
+        raise
+    except:
+        if logger is not None:
+            logger.exception("Exception caught: {}".format(sys.exc_info()[1]))
+        pass
+
+    return None, 0
+
+
+def load_documents(paths, mode, logger=None):
     docs = list()
     for path in paths:
-        content, file_size = load_document(path, "utf-8", logger=logger)
+        if mode == "text":
+            content, file_size = load_document(path, "utf-8", logger=logger)
+        elif mode == "binary":
+            content, file_size = load_binary(path, logger=logger)
         if content is None:
             pass
         else:
