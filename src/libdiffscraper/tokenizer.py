@@ -13,6 +13,18 @@ class Tokenizer(object):
         pass
 
     @staticmethod
+    def feature(parser_type, raw_string):
+        parser = Tokenizer.create_parser(parser_type)
+
+        parser.clear(is_collecting_meta=True)
+        parser.feed(raw_string)
+        parser.close()
+
+        print(parser.tokens_meta)
+
+
+
+    @staticmethod
     def tokenize(parser_type, raw_string):
         """
         Since a parser just returns metadata of type, line number and offset,
@@ -22,15 +34,9 @@ class Tokenizer(object):
         :return: a list of string tokens
         """
 
-        parser = None
-        if parser_type == "html":
-            parser = htmlparser.RawHTMLParser()
-        elif parser_type == "text":
-            parser = textparser.RawTextParser()
-        else:
-            raise Exception("Unknown parser type '{}'".format(parser_type))
+        parser = Tokenizer.create_parser(parser_type)
 
-        parser.clear()
+        parser.clear(is_collecting_meta=False)
         parser.feed(raw_string)
         parser.close()
 
@@ -54,6 +60,16 @@ class Tokenizer(object):
                 output_tokens.append(output_token)
             prev_token_meta_data = token_meta_data
         return output_tokens
+
+    @staticmethod
+    def create_parser(parser_type):
+        if parser_type == "html":
+            return htmlparser.RawHTMLParser()
+        elif parser_type == "text":
+            return textparser.RawTextParser()
+        else:
+            raise Exception("Unknown parser type '{}'".format(parser_type))
+        return None
 
     @staticmethod
     def get_string_token_from(lines, prev_token_line_number, prev_token_offset, token_line_number, token_offset,

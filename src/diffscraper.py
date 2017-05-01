@@ -43,13 +43,29 @@ def init_arg_parser():
                         action="store_true",
                         help="decompress (reconstruct) input files by using a template file")
 
+    parser.add_argument("--suggest",
+                        action="store_true",
+                        help="suggest a code snippet for a data segment in which you are interested")
+
     parser.add_argument("--print-unified",
                         action="store_true",
                         help="print a unified input documents")
 
+    parser.add_argument("--print-data-segments",
+                        action="store_true",
+                        help="print data segments")
+
     parser.add_argument("--template",
                         nargs=1,
-                        help="specify a template file for incremental/compress/decompress commands")
+                        help="specify a template file for incremental/compress/decompress/print-* commands")
+
+    parser.add_argument("--index",
+                        nargs=1,
+                        help="specify a segment index for suggest command")
+
+    parser.add_argument("--search",
+                        nargs=1,
+                        help="specify a keyword")
 
     parser.add_argument("--output-dir",
                         nargs=1,
@@ -75,10 +91,16 @@ def main():
     # <docs...> --compress --template <template_INPUT> --output-dir <directory>
     # <diff...> --decompress --template <template_INPUT> --output-dir <directory>
 
+    # Advanced Features
+    # =================
+    # <docs...> --suggest --index <N>
+    # <docs...> --suggest --search <keyword>
+
     # Debugging features
     # ==================
     # --force
     # <docs...> --print-unified
+    # <docs...> --print-data-segments
 
     print("\033[35mDiff-Scraper v0.1\033[0m")
 
@@ -89,12 +111,21 @@ def main():
     is_incremental = args.incremental is not None
     is_compress = args.compress is True
     is_decompress = args.decompress is True
+    is_suggest = args.suggest is True
     is_print_unified = args.print_unified is True
+    is_print_data_segments = args.print_data_segments is True
     is_force = args.force is True
 
     engine = libdiffscraper.Engine(logger)
 
-    num_of_commands = int(is_generate) + int(is_incremental) + int(is_compress) + int(is_decompress) + int(is_print_unified)
+    num_of_commands = int(is_generate) + \
+                      int(is_incremental) + \
+                      int(is_compress) + \
+                      int(is_decompress) + \
+                      int(is_suggest) + \
+                      int(is_print_unified) + \
+                      int(is_print_data_segments)
+
     if num_of_commands == 1:
         try:
             ret = None
@@ -104,16 +135,28 @@ def main():
                 ret = engine.generate(input_docs=args.files, output_template=args.generate[0], force=is_force)
             elif is_incremental:
                 assert_condition(len(args.files) == 1, "Only one input file is required.")
-                ret = engine.incremental(input_docs=args.files, input_template=args.template[0], output_template=args.incremental[0], force=is_force)
+                ret = engine.incremental(input_docs=args.files, input_template=args.template[0],
+                                         output_template=args.incremental[0], force=is_force)
             elif is_compress:
                 assert_condition(len(args.files) >= 1, "At least one input file is required.")
-                ret = engine.compress(input_docs=args.files, input_template=args.template[0], output_dir=args.output_dir[0], force=is_force)
+                ret = engine.compress(input_docs=args.files, input_template=args.template[0],
+                                      output_dir=args.output_dir[0], force=is_force)
             elif is_decompress:
                 assert_condition(len(args.files) >= 1, "At least one input file is required.")
-                ret = engine.decompress(input_docs=args.files, input_template=args.template[0], output_dir=args.output_dir[0], force=is_force)
+                ret = engine.decompress(input_docs=args.files, input_template=args.template[0],
+                                        output_dir=args.output_dir[0], force=is_force)
             elif is_print_unified:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
-                ret = engine.print_unified(input_docs=args.files)
+                ret = engine.suggest(mode="print-unified", input_docs=args.files, input_template=args.template,
+                                     exclude_invariant_segments=False, index=args.index, search=args.search)
+            elif is_print_data_segments:
+                assert_condition(len(args.files) >= 2, "At least two input files are required.")
+                ret = engine.suggest(mode="print-data-segments", input_docs=args.files, input_template=args.template,
+                                     exclude_invariant_segments=True, index=args.index, search=args.search)
+            elif is_suggest:
+                assert_condition(len(args.files) >= 2, "At least two input files are required.")
+                ret = engine.suggest(mode="suggest", input_docs=args.files, input_template=args.template,
+                                     exclude_invariant_segments=True, index=args.index, search=args.search)
             else:
                 raise Exception("Unreachable code")
 
@@ -126,7 +169,7 @@ def main():
             logger.exception("Exception caught: {}".format(sys.exc_info()[1]))
             pass
     elif num_of_commands == 0:
-        logger.warning("Nothing to do. Which command do you want to run? {generate, incremental, compress, decompress}")
+        logger.warning("Nothing to do. Which command do you want to run? {generate, incremental, compress, decompress, suggest, print-unified, print-data-segments}")
         parser.print_usage()
     else:
         logger.warning("Ambiguous command. Please choose a single command to be executed.")

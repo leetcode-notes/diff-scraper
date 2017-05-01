@@ -7,6 +7,7 @@
 
 import os
 from . import fileloader, template, util
+from .tokenizer import Tokenizer
 
 
 class Engine(object):
@@ -33,51 +34,31 @@ class Engine(object):
 
         return True, ""
 
-    def print_unified(self, input_docs):
+    def suggest(self, mode, input_docs, input_template, exclude_invariant_segments, index, search):
         color_set = {"invariant_seg": "\033[0;32m",
                      "data_seg": ["\033[41m\033[30m",
                                   "\033[42m\033[30m",
                                   "\033[43m\033[30m",
                                   "\033[44m\033[30m",
                                   "\033[45m\033[30m"]}
-        documents, _ = self.load_documents(input_docs, "text", "print_unified")
-        invariant_segments = template.generate(documents)
+        documents, _ = self.load_documents(input_docs, "text", mode)
+        if input_template is None:
+            invariant_segments = template.generate(documents)
+        else:
+            _, template_object = self.load_template(input_template[0])
+            invariant_segments = template_object["inv_seg"]
         data = []
         for document in documents:
             data.append(template.extract(invariant_segments, document))
         for seg_index in range(len(invariant_segments)+1):
+            print("## Data Segment {} ##".format(seg_index))
             for doc_index, data_segments in enumerate(data):
-                print("{}{}\033[0m".format(color_set["data_seg"][doc_index % len(color_set["data_seg"])], data_segments[seg_index]))
-            if seg_index < len(invariant_segments):
-                print("{}{}\033[0m".format(color_set["invariant_seg"],
-                                           invariant_segments[seg_index]))
-
-    def verbose_template_file(self, template_object, serialized, module_name):
-        self.logger.debug("({}) template: the size of serialized data: \033[1;32m{}\033[0m".format(module_name, len(serialized)))
-        self.logger.debug("({}) template: # of invariant segments: \033[1;32m{}\033[0m".format(module_name, len(template_object["inv_seg"])))
-        self.logger.debug("({}) template: merkle_root_hash: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(template_object["mk_root"])))
-
-    def verbose_data_file(self, data_object, serialized, module_name):
-        self.logger.debug("({}) data: the size of serialized data: \033[1;32m{}\033[0m".format(module_name, len(serialized)))
-        self.logger.debug("({}) data: # of data segments: \033[1;32m{}\033[0m".format(module_name, len(data_object["data_seg"])))
-        self.logger.debug("({}) data: merkle_root_hash_template: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
-            data_object["mk_root_template"]
-        )))
-        self.logger.debug("({}) data: merkle_root_hash_data: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
-            data_object["mk_root_data"]
-        )))
-        self.logger.debug(
-            "({}) data: hash of the original document: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
-                data_object["original_hash"]
-            )))
-
-    def load_documents(self, input_docs, mode, module_name):
-        document_files = fileloader.load_documents(input_docs, mode, logger=self.logger)
-        documents = []
-        for d in document_files:
-            documents.append(d['content'])
-        self.logger.info("({}) \033[1;32m{}\033[0m files are loaded.".format(module_name, len(document_files)))
-        return documents, document_files
+                print("{}{}\033[0m".format(color_set["data_seg"][doc_index % len(color_set["data_seg"])], data_segments[seg_index].strip()))
+            if exclude_invariant_segments is False:
+                if seg_index < len(invariant_segments):
+                    print("## Invariant Segment {} ##".format(seg_index))
+                    print("{}{}\033[0m".format(color_set["invariant_seg"],
+                                               invariant_segments[seg_index]))
 
     def incremental(self, input_docs, input_template, output_template, force=False):
         # if force is False:
@@ -89,9 +70,7 @@ class Engine(object):
 
     def compress(self, input_docs, input_template, output_dir, force=False):
         documents, document_files = self.load_documents(input_docs, "text", "compress")
-        with open(input_template, "rb") as f:
-            serialized = f.read()
-        template_object = template.deserialize_object(serialized)
+        serialized, template_object = self.load_template(input_template)
         invariant_segments = template_object["inv_seg"]
         self.verbose_template_file(template_object, serialized, "compress")
 
@@ -120,9 +99,7 @@ class Engine(object):
 
     def decompress(self, input_docs, input_template, output_dir, force=False):
         documents, document_files = self.load_documents(input_docs, "binary", "decompress")
-        with open(input_template, "rb") as f:
-            serialized = f.read()
-        template_object = template.deserialize_object(serialized)
+        serialized, template_object = self.load_template(input_template)
         self.verbose_template_file(template_object, serialized, "decompress")
 
         for document, document_meta in zip(documents, document_files):
@@ -164,3 +141,35 @@ class Engine(object):
 
         return True, ""
 
+    def verbose_template_file(self, template_object, serialized, module_name):
+        self.logger.debug("({}) template: the size of serialized data: \033[1;32m{}\033[0m".format(module_name, len(serialized)))
+        self.logger.debug("({}) template: # of invariant segments: \033[1;32m{}\033[0m".format(module_name, len(template_object["inv_seg"])))
+        self.logger.debug("({}) template: merkle_root_hash: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(template_object["mk_root"])))
+
+    def verbose_data_file(self, data_object, serialized, module_name):
+        self.logger.debug("({}) data: the size of serialized data: \033[1;32m{}\033[0m".format(module_name, len(serialized)))
+        self.logger.debug("({}) data: # of data segments: \033[1;32m{}\033[0m".format(module_name, len(data_object["data_seg"])))
+        self.logger.debug("({}) data: merkle_root_hash_template: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
+            data_object["mk_root_template"]
+        )))
+        self.logger.debug("({}) data: merkle_root_hash_data: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
+            data_object["mk_root_data"]
+        )))
+        self.logger.debug(
+            "({}) data: hash of the original document: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
+                data_object["original_hash"]
+            )))
+
+    def load_documents(self, input_docs, mode, module_name):
+        document_files = fileloader.load_documents(input_docs, mode, logger=self.logger)
+        documents = []
+        for d in document_files:
+            documents.append(d['content'])
+        self.logger.info("({}) \033[1;32m{}\033[0m files are loaded.".format(module_name, len(document_files)))
+        return documents, document_files
+
+    def load_template(self, input_template):
+        with open(input_template, "rb") as f:
+            serialized = f.read()
+        template_object = template.deserialize_object(serialized)
+        return serialized, template_object
