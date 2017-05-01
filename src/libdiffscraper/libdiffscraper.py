@@ -6,7 +6,7 @@
 """
 
 import os
-from . import fileloader, template, util
+from . import fileloader, template, util, selector
 from .tokenizer import Tokenizer
 
 
@@ -50,6 +50,34 @@ class Engine(object):
         data = []
         for document in documents:
             data.append(template.extract(invariant_segments, document))
+
+        if mode == "suggest":
+            tagname_candidates = set()
+            attr_candidates = set()
+            class_candidates = set()
+            inner_text_candidates = set()
+
+            features = list(map(lambda x: Tokenizer.feature("html", x), invariant_segments))
+            for doc_index, data_segments in enumerate(data):
+                print(template.select(features, [selector.starttag("title")], 1))
+
+            # for seg_index in range(len(invariant_segments)):
+            #     features = Tokenizer.feature("html", invariant_segments[seg_index])
+            #     if features is not None:
+            #         for each_tag in features:
+            #             if "tag" in each_tag:
+            #                 tagname_candidates.add(each_tag["tag"])
+            #             if "attrs" in each_tag:
+            #                 for attr_name, attr_value in each_tag["attrs"]:
+            #                     attr_candidates.add((attr_name, attr_value))
+            #                     if attr_name =="class":
+            #                         classes = attr_value.split()
+            #                         for t in classes:
+            #                             class_candidates.add(t)
+
+            # selector_candidates = list()
+
+
         for seg_index in range(len(invariant_segments)+1):
             found_index_data = index is None or seg_index == int(index[0])
             found_index_invariant = index is None or seg_index == int(index[0]) - 1
@@ -64,6 +92,8 @@ class Engine(object):
                     print("## Data Segment {} ##".format(seg_index))
                     for doc_index, data_segments in enumerate(data):
                         print("{}{}\033[0m".format(color_set["data_seg"][doc_index % len(color_set["data_seg"])], data_segments[seg_index].strip()))
+
+
             if found_index_invariant:
                 if exclude_invariant_segments is False:
                     if seg_index < len(invariant_segments):

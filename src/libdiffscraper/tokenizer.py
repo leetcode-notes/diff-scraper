@@ -20,7 +20,7 @@ class Tokenizer(object):
         parser.feed(raw_string)
         parser.close()
 
-        print(parser.tokens_meta)
+        return parser.tokens_meta
 
 
 
