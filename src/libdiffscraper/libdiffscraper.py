@@ -51,14 +51,25 @@ class Engine(object):
         for document in documents:
             data.append(template.extract(invariant_segments, document))
         for seg_index in range(len(invariant_segments)+1):
-            print("## Data Segment {} ##".format(seg_index))
-            for doc_index, data_segments in enumerate(data):
-                print("{}{}\033[0m".format(color_set["data_seg"][doc_index % len(color_set["data_seg"])], data_segments[seg_index].strip()))
-            if exclude_invariant_segments is False:
-                if seg_index < len(invariant_segments):
-                    print("## Invariant Segment {} ##".format(seg_index))
-                    print("{}{}\033[0m".format(color_set["invariant_seg"],
-                                               invariant_segments[seg_index]))
+            found_index_data = index is None or seg_index == int(index[0])
+            found_index_invariant = index is None or seg_index == int(index[0]) - 1
+
+            if found_index_data:
+                is_found = False
+                for doc_index, data_segments in enumerate(data):
+                    if search is None or data_segments[seg_index].find(search[0]) != -1:
+                        is_found = True
+                        break
+                if is_found:
+                    print("## Data Segment {} ##".format(seg_index))
+                    for doc_index, data_segments in enumerate(data):
+                        print("{}{}\033[0m".format(color_set["data_seg"][doc_index % len(color_set["data_seg"])], data_segments[seg_index].strip()))
+            if found_index_invariant:
+                if exclude_invariant_segments is False:
+                    if seg_index < len(invariant_segments):
+                        print("## Invariant Segment {} ##".format(seg_index))
+                        print("{}{}\033[0m".format(color_set["invariant_seg"],
+                                                       invariant_segments[seg_index]))
 
     def incremental(self, input_docs, input_template, output_template, force=False):
         # if force is False:
