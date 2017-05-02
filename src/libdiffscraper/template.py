@@ -120,27 +120,30 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line, candidate_t
     """
 
     # current_line must be in the range of documents
-    for doc_index, tokens in enumerate(tokens_of):
-        if current_line[doc_index] >= len(tokens):
+    while True:
+        for doc_index, tokens in enumerate(tokens_of):
+            if current_line[doc_index] >= len(tokens):
+                return
+        is_detected = False
+        candidates = find_next_candidates(tokens_of, tokens_with_loc, current_line)
+        for candidate in candidates:
+            freq = []
+            for doc_index, token_index in enumerate(candidate):
+                token_hash = compute_hash(tokens_of[doc_index][token_index])
+                token_freq = compute_freq(tokens_with_loc[token_hash][doc_index], token_index)
+                freq.append(token_freq)
+            if all(map(lambda x:x == 1, freq)):
+                if candidate not in node_cache:
+                    new_branch = nary_tree()
+                    new_branch.set_value(candidate)
+                    node_cache[candidate] = new_branch
+                    find_unique_invariants(tokens_of, tokens_with_loc, get_next_line(candidate), new_branch, node_cache)
+                    is_detected = True
+                candidate_tree.insert(node_cache[candidate])
+        if not is_detected:
+            current_line = get_next_line(current_line)
+        else:
             return
-    is_detected = False
-    candidates = find_next_candidates(tokens_of, tokens_with_loc, current_line)
-    for candidate in candidates:
-        freq = []
-        for doc_index, token_index in enumerate(candidate):
-            token_hash = compute_hash(tokens_of[doc_index][token_index])
-            token_freq = compute_freq(tokens_with_loc[token_hash][doc_index], token_index)
-            freq.append(token_freq)
-        if all(map(lambda x:x == 1, freq)):
-            if candidate not in node_cache:
-                new_branch = nary_tree()
-                new_branch.set_value(candidate)
-                node_cache[candidate] = new_branch
-                find_unique_invariants(tokens_of, tokens_with_loc, get_next_line(candidate), new_branch, node_cache)
-                is_detected = True
-            candidate_tree.insert(node_cache[candidate])
-    if not is_detected:
-        find_unique_invariants(tokens_of, tokens_with_loc, get_next_line(current_line), candidate_tree, node_cache)
 
 
 def compute_tokens_with_loc(tokens_of):
