@@ -1,0 +1,185 @@
+{22:{{0:"vnd.microsoft.",1:"shortcut"},{0:"x-",1:""}},23:{{0:"57.png?v=a426129v",1:"72x72",2:"0"},{0:"72.png?v=beec73ap",1:"72x72",2:"1"},{0:"114.png?v=441408e7",1:"114x114",2:"1"},{0:"144.png?v=7e3f53hc",1:"144x144",2:"1"}},24:{{0:"flex/gd-core.css?v=2977a8718i"},{0:"sections/gd-search.css?v=ec92c9qas"}},25:{{0:{},1:"logo"},{0:{{0:"jobTitle"},{0:"empName floatLt padTopSm"},{0:"jobLoc padTopSm"}},1:"jobDetails padLtSm padRt"}},26:{{0:"Public Relations Interview Questions",1:"og:title"},{0:"website",1:"og:type"},{0:"Glassdoor",1:"og:site_name"},{0:"129253937150340",1:"fb:app_id"},{0:"http://www.glassdoor.com/Interview/public-relations-interview-questions-SRCH_KO0,16.htm",1:"og:url"},{0:"http://static.glassdoor.com/static/img/partners/fb/logo-1200x630.png?v=b8dbc1je1",1:"og:image"},{0:"1 Interview questions. A free inside look at Public Relations interview questions and process details for other companies - all posted anonymously by interview candidates",1:"og:description"}},27:{{0:"no-cache,must-revalidate",1:"Cache-Control"},{0:"no-cache",1:"Pragma"},{0:"0",1:"Expires"}},28:{{0:"HH"},{0:"Tab"},{0:"DT"}},29:{{0:"apple-itunes-app-beta",1:"589698942"},{0:"google-play-app",1:"com.glassdoor.app"}},30:{{0:"i18n-site-en-US.js?v=e21d16vw1"},{0:"flex-bottom.js?v=9696727wgi"}},31:{{0:"window.gdGlobals = window.gdGlobals ||
+  [{
+   'analyticsId':                      "UA-2595786-7",
+   
+   
+   'analyticsUrl':                     "/search/interviews?cat=Interview+Questions&o=Public+Relations",
+
+   'deferredScriptType':               "text/x-deferred-js",
+   'accessDeniedRedirectUrl':          '',
+   'locale':        'en-US',
+
+   'device':       {
+        
+        'mobileWeb':    false,
+
+        
+        'handheld':     false,
+
+        
+        'tablet':       false
+       },
+   'page':         {
+        
+        'domain':       "www.glassdoor.com",
+
+        
+        'domainSuffix': "",
+
+        
+        'group':        "Search-Interviews",
+
+        
+        'guid':         '000001501315fdbbb82c9c1dc06acd1b',
+
+        
+        'flex':         true,
+
+        
+        'section':      "search",
+
+        
+        'type':         "search:interviews",
+
+        
+        'id':           "search:interviews",
+
+        'med': '',
+
+        'src' : ''
+       },
+   'user':         {
+        
+        'guid':         'c40f43fd-c86d-42df-a01e-b41738d8834c',
+
+        
+        'ipAddr':       "132.75.160.98",
+
+        
+        'locale':       "en-US",
+
+        
+        'country':      "IL"
+       },
+   'vendor':       {
+        'fbReqPerms':   "",
+        'rumKey':       "HAMGR-VZ7AR-KZ48V-CY9KZ-LM2WJ"
+       },
+   
+   'search':       {
+    
+        'occupation' : "Public Relations",
+       
+        'totalSearchResults': "1",
+        'displayedSearchResults': "0",
+        'pageNumber': "1",
+       
+
+       'segmentType' : "O"
+
+    
+   },
+   'employer' : {
+    
+   },
+   'job' : {
+    
+   }
+
+  }];
+
+ 
+ window.getGdGlobals = window.getGdGlobals ||
+   function() {
+    return gdGlobals[0];
+   }
+
+ /*
+  * The following is maintained for SOASTA, but should be changed to the new location (getGdGlobals().page.group)
+  * after this change is in production.
+  */
+ GD = window.GD || {};
+ GD.pageInfo = GD.pageInfo || {};
+ GD.pageInfo.pageGroup = getGdGlobals().page.group;"},{0:"var  appsFlyerOpts;
+
+   appsFlyerOpts = {
+    appsflyer:    {
+     pid:  "",
+     c:   "",
+     afsub1:  ""
+    },
+    mobileUgcScreenCount: 0
+   };"}},10:{{0:{},1:"logo"},{0:{{0:"jobTitle"},{0:"empName floatLt padTopSm"},{0:"jobLoc padTopSm"}},1:"jobDetails padLtSm padRt"}},32:{{0:"://www.glassdoor.com",1:"canonical",2:"US",3:"0"},{0:"://www.glassdoor.com",1:"alternate",2:"US",3:"1"},{0:"s://www.glassdoor.com.au",1:"alternate",2:"AU",3:"1"},{0:"s://www.glassdoor.ca",1:"alternate",2:"CA",3:"1"},{0:"s://www.glassdoor.co.in",1:"alternate",2:"IN",3:"1"},{0:"s://www.glassdoor.co.uk",1:"alternate",2:"GB",3:"1"}},11:{{0:"Job",1:"Job",2:"Job/job",3:"jobs tab"},{0:"Companie",1:"Reviews",2:"Reviews/company-review",3:"reviews tab"},{0:"Salarie",1:"Salaries",2:"Salaries/company-salarie",3:"salaries tab"},{0:"Interview",1:"Interview",2:"Interview/job-interview-question",3:"interviews tab active"}},33:{{0:"referrer",1:"origin"},{0:"description",1:"1 Interview questions. A free inside look at Public Relations interview questions and process details for other companies - all posted anonymously by interview candidates"}},12:{{0:"logo padRt margTopSm cell"},{0:"message padRt cell wrap"}},13:{{0:"Type",1:"T"},{0:"Id",1:"Id"}},14:{{0:"Job Title, Keywords, or Company",1:"tru",2:"0",3:"Job/job",4:"Job"},{0:"Company Name",1:"fals",2:"0",3:"Reviews/company-review",4:"Companie"},{0:"Job Title or Company",1:"fals",2:"0",3:"Salaries/company-salarie",4:"Salarie"},{0:"Job Title or Company",1:"fals",2:"1",3:"Interview/job-interview-question",4:"Interview"}},15:{{0:"message wrap"},{0:"daysActive wrap minor"}},16:{{0:"Microsoft",1:"Microsoft-Interview-Questions-E1651"},{0:"Apple",1:"Apple-Interview-Questions-E1138"},{0:"Google",1:"Google-Interview-Questions-E9079"},{0:"Amazon.com",1:"Amazon-com-Interview-Questions-E6036"},{0:"Accenture",1:"Accenture-Interview-Questions-E4138"},{0:"Deloitte",1:"Deloitte-Interview-Questions-E2763"},{0:"Teach for America",1:"Teach-for-America-Interview-Questions-E105049"},{0:"Yahoo!",1:"Yahoo-Interview-Questions-E5807"},{0:"Booz Allen Hamilton",1:"Booz-Allen-Hamilton-Interview-Questions-E2735"},{0:"Procter &amp; Gamble",1:"Procter-and-Gamble-Interview-Questions-E544"},{0:"Bank of America",1:"Bank-of-America-Interview-Questions-E8874"},{0:"Best Buy",1:"Best-Buy-Interview-Questions-E97"},{0:"KPMG",1:"KPMG-Interview-Questions-E2867"},{0:"PricewaterhouseCoopers",1:"PricewaterhouseCoopers-Interview-Questions-E8450"},{0:"Target",1:"Target-Interview-Questions-E194"}},17:{{0:"1",1:"Interview",2:"0",3:"index"},{0:"0",1:"Public Relation",2:"1",3:"public-relations-interview-questions-SRCH_KO0,16"}},18:{{0:"Software Engineer",1:"software-engineer-jobs-SRCH_KO0,17"},{0:"Manager",1:"manager-jobs-SRCH_KO0,7"},{0:"Project Manager",1:"project-manager-jobs-SRCH_KO0,15"},{0:"Senior Software Engineer",1:"senior-software-engineer-jobs-SRCH_KO0,24"},{0:"Consultant",1:"consultant-jobs-SRCH_KO0,10"},{0:"Senior Consultant",1:"senior-consultant-jobs-SRCH_KO0,17"},{0:"Analyst",1:"analyst-jobs-SRCH_KO0,7"},{0:"Associate",1:"associate-jobs-SRCH_KO0,9"},{0:"Director",1:"director-jobs-SRCH_KO0,8"},{0:"Intern",1:"intern-jobs-SRCH_KO0,6"},{0:"Engineer",1:"engineer-jobs-SRCH_KO0,8"},{0:"Business Analyst",1:"business-analyst-jobs-SRCH_KO0,16"},{0:"Vice President",1:"vice-president-jobs-SRCH_KO0,14"},{0:"Product Manager",1:"product-manager-jobs-SRCH_KO0,15"},{0:"Program Manager",1:"program-manager-jobs-SRCH_KO0,15"}},19:{{0:"hide",1:"&amp; Reviews"},{0:"show",1:""}},0:{{0:{{0:{},1:{{0:"0",1:"/about/index_input.htm",2:"About Us",3:"1"},{0:"1",1:"http://jobs.glassdoor.com/home?id=GLASA001M",2:"Careers",3:"1"},{0:"1",1:"http://www.glassdoor.com/blog",2:"Blog",3:"0"},{0:"1",1:"http://www.glassdoor.com/research",2:"Research",3:"0"}},2:{},3:"Glassdoor"},{0:{},1:{{0:"0",1:"http://employers.glassdoor.com?src=gdfoot",2:"Talent Solutions",3:"1"},{0:"0",1:"/partners/index.htm",2:"Employer Center",3:"1"},{0:"0",1:"/post-job?src=site-footer",2:"Post a Job",3:"1"}},2:{},3:"Employers"}}},{0:{{0:{{0:"top",1:"/about/terms.htm",2:"Terms of Use"},{0:"top",1:"/about/privacy.htm",2:"Privacy &amp; Cookies"}},1:{},2:{{0:"GlassDoorHome/en_US",1:"Help Center"},{0:"article/Community-Guidelines/en_US/",1:"Guidelines"}},3:"Community"},{0:{{0:"blank",1:"http://help.glassdoor.com/ContactUs/en_US",2:"Job Boards"},{0:"blank",1:"http://resources.glassdoor.com/advertising-on-glassdoor.html",2:"Advertisers"},{0:"top",1:"/api/index.htm",2:"Developers"}},1:{},2:{},3:"Work With Us"}}}},1:{{0:"ios",1:"vailable on the App Store",2:"itunes.apple.com/us/app/glassdoor-job-search-salaries/id589698942?mt=8&amp;uo=4"},{0:"android",1:"ndroid App available on Google Play",2:"play.google.com/store/apps/details?id=com.glassdoor.app"}},2:{{0:"Salaries by Job",1:"new",2:"1",3:"job-salarie"},{0:"Salaries by Company",1:"new",2:"0",3:"company-salarie"},{0:"Salaries by City",1:"end",2:"1",3:"city-salarie"},{0:"Reviews by Company",1:"new",2:"1",3:"company-review"},{0:"Interview Questions by Job",1:"end",2:"1",3:"job-interview"},{0:"Interviews by Company",1:"newLine end",2:"1",3:"company-interview"},{0:"Benefits by Company",1:"end",2:"1",3:"company-benefit"},{0:"Jobs by Title",1:"new",2:"1",3:"title-job"},{0:"Jobs by Company",2:"0",3:"company-job"},{0:"Jobs by City",1:"end",2:"1",3:"city-job"}},3:{{0:"Australia",1:"com.au/Interview/public-relations-interview-questions"},{0:"Canada",1:"ca/Interview/public-relations-interview-questions"},{0:"Deutschland",1:"de/Vorstellungsgespräch/public-relations-fragen-im-vorstellungsgespräch"},{0:"France",1:"fr/Entretien/public-relations-questions-entretien-d-embauche"},{0:"India",1:"co.in/Interview/public-relations-interview-questions"},{0:"Nederland",1:"nl/Sollicitatiegesprek/public-relations-sollicitatievragen"},{0:"United Kingdom",1:"co.uk/Interview/public-relations-interview-questions"}},4:{{0:"window.GD.page = window.GD.page || {};
+    
+        $.extend(GD.page, {"devSiteSwitches":{"forceExpandedJsCss":false,"forceExpandedHtml":false,"highlightingI18nTags":false,"debuggingResourceBundlesPlaceholders":false,"debuggingResourceBundlesHilite":false,"showPerformanceMetricBar":false,"showOptimizedCSS":false,"showJasmineTests":false,"tester":false},"fbApi":{"appId":"129253937150340","requestLocale":"en-US","url":"http://www.glassdoor.com/crossDomain/facebookChannel.htm"},"siteSrch":{"pickBestMatch":false,"locationStringFromIP":"Haifa","initSrchAC":true,"locationACEnabled":true,"srchType":"INTERVIEW"},"countryChooser":{"uiType":"dropdown"}});"},{0:"GD.afterBody(function(){
+      GD.script.load([{"url":"http://static.glassdoor.com/static/js/gd-site-srch.js?v\u003d93392c3ro"},{"url":"http://static.glassdoor.com/static/js/gd-country-chooser.js?v\u003db9f579aej"}]);
+    });"}},5:{{0:"window.googleId = 'UA-2595786-1';
+
+  var  _gaq = _gaq || [];
+  var webAnalyticsPageURL = "/search/interviews?cat=Interview+Questions&o=Public+Relations""},{0:"_gaq.push(['_setAccount', 'UA-2595786-1']);
+
+  
+   _gaq.push(['_setDomainName', 'www.glassdoor.com']);
+  
+
+  _gaq.push(['_setCampaignCookieTimeout', 31536000]);
+
+  GD.ga.trackPageDims();
+
+  
+  _gaq.push(['_setCampSourceKey', 'utm_source']);
+  _gaq.push(['_setCampMediumKey', 'utm_medium']);
+  _gaq.push(['_setCampContentKey', 'utm_content']);
+  _gaq.push(['_setCampTermKey', 'utm_term']);
+  _gaq.push(['_setCampNameKey', 'utm_campaign']);
+
+  GD.script.load(('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js',
+                 function () {
+       
+       $(function() {
+        GD.ga.onAnalyticsLoaded(GD.ga.CLASSIC);
+       });
+
+  
+   $(function () {
+    GD.ga.setDim(4,  // Variable slot
+        'GDSegment',        // The name acts as a kind of category for the user activity.
+        'Job-Searcher',     // This value of the custom variable.
+        1);                            // visitor scope
+
+    });
+  
+
+  $(function () {
+   GD.ga.setDim(11, // Variable slot
+       'User Reg Month',    // The name acts as a kind of category for the user activity.
+       'unknown');      // This value of the custom variable.
+
+   });
+
+   
+   // GD.ga.setDomainName('none'); // Occasionally needed 'reset' GA debug Chrome extension locally
+   GD.ga.trackPageViewOld(webAnalyticsPageURL);
+  })"}},6:{{0:"GD.afterBody(function() {
+     
+     GD.perf.mark(GD.perf.MARK_BEFORE_DEFERRED_JS);
+
+     try {
+      GD.dom.execDeferredScripts();
+     }
+     catch(e) {
+      Logger.error("Executing deferred scripts failed. (" + e + ")");
+     }
+
+     
+
+     GD.perf.mark(GD.perf.MARK_AFTER_DEFERRED_JS);
+
+     
+      GD.perf.measure(GD.perf.MEASURE_FLEX_BOTTOM, GD.perf.MARK_BEFORE_FLEX_BOTTOM, GD.perf.MARK_AFTER_FLEX_BOTTOM);
+     
+      GD.perf.measure(GD.perf.MEASURE_DEFERRED_JS, GD.perf.MARK_BEFORE_DEFERRED_JS, GD.perf.MARK_AFTER_DEFERRED_JS);
+     
+     GD.perf.measure(GD.perf.MEASURE_DOM_CONTENT_LOADED, 'navigationStart', 'domContentLoadedEventEnd');
+     GD.perf.measure(GD.perf.MEASURE_PERCEIVED_LOAD, 'navigationStart', GD.perf.MARK_PERCEIVED_LOAD);
+    });"},{0:"GD.perf.mark(GD.perf.MARK_PERCEIVED_LOAD);"}},7:{{0:"logo padRt margTopSm cell"},{0:"message padRt cell wrap"}},8:{{0:"0",1:"ount"},{0:"false",1:"hosen"}},9:{{0:"message wrap"},{0:"daysActive wrap minor"}},20:{{0:{{0:"1",1:"1",2:"0",3:"0",4:"Get Free Employer Account",5:"1",6:"/employers/index.htm?source=employermenu",7:"blank",8:"get-free-emp-acct"},{0:"1",1:"1",2:"0",3:"0",4:"Sign In to Employer Center",5:"0",6:"/employers/ec/index.htm",7:"blank",8:"get-free-emp-acct"}},1:{{0:"Post a Job",1:"1",2:"0"},{0:"Manage Job Posting",1:"0",2:"1"}},2:{{0:"0",1:"Solutions for Employers",2:"talent-solutions",3:"/employers/index.htm"},{0:"1",1:"Employer Branding",2:"emp-branding-blog",3:"/employers/products/enhanced-profile.htm"},{0:"1",1:"Job Advertising",2:"job-advertising-blog",3:"/employers/products/job-advertising.htm"},{0:"0",1:"Recruiting Blog",2:"recruiting-blog",3:"http://employers.glassdoor.com/blog"}},3:"Employers",4:"",5:"1"},{0:{{0:"1",1:"0",2:"1",3:"0",4:"savedJob",5:"Saved Job",6:"saved-jobs"},{0:"1",1:"0",2:"1",3:"0",4:"jobAlert",5:"Job Alert",6:"job-alerts"},{0:"1",1:"0",2:"1",3:"0",4:"followedCompanie",5:"Company Follow",6:"company-follow"},{0:"1",1:"0",2:"1",3:"0",4:"salarie",5:"Contribution",6:"contributions"},{0:"0",1:"0",2:"1",3:"0",4:"setting",5:"Account Setting",6:"account-settings"},{0:"0",1:"1",2:"0",3:"0",4:"Help Center",5:"1",6:"http://help.glassdoor.com/",7:"blank",8:"help-center"},{0:"1",1:"1",2:"0",3:"1",4:"Sign Out",5:"1",6:"/logout.htm",7:"top",8:"sign-out"}},1:{},2:{},3:"Account",4:"false",5:"0"}},21:{{0:"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",1:"viewport"},{0:"yes",1:"apple-mobile-web-app-capable"},{0:"black",1:"apple-mobile-web-app-status-bar-style"}}}

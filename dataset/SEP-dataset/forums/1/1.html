@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html id="XenForo" lang="en-US" dir="LTR" class="Public NoJs LoggedOut Sidebar Responsive" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<base href="https://forums.oneplus.net/"/>
+<script>
+			var _b = document.getElementsByTagName('base')[0], _bH = "https://forums.oneplus.net/";
+			if (_b && _b.href != _bH) _b.href = _bH;
+		</script>
+<title>OnePlus Forums</title>
+<noscript><style>.JsOnly,.jsOnly{display:none!important;}</style></noscript>
+<link rel="stylesheet" href="css.php?css=xenforo,form,public&amp;style=2&amp;dir=LTR&amp;d=1442907103"/>
+<link rel="stylesheet" href="css.php?css=bb_code,node_category,node_forum,node_list,profile_post_list_simple,sidebar_share_page,wf_default,xopenid_login_form&amp;style=2&amp;dir=LTR&amp;d=1442907103"/>
+<script>
+
+	var _gaq = [['_setAccount', 'UA-46480385-3'], ['_trackPageview']];
+	!function(d, t)
+	{
+		var g = d.createElement(t),
+			s = d.getElementsByTagName(t)[0];	
+		g.async = true;
+		g.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g, s);
+	}
+	(document, 'script');
+
+	</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/modernizr.js"></script>
+<script type="text/javascript" src="/js/waypoints.min.js"></script>
+<script type="text/javascript" src="/js/custom.js"></script>
+<script>if (!window.jQuery) { document.write('<scr'+'ipt type="text/javascript" src="js/jquery/jquery-1.11.0.min.js"><\/scr'+'ipt>'); }</script>
+<script src="js/xenforo/xenforo.js?_v=3fee6e84"></script>
+<link rel="apple-touch-icon" href="https://forums.oneplus.net/styles/oneplus2014/xenforo/logo.og.png"/>
+<link rel="alternate" type="application/rss+xml" title="RSS feed for OnePlus Forums" href="forums/-/index.rss"/>
+<link rel="canonical" href="https://forums.oneplus.net/forums/"/>
+<meta name="description" content="The official community for OnePlus flagship killers, software, accessories, and more."/>
+<meta property="og:image" content="http://oneplus.net/media/images/opengraph/oneplus-logo-big.png"/>
+</head>
+<body>
+<header>
+<div id="header-sticky" class="">
+<div class="pageWidth">
+<ul class="nav nav-pills">
+<li class="active"><a href="//forums.oneplus.net/">Forums</a></li>
+<li class="divider"></li>
+<li class="navTab Popup PopupControl PopupClosed">
+<a href="/index.php?search" rel="Menu" class="navLink NoPopupGadget" id="QuickSearchPlaceholder"><span class="i-search"></span></a>
+<div class="Menu JsOnly navPopup" style="width:280px" id="SearchMenu">
+<div class="primaryContent" style="padding:20px 15px">
+<div id="searchBar">
+<fieldset id="QuickSearch">
+<form action="search/search" method="post" class="formPopup">
+<div class="primaryControls">
+ 
+<input type="search" name="keywords" value="" class="textCtrl" placeholder="Search..." results="0" title="Enter your search and hit enter" id="QuickSearchQuery"/>
+ 
+</div>
+<div class="secondaryControls">
+<div>
+ 
+<dl class="ctrlUnit">
+<dt></dt>
+<dd><ul>
+<li><label><input type="checkbox" name="title_only" value="1" id="search_bar_title_only" class="AutoChecker" data-uncheck="#search_bar_thread"/> Search titles only</label></li>
+</ul></dd>
+</dl>
+<dl class="ctrlUnit">
+<dt><label for="searchBar_users">Posted by Member:</label></dt>
+<dd>
+<input type="text" name="users" value="" class="textCtrl AutoComplete" id="searchBar_users"/>
+<p class="explain">Separate names with a comma.</p>
+</dd>
+</dl>
+<dl class="ctrlUnit">
+<dt><label for="searchBar_date">Newer Than:</label></dt>
+<dd><input type="date" name="date" value="" class="textCtrl" id="searchBar_date"/></dd>
+</dl>
+</div>
+<a style="margin:auto;float:right" href="search/" class="button moreOptions Tooltip" title="Advanced Search">More...</a>
+<input type="submit" value="Search" class="button primary Tooltip" title="Find Now"/>
+<input type="hidden" name="_xfToken" value=""/>
+ 
+<div class="menuHeader" style="clear:both">
+<br><br><h4>Useful Searches</h4>
+</div>
+<ul class="blockLinksList">
+ 
+<li><a href="find-new/posts?recent=1" rel="nofollow">Recent Posts</a></li>
+ 
+</ul>
+</div>
+</form>
+</fieldset>
+</div>
+</div>
+</div>
+</li>
+<li class="navTab Popup PopupControl PopupClosed">
+<a href="login/" rel="Menu" class="navLink NoPopupGadget"><span class="i-user"></span></a>
+<div class="Menu JsOnly navPopup" style="width:auto;height:auto" id="SignIn-menu">
+<div class="primaryContent">
+<form action="misc/connect-login" method="post" class="xenForm " id="login">
+<div>
+<input type="hidden" name="loginopenid" value="https://account.oneplus.net"/>
+<div style="margin: 0px; text-align: center;">
+<button type="submit" class="btn btn-primary">Login</button>
+<button class="btn btn-primary"><a id="sign-up-button" href="https://account.oneplus.net/sign-up">Sign up</a></button>
+</div>
+</div>
+<input type="hidden" name="cookie_check" value="1"/>
+<input type="hidden" name="redirect" value="/forums/"/>
+<input type="hidden" name="_xfToken" value=""/>
+</form>
+</div>
+</div>
+</li>
+</ul>
+<div class="logo-main"><a href="//oneplus.net/" title="OnePlus Forums"><span class="i-logo-48"></span></a></div>
+</div>
+</div>
+</header>
+<div id="headerProxy"></div>
+<div id="content" class="forum_list">
+<div class="pageWidth">
+<div class="pageContent" id="top">
+ 
+<div class="mainContainer">
+<div class="mainContent">
+<div class="breadBoxTop ">
+<nav>
+<fieldset class="breadcrumb">
+<div class="boardTitle"><strong>OnePlus Forums</strong></div>
+<span class="crumbs">
+<span class="crust homeCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="/" class="crumb" rel="up" itemprop="url"><span itemprop="title">Home</span></a>
+<span class="arrow"><span>&#47;</span></span>
+</span>
+ 
+</span>
+</fieldset>
+</nav>
+</div>
+<!--[if lt IE 8]>
+							<p class="importantMessage">You are using an out of date browser. It  may not display this or other websites correctly.<br />You should upgrade or use an <a href="https://www.google.com/chrome/browser/" target="_blank">alternative browser</a>.</p>
+						<![endif]-->
+ 
+<div class="titleBar">
+<h1>OnePlus Forums</h1>
+</div>
+ 
+<ol class="nodeList sectionMain" id="forums">
+<li class="node category level_1 node_1" id="oneplus.1">
+<div class="nodeInfo categoryNodeInfo categoryStrip">
+<div class="categoryText">
+<h3 class="nodeTitle"><a href="forums/#oneplus.1">OnePlus</a></h3>
+</div>
+</div>
+<ol class="nodeList">
+<li class="node forum level_2  node_7">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/announcements/" data-description="">Announcements</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>201</dd></dl>
+<dl><dt>Messages:</dt> <dd>280,185</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465557/" title="OnePlus 2 Sales Starts in Singapore - 25 Sept 2015">OnePlus 2 Sales Starts in Singapore - 25 Sept 2015</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/rab-anand.655431/" class="username" dir="auto">rab.anand</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441607" data-diff="214" data-datestring="Sep 28, 2015" data-timestring="1:00 PM">Sep 28, 2015 at 1:00 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/announcements/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_27">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/contests/" data-description="">Contests</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>57</dd></dl>
+<dl><dt>Messages:</dt> <dd>244,125</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13459576/" title="#WWYDFT2 - owning up">#WWYDFT2 - owning up</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/soffie0708.729451/" class="username" dir="auto">soffie0708</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443388594" data-diff="53227" data-datestring="Sep 27, 2015" data-timestring="10:16 PM">Sep 27, 2015 at 10:16 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/contests/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+</ol>
+<span class="tlc"></span>
+<span class="trc"></span>
+<span class="blc"></span>
+<span class="brc"></span>
+</li>
+<li class="node category level_1 node_147" id="oneplus-2.147">
+<div class="nodeInfo categoryNodeInfo categoryStrip">
+<div class="categoryText">
+<h3 class="nodeTitle"><a href="forums/#oneplus-2.147">OnePlus 2</a></h3>
+</div>
+</div>
+<ol class="nodeList">
+<li class="node forum level_2  node_148">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/the-oneplus-2/" data-description="">OnePlus 2</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>12,140</dd></dl>
+<dl><dt>Messages:</dt> <dd>450,996</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465607/" title="OnePlus 2 Invites FAQ">OnePlus 2 Invites FAQ</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/avatargj.631719/" class="username" dir="auto">avatargj</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441810" data-diff="11" data-datestring="Sep 28, 2015" data-timestring="1:03 PM">Sep 28, 2015 at 1:03 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/the-oneplus-2/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_156">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/op2-oxygenos/" data-description="">Oxygen OS</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>319</dd></dl>
+<dl><dt>Messages:</dt> <dd>10,946</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465566/" title="OxygenOS 2.1.0 OTA roll-out starting now!">OxygenOS 2.1.0 OTA roll-out starting now!</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/karthiktheboss.728431/" class="username" dir="auto">KarthikTheBoss</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441640" data-diff="181" data-datestring="Sep 28, 2015" data-timestring="1:00 PM">Sep 28, 2015 at 1:00 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/op2-oxygenos/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_155">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/op2-development/" data-description="">Development</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>154</dd></dl>
+<dl><dt>Messages:</dt> <dd>4,407</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465270/" title="[MODS] Useful OP2 Tweaks That You&#039;re Probably Not Taking Advantage Of [kernel, build.prop, init.d]">[MODS] Useful OP2 Tweaks That You&#039;re Probably Not Taking Advantage Of [kernel, build.prop, init.d]</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/stevles.317521/" class="username" dir="auto">stevles</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443440333" data-diff="1488" data-datestring="Sep 28, 2015" data-timestring="12:38 PM">Sep 28, 2015 at 12:38 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/op2-development/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_159">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/accessories-2/" data-description="">Accessories</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>298</dd></dl>
+<dl><dt>Messages:</dt> <dd>6,754</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13462924/" title="Nilkin Tempered Glass">Nilkin Tempered Glass</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/sometimesmonday.655308/" class="username" dir="auto">SometimesMonday</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443427787" data-diff="14034" data-datestring="Sep 28, 2015" data-timestring="9:09 AM">Sep 28, 2015 at 9:09 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/accessories-2/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_22">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/invites/" data-description="">Invites</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>74,512</dd></dl>
+<dl><dt>Messages:</dt> <dd>2,227,775</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465598/" title="Maximum no. of invites claimed &amp; used">Maximum no. of invites claimed &amp; used</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/yamiyemi.716551/" class="username" dir="auto">yamiyemi</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441779" data-diff="42" data-datestring="Sep 28, 2015" data-timestring="1:02 PM">Sep 28, 2015 at 1:02 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/invites/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+</ol>
+<span class="tlc"></span>
+<span class="trc"></span>
+<span class="blc"></span>
+<span class="brc"></span>
+</li>
+<li class="node category level_1 node_28" id="oneplus-one.28">
+<div class="nodeInfo categoryNodeInfo categoryStrip">
+<div class="categoryText">
+<h3 class="nodeTitle"><a href="forums/#oneplus-one.28">OnePlus One</a></h3>
+</div>
+</div>
+<ol class="nodeList">
+<li class="node forum level_2  node_2">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/the-one/" data-description="">OnePlus One</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>52,237</dd></dl>
+<dl><dt>Messages:</dt> <dd>1,409,207</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465605/" title="Problems">Problems</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/slowhand.183070/" class="username" dir="auto">slowhand</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441801" data-diff="20" data-datestring="Sep 28, 2015" data-timestring="1:03 PM">Sep 28, 2015 at 1:03 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/the-one/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_74">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/oxygenos/" data-description="">OxygenOS</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>1,677</dd></dl>
+<dl><dt>Messages:</dt> <dd>57,805</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465111/" title="Oxygen OS 2.0 For Oneplus One">Oxygen OS 2.0 For Oneplus One</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/bnw.652291/" class="username" dir="auto">bnw</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443439752" data-diff="2069" data-datestring="Sep 28, 2015" data-timestring="12:29 PM">Sep 28, 2015 at 12:29 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/oxygenos/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_21">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/cyanogenmod/" data-description="">CyanogenMod</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>13,611</dd></dl>
+<dl><dt>Messages:</dt> <dd>302,596</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13464865/" title="[Guide] OTA Manual Install - Easy">[Guide] OTA Manual Install - Easy</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/gouravbhakat.724904/" class="username" dir="auto">gouravbhakat</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443438685" data-diff="3136" data-datestring="Sep 28, 2015" data-timestring="12:11 PM">Sep 28, 2015 at 12:11 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/cyanogenmod/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_26">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/dev-roms/" data-description="">Development</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>4,456</dd></dl>
+<dl><dt>Messages:</dt> <dd>203,140</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465604/" title="Bricked device help wanted">Bricked device help wanted</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/doomsd4y.125638/" class="username" dir="auto">doomsd4y</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441799" data-diff="22" data-datestring="Sep 28, 2015" data-timestring="1:03 PM">Sep 28, 2015 at 1:03 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/dev-roms/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_29">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/accessories/" data-description="">Accessories</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>5,987</dd></dl>
+<dl><dt>Messages:</dt> <dd>145,957</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13463227/" title="Make your own OnePlus Cardboard VR headset [with template!]">Make your own OnePlus Cardboard VR headset [with template!]</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/samblaze.725732/" class="username" dir="auto">samblaze</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443429897" data-diff="11924" data-datestring="Sep 28, 2015" data-timestring="9:44 AM">Sep 28, 2015 at 9:44 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/accessories/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+</ol>
+<span class="tlc"></span>
+<span class="trc"></span>
+<span class="blc"></span>
+<span class="brc"></span>
+</li>
+<li class="node category level_1 node_30" id="community.30">
+<div class="nodeInfo categoryNodeInfo categoryStrip">
+<div class="categoryText">
+<h3 class="nodeTitle"><a href="forums/#community.30">Community</a></h3>
+</div>
+</div>
+<ol class="nodeList">
+<li class="node forum level_2  node_160">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/entertainment/" data-description="">Entertainment</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>124</dd></dl>
+<dl><dt>Messages:</dt> <dd>7,075</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13462288/" title="What book are you currently reading?">What book are you currently reading?</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/mrfingeriii.30159/" class="username" dir="auto">MrFingerIII</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443423476" data-diff="18345" data-datestring="Sep 28, 2015" data-timestring="7:57 AM">Sep 28, 2015 at 7:57 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/entertainment/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_161">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/photography/" data-description="">Photography</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>110</dd></dl>
+<dl><dt>Messages:</dt> <dd>3,267</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465501/" title="Photowalk?">Photowalk?</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/aditya1848.723266/" class="username" dir="auto">aditya1848</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441352" data-diff="469" data-datestring="Sep 28, 2015" data-timestring="12:55 PM">Sep 28, 2015 at 12:55 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/photography/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_162">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/style/" data-description="">Style</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>100</dd></dl>
+<dl><dt>Messages:</dt> <dd>8,876</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13449482/" title="Killer ui">Killer ui</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/tiramisuny.654290/" class="username" dir="auto">TiramisuNY</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443323343" data-diff="118478" data-datestring="Sep 27, 2015" data-timestring="4:09 AM">Sep 27, 2015 at 4:09 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/style/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_10">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/tech-talk/" data-description="">Tech</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>9,567</dd></dl>
+<dl><dt>Messages:</dt> <dd>320,997</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465559/" title="Let&#039;s hate Google - Nexus 6P comes with SD810!">Let&#039;s hate Google - Nexus 6P comes with SD810!</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/volteon.4219/" class="username" dir="auto">volteon</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441611" data-diff="210" data-datestring="Sep 28, 2015" data-timestring="1:00 PM">Sep 28, 2015 at 1:00 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/tech-talk/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_8">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/off-topic/" data-description="">Off Topic</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>34,753</dd></dl>
+<dl><dt>Messages:</dt> <dd>1,218,488</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465541/" title="[GUIDE] How to find the information you seek">[GUIDE] How to find the information you seek</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/frankandwendy.725995/" class="username" dir="auto">frankandwendy</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441539" data-diff="282" data-datestring="Sep 28, 2015" data-timestring="12:58 PM">Sep 28, 2015 at 12:58 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/off-topic/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_32">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/introduce-yourself/" data-description="">Introduce Yourself</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>4,482</dd></dl>
+<dl><dt>Messages:</dt> <dd>143,014</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13462406/" title="Hello World">Hello World</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/ceasedd.308204/" class="username" dir="auto">Ceasedd</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443424172" data-diff="17649" data-datestring="Sep 28, 2015" data-timestring="8:09 AM">Sep 28, 2015 at 8:09 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/introduce-yourself/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_31">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/fan-gatherings/" data-description="">Fan Gatherings</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>821</dd></dl>
+<dl><dt>Messages:</dt> <dd>19,365</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13065364/" title="Fan gatherings are dead, long live meetups">Fan gatherings are dead, long live meetups</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/mike.108560/" class="username" dir="auto">Mike</a>,</span>
+<span class="DateTime muted lastThreadDate" data-latest="Latest: " title="Sep 8, 2015 at 9:47 AM">Sep 8, 2015</span>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/fan-gatherings/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_163">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/meetups/" data-description="">Meetups</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>9</dd></dl>
+<dl><dt>Messages:</dt> <dd>1,809</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465581/" title="OnePlus Pub Night: London">OnePlus Pub Night: London</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/mrsim.155711/" class="username" dir="auto">mrsim</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441704" data-diff="117" data-datestring="Sep 28, 2015" data-timestring="1:01 PM">Sep 28, 2015 at 1:01 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/meetups/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+</ol>
+<span class="tlc"></span>
+<span class="trc"></span>
+<span class="blc"></span>
+<span class="brc"></span>
+</li>
+<li class="node category level_1 node_33" id="language.33">
+<div class="nodeInfo categoryNodeInfo categoryStrip">
+<div class="categoryText">
+<h3 class="nodeTitle"><a href="forums/#language.33">Language</a></h3>
+</div>
+</div>
+<ol class="nodeList">
+<li class="node forum level_2  node_75">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/bulgarian/" data-description="">Български</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>13</dd></dl>
+<dl><dt>Messages:</dt> <dd>2,112</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_76">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/bulgarian-invites/" class="menuRow">Български Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_77">
+<div>
+<h4 class="nodeTitle"><a href="forums/bulgarian-off-topic/" class="menuRow">Български Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_129">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/bulgarian-support/" class="menuRow">Български Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13464469/" title="Български Invites">Български Invites</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/tuchkata.732040/" class="username" dir="auto">Tuchkata</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443436630" data-diff="5191" data-datestring="Sep 28, 2015" data-timestring="11:37 AM">Sep 28, 2015 at 11:37 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/bulgarian/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_81">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/czech-slovak/" data-description="">Čeština/Slovenčina</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>94</dd></dl>
+<dl><dt>Messages:</dt> <dd>41,265</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_96">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/czech-slovak-invites/" class="menuRow">Čeština/Slovenčina Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_97">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/czech-slovak-off-topic/" class="menuRow">Čeština/Slovenčina Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_132">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/czech-slovak-support/" class="menuRow">Čeština/Slovenčina Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465553/" title="[TOP] Technická podpora">[TOP] Technická podpora</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/pavol-ondas.628187/" class="username" dir="auto">Pavol.ondas</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441590" data-diff="231" data-datestring="Sep 28, 2015" data-timestring="12:59 PM">Sep 28, 2015 at 12:59 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/czech-slovak/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_14">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/dansk/" data-description="">Dansk</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>868</dd></dl>
+<dl><dt>Messages:</dt> <dd>39,155</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_53">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/dansk-invites/" class="menuRow">Dansk Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_36">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/dansk-ot/" class="menuRow">Dansk Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_115">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/dansk-support/" class="menuRow">Dansk Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465080/" title="Hoax invite?">Hoax invite?</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/michaelclarke99.431646/" class="username" dir="auto">michaelclarke99</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443439640" data-diff="2181" data-datestring="Sep 28, 2015" data-timestring="12:27 PM">Sep 28, 2015 at 12:27 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/dansk/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_11">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/deutsch/" data-description="">Deutsch</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>9,186</dd></dl>
+<dl><dt>Messages:</dt> <dd>519,130</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_56">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/deutsch-invites/" class="menuRow">Deutsch Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_37">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/deutsch-ot/" class="menuRow">Deutsch Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_116">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/deutsch-support/" class="menuRow">Deutsch Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465587/" title="Blisspop 3.x Diskussionsthread">Blisspop 3.x Diskussionsthread</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/pimbo.529341/" class="username" dir="auto">Pimbo</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441728" data-diff="93" data-datestring="Sep 28, 2015" data-timestring="1:02 PM">Sep 28, 2015 at 1:02 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/deutsch/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_82">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/estonian/" data-description="">Eesti</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>12</dd></dl>
+<dl><dt>Messages:</dt> <dd>1,733</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_98">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/estonian-invites/" class="menuRow">Eesti Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_99">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/estonian-off-topic/" class="menuRow">Eesti Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_133">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/estonian-support/" class="menuRow">Eesti Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465051/" title="Oneplus Two is here! Estonian fans &amp; Invite chain.">Oneplus Two is here! Estonian fans &amp; Invite chain.</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/michaelclarke99.431646/" class="username" dir="auto">michaelclarke99</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443439511" data-diff="2310" data-datestring="Sep 28, 2015" data-timestring="12:25 PM">Sep 28, 2015 at 12:25 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/estonian/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_79">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/greek/" data-description="">Ελληνικά</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>153</dd></dl>
+<dl><dt>Messages:</dt> <dd>3,133</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_92">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/greek-invites/" class="menuRow">Ελληνικά Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_93">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/greek-off-topic/" class="menuRow">Ελληνικά Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_131">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/greek-support/" class="menuRow">Ελληνικά Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13464203/" title="[ΠΡΟΣΚΛΗΣΕΙΣ - INVITES] OnePlus 2">[ΠΡΟΣΚΛΗΣΕΙΣ - INVITES] OnePlus 2</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/pavlakos.693267/" class="username" dir="auto">pavlakos</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443435350" data-diff="6471" data-datestring="Sep 28, 2015" data-timestring="11:15 AM">Sep 28, 2015 at 11:15 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/greek/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_20">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/espanol/" data-description="">Español</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>2,761</dd></dl>
+<dl><dt>Messages:</dt> <dd>271,897</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_57">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/espanol-invites/" class="menuRow">Español Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_38">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/espanol-ot/" class="menuRow">Español Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_117">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/espanol-support/" class="menuRow">Español Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465603/" title="Hilo único de Invitaciones OnePlus 2">Hilo único de Invitaciones OnePlus 2</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/jperezm.710156/" class="username" dir="auto">jperezm</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441790" data-diff="31" data-datestring="Sep 28, 2015" data-timestring="1:03 PM">Sep 28, 2015 at 1:03 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/espanol/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_13">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/francais/" data-description="">Français</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>1,800</dd></dl>
+<dl><dt>Messages:</dt> <dd>407,948</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_58">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/francais-invites/" class="menuRow">Français Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_39">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/francais-ot/" class="menuRow">Français Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_118">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/francais-support/" class="menuRow">Français Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465380/" title="[Tuto] [Rom] [Custom] Android Lollipop : CM12 et autres ROM">[Tuto] [Rom] [Custom] Android Lollipop : CM12 et autres ROM</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/guillaumeserton.191438/" class="username" dir="auto">guillaumeserton</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443440831" data-diff="990" data-datestring="Sep 28, 2015" data-timestring="12:47 PM">Sep 28, 2015 at 12:47 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/francais/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_149">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/hebrew/" data-description="">עברית</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>91</dd></dl>
+<dl><dt>Messages:</dt> <dd>427</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_151">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/hebrew-off-topic/" class="menuRow">עברית Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_152">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/hebrew-support/" class="menuRow">עברית Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13448666/" title="OnePlus 2 בישראל!">OnePlus 2 בישראל!</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/iknowyou.707039/" class="username" dir="auto">IknowYou</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443311270" data-diff="130551" data-datestring="Sep 27, 2015" data-timestring="12:47 AM">Sep 27, 2015 at 12:47 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/hebrew/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_78">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/croatian/" data-description="">Hrvatski</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>33</dd></dl>
+<dl><dt>Messages:</dt> <dd>13,821</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_90">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/croatian-invites/" class="menuRow">Hrvatski Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_91">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/croatian-off-topic/" class="menuRow">Hrvatski Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_130">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/croatian-support/" class="menuRow">Hrvatski Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465280/" title="[RASPRAVA O POZIVNICAMA]">[RASPRAVA O POZIVNICAMA]</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/ivanmuse.590083/" class="username" dir="auto">IvanMuse</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443440370" data-diff="1451" data-datestring="Sep 28, 2015" data-timestring="12:39 PM">Sep 28, 2015 at 12:39 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/croatian/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_51">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/india/" data-description="">India</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>23,527</dd></dl>
+<dl><dt>Messages:</dt> <dd>674,294</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_67">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/india-invites/" class="menuRow">India Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_52">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/india-off-topic/" class="menuRow">India Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_127">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/india-support/" class="menuRow">India Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465596/" title="1 India Invite Giveaway">1 India Invite Giveaway</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/hkumarash.408747/" class="username" dir="auto">hkumarash</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441768" data-diff="53" data-datestring="Sep 28, 2015" data-timestring="1:02 PM">Sep 28, 2015 at 1:02 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/india/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_71">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/indonesia/" data-description="">Indonesia</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>338</dd></dl>
+<dl><dt>Messages:</dt> <dd>28,546</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_73">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/indonesia-invites/" class="menuRow">Indonesia Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_72">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/indonesia-ot/" class="menuRow">Indonesia Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_124">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/indonesia-support/" class="menuRow">Indonesia Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13462176/" title="Indonesia Service Update">Indonesia Service Update</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/shinta-h.632106/" class="username" dir="auto">Shinta H</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443422627" data-diff="19194" data-datestring="Sep 28, 2015" data-timestring="7:43 AM">Sep 28, 2015 at 7:43 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/indonesia/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_19">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/italiano/" data-description="">Italiano</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>5,147</dd></dl>
+<dl><dt>Messages:</dt> <dd>727,023</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_59">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/italiano-invites/" class="menuRow">Italiano Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_40">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/italiano-ot/" class="menuRow">Italiano Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_119">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/italiano-support/" class="menuRow">Italiano Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465589/" title="BarONE: Delirio oltre lo Spam">BarONE: Delirio oltre lo Spam</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/pirata_1985.5023/" class="username" dir="auto">pirata_1985</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441741" data-diff="80" data-datestring="Sep 28, 2015" data-timestring="1:02 PM">Sep 28, 2015 at 1:02 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/italiano/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_84">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/latvian/" data-description="">Latviešu</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>9</dd></dl>
+<dl><dt>Messages:</dt> <dd>264</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_102">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/latvian-invites/" class="menuRow">Latviešu Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_103">
+<div>
+<h4 class="nodeTitle"><a href="forums/latvian-off-topic/" class="menuRow">Latviešu Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_135">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/latvian-support/" class="menuRow">Latviešu Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13350066/" title="Oneplus Two apskats (krievu melē)">Oneplus Two apskats (krievu melē)</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/hollen.210723/" class="username" dir="auto">HolleN</a>,</span>
+<span class="DateTime muted lastThreadDate" data-latest="Latest: " title="Sep 21, 2015 at 7:11 PM">Sep 21, 2015</span>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/latvian/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_85">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/lithuanian/" data-description="">Lietuvių</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>13</dd></dl>
+<dl><dt>Messages:</dt> <dd>574</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_104">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/lithuanian-invites/" class="menuRow">Lietuvių Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_105">
+<div>
+<h4 class="nodeTitle"><a href="forums/lithuanian-off-topic/" class="menuRow">Lietuvių Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_136">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/lithuanian-support/" class="menuRow">Lietuvių Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13464623/" title="Oneplus 2 siuntimas į LT su pakvietimu">Oneplus 2 siuntimas į LT su pakvietimu</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/bugac.646495/" class="username" dir="auto">bugac</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443437472" data-diff="4349" data-datestring="Sep 28, 2015" data-timestring="11:51 AM">Sep 28, 2015 at 11:51 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/lithuanian/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_83">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/hungarian/" data-description="">Magyar</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>13</dd></dl>
+<dl><dt>Messages:</dt> <dd>4,816</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_100">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/hungarian-invites/" class="menuRow">Magyar Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_101">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/hungarian-off-topic/" class="menuRow">Magyar Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_134">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/hungarian-support/" class="menuRow">Magyar Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13458522/" title="invites - meghívók">invites - meghívók</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/rollingcube.731648/" class="username" dir="auto">ROLLINGCUBE</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443381380" data-diff="60441" data-datestring="Sep 27, 2015" data-timestring="8:16 PM">Sep 27, 2015 at 8:16 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/hungarian/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_68">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/malaysia/" data-description="">Malaysia</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>241</dd></dl>
+<dl><dt>Messages:</dt> <dd>93,557</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_69">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/malaysia-invites/" class="menuRow">Malaysia Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_70">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/malaysia-offtopic/" class="menuRow">Malaysia Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_128">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/malaysia-support/" class="menuRow">Malaysia Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465602/" title="OnePlus 2 Sales Start in Malaysia - 22 Sept 2015">OnePlus 2 Sales Start in Malaysia - 22 Sept 2015</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/43789.723690/" class="username" dir="auto">43789</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441788" data-diff="33" data-datestring="Sep 28, 2015" data-timestring="1:03 PM">Sep 28, 2015 at 1:03 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/malaysia/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_12">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/nederlands/" data-description="">Nederlands</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>3,754</dd></dl>
+<dl><dt>Messages:</dt> <dd>222,263</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_60">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/nederlands-invites/" class="menuRow">Nederlands Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_41">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/nederlands-ot/" class="menuRow">Nederlands Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_120">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/nederlands-support/" class="menuRow">Nederlands Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465597/" title="Het DNA Invite Topic - OnePlus 2!">Het DNA Invite Topic - OnePlus 2!</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/gam3error.719354/" class="username" dir="auto">Gam3Error</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441774" data-diff="47" data-datestring="Sep 28, 2015" data-timestring="1:02 PM">Sep 28, 2015 at 1:02 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/nederlands/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_86">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/polish/" data-description="">Polski</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>121</dd></dl>
+<dl><dt>Messages:</dt> <dd>78,456</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_106">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/polish-invites/" class="menuRow">Polski Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_107">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/polish-off-topic/" class="menuRow">Polski Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_137">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/polish-support/" class="menuRow">Polski Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465405/" title="Member from Poland?">Member from Poland?</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/r_ade_k.191993/" class="username" dir="auto">R_ade_K</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443440959" data-diff="862" data-datestring="Sep 28, 2015" data-timestring="12:49 PM">Sep 28, 2015 at 12:49 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/polish/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_18">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/portugues/" data-description="">Português</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>5,120</dd></dl>
+<dl><dt>Messages:</dt> <dd>210,064</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_62">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/portugues-invites/" class="menuRow">Português Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_42">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/portugues-ot/" class="menuRow">Português Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_121">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/portugues-support/" class="menuRow">Português Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465600/" title="OPO foi esquecido?">OPO foi esquecido?</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/pikota.267492/" class="username" dir="auto">pikota</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441779" data-diff="42" data-datestring="Sep 28, 2015" data-timestring="1:02 PM">Sep 28, 2015 at 1:02 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/portugues/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_87">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/romanian/" data-description="">Română</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>37</dd></dl>
+<dl><dt>Messages:</dt> <dd>73,062</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_108">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/romanian-invites/" class="menuRow">Română Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_109">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/romanian-off-topic/" class="menuRow">Română Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_138">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/romanian-support/" class="menuRow">Română Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465150/" title="Off topic thread">Off topic thread</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/peskovs.429269/" class="username" dir="auto">peskovs</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443439907" data-diff="1914" data-datestring="Sep 28, 2015" data-timestring="12:31 PM">Sep 28, 2015 at 12:31 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/romanian/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_47">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/russia/" data-description="">Россия</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>72</dd></dl>
+<dl><dt>Messages:</dt> <dd>24,936</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_66">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/rossija-invites/" class="menuRow">Россия Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_48">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/russia-off-topic/" class="menuRow">Россия Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_126">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/russia-support/" class="menuRow">Россия Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13449769/" title="OnePlus 2. Инвайты.">OnePlus 2. Инвайты.</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/xoma262.239394/" class="username" dir="auto">xoma262</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443326252" data-diff="115569" data-datestring="Sep 27, 2015" data-timestring="4:57 AM">Sep 27, 2015 at 4:57 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/russia/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_89">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/slovene/" data-description="">Slovenski</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>30</dd></dl>
+<dl><dt>Messages:</dt> <dd>3,449</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_112">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/slovene-invites/" class="menuRow">Slovenski Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_113">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/slovene-off-topic/" class="menuRow">Slovenski Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_139">
+<div>
+<h4 class="nodeTitle"><a href="forums/slovenian-support/" class="menuRow">Slovenski Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13458712/" title="Slovenska bratovščina OnePlus 2 invites">Slovenska bratovščina OnePlus 2 invites</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/budalokesh.668611/" class="username" dir="auto">budalokesh</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443382597" data-diff="59224" data-datestring="Sep 27, 2015" data-timestring="8:36 PM">Sep 27, 2015 at 8:36 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/slovene/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_15">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/suomi/" data-description="">Suomi</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>235</dd></dl>
+<dl><dt>Messages:</dt> <dd>32,203</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_63">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/suomi-invites/" class="menuRow">Suomi Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_43">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/suomi-ot/" class="menuRow">Suomi Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_122">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/suomi-support/" class="menuRow">Suomi Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465108/" title="Kysymykset jotka eivät tarvitse omaa aihetta.">Kysymykset jotka eivät tarvitse omaa aihetta.</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/tadessi.139183/" class="username" dir="auto">Tadessi</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443439744" data-diff="2077" data-datestring="Sep 28, 2015" data-timestring="12:29 PM">Sep 28, 2015 at 12:29 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/suomi/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_16">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/svenska/" data-description="">Svenska</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>1,117</dd></dl>
+<dl><dt>Messages:</dt> <dd>249,974</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_64">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/svenska-invites/" class="menuRow">Svenska Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_44">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/svenska-ot/" class="menuRow">Svenska Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_123">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/svenska-support/" class="menuRow">Svenska Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13465567/" title="Bästa abonemanget, vad säger ni?">Bästa abonemanget, vad säger ni?</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/filestormen.681886/" class="username" dir="auto">Filestormen</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443441643" data-diff="178" data-datestring="Sep 28, 2015" data-timestring="1:00 PM">Sep 28, 2015 at 1:00 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/svenska/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_17">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/traditional_chinese/" data-description="">繁體中文</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>4,239</dd></dl>
+<dl><dt>Messages:</dt> <dd>142,877</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_65">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/traditional-chinese-invites/" class="menuRow">繁體中文 Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_45">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/traditional-chinese-ot/" class="menuRow">繁體中文 Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_125">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/traditional-chinese-support/" class="menuRow">繁體中文 Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13463550/" title="繁中off topic Club">繁中off topic Club</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/willkhlau.26635/" class="username" dir="auto">willkhlau</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443431817" data-diff="10004" data-datestring="Sep 28, 2015" data-timestring="10:16 AM">Sep 28, 2015 at 10:16 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/traditional_chinese/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+<li class="node forum level_2  node_80">
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/turkish/" data-description="">Türkçe</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>42</dd></dl>
+<dl><dt>Messages:</dt> <dd>19,272</dd></dl>
+</div>
+</div>
+<ol class="subForumList">
+<li class="node forum level-n node_94">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/turkish-invites/" class="menuRow">Türkçe Invites</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_95">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/turkish-off-topic/" class="menuRow">Türkçe Off Topic</a></h4>
+</div>
+</li>
+<li class="node forum level-n node_140">
+<div class="unread">
+<h4 class="nodeTitle"><a href="forums/turkish-support/" class="menuRow">Türkçe Support</a></h4>
+</div>
+</li>
+</ol>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13464123/" title="[OP2] Custom Rom/Kernel/Problem-Çözüm">[OP2] Custom Rom/Kernel/Problem-Çözüm</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/ibayrak.587151/" class="username" dir="auto">ibayrak</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443434899" data-diff="6922" data-datestring="Sep 28, 2015" data-timestring="11:08 AM">Sep 28, 2015 at 11:08 AM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/turkish/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+</ol>
+<span class="tlc"></span>
+<span class="trc"></span>
+<span class="blc"></span>
+<span class="brc"></span>
+</li>
+<li class="node forum level_1 groupNoChildren node_164">
+<div class="categoryStrip subHeading"></div>
+<div class="nodeInfo forumNodeInfo primaryContent unread">
+<span class="nodeIcon" title="Unread messages"></span>
+<div class="nodeText">
+<h3 class="nodeTitle"><a href="forums/Archive/" data-description="">Read Only (Archived)</a></h3>
+<div class="nodeStats pairsInline">
+<dl><dt>Discussions:</dt> <dd>2,508</dd></dl>
+<dl><dt>Messages:</dt> <dd>86,640</dd></dl>
+</div>
+</div>
+<div class="nodeLastPost secondaryContent">
+<span class="lastThreadTitle"><span>Latest:</span> <a href="posts/13464949/" title="Waiting for CM12">Waiting for CM12</a></span>
+<span class="lastThreadMeta">
+<span class="lastThreadUser"><a href="members/dsmonteiro.1507/" class="username" dir="auto">dsmonteiro</a>,</span>
+<abbr class="DateTime muted lastThreadDate" data-latest="Latest: " data-time="1443439074" data-diff="2747" data-datestring="Sep 28, 2015" data-timestring="12:17 PM">Sep 28, 2015 at 12:17 PM</abbr>
+</span>
+</div>
+<div class="nodeControls">
+<a href="forums/Archive/index.rss" class="tinyIcon feedIcon" title="RSS">RSS</a>
+</div>
+</div>
+</li>
+</ol>
+ 
+<form action="login/login" method="post" class="xenForm " id="login" style="display:none">
+<div class="ctrlWrapper">
+<dl class="ctrlUnit">
+<dt><label for="LoginControl">Your name or email address:</label></dt>
+<dd><input type="text" name="login" id="LoginControl" class="textCtrl" tabindex="101"/></dd>
+</dl>
+<dl class="ctrlUnit">
+<dt>
+<label for="ctrl_password">Do you already have an account?</label>
+</dt>
+<dd>
+<ul>
+<li><label for="ctrl_not_registered"><input type="radio" name="register" value="1" id="ctrl_not_registered" tabindex="105"/>
+No, create an account now.</label></li>
+<li><label for="ctrl_registered"><input type="radio" name="register" value="0" id="ctrl_registered" tabindex="105" checked="checked" class="Disabler"/>
+Yes, my password is:</label></li>
+<li id="ctrl_registered_Disabler">
+<input type="password" name="password" class="textCtrl" id="ctrl_password" tabindex="102"/>
+<div class="lostPassword"><a href="lost-password/" class="OverlayTrigger OverlayCloser" tabindex="106">Forgot your password?</a></div>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="ctrlUnit submitUnit">
+<dt></dt>
+<dd>
+<input type="submit" class="button primary" value="Log in" tabindex="104" data-loginPhrase="Log in" data-signupPhrase="Sign up"/>
+<label for="ctrl_remember" class="rememberPassword"><input type="checkbox" name="remember" value="1" id="ctrl_remember" tabindex="103"/> Stay logged in</label>
+</dd>
+</dl>
+</div>
+<input type="hidden" name="cookie_check" value="1"/>
+<input type="hidden" name="redirect" value="/forums/"/>
+<input type="hidden" name="_xfToken" value=""/>
+</form>
+</div>
+</div>
+ 
+<aside>
+<div class="sidebar">
+<a href="https://account.oneplus.net/sign-up" class="redbutton"><span class="inner">Sign up now!</span></a>
+<div class="section widget-group-no-name widget-container">
+<div class="secondaryContent widget OnePlus_WidgetCategories_WidgetRenderer_Categories" id="widget-11">
+<h3>
+<a href="forums/"><span class="i-list"></span> Categories <span class="widget_header_small">(View All)</span></a>
+</h3>
+<ul class="xenforo-list-2cols">
+<li><a href="/forums/announcements/">Announcements</a></li>
+<li><a href="/forums/the-one/">OnePlus One</a></li>
+<li><a href="/forums/the-oneplus-2/">OnePlus 2</a></li>
+<li><a href="/forums/oxygenos/">OxygenOS</a></li>
+<li><a href="/forums/off-topic/">Off Topic</a></li>
+<li><a href="/forums/invites/">Invites</a></li>
+</ul>
+<div class="clearfix" style="clear:left"></div>
+</div>
+</div>
+<div class="section widget-group-no-name widget-container">
+<div class="secondaryContent widget OnePlus_WidgetCategories_WidgetRenderer_Languages" id="widget-12">
+<h3>
+<a href="/forums/#language.33"><span class="i-world"></span> Regions <span class="widget_header_small">(View All)</span></a>
+</h3>
+<ul class="xenforo-list-2cols">
+<li><a href="/forums/deutsch/">Deutsch</a></li>
+<li><a href="/forums/espanol/">Español</a></li>
+<li><a href="/forums/italiano/">Italiano</a></li>
+<li><a href="/forums/nederlands/">Nederlands</a></li>
+<li><a href="/forums/polish/">Polski</a></li>
+<li><a href="/forums/india/">India</a></li>
+<div class="clearfix" style="clear:left"></div>
+</div>
+</div>
+<div class="section widget-group-no-name widget-container">
+<div class="secondaryContent widget OnePlus_WidgetCategories_WidgetRenderer_Stats" id="widget-4">
+<h3>
+<span class="i-stats"></span> Forum Statistics
+</h3>
+<div class="pairsJustified">
+<dl class="discussionCount"><dt>Discussions:</dt>
+<dd>291,757</dd></dl>
+<dl class="messageCount"><dt>Messages:</dt>
+<dd>12,699,374</dd></dl>
+<dl class="memberCount"><dt>Members:</dt>
+<dd>728,515</dd></dl>
+<dl><dt>Latest Member:</dt>
+<dd><a href="members/james-wrigley.732103/" class="username" dir="auto">James Wrigley</a></dd></dl>
+<dl><dt>Online:</dt>
+<dd><a href="/online/?type=registered">2,430</a></dd></dl>
+ 
+</div>
+</div>
+</div>
+<div class="widget WidgetFramework_WidgetRenderer_ShareThisPage" id="widget-5">
+<div class="section infoBlock sharePage">
+<div class="secondaryContent">
+<h3><span class="i-user-highlight"></span>Community Highlight</h3>
+<div style="width: 249px; height: 160; background: transparent;">
+<div id="community-player" style="width: 249px; height: 140px;"></div>
+<script>
+                        var tag = document.createElement('script');
+                        tag.src = "https://www.youtube.com/player_api";
+                        var firstScriptTag = document.getElementsByTagName('script')[0];
+                        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                        var player;
+
+                        function onYouTubePlayerAPIReady() {
+                            player = new YT.Player('community-player', {
+                                playerVars: {
+                                    'controls': 1,
+                                    'autohide': 1,
+                                    'rel': 0,
+                                    'wmode': 'opaque'
+                                },
+                                width: '249',
+                                height: '140',
+                                videoId: 'oBSlL-h5SxU'
+                            });
+                        }
+                        </script>
+</div>
+ 
+</div>
+<div class="tweet shareControl" style="margin-top:5px;">
+<a href="https://twitter.com/oneplus" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @oneplus</a>
+<script>
+                ! function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0],
+                        p = /^http:/.test(d.location) ? 'http' : 'https';
+                    if (!d.getElementById(id)) {
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = p + '://platform.twitter.com/widgets.js';
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }
+                }(document, 'script', 'twitter-wjs');
+                </script>
+</div>
+<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Foneplusofficial&amp;width=249&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=205164146301443" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:249px; height:21px;" allowTransparency="true"></iframe>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+<footer>
+<div class="neversettle-image">
+<div class="footer">
+<div class="pageWidth">
+<div class="pageContent">
+<ul class="footerLinks">
+<li><a href="misc/quick-navigation-menu" class="OverlayTrigger jumpMenuTrigger" data-cacheOverlay="true" title="Open quick navigation"> </a></li>
+<li><a href="http://oneplus.net/support">Contact Us</a></li>
+<li><a href="help/">Help</a></li>
+<li><a href="https://forums.oneplus.net" class="homeLink">Home</a></li>
+<li><a href="/forums/#top" class="topLink">Top</a></li>
+<li><a href="forums/-/index.rss" rel="alternate" class="globalFeed" target="_blank" title="RSS feed for OnePlus Forums">RSS</a></li>
+</ul>
+<span class="helper"></span>
+</div>
+</div>
+</div>
+<div class="footerLegal">
+<div class="pageWidth">
+<div class="pageContent">
+<ul id="legal">
+<li><a href="help/terms">Terms and Rules</a></li>
+</ul>
+<span class="helper"></span>
+</div>
+</div>
+</div>
+<div style="text-align:center">
+<a href="http://plus.google.com/102032589992734862411" rel="publisher"><span class="i-gplus"></span></a>
+<a href="http://facebook.com/oneplusofficial"><span class="i-facebook"></span></a>
+<a href="http://twitter.com/oneplus"><span class="i-twitter"></span></a>
+</div>
+</div>
+</footer>
+<script>
+
+
+jQuery.extend(true, XenForo,
+{
+	visitor: { user_id: 0 },
+	serverTimeInfo:
+	{
+		now: 1443441821,
+		today: 1443394800,
+		todayDow: 1
+	},
+	_lightBoxUniversal: "0",
+	_enableOverlays: "1",
+	_animationSpeedMultiplier: "1",
+	_overlayConfig:
+	{
+		top: "10%",
+		speed: 200,
+		closeSpeed: 100,
+		mask:
+		{
+			color: "rgb(255, 255, 255)",
+			opacity: "0.9",
+			loadSpeed: 200,
+			closeSpeed: 100
+		}
+	},
+	_ignoredUsers: [],
+	_loadedScripts: {"node_list":true,"node_category":true,"node_forum":true,"profile_post_list_simple":true,"bb_code":true,"sidebar_share_page":true,"wf_default":true,"xopenid_login_form":true},
+	_cookieConfig: { path: "/", domain: "", prefix: "xf_"},
+	_csrfToken: "",
+	_csrfRefreshUrl: "login/csrf-token-refresh",
+	_jsVersion: "3fee6e84"
+});
+jQuery.extend(XenForo.phrases,
+{
+	cancel: "Cancel",
+
+	a_moment_ago:    "A moment ago",
+	one_minute_ago:  "1 minute ago",
+	x_minutes_ago:   "%minutes% minutes ago",
+	today_at_x:      "Today at %time%",
+	yesterday_at_x:  "Yesterday at %time%",
+	day_x_at_time_y: "%day% at %time%",
+
+	day0: "Sunday",
+	day1: "Monday",
+	day2: "Tuesday",
+	day3: "Wednesday",
+	day4: "Thursday",
+	day5: "Friday",
+	day6: "Saturday",
+
+	_months: "January,February,March,April,May,June,July,August,September,October,November,December",
+	_daysShort: "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+
+	following_error_occurred: "The following error occurred",
+	server_did_not_respond_in_time_try_again: "The server did not respond in time. Please try again.",
+	logging_in: "Logging in",
+	click_image_show_full_size_version: "Click this image to show the full-size version.",
+	show_hidden_content_by_x: "Show hidden content by {names}"
+});
+
+// Facebook Javascript SDK
+XenForo.Facebook.appId = "";
+XenForo.Facebook.forceInit = false;
+
+
+</script>
+</body>
+</html>

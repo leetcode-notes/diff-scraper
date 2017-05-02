@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html prefix="og: http://ogp.me/ns#" class="no-js ie6 lte9 lte8 lte7"> <![endif]-->
+<!--[if IE 7]>     <html prefix="og: http://ogp.me/ns#" class="no-js ie7 lte9 lte8 lte7"> <![endif]-->
+<!--[if IE 8]>     <html prefix="og: http://ogp.me/ns#" class="no-js ie8 lte9 lte9 lte8"> <![endif]-->
+<!--[if IE 9]>     <html prefix="og: http://ogp.me/ns#" class="no-js ie9 lte9"> <![endif]-->
+<!--[if IE 10]>    <html prefix="og: http://ogp.me/ns#" class="no-js ie10 lte10"> <![endif]-->
+<!--[if gt IE 10]> <html prefix="og: http://ogp.me/ns#" class="no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html prefix="og: http://ogp.me/ns#" class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"3cb1ab1625","applicationID":"5745571,5745572","transactionName":"YFMDbUZVXRVWAERbClkZJVZAelYSdAxeRhdYWg1cRhtjB1AGc0AAVkIOSxt9XQJSGw==","queueTime":0,"applicationTime":27,"ttGuid":"A00EBAA513BF414A","agent":"js-agent.newrelic.com/nr-686.min.js"}</script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o?o:n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({QJf3ax:[function(e,n){function t(e){function n(n,t,a){e&&e(n,t,a),a||(a={});for(var u=c(n),f=u.length,s=i(a,o,r),p=0;f>p;p++)u[p].apply(s,t);return s}function a(e,n){f[e]=c(e).concat(n)}function c(e){return f[e]||[]}function u(){return t(n)}var f={};return{on:a,emit:n,create:u,listeners:c,_events:f}}function r(){return{}}var o="nr@context",i=e("gos");n.exports=t()},{gos:"7eSDFh"}],ee:[function(e,n){n.exports=e("QJf3ax")},{}],3:[function(e,n){function t(e){return function(){r(e,[(new Date).getTime()].concat(i(arguments)))}}var r=e("handle"),o=e(1),i=e(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(e,n){window.NREUM[n]=t("api-"+n)}),n.exports=window.NREUM},{1:12,2:13,handle:"D5DuLP"}],gos:[function(e,n){n.exports=e("7eSDFh")},{}],"7eSDFh":[function(e,n){function t(e,n,t){if(r.call(e,n))return e[n];var o=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return e[n]=o,o}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],D5DuLP:[function(e,n){function t(e,n,t){return r.listeners(e).length?r.emit(e,n,t):void(r.q&&(r.q[e]||(r.q[e]=[]),r.q[e].push(n)))}var r=e("ee").create();n.exports=t,t.ee=r,r.q={}},{ee:"QJf3ax"}],handle:[function(e,n){n.exports=e("D5DuLP")},{}],XL7HBI:[function(e,n){function t(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:i(e,o,function(){return r++})}var r=1,o="nr@id",i=e("gos");n.exports=t},{gos:"7eSDFh"}],id:[function(e,n){n.exports=e("XL7HBI")},{}],G9z0Bl:[function(e,n){function t(){var e=d.info=NREUM.info,n=f.getElementsByTagName("script")[0];if(e&&e.licenseKey&&e.applicationID&&n){c(p,function(n,t){n in e||(e[n]=t)});var t="https"===s.split(":")[0]||e.sslForHttp;d.proto=t?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=d.proto+e.agent,n.parentNode.insertBefore(r,n)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=e("handle"),c=e(1),u=window,f=u.document;e(2);var s=(""+location).split("?")[0],p={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-686.min.js"},d=n.exports={offset:i(),origin:s,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),u.addEventListener("load",t,!1)):(f.attachEvent("onreadystatechange",r),u.attachEvent("onload",t)),a("mark",["firstbyte",i()])},{1:12,2:3,handle:"D5DuLP"}],loader:[function(e,n){n.exports=e("G9z0Bl")},{}],12:[function(e,n){function t(e,n){var t=[],o="",i=0;for(o in e)r.call(e,o)&&(t[i]=n(o,e[o]),i+=1);return t}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],13:[function(e,n){function t(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(0>o?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=t},{}]},{},["G9z0Bl"]);</script>
+
+        <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.whatcar.com/car-advice" />
+
+
+
+
+        <title>Car Buying Advice & Tips - What Car?</title>
+		<meta name="description" content="The latest car and and car-buying advice from the expert What Car? team, including buying and selling cars and how to deal with running them."/>
+		<link rel="canonical" href="http://www.whatcar.com/car-advice"/>
+
+
+<script type="text/javascript" charset="utf-8">
+    var pageDnaObj = {"content":{"has_video":"no","has_gallery":"no","has_poll":"no","language":"en","title":"Car Buying Advice & Tips - What Car?","type":"home","is_special":"no"},"navigation":{"locale":"en-GB","section":"advice","section_child1":"home","site_domain":"www.whatcar.com"},"product":{},"search":{}}
+</script>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=1024, initial-scale=0, maximum-scale=1.0, minimum-scale=0.75, user-scalable=yes" />
+		<meta name="apple-itunes-app" content="app-id=494854250">
+
+
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+    
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+
+    
+	
+
+
+
+    <!--[if !(lt IE 9)]><!--><link rel="stylesheet" type="text/css" href="http://www.whatcar.com/css/min/_Layout_Universal_8156090DB991FA7A99B18BDEB3E34F99.css" /><!--<![endif]--><!--[if (gte IE 6)&(lte IE 8)]><link rel="stylesheet" type="text/css" href="/css/min/_Layout_Ie_8156090DB991FA7A99B18BDEB3E34F99.css" /><![endif]-->
+
+    
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+	
+
+
+    
+    <!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="/css/min/_IE_3AFEAA8B27921B9F498FDBA7C3F7123C.css" />
+	<![endif]-->
+
+    	<script type="text/javascript" charset="utf-8">
+		var ContentInfo = {
+			Site:{"Domain":"whatcar.com","SiteFormat":"responsive"},
+			Magazine:{"JournalCode":"WCR","Url":"http://www.whatcar.com/","SiteCatalystSitePrefix":"WCR"},
+PageInfo:{"PageName":"wcr:home:home","PageUrl":"car-advice","ContentInfoType":3}
+		}
+	</script>
+
+    
+	
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="//tealium.hs.llnwd.net/o43/utag/haymarket/whatcar/prod/utag.js" type="text/javascript"></script>
+
+    		<!--[if (gte IE 6)&(lte IE 8)]>
+			<script type="text/javascript" src="/_hbi_ui/basesitenet/js/libs/selectivizr-min.js"></script>
+			<script type="text/javascript" src="/_hbi_ui/basesitenet/js/libs/respond.min.js"></script>
+		<![endif]-->
+		<!--[if (IE 7)]>
+			<script type="text/javascript" src="/js/ie7.js"></script>
+		<![endif]--> 
+
+    <script type="text/javascript" src="http://www.whatcar.com/js/min/_Layout_Universal_C6FEC673500E9AB3FA166CB355C38DFD.js"></script>
+
+    
+    
+    <script src='http://static.whatcar.com.s3.amazonaws.com/2469/Assets/js/vendor/modernizr-2.6.2.min.js' type="text/javascript"></script>
+
+	
+<script type="text/javascript">
+	// Javascript feature switches.
+	var whatCarSiteFeatureManager = {"EnableWhatCarConnectPopupUpdate":true,"EnableWhatCarCompanyCarTaxUpdate":true,"EnableWhatCarFinanceWidgetUpdate":true};
+</script>
+
+
+	
+<script type="text/javascript">
+	var siteConfiguration = { "MainSiteUrl": "http://www.whatcar.com/" };
+</script>
+	
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+<script type="text/javascript">
+	window.ko || document.write('<script src="/content/js/knockout-3.1.0.js">\x3C/script>');
+</script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js"></script>
+<script type="text/javascript">
+	window.ko.mapping || document.write('<script src="/content/js/knockout.mapping-2.4.1.js">\x3C/script>');
+</script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout-validation/1.0.2/knockout.validation.min.js"></script>
+<script type="text/javascript">
+	window.ko.validation || document.write('<script src="/Content/js/knockout.validation.min-1.0.2.js">\x3C/script>');
+</script>
+	
+	<script type="text/javascript">var switchTo5x = true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">
+		var gaAcc= 'UA-7771011-20';
+		stLight.options({
+			publisherGA: gaAcc,
+			tracking: "true",
+			minorServices: false,
+			doNotHash: false,
+			doNotCopy: false,
+			hashAddressBar: false,
+			onhover: false
+		});
+	</script>
+
+
+    
+    
+	
+
+
+</head>
+		<body>
+ 
+<div id="outerWrap">
+    <div class="a11y">
+        <ul>
+            <li><a href="#main" accesskey="s">Skip to Content</a></li>
+            <li><a href="#responsiveNavigation" accesskey="1">Skip to Main Navigation</a></li>
+            <li><a href="#topNav" accesskey="3">Skip to Information Links</a></li>
+            <li><a href="#topSearchForm" accesskey="4">Skip to Site Search</a></li>
+            <li><a href="#mainFooter" accesskey="5">Skip to Footer</a></li>
+            <li><a href="/accessibility" accesskey="6">Skip to Accessibility Information</a></li>
+            <li><a href="/" accesskey="h">Home Page</a></li>
+        </ul>
+    </div>
+
+    
+ 
+	<div id="container" class="page-main-content-tracked">
+		
+
+		
+		
+		
+
+<div id="advertTop">
+	
+</div> 
+		<div id="wrap" class="clearfix">
+			<header id="masthead">                
+				
+<div id="title">
+    <figure class="responsive" data-media="/img/logoSmall.png" data-media768="/img/WClogoRebrand.png">
+        
+        <h2>
+            <span>What Car?</span>
+            <a href="http://www.whatcar.com/" rel="IntCategory-Navigation.Old.Homepage:Action-click:Label-logo">
+                <img src="/img/WClogoRebrand.png" alt="What Car?" />
+            </a>
+        </h2>
+    </figure>
+    <div id="gpt_7294_leaderboard1"></div>
+</div>
+	<h2 class="a11y">Information Links</h2>
+	<nav id="topNav">
+		<ul>
+			<li id="navControl">
+				<a href="#nav" class="" >Menu</a>
+			</li>
+			<li id="signInOut">		<a href="/login?returnUrl=http://www.whatcar.com/car-advice" title="Sign in">Sign in</a>
+</li>
+			<li id="register">		<a href="http://www.whatcar.com/Subscribe?returnUrl=http://www.whatcar.com/car-advice" title="Register">Register</a>
+</li>
+			<li id="bulletins">		<a href="http://www.whatcar.com/email-bulletins" title="Bulletins">Bulletins</a>
+</li>
+			 
+		</ul>
+	</nav>
+	<div id="responsiveNavigation" class="clearfix">
+		<h2 class="a11y">Main Navigation</h2>
+<nav id="primaryNav">
+	<ul>
+				<li id="primaryNav-1" >
+						<a href="/" rel="IntCategory-Navigation.Old.Home:Action-click:Label-Parent" title="Home">Home</a>
+				</li>
+				<li id="primaryNav-2" >
+						<a href="/car-reviews" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Parent" title="Reviews">Reviews</a>
+						<ul>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=307" title="Superminis" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Superminis">Superminis</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=483" title="Crossovers" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Crossovers">Crossovers</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=310" title="Small family cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-SmallFamilyCars">Small family cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=308" title="4X4s" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-4X4s">4X4s</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=315" title="Family cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-FamilyCars">Family cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=314" title="Coupes" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Coupes">Coupes</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=313" title="Compact Executives" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-CompactExecutives">Compact Executives</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=306" title="Cabriolets" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Cabriolets">Cabriolets</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=309" title="Executive cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-ExecutiveCars">Executive cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=305" title="Performance cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-PerformanceCars">Performance cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=312" title="Luxury cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-LuxuryCars">Luxury cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/nissan/qashqai-crossover/summary/26210-5" title="Car of the year winner" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-CarOfTheYearWinner">Car of the year winner</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=316" title="Estates" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Estates">Estates</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;page=1&amp;pageCount=10&amp;orderBy=None&amp;orderDirection=Ascending" title="All new car reviews" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-AllNewCarReviews">All new car reviews</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=311" title="MPVs" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Mpvs">MPVs</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=369&amp;page=1&amp;pageCount=10&amp;orderBy=None&amp;orderDirection=Ascending" title="All used car reviews" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-AllUsedCarReviews">All used car reviews</a>
+								</li>
+						</ul>  
+				</li>
+				<li id="primaryNav-3" >
+						<a href="/truempg" rel="IntCategory-Navigation.Old.TrueMPG:Action-click:Label-Parent" title="True MPG">True MPG</a>
+				</li>
+				<li id="primaryNav-4" class="navCurrent">
+						<a href="/car-advice" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-Parent" title="Advice">Advice</a>
+						<ul>
+								<li>
+										<a href="/car-advice/buying/" title="Buying a car" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-BuyingACar">Buying a car</a>
+								</li>
+								<li>
+										<a href="/car-advice/running/" title="Running a car" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-RunningACar">Running a car</a>
+								</li>
+								<li>
+										<a href="/car-advice/running/" title="Car buyers glossary" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-CarBuyersGlossary">Car buyers glossary</a>
+								</li>
+								<li>
+										<a href="/car-advice/selling/" title="Selling a car" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-SellingACar">Selling a car</a>
+								</li>
+								<li>
+										<a href="/green-cars/" title="Green cars" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-GreenCars">Green cars</a>
+								</li>
+								<li>
+										<a href="/car-news/petrol-versus-diesel-which-is-cheaper-/248139" title="Petrol or diesel?" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-PetrolOrDiesel?">Petrol or diesel?</a>
+								</li>
+								<li>
+										<a href="/car-depreciation-calculator/" title="Depreciation calculator" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-DepreciationCalculator">Depreciation calculator</a>
+								</li>
+								<li>
+										<a href="/car-news/what-car-checklists/227297" title="What Car? Checklists" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-WhatCar?Checklists">What Car? Checklists</a>
+								</li>
+								<li>
+										<a href="http://motorcodes.whatcar.com/" title="Garage finder" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-GarageFinder">Garage finder</a>
+								</li>
+								<li>
+										<a href="/company-car-tax/" title="Company car tax" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-CompanyCarTax">Company car tax</a>
+								</li>
+								<li>
+										<a href="/advice/mot" title="MOT tool" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-MOTTool">MOT tool</a>
+								</li>
+						</ul>  
+				</li>
+				<li id="primaryNav-5" >
+						<a href="/car-news" rel="IntCategory-Navigation.Old.News:Action-click:Label-Parent" title="News">News</a>
+				</li>
+				<li id="primaryNav-6" >
+						<a href="http://www.whatcar.com/awards" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-Parent" title="Awards">Awards</a>
+						<ul>
+								<li>
+										<a href="/awards/" title="Car of the Year 2015" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-CarOfTheYear2015">Car of the Year 2015</a>
+								</li>
+								<li>
+										<a href="/awards/2014/ucoty" title="Used Car of the Year 2014" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-UsedCarOfTheYear2014">Used Car of the Year 2014</a>
+								</li>
+								<li>
+										<a href="/car-news/best-cars-towing/1201988" title="Tow Car Awards 2014" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-TowCarAwards2014">Tow Car Awards 2014</a>
+								</li>
+								<li>
+										<a href="/awards/jdpower/2014/home" title="JD Power Survey 2014" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-JDPowerSurvey2014">JD Power Survey 2014</a>
+								</li>
+						</ul>  
+				</li>
+				<li id="primaryNav-7" >
+						<a href="http://www.whatcar.com/usedcars" rel="IntCategory-Navigation.Old.UsedCars:Action-click:Label-Parent" title="Used cars">Used cars</a>
+				</li>
+				<li id="primaryNav-8" >
+						<a href="/car-leasing" rel="IntCategory-Navigation.Old.LeasingDeals:Action-click:Label-Parent" title="Leasing deals">Leasing deals</a>
+				</li>
+				<li id="primaryNav-9" >
+						<a href="/valuations" rel="IntCategory-Navigation.Old.FreeValuations:Action-click:Label-Parent" title="Free valuations">Free valuations</a>
+				</li>
+				<li id="primaryNav-10" >
+						<a href="/car-finance" rel="IntCategory-Navigation.Old.Finance:Action-click:Label-Parent" title="Finance">Finance</a>
+				</li>
+			<li id="siteSearch">
+<form action="/Search" class="searchForm" id="topSearchForm" method="get">					<div class="searchFields">
+						<label for="term">Search</label>
+						<input accesskey="4" id="searchPhrase" name="term" placeholder="Type your search phrase here" tabindex="1" type="text" value="" />
+						<input type="submit" class="searchSubmit" value="Search" />
+					</div>
+</form>			</li>
+	</ul>
+</nav>
+<script>
+	$('#topSearchForm').submit(function () {
+		var searchTerm = $('#searchPhrase').val().substring(0, 30);
+		_gaq.push(['_trackEvent', 'Navigation.Old.SearchBox', 'search', searchTerm]);
+	});
+</script>	</div>
+
+			</header>
+			<div id="gpt_7294_superheader1"></div>
+			
+
+			<hr class="a11y" />
+		    <section id="main" role="main">
+		        
+        <div class="clearfix">
+            <ul id="breadcrumb">
+<li><a href="http://www.whatcar.com/">Home</a></li>
+<li>Car advice</li>
+</ul>
+        </div>
+            <div id="gridTop" class="grid1">
+			    <div class="zone">
+					<!-- zone 1 -->
+						<div class="textHtmlModule">
+		<h1 class="underlined">Car advice</h1>
+	</div>
+
+			    </div>
+			</div>
+				<div class="group1">
+				<div class="zoneGrid2">
+						<div class="grid1">
+							<div class="zone">
+								<!-- zone 2 -->
+								
+	<div class="promotionsModule genericModule">
+		<div class="promo-flexslider">
+            <ul class="slides">
+		            <li>
+			            <a href="http://whatcar.com/car-news/11-frequently-asked-car-loan-questions-answered/1311849" rel="IntCategory-Homepage:Action-Carousel:Label-1.whatcar.com/car_news/11_frequently_asked_car_loan_questions_answered/1311849">
+					            <figure>
+						            <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/655/offlinehbpl.hbpl.co.uk/promotions/RCW/Finance-home.jpg" />
+					            </figure>
+					            <div class="caption">
+						            <span></span>
+						            <h3>11 frequently asked car loan questions answered</h3>						
+						            <p>Want to know if you&#39;re eligible for a car loan or how to go about getting a car loan? Read on</p>                            						
+					            </div>
+			            </a>
+		            </li>
+		            <li>
+			            <a href="http://www.whatcar.com/car-news/company-car-cash-alternative/1200976" rel="IntCategory-Homepage:Action-Carousel:Label-2.www.whatcar.com/car_news/company_car_cash_alternative/1200976">
+					            <figure>
+						            <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/655/offlinehbpl.hbpl.co.uk/promotions/RCW/Audi_A3_Saloon_car.jpg" />
+					            </figure>
+					            <div class="caption">
+						            <span></span>
+						            <h3>Company car or cash?</h3>						
+						            <p>Not sure whether taking a company car makes financial sense? Here&#39;s how to check.</p>                            						
+					            </div>
+			            </a>
+		            </li>
+		            <li>
+			            <a href="http://www.whatcar.com/car-news/motability/1290976" rel="IntCategory-Homepage:Action-Carousel:Label-3.www.whatcar.com/car_news/motability/1290976">
+					            <figure>
+						            <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/655/offlinehbpl.hbpl.co.uk/promotions/RCW/Motability.jpg" />
+					            </figure>
+					            <div class="caption">
+						            <span></span>
+						            <h3>What is Motability?</h3>						
+						            <p>Simple advice on who can apply, how it works and how it could save you thousands</p>                            						
+					            </div>
+			            </a>
+		            </li>
+		            <li>
+			            <a href="http://www.whatcar.com/advice/mot" rel="IntCategory-Homepage:Action-Carousel:Label-4.www.whatcar.com/advice/mot">
+					            <figure>
+						            <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/655/offlinehbpl.hbpl.co.uk/promotions/RCW/MOT.jpg" />
+					            </figure>
+					            <div class="caption">
+						            <span></span>
+						            <h3>Will your car pass its first MoT?</h3>						
+						            <p>Use you MoT tool to see what your three-year old car is likely to fall down</p>                            						
+					            </div>
+			            </a>
+		            </li>
+		            <li>
+			            <a href="http://whatcar.com/car-advice/buying/how-to-spec-a-car/3491856" rel="IntCategory-Homepage:Action-Carousel:Label-5.whatcar.com/car_advice/buying/how_to_spec_a_car/3491856">
+					            <figure>
+						            <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/655/offlinehbpl.hbpl.co.uk/promotions/RCW/spec2.jpg" />
+					            </figure>
+					            <div class="caption">
+						            <span></span>
+						            <h3>How to spec a car</h3>						
+						            <p>Our tips on ticking the right boxes when choosing your new car</p>                            						
+					            </div>
+			            </a>
+		            </li>
+		            <li>
+			            <a href="http://whatcar.com/car-advice/running/how-to-cut-your-insurance-premium/3487410" rel="IntCategory-Homepage:Action-Carousel:Label-6.whatcar.com/car_advice/running/how_to_cut_your_insurance_premium/3487410">
+					            <figure>
+						            <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/655/offlinehbpl.hbpl.co.uk/promotions/RCW/VolvoCrash-w.jpg" />
+					            </figure>
+					            <div class="caption">
+						            <span></span>
+						            <h3>Car Insurance: How to cut the cost</h3>						
+						            <p>Essential advice on how to slash costs without reducing cover</p>                            						
+					            </div>
+			            </a>
+		            </li>
+		            <li>
+			            <a href="/finance" rel="IntCategory-Homepage:Action-Carousel:Label-7./finance">
+					            <figure>
+						            <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/655/offlinehbpl.hbpl.co.uk/promotions/RCW/Financepromo.jpg" />
+					            </figure>
+					            <div class="caption">
+						            <span>PROMOTION</span>
+						            <h3>Let What Car? Finance help find the perfect loan for you</h3>						
+						            <p>Deals from over 15 lenders to secure great value finance for your car purchase</p>                            						
+					            </div>
+			            </a>
+		            </li>
+            </ul>	
+		</div>
+	</div>
+		<div class="articleModule genericModule">
+				<header class="carouselHeader">
+					<p><strong>From the What Car? <a href="mailto:helpdesk@whatcar.com" title="Email the Helpdesk">Helpdesk</a></strong></p>
+				</header>
+
+			<div class="flimStripFlexSlider clearfix">
+				<ul class="slides">
+						<li class="story">
+							<figure><a href="/car-news/car-problems-solved/1281853" title="Car problems solved"><img alt="Car problems solved" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Helpdesk21600x1066-201403180951590.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/car-problems-solved/1281853" title="Helpdesk - Car problems solved">Helpdesk - Car problems solved</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/new-car-magazine-sale-week/1212093" title="New What Car? magazine on sale this week"><img alt="New What Car? magazine on sale this week" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/septcoverthismonth-20150730101729845.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/new-car-magazine-sale-week/1212093" title="New What Car? magazine on sale this week">New What Car? magazine on sale this week</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/confusing-fixed-price-servicing/1299182" title="Confusing fixed-price servicing"><img alt="Confusing fixed-price servicing" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/AudiHelpdesk-2014061710401644.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/confusing-fixed-price-servicing/1299182" title="Confusing fixed-price servicing">Confusing fixed-price servicing</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/diesel-issue-causes-fuel-filter-clog/1299180" title="Diesel issue causes fuel filter to clog"><img alt="Diesel issue causes fuel filter to clog" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/PeugeotHelpdesk-20140617103334960.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/diesel-issue-causes-fuel-filter-clog/1299180" title="Diesel issue causes fuel filter to clog">Diesel issue causes fuel filter to clog</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/engine-issue-causes-headache-doctor/1299163" title="Engine issue causes headache for doctor"><img alt="Engine issue causes headache for doctor" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/CitroenHelpdesk-2014061710210674.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/engine-issue-causes-headache-doctor/1299163" title="Engine issue causes headache for doctor">Engine issue causes headache for doctor</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/car-checklists/1194893" title="What Car? checklists"><img alt="What Car? checklists" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/checklist-20140630112507254.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/car-checklists/1194893" title="What Car? checklists">What Car? checklists</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/missing-service-history-worries-reader/1296074" title="Missing service history worries reader"><img alt="Missing service history worries reader" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Helpdesk-20140527025806337.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/missing-service-history-worries-reader/1296074" title="Missing service history worries reader">Missing service history worries reader</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/mystery-fault-causes-battery-drain/1296088" title="Mystery fault causes battery to drain"><img alt="Mystery fault causes battery to drain" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/DSC_7366-20140527032753144.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/mystery-fault-causes-battery-drain/1296088" title="Mystery fault causes battery to drain">Mystery fault causes battery to drain</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/three-month-wait-replacement-tyres-threatens-leave-reader-stranded/1296059" title="Three-month wait for replacement tyres threatens to leave reader stranded"><img alt="Three-month wait for replacement tyres threatens to leave reader stranded" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/_DSC2247-20140527023117237.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/three-month-wait-replacement-tyres-threatens-leave-reader-stranded/1296059" title="Three-month wait for replacement tyres threatens to leave reader stranded">Three-month wait for replacement tyres threatens to leave reader stranded</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/update-mazda-gives-cx-5-owner-new-car/1289403" title="Update: Mazda gives CX-5 owner new car"><img alt="Update: Mazda gives CX-5 owner new car" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Owen-Roberts-20140408051706219.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/update-mazda-gives-cx-5-owner-new-car/1289403" title="Update: Mazda gives CX-5 owner new car">Update: Mazda gives CX-5 owner new car</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/pay-extra-324-insurance-lose-cover-reader-told/1289316" title="&#39;Pay an extra £324 for insurance or lose your cover,&#39; reader told"><img alt="&#39;Pay an extra £324 for insurance or lose your cover,&#39; reader told" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Idoia-Bilbao-20140408121101645.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/pay-extra-324-insurance-lose-cover-reader-told/1289316" title="&#39;Pay an extra &#163;324 for insurance or lose your cover,&#39; reader told">&#39;Pay an extra &#163;324 for insurance or lose your cover,&#39; reader told</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/bmw-1-series-convertible-catches-fire-recalled/1283281" title="BMW 1 Series Convertible catches fire and is then recalled"><img alt="BMW 1 Series Convertible catches fire and is then recalled" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/HelpdeskBMWFire-20140304115822135.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/bmw-1-series-convertible-catches-fire-recalled/1283281" title="BMW 1 Series Convertible catches fire and is then recalled">BMW 1 Series Convertible catches fire and is then recalled</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/vauxhall-insignia-flywheel-problem/1283289" title="Vauxhall Insignia flywheel problem"><img alt="Vauxhall Insignia flywheel problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/HelpdeskInsignia-20140304122652441.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/vauxhall-insignia-flywheel-problem/1283289" title="Vauxhall Insignia flywheel problem">Vauxhall Insignia flywheel problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/mercedes-benz-a-class-gearbox-problem/1283284" title="Mercedes-Benz A-Class gearbox problem"><img alt="Mercedes-Benz A-Class gearbox problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/HelpdeskAClass-20140304120627304.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/mercedes-benz-a-class-gearbox-problem/1283284" title="Mercedes-Benz A-Class gearbox problem">Mercedes-Benz A-Class gearbox problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/honda-cr-v-diesel-particulate-filter-warning-light-problem/1230916" title="Honda CR-V diesel particulate filter warning light problem"><img alt="Honda CR-V diesel particulate filter warning light problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Honda-CRV-helpdesk-20140212120150415.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/honda-cr-v-diesel-particulate-filter-warning-light-problem/1230916" title="Helpdesk - Honda CR-V diesel particulate filter warning light problem">Helpdesk - Honda CR-V diesel particulate filter warning light problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/jaguar-x-type-mileage-anomaly-problem/1230914" title="Jaguar X-type mileage anomaly problem"><img alt="Jaguar X-type mileage anomaly problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Jaghelpdesk-20140212114902676.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/jaguar-x-type-mileage-anomaly-problem/1230914" title="Helpdesk - Jaguar X-type mileage anomaly problem">Helpdesk - Jaguar X-type mileage anomaly problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/audi-a3-sportback-rusting-wheel-problem/1230912" title="Audi A3 Sportback rusting wheel problem"><img alt="Audi A3 Sportback rusting wheel problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/A3Rust-20140212113309371.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/audi-a3-sportback-rusting-wheel-problem/1230912" title="Helpdesk - Audi A3 Sportback rusting wheel problem">Helpdesk - Audi A3 Sportback rusting wheel problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/bmw-3-series-steering-problem/1227453" title="BMW 3 Series steering problem"><img alt="BMW 3 Series steering problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/AWA3-20140116112927748.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/bmw-3-series-steering-problem/1227453" title="Helpdesk - BMW 3 Series steering problem">Helpdesk - BMW 3 Series steering problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/problem-audi-a1-keeps-driving-instructor-off-road/1227449" title="Problem Audi A1 keeps driving instructor off the road"><img alt="Problem Audi A1 keeps driving instructor off the road" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/AWA2-20140116112126962.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/problem-audi-a1-keeps-driving-instructor-off-road/1227449" title="Helpdesk - Problem Audi A1 keeps driving instructor off the road">Helpdesk - Problem Audi A1 keeps driving instructor off the road</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/bmw-3-series-touring-delivered-damaged-mismatched-tyres/1227443" title="BMW 3 Series Touring delivered damaged with mismatched tyres"><img alt="BMW 3 Series Touring delivered damaged with mismatched tyres" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/AWA1-2014011611001133.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/bmw-3-series-touring-delivered-damaged-mismatched-tyres/1227443" title="Helpdesk - BMW 3 Series Touring delivered damaged with mismatched tyres">Helpdesk - BMW 3 Series Touring delivered damaged with mismatched tyres</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/volkswagen-leasing-problem/1227440" title="Volkswagen Up leasing problem"><img alt="Volkswagen Up leasing problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/FEB3-20140116103617606.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/volkswagen-leasing-problem/1227440" title="Helpdesk - Volkswagen Up leasing problem">Helpdesk - Volkswagen Up leasing problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/hyundai-i10-stock-shortage-problem/1227397" title="Hyundai i10 stock shortage problem"><img alt="Hyundai i10 stock shortage problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/FEB2-20140115052310980.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/hyundai-i10-stock-shortage-problem/1227397" title="Helpdesk - Hyundai i10 stock shortage problem">Helpdesk - Hyundai i10 stock shortage problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/volkswagen-touran-turbo-problem/1227395" title="Volkswagen Touran turbo problem"><img alt="Volkswagen Touran turbo problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/FEB1-20140115050409255.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/volkswagen-touran-turbo-problem/1227395" title="Helpdesk - Volkswagen Touran turbo problem">Helpdesk - Volkswagen Touran turbo problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/volvo-v60-software-problem/1227381" title="Volvo V60 software problem"><img alt="Volvo V60 software problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/JAN3-20140115032048445.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/volvo-v60-software-problem/1227381" title="Helpdesk - Volvo V60 software problem">Helpdesk - Volvo V60 software problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/bmw-3-series-gt-cancellation-problem/1227358" title="BMW 3 Series GT cancellation problem"><img alt="BMW 3 Series GT cancellation problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/JAN2-2014011502533388.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/bmw-3-series-gt-cancellation-problem/1227358" title="Helpdesk - BMW 3 Series GT cancellation problem">Helpdesk - BMW 3 Series GT cancellation problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/renault-espace-air-conditioning-problem/1227355" title="Renault Espace air-conditioning problem"><img alt="Renault Espace air-conditioning problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/JAN1-20140115022948583.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/renault-espace-air-conditioning-problem/1227355" title="Helpdesk - Renault Espace air-conditioning problem">Helpdesk - Renault Espace air-conditioning problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/land-rover-freelander-rust-problem/1217080" title="Land Rover Freelander rust problem"><img alt="Land Rover Freelander rust problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/_DSC9425-20131018042622524.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/land-rover-freelander-rust-problem/1217080" title="Helpdesk - Land Rover Freelander rust problem">Helpdesk - Land Rover Freelander rust problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/audi-a6-botched-recovery-problem/1217368" title="Audi A6 botched recovery problem"><img alt="Audi A6 botched recovery problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/MatthewBrookes-04-20131022113350707.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/audi-a6-botched-recovery-problem/1217368" title="Helpdesk - Audi A6 botched recovery problem">Helpdesk - Audi A6 botched recovery problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/renault-clio-lost-service-history-problem/1217357" title="Renault Clio lost service history problem"><img alt="Renault Clio lost service history problem" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/JanuaryClio-20131022111436972.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/renault-clio-lost-service-history-problem/1217357" title="Helpdesk - Renault Clio lost service history problem">Helpdesk - Renault Clio lost service history problem</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/audi-a1-doesnt-match-brochure/1217387" title="Audi A1 doesn&#39;t match the brochure"><img alt="Audi A1 doesn&#39;t match the brochure" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/AudiA1-20131022115314674.jpg" /></a></figure>
+							<span>Feature</span>
+							<h2><a href="/car-news/audi-a1-doesnt-match-brochure/1217387" title="Helpdesk - Audi A1 doesn&#39;t match the brochure">Helpdesk - Audi A1 doesn&#39;t match the brochure</a></h2>
+						</li>
+				</ul>
+			</div>
+		</div>
+	<div class="textHtmlModule">
+		<div class="columns adviceModule">
+<div class="col-1-3">
+<h2>Buying a car</h2>
+<p>Whether you are buying a new or used car, let What Car? help ensure you pay the right price, get the right finance and keep the paperwork in order</p>
+<ol class="steps">
+<li> <a href="http://www.whatcar.com/car-advice/buying/getting-started/3485017"> Getting started </a> </li>
+<li> <a href="http://www.whatcar.com/car-advice/buying/how-to-spec-a-car/3491856"> How to spec a car </a> </li>
+<li> <a href="http://www.whatcar.com/car-advice/buying/car-finance-explained/3485458"> Car finance explained </a> </li>
+<li> <a href="http://www.whatcar.com/car-advice/buying/depreciation/3485071"> Depreciation </a> </li>
+</ol>
+<p><a class="actionLink" href="http://www.whatcar.com/car-advice/buying/"> More on buying a car </a></p>
+</div>
+<div class="col-1-3">
+<h2>Running a car</h2>
+<p><span> Getting the best price when buying is only part of the story. Keeping an eye on the ongoing car ownership costs is the key to happiness. We show you how. </span></p>
+<ol class="steps">
+<li> <a href="http://www.whatcar.com/car-advice/running/the-basics/3487371"> The basics </a> </li>
+<li> <a href="http://www.whatcar.com/car-advice/running/road-tax-bands/3487414"> Road tax bands </a> </li>
+<li> <a href="http://www.whatcar.com/car-advice/running/breakdown-cover/3487418"> Breakdown cover </a> </li>
+<li> <a href="http://www.whatcar.com/car-advice/running/cutting-car-service-costs/3487416"> Cutting car service costs </a> </li>
+</ol>
+<p><a class="actionLink" href="http://www.whatcar.com/car-advice/running/"> More on running a car </a></p>
+</div>
+<div class="col-1-3">
+<h2>Selling a car</h2>
+<p><span> Selling your car can be a daunting experience, but if you do things right, you can avoid the pitfalls, stay safe, get the best price and look forward to getting your next one!&nbsp; </span></p>
+<ol class="steps">
+<li> <a href="http://www.whatcar.com/car-advice/selling/meeting-private-buyers/3141797"> Meeting private buyers </a> </li>
+<li> <a href="http://www.whatcar.com/car-advice/selling/how-to-value-your-car/3141794"> How to value your car </a> </li>
+<li> <a href="http://www.whatcar.com/car-advice/selling/where-to-sell-your-car/3141793"> Where to sell your car </a> </li>
+<li> <a href="http://www.whatcar.com/car-advice/selling/preparing-your-car-for-a-sale/3141795"> Preparing your car for a sale </a> </li>
+</ol>
+<p><a class="actionLink" href="http://www.whatcar.com/car-advice/selling/"> More on selling a car </a></p>
+</div>
+</div>
+<br />
+	</div>
+	<div class="textHtmlModule">
+		<div class="glossaryModule">
+<h2>Glossary</h2>
+<p class="glossaryIntro">Want to know the difference between your APRs and your PCPs? Our Glossary will guide you through the minefield of car-buying terms.</p>
+<ul class="glossaryList">
+<li> <a href="/car-advice/glossary/A"> A </a> </li>
+<li> <a href="/car-advice/glossary/B"> B </a> </li>
+<li> <a href="/car-advice/glossary/C"> C </a> </li>
+<li> <a href="/car-advice/glossary/D"> D </a> </li>
+<li> <a href="/car-advice/glossary/E"> E </a> </li>
+<li> <a href="/car-advice/glossary/F"> F </a> </li>
+<li> <a href="/car-advice/glossary/G"> G </a> </li>
+<li> <a href="/car-advice/glossary/H"> H </a> </li>
+<li> <a href="/car-advice/glossary/I"> I </a> </li>
+<li> <a href="/car-advice/glossary/J"> J </a> </li>
+<li> <a href="/car-advice/glossary/K"> K </a> </li>
+<li> <a href="/car-advice/glossary/L"> L </a> </li>
+<li> <a href="/car-advice/glossary/M"> M </a> </li>
+<li> <a href="/car-advice/glossary/N"> N </a> </li>
+<li> <a href="/car-advice/glossary/O"> O </a> </li>
+<li> <a href="/car-advice/glossary/P"> P </a> </li>
+<li> <a href="/car-advice/glossary/Q"> Q </a> </li>
+<li> <a href="/car-advice/glossary/R"> R </a> </li>
+<li> <a href="/car-advice/glossary/S"> S </a> </li>
+<li> <a href="/car-advice/glossary/T"> T </a> </li>
+<li> <a href="/car-advice/glossary/U"> U </a> </li>
+<li> <a href="/car-advice/glossary/V"> V </a> </li>
+<li> <a href="/car-advice/glossary/W"> W </a> </li>
+<li> <a href="/car-advice/glossary/X"> X </a> </li>
+<li> <a href="/car-advice/glossary/Y"> Y </a> </li>
+<li> <a href="/car-advice/glossary/Z"> Z </a> </li>
+</ul>
+</div>
+	</div>
+
+							</div>
+						</div>
+						<div class="grid2">
+								<div class="zone zone1">
+									<!-- zone 3 -->
+										<div class="textHtmlModule">
+		<div class="featuredInfo">
+<h2>Great car leasing deals</h2>
+<div class="fContent">
+<p>Not sure where to start with car leasing? Let What Car? take the pain out of the process</p>
+</div>
+<img title="Lease a car" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/leasing1.png" alt="Lease a car" /> <a class="readMore" href="http://www.whatcar.com/car-leasing/"> Get a great lease deal here </a></div>
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+  <h2>
+	What Car? Awards 2014
+  </h2>
+  <div class="fContent">
+	<p>
+	  The best cars to buy, whatever your budget, as chosen by What Car?'s experts&nbsp;
+	</p>
+  </div>
+  <img title="WhatCar? Awards 2013" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/COTY-Logo-2014-MKII.jpg" alt="WhatCar? Awards 2013" width="131" />
+  <a class="readMore" href="http://www.whatcar.com/awards">
+	See our award winners 
+  </a>
+</div>
+
+
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+  <h2>
+	  What Car? warranty 
+	  </h2>
+  <a title="What Car? Warranty" href="http://www.whatcarwarranty.com/">
+	<div class="fContent">
+	  <p>
+		<span>
+		  Make expensive repair bills a thing of the past with extended warranty cover from just &pound;15 per month&nbsp; 
+		</span>
+	  </p>
+	</div>
+  </a>
+  <a href="http://www.whatcarwarranty.com">
+	<img title="Warranty Direct" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/Warranty-Logo-small.jpg" alt="Find your TrueMPG" />
+	<br />
+  </a>
+  <a class="readMore" href="http://www.whatcarwarranty.com/">
+	Find out more 
+  </a>
+</div>
+
+	</div>
+
+								</div>
+								<div class="zone zone2">
+									<!-- zone 4 -->
+										<div class="textHtmlModule">
+		<div class="featuredInfo">
+<h2>Zap your insurance excess</h2>
+<div class="fContent">
+<p><span data-mce-mark="1"> Carrying a large insurance excess? Let What Car? reduce your excess to zero from just &pound;15 per year </span></p>
+</div>
+<a href="http://whatcar.zeromyexcess.com/" title="Zero My Excess"> <img title="Buys used cars" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/whatcar-logo.jpg" alt="Buys used cars" /> </a> <a class="readMore" href="http://whatcar.zeromyexcess.com/" title="Zero my excess"> Protect your insurance excess </a></div>
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+<h2>Free used car valuations</h2>
+<div class="fContent">
+<p><span> What is your used car worth? Enter your registration number for a free, expert valuation </span></p>
+</div>
+<img title="Free used car valuations" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/valuation.jpg" alt="Free used car valuations" /> <a class="readMore" href="http://www.whatcar.com/valuations/"> Get your free valuation </a></div>
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+  <h2>
+	Buy a used car
+  </h2>
+  <div class="fContent">
+	<p>
+	  <span>
+		What Car? Approved Used, in partnership with Trusted Dealers, is one of the safest places to buy a used car 
+	  </span>
+	</p>
+  </div>
+  <img title="Buys used cars" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/used-awards.png" alt="Buys used cars" />
+  <a class="readMore" href="http://usedcars.whatcar.com/home/used-cars">
+	Find your next used car 
+  </a>
+</div>
+
+	</div>
+
+								</div>
+						</div>
+			</div >
+				</div>
+				<div class="group2 grid1">
+					<div class="zone">
+						<!-- zone 5 -->
+							<div class="textHtmlModule">
+		<span>
+  advertisement 
+</span>
+<div id="gpt_7294_mpu_flexible1">
+  <span>
+  </span>
+</div>
+
+	</div>
+	<div class="textHtmlModule">
+		<div class="connectPromo connectSmall">
+<h3>Need Help?</h3>
+<p class="byline">We can help you with <b> booking </b> a test drive, <b> ordering </b> a brochure or <b> contacting </b> a dealer</p>
+<a class="link" href="http://whatcar.com/connect"> Get in touch </a></div>
+	</div>
+	<div class="textHtmlModule">
+		<!-- <p>
+  <span>
+	advertisement 
+  </span>
+</p> -->
+<div id="gpt_7294_contentspotlight_massive1">
+</div>
+
+	</div>
+
+
+
+
+
+
+
+
+	<div class="minimalReviewTabs">
+		<div class="tabs">
+			<div class="tabNode">
+				<div class="tabContent">
+					<div class="latest">
+							<h2>Latest reviews</h2>
+		<ul class="review-list">
+	<li>
+		<div class="image">
+			<a href="/car-reviews/vauxhall/astra-hatchback/summary/26269-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Vauxhall/Astra/229151554652.jpg" alt="Vauxhall Astra Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/vauxhall/astra-hatchback/summary/26269-5">Vauxhall Astra Hatchback</a></h3>
+			<span class="price">From &#163;15,295</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/jaguar/xf-saloon/summary/26268-2">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Jaguar/XF/28815154927.jpg" alt="Jaguar XF Saloon"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/jaguar/xf-saloon/summary/26268-2">Jaguar XF Saloon</a></h3>
+			<span class="price">From &#163;32,300</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/honda/jazz-hatchback/summary/26267-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Honda/Jazz/2181515112226.jpg" alt="Honda Jazz Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/honda/jazz-hatchback/summary/26267-5">Honda Jazz Hatchback</a></h3>
+			<span class="price">From &#163;13,495</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating3.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/renault/kadjar-hatchback/summary/26263-7">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Renault/Kadjar/971515125323.jpg" alt="Renault Kadjar Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/renault/kadjar-hatchback/summary/26263-7">Renault Kadjar Hatchback</a></h3>
+			<span class="price">From &#163;17,995</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/honda/hr-v-crossover/summary/23660-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Honda/HR-V/117151534619.jpg" alt="Honda HR-V Crossover"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/honda/hr-v-crossover/summary/23660-5">Honda HR-V Crossover</a></h3>
+			<span class="price">From &#163;17,995</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+		</ul>
+
+					</div>
+				</div>
+			</div>
+			<div class="tabNode">
+				<div class="tabContent">
+					<div class="popular">
+							<h2>Most popular</h2>
+		<ul class="review-list">
+	<li>
+		<div class="image">
+			<a href="/car-reviews/nissan/qashqai-crossover/summary/26210-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Nissan/Qashqai/71141491524.jpg" alt="Nissan Qashqai Crossover"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/nissan/qashqai-crossover/summary/26210-5">Nissan Qashqai Crossover</a></h3>
+			<span class="price">From &#163;18,265</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating5.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/mazda/cx-5-crossover/summary/26070-3">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Mazda/CX-5/2341212515.jpg" alt="Mazda CX-5 Crossover"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/mazda/cx-5-crossover/summary/26070-3">Mazda CX-5 Crossover</a></h3>
+			<span class="price">From &#163;22,995</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating5.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/ford/fiesta-hatchback/summary/25846-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Ford/Fiesta/21131325338.jpg" alt="Ford Fiesta Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/ford/fiesta-hatchback/summary/25846-5">Ford Fiesta Hatchback</a></h3>
+			<span class="price">From &#163;10,145</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating5.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/volvo/xc60-crossover/summary/25808-3">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Volvo/XC60/4315153292.jpg" alt="Volvo XC60 Crossover"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/volvo/xc60-crossover/summary/25808-3">Volvo XC60 Crossover</a></h3>
+			<span class="price">From &#163;31,660</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/volkswagen/golf-hatchback/summary/26158-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Volkswagen/Golf/31012121148130.jpg" alt="Volkswagen Golf Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/volkswagen/golf-hatchback/summary/26158-5">Volkswagen Golf Hatchback</a></h3>
+			<span class="price">From &#163;17,595</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating5.gif"/></span>
+		</div>
+	</li>
+		</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+<div class="fContent">
+<h3>True MPG</h3>
+<p>Forget the official figures. What will your car really do to the gallon?&nbsp;</p>
+</div>
+<img title="Find your TrueMPG" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/wc-true-mpg.jpg" alt="Find your TrueMPG" /> <a class="readMore" href="/truempg/my-true-mpg"> Find your True MPG </a></div>
+<br />
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+<div class="fContent">
+<h3>Target Price</h3>
+<p>How much should you pay for your next car? We help you get the best deal</p>
+</div>
+<img title="Target price" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/target-price.png" alt="Target price" /> <a class="readMore" href="http://whatcar.com/car-news/target-price/1214366"> Find your Target Price </a></div>
+	</div>
+	<div class="textHtmlModule">
+		<span>
+  advertisement 
+</span>
+<div id="gpt_7294_mpu2">
+  <span>
+  </span>
+</div>
+
+	</div>
+
+					</div>
+                </div>
+        <div class="groups">
+        
+		</div>
+            <div id="gridBottom" class="grid1">
+                <div class="zone">
+                    <!-- zone 13 -->
+						<div class="textHtmlModule">
+		<div id="gpt_7294_skin" style="height: 0; visibility: hidden;">
+</div>
+
+	</div>
+
+                </div>
+            </div>
+
+
+		    </section>
+			
+
+			
+
+<div id="advertBodyBottom">
+	
+</div>
+		</div>
+	</div>
+	<hr class="a11y" />
+	<div id="footerWrap">
+		<footer id="mainFooter"> 
+			<ul class="footerMainNav">
+       <li          class="cms ">
+		
+            <a href="/my-whatcar">My What Car?</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="http://www.whatcar.com/aboutus">About us</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="/sitemap">Site Map</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="http://www.haymarket.com/CookiePolicy.aspx">Cookie Policy</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="http://www.haymarket.com/PrivacyPolicy.aspx">Privacy</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="/contact-us">Contact What Car?</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="http://www.haymarket.com/TermsAndConditions.aspx">Terms &amp; Conditions</a>
+	</li>
+    <li             id = "rssLink"
+         class="cms ">
+		
+            <a href="http://feeds.feedburner.com/WhatCarNewsAndReviews">RSS</a>
+	</li>
+    <li             id = "subscribeToWhatCar"
+         class="cms ">
+		
+            <a href="http://www.themagazineshop.com/wcar/wbs15">Subscribe to What Car? Magazine</a>
+	</li>
+
+</ul>
+
+
+<div class="haymarketFooter">
+    <a id="haymarketLogo" title="Haymarket" href="http://www.haymarket.com"><img alt="Haymarket" src="/_hbi_ui/basesitenet/img/responsive/logoHaymarket.png" /></a>
+    <p>What Car? is brought to you by <a href="http://www.haymarket.com/division.aspx?division=1">Haymarket Consumer Media</a></p>
+    <p>What Car? is part of <a href="#">Haymarket Motoring</a></p>
+    <ul>
+        
+    </ul>
+    <p>&copy; Haymarket Media Group 2015</p>
+<!--p id="copyright">
+	<a id="haymarketLogo" title="Haymarket" href="http://www.haymarket.com"><img alt="Haymarket" src="/_hbi_ui/basesitenet/img/responsive/logoHaymarket.png" /></a>
+	Haymarket Business Media sdfsdfsd &copy; 1957 &ndash; 2015 | <a href="/termsandconditions/" title="Terms &amp; Conditions">Terms &amp; Conditions</a> | <a href="/contact/" title="Contact Us">Contact Us</a>
+</p-->
+</div>	
+
+<!-- Feedback button -->
+    <script type="text/javascript">
+    	document.write('<scr' + 'ipt src="' + document.location.protocol + '//fby.s3.amazonaws.com/fby.js"></scr' + 'ipt>');
+    </script>
+	<script type="text/javascript">
+		var fbySetup = {
+			retryCount: 10,
+			init: function () {
+				if (fbySetup.retryCount-- > 0) {
+					if (typeof (FBY) === 'undefined') {
+						setTimeout(function () {
+							fbySetup.init();
+						}, 200);
+					} else {
+						FBY.showTab({ id: '1233', position: 'right', color: '#CF171F' });
+					}
+				}
+			}
+		};
+		fbySetup.init();
+    </script> 
+<!-- Feedback button -->
+		</footer>
+	</div>
+	
+	
+
+
+    <script>
+        // iOS scale bug fix
+        MBP.scaleFix();
+    </script>
+        <script src="//tealium.hs.llnwd.net/o43/utag/haymarket/whatcar/prod/utag.footer.js" type="text/javascript"></script>
+</div>
+</body>
+</html>

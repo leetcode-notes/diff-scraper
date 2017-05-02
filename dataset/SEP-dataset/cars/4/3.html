@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html prefix="og: http://ogp.me/ns#" class="no-js ie6 lte9 lte8 lte7"> <![endif]-->
+<!--[if IE 7]>     <html prefix="og: http://ogp.me/ns#" class="no-js ie7 lte9 lte8 lte7"> <![endif]-->
+<!--[if IE 8]>     <html prefix="og: http://ogp.me/ns#" class="no-js ie8 lte9 lte9 lte8"> <![endif]-->
+<!--[if IE 9]>     <html prefix="og: http://ogp.me/ns#" class="no-js ie9 lte9"> <![endif]-->
+<!--[if IE 10]>    <html prefix="og: http://ogp.me/ns#" class="no-js ie10 lte10"> <![endif]-->
+<!--[if gt IE 10]> <html prefix="og: http://ogp.me/ns#" class="no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html prefix="og: http://ogp.me/ns#" class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"3cb1ab1625","applicationID":"5745571,5745572","transactionName":"YFMDbUZVXRVWAERbClkZJVZAelYSdAxeRhdYWg1cRhtjB1AGc0AAVkIOSxt9XQJSGw==","queueTime":0,"applicationTime":48,"ttGuid":"E407C4970DE66428","agent":"js-agent.newrelic.com/nr-686.min.js"}</script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o?o:n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({QJf3ax:[function(e,n){function t(e){function n(n,t,a){e&&e(n,t,a),a||(a={});for(var u=c(n),f=u.length,s=i(a,o,r),p=0;f>p;p++)u[p].apply(s,t);return s}function a(e,n){f[e]=c(e).concat(n)}function c(e){return f[e]||[]}function u(){return t(n)}var f={};return{on:a,emit:n,create:u,listeners:c,_events:f}}function r(){return{}}var o="nr@context",i=e("gos");n.exports=t()},{gos:"7eSDFh"}],ee:[function(e,n){n.exports=e("QJf3ax")},{}],3:[function(e,n){function t(e){return function(){r(e,[(new Date).getTime()].concat(i(arguments)))}}var r=e("handle"),o=e(1),i=e(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(e,n){window.NREUM[n]=t("api-"+n)}),n.exports=window.NREUM},{1:12,2:13,handle:"D5DuLP"}],gos:[function(e,n){n.exports=e("7eSDFh")},{}],"7eSDFh":[function(e,n){function t(e,n,t){if(r.call(e,n))return e[n];var o=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return e[n]=o,o}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],D5DuLP:[function(e,n){function t(e,n,t){return r.listeners(e).length?r.emit(e,n,t):void(r.q&&(r.q[e]||(r.q[e]=[]),r.q[e].push(n)))}var r=e("ee").create();n.exports=t,t.ee=r,r.q={}},{ee:"QJf3ax"}],handle:[function(e,n){n.exports=e("D5DuLP")},{}],XL7HBI:[function(e,n){function t(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:i(e,o,function(){return r++})}var r=1,o="nr@id",i=e("gos");n.exports=t},{gos:"7eSDFh"}],id:[function(e,n){n.exports=e("XL7HBI")},{}],G9z0Bl:[function(e,n){function t(){var e=d.info=NREUM.info,n=f.getElementsByTagName("script")[0];if(e&&e.licenseKey&&e.applicationID&&n){c(p,function(n,t){n in e||(e[n]=t)});var t="https"===s.split(":")[0]||e.sslForHttp;d.proto=t?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=d.proto+e.agent,n.parentNode.insertBefore(r,n)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=e("handle"),c=e(1),u=window,f=u.document;e(2);var s=(""+location).split("?")[0],p={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-686.min.js"},d=n.exports={offset:i(),origin:s,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),u.addEventListener("load",t,!1)):(f.attachEvent("onreadystatechange",r),u.attachEvent("onload",t)),a("mark",["firstbyte",i()])},{1:12,2:3,handle:"D5DuLP"}],loader:[function(e,n){n.exports=e("G9z0Bl")},{}],12:[function(e,n){function t(e,n){var t=[],o="",i=0;for(o in e)r.call(e,o)&&(t[i]=n(o,e[o]),i+=1);return t}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],13:[function(e,n){function t(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(0>o?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=t},{}]},{},["G9z0Bl"]);</script>
+
+
+            <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.whatcar.com/car-news" />
+
+
+
+        <title>Car and Car-Buying News - What Car?</title>
+		<meta name="description" content="The latest car and industry news from the experts at What Car? including motor show coverage and special reports."/>
+		<link rel="canonical" href="http://www.whatcar.com/car-news"/>
+
+
+<script type="text/javascript" charset="utf-8">
+    var pageDnaObj = {"content":{"has_video":"no","has_gallery":"no","has_poll":"no","language":"en","title":"Car and Car-Buying News - What Car?","type":"home","is_special":"no"},"navigation":{"locale":"en-GB","section":"news","section_child1":"home","site_domain":"www.whatcar.com"},"product":{},"search":{}}
+</script>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=1024, initial-scale=0, maximum-scale=1.0, minimum-scale=0.75, user-scalable=yes" />
+		<meta name="apple-itunes-app" content="app-id=494854250">
+
+
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+    
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+
+    
+	
+
+
+
+    <!--[if !(lt IE 9)]><!--><link rel="stylesheet" type="text/css" href="http://www.whatcar.com/css/min/_Layout_Universal_8156090DB991FA7A99B18BDEB3E34F99.css" /><!--<![endif]--><!--[if (gte IE 6)&(lte IE 8)]><link rel="stylesheet" type="text/css" href="/css/min/_Layout_Ie_8156090DB991FA7A99B18BDEB3E34F99.css" /><![endif]-->
+
+    
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+	
+
+
+    
+    <!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="/css/min/_IE_3AFEAA8B27921B9F498FDBA7C3F7123C.css" />
+	<![endif]-->
+
+    	<script type="text/javascript" charset="utf-8">
+		var ContentInfo = {
+			Site:{"Domain":"whatcar.com","SiteFormat":"responsive"},
+			Magazine:{"JournalCode":"WCR","Url":"http://www.whatcar.com/","SiteCatalystSitePrefix":"WCR"},
+PageInfo:{"PageName":"wcr:home:home","PageUrl":"car-news","ContentInfoType":3}
+		}
+	</script>
+
+    
+	
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="//tealium.hs.llnwd.net/o43/utag/haymarket/whatcar/prod/utag.js" type="text/javascript"></script>
+
+    		<!--[if (gte IE 6)&(lte IE 8)]>
+			<script type="text/javascript" src="/_hbi_ui/basesitenet/js/libs/selectivizr-min.js"></script>
+			<script type="text/javascript" src="/_hbi_ui/basesitenet/js/libs/respond.min.js"></script>
+		<![endif]-->
+		<!--[if (IE 7)]>
+			<script type="text/javascript" src="/js/ie7.js"></script>
+		<![endif]--> 
+
+    <script type="text/javascript" src="http://www.whatcar.com/js/min/_Layout_Universal_C6FEC673500E9AB3FA166CB355C38DFD.js"></script>
+
+    
+    
+    <script src='http://static.whatcar.com.s3.amazonaws.com/2469/Assets/js/vendor/modernizr-2.6.2.min.js' type="text/javascript"></script>
+
+	
+<script type="text/javascript">
+	// Javascript feature switches.
+	var whatCarSiteFeatureManager = {"EnableWhatCarConnectPopupUpdate":true,"EnableWhatCarCompanyCarTaxUpdate":true,"EnableWhatCarFinanceWidgetUpdate":true};
+</script>
+
+
+	
+<script type="text/javascript">
+	var siteConfiguration = { "MainSiteUrl": "http://www.whatcar.com/" };
+</script>
+	
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+<script type="text/javascript">
+	window.ko || document.write('<script src="/content/js/knockout-3.1.0.js">\x3C/script>');
+</script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js"></script>
+<script type="text/javascript">
+	window.ko.mapping || document.write('<script src="/content/js/knockout.mapping-2.4.1.js">\x3C/script>');
+</script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout-validation/1.0.2/knockout.validation.min.js"></script>
+<script type="text/javascript">
+	window.ko.validation || document.write('<script src="/Content/js/knockout.validation.min-1.0.2.js">\x3C/script>');
+</script>
+	
+	<script type="text/javascript">var switchTo5x = true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">
+		var gaAcc= 'UA-7771011-20';
+		stLight.options({
+			publisherGA: gaAcc,
+			tracking: "true",
+			minorServices: false,
+			doNotHash: false,
+			doNotCopy: false,
+			hashAddressBar: false,
+			onhover: false
+		});
+	</script>
+
+
+    
+    
+			<link href="/rss/car-news" rel="alternate" type="application/rss+xml" title="Car and Car-Buying News - What Car?" />
+
+
+
+</head>
+		<body>
+ 
+<div id="outerWrap">
+    <div class="a11y">
+        <ul>
+            <li><a href="#main" accesskey="s">Skip to Content</a></li>
+            <li><a href="#responsiveNavigation" accesskey="1">Skip to Main Navigation</a></li>
+            <li><a href="#topNav" accesskey="3">Skip to Information Links</a></li>
+            <li><a href="#topSearchForm" accesskey="4">Skip to Site Search</a></li>
+            <li><a href="#mainFooter" accesskey="5">Skip to Footer</a></li>
+            <li><a href="/accessibility" accesskey="6">Skip to Accessibility Information</a></li>
+            <li><a href="/" accesskey="h">Home Page</a></li>
+        </ul>
+    </div>
+
+    
+ 
+	<div id="container" class="page-main-content-tracked">
+		
+
+		
+		
+		
+
+<div id="advertTop">
+	
+</div> 
+		<div id="wrap" class="clearfix">
+			<header id="masthead">                
+				
+<div id="title">
+    <figure class="responsive" data-media="/img/logoSmall.png" data-media768="/img/WClogoRebrand.png">
+        
+        <h2>
+            <span>What Car?</span>
+            <a href="http://www.whatcar.com/" rel="IntCategory-Navigation.Old.Homepage:Action-click:Label-logo">
+                <img src="/img/WClogoRebrand.png" alt="What Car?" />
+            </a>
+        </h2>
+    </figure>
+    <div id="gpt_7294_leaderboard1"></div>
+</div>
+	<h2 class="a11y">Information Links</h2>
+	<nav id="topNav">
+		<ul>
+			<li id="navControl">
+				<a href="#nav" class="" >Menu</a>
+			</li>
+			<li id="signInOut">		<a href="/login?returnUrl=http://www.whatcar.com/car-news" title="Sign in">Sign in</a>
+</li>
+			<li id="register">		<a href="http://www.whatcar.com/Subscribe?returnUrl=http://www.whatcar.com/car-news" title="Register">Register</a>
+</li>
+			<li id="bulletins">		<a href="http://www.whatcar.com/email-bulletins" title="Bulletins">Bulletins</a>
+</li>
+			 
+		</ul>
+	</nav>
+	<div id="responsiveNavigation" class="clearfix">
+		<h2 class="a11y">Main Navigation</h2>
+<nav id="primaryNav">
+	<ul>
+				<li id="primaryNav-1" >
+						<a href="/" rel="IntCategory-Navigation.Old.Home:Action-click:Label-Parent" title="Home">Home</a>
+				</li>
+				<li id="primaryNav-2" >
+						<a href="/car-reviews" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Parent" title="Reviews">Reviews</a>
+						<ul>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=307" title="Superminis" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Superminis">Superminis</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=483" title="Crossovers" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Crossovers">Crossovers</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=310" title="Small family cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-SmallFamilyCars">Small family cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=308" title="4X4s" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-4X4s">4X4s</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=315" title="Family cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-FamilyCars">Family cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=314" title="Coupes" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Coupes">Coupes</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=313" title="Compact Executives" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-CompactExecutives">Compact Executives</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=306" title="Cabriolets" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Cabriolets">Cabriolets</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=309" title="Executive cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-ExecutiveCars">Executive cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=305" title="Performance cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-PerformanceCars">Performance cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=312" title="Luxury cars" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-LuxuryCars">Luxury cars</a>
+								</li>
+								<li>
+										<a href="/car-reviews/nissan/qashqai-crossover/summary/26210-5" title="Car of the year winner" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-CarOfTheYearWinner">Car of the year winner</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=316" title="Estates" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Estates">Estates</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;page=1&amp;pageCount=10&amp;orderBy=None&amp;orderDirection=Ascending" title="All new car reviews" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-AllNewCarReviews">All new car reviews</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=368&amp;dimensionIds=311" title="MPVs" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-Mpvs">MPVs</a>
+								</li>
+								<li>
+										<a href="/car-reviews/search?dimensionIds=369&amp;page=1&amp;pageCount=10&amp;orderBy=None&amp;orderDirection=Ascending" title="All used car reviews" rel="IntCategory-Navigation.Old.Reviews:Action-click:Label-AllUsedCarReviews">All used car reviews</a>
+								</li>
+						</ul>  
+				</li>
+				<li id="primaryNav-3" >
+						<a href="/truempg" rel="IntCategory-Navigation.Old.TrueMPG:Action-click:Label-Parent" title="True MPG">True MPG</a>
+				</li>
+				<li id="primaryNav-4" >
+						<a href="/car-advice" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-Parent" title="Advice">Advice</a>
+						<ul>
+								<li>
+										<a href="/car-advice/buying/" title="Buying a car" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-BuyingACar">Buying a car</a>
+								</li>
+								<li>
+										<a href="/car-advice/running/" title="Running a car" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-RunningACar">Running a car</a>
+								</li>
+								<li>
+										<a href="/car-advice/running/" title="Car buyers glossary" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-CarBuyersGlossary">Car buyers glossary</a>
+								</li>
+								<li>
+										<a href="/car-advice/selling/" title="Selling a car" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-SellingACar">Selling a car</a>
+								</li>
+								<li>
+										<a href="/green-cars/" title="Green cars" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-GreenCars">Green cars</a>
+								</li>
+								<li>
+										<a href="/car-news/petrol-versus-diesel-which-is-cheaper-/248139" title="Petrol or diesel?" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-PetrolOrDiesel?">Petrol or diesel?</a>
+								</li>
+								<li>
+										<a href="/car-depreciation-calculator/" title="Depreciation calculator" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-DepreciationCalculator">Depreciation calculator</a>
+								</li>
+								<li>
+										<a href="/car-news/what-car-checklists/227297" title="What Car? Checklists" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-WhatCar?Checklists">What Car? Checklists</a>
+								</li>
+								<li>
+										<a href="http://motorcodes.whatcar.com/" title="Garage finder" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-GarageFinder">Garage finder</a>
+								</li>
+								<li>
+										<a href="/company-car-tax/" title="Company car tax" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-CompanyCarTax">Company car tax</a>
+								</li>
+								<li>
+										<a href="/advice/mot" title="MOT tool" rel="IntCategory-Navigation.Old.Advice:Action-click:Label-MOTTool">MOT tool</a>
+								</li>
+						</ul>  
+				</li>
+				<li id="primaryNav-5" class="navCurrent">
+						<a href="/car-news" rel="IntCategory-Navigation.Old.News:Action-click:Label-Parent" title="News">News</a>
+				</li>
+				<li id="primaryNav-6" >
+						<a href="http://www.whatcar.com/awards" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-Parent" title="Awards">Awards</a>
+						<ul>
+								<li>
+										<a href="/awards/" title="Car of the Year 2015" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-CarOfTheYear2015">Car of the Year 2015</a>
+								</li>
+								<li>
+										<a href="/awards/2014/ucoty" title="Used Car of the Year 2014" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-UsedCarOfTheYear2014">Used Car of the Year 2014</a>
+								</li>
+								<li>
+										<a href="/car-news/best-cars-towing/1201988" title="Tow Car Awards 2014" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-TowCarAwards2014">Tow Car Awards 2014</a>
+								</li>
+								<li>
+										<a href="/awards/jdpower/2014/home" title="JD Power Survey 2014" rel="IntCategory-Navigation.Old.Awards:Action-click:Label-JDPowerSurvey2014">JD Power Survey 2014</a>
+								</li>
+						</ul>  
+				</li>
+				<li id="primaryNav-7" >
+						<a href="http://www.whatcar.com/usedcars" rel="IntCategory-Navigation.Old.UsedCars:Action-click:Label-Parent" title="Used cars">Used cars</a>
+				</li>
+				<li id="primaryNav-8" >
+						<a href="/car-leasing" rel="IntCategory-Navigation.Old.LeasingDeals:Action-click:Label-Parent" title="Leasing deals">Leasing deals</a>
+				</li>
+				<li id="primaryNav-9" >
+						<a href="/valuations" rel="IntCategory-Navigation.Old.FreeValuations:Action-click:Label-Parent" title="Free valuations">Free valuations</a>
+				</li>
+				<li id="primaryNav-10" >
+						<a href="/car-finance" rel="IntCategory-Navigation.Old.Finance:Action-click:Label-Parent" title="Finance">Finance</a>
+				</li>
+			<li id="siteSearch">
+<form action="/Search" class="searchForm" id="topSearchForm" method="get">					<div class="searchFields">
+						<label for="term">Search</label>
+						<input accesskey="4" id="searchPhrase" name="term" placeholder="Type your search phrase here" tabindex="1" type="text" value="" />
+						<input type="submit" class="searchSubmit" value="Search" />
+					</div>
+</form>			</li>
+	</ul>
+</nav>
+<script>
+	$('#topSearchForm').submit(function () {
+		var searchTerm = $('#searchPhrase').val().substring(0, 30);
+		_gaq.push(['_trackEvent', 'Navigation.Old.SearchBox', 'search', searchTerm]);
+	});
+</script>	</div>
+
+			</header>
+			<div id="gpt_7294_superheader1"></div>
+			
+
+			<hr class="a11y" />
+		    <section id="main" role="main">
+		        
+        <div class="clearfix">
+            <ul id="breadcrumb">
+<li><a href="http://www.whatcar.com/">Home</a></li>
+<li>Car news</li>
+</ul>
+        </div>
+            <div id="gridTop" class="grid1">
+			    <div class="zone">
+					<!-- zone 1 -->
+						<div class="textHtmlModule">
+		<h1 class="underlined">Car news</h1>
+	</div>
+
+			    </div>
+			</div>
+				<div class="group1">
+				<div class="zoneGrid2">
+						<div class="grid1">
+							<div class="zone">
+								<!-- zone 2 -->
+										<div class="showcase genericModule">
+            <header>
+				<h2>Latest News</h2>
+			</header>
+
+                        <div class="storyContainer mainArticle">
+                            <figure class="thumbnail">
+							    <a href="/car-news/deal-day-mercedes-benz-c-class/1342250" title="Deal of the Day: Mercedes-Benz C-Class"><img alt="Deal of the Day: Mercedes-Benz C-Class" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/556/offlinehbpl.hbpl.co.uk/news/RCW/DSC_0759-20150715102410512.JPG" /></a>
+						    </figure>
+							<a class="news-type" href="/car-news/news">News</a>
+						    <h2><a href="/car-news/deal-day-mercedes-benz-c-class/1342250" title="Deal of the Day: Mercedes-Benz C-Class">Deal of the Day: Mercedes-Benz C-Class</a></h2>
+							Save more than &pound;4000 on the Mercedes-Benz C220d Sport auto
+                        </div>
+					<div class="secondaryArticles">
+                    <div class="articleWithImages">
+					    <figure class="thumbnail">
+						    <a href="/car-news/audi/a1-hatchback/audi-a1-vs-mini-hatch-vs-volkswagen-polo/1365054" title="Audi A1 vs Mini Hatch vs Volkswagen Polo"><img alt="Audi A1 vs Mini Hatch vs Volkswagen Polo" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/210/offlinehbpl.hbpl.co.uk/news/RCW/audi-vs-mini-vs-polo-0000-20150922111831849.jpg" /></a>
+					    </figure>
+                        <a class="news-type" href="/car-news/first-drive">First Drive</a>
+					    <h2><a href="/car-news/audi/a1-hatchback/audi-a1-vs-mini-hatch-vs-volkswagen-polo/1365054" title="Group test - Audi A1 vs Mini Hatch vs Volkswagen Polo">Group test - Audi A1 vs Mini Hatch vs Volkswagen Polo</a></h2>
+                    </div>
+                    <div class="articleWithImages">
+					    <figure class="thumbnail">
+						    <a href="/car-news/deal-day-bmw-x3/1305182" title="Deal of the day: BMW X3"><img alt="Deal of the day: BMW X3" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/210/offlinehbpl.hbpl.co.uk/news/RCW/dealofthedayx3-20150925024558250.jpg" /></a>
+					    </figure>
+                        <a class="news-type" href="/car-news/news">News</a>
+					    <h2><a href="/car-news/deal-day-bmw-x3/1305182" title="Deal of the day: BMW X3">Deal of the day: BMW X3</a></h2>
+                    </div>
+	                <div class="articleWithoutImages">
+		                <a class="news-type" href="/car-news/news">News</a>
+		                <h2><a href="/car-news/in-car-smoking-ban-need-know/1365882" title="In-car smoking ban - what you need to know">In-car smoking ban - what you need to know</a></h2>
+	                </div>
+	                <div class="articleWithoutImages">
+		                <a class="news-type" href="/car-news/first-drive">First Drive</a>
+		                <h2><a href="/car-news/peugeot/308/2015-peugeot-308-gti-peugeot-sport-review/1365777" title="2015 Peugeot 308 GTi by Peugeot Sport review">2015 Peugeot 308 GTi by Peugeot Sport review</a></h2>
+	                </div>
+	                <div class="articleWithoutImages">
+		                <a class="news-type" href="/car-news/news">News</a>
+		                <h2><a href="/car-news/best-suv-deals-week/1346412" title="The best SUV deals of the week">The best SUV deals of the week</a></h2>
+	                </div>
+                 </div>
+                  
+        </div>		
+		<div class="articleModule genericModule">
+				<header class="carouselHeader">
+					<h2>Latest News</h2>
+				</header>
+
+			<div class="flimStripFlexSlider clearfix">
+				<ul class="slides">
+						<li class="story">
+							<figure><a href="/car-news/mini/cooper-clubman/2015-mini-clubman-review/1365597" title="2015 Mini Clubman review"><img alt="2015 Mini Clubman review" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/cooper-clubman-mini-2015-2-rt-20150924045421937.jpg" /></a></figure>
+							<span>First Drive</span>
+							<h2><a href="/car-news/mini/cooper-clubman/2015-mini-clubman-review/1365597" title="2015 Mini Clubman review">2015 Mini Clubman review</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/renault/kadjar-crossover/2015-renault-kadjar-15-dci-110-review/1365367" title="2015 Renault Kadjar 1.5 dCi 110 review"><img alt="2015 Renault Kadjar 1.5 dCi 110 review" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/renault-kadjar-fd-0032-20150924043751459.jpg" /></a></figure>
+							<span>First Drive</span>
+							<h2><a href="/car-news/renault/kadjar-crossover/2015-renault-kadjar-15-dci-110-review/1365367" title="2015 Renault Kadjar 1.5 dCi 110 review">2015 Renault Kadjar 1.5 dCi 110 review</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/volkswagen-emissions-need-know/1365269" title="Volkswagen emissions - What you need to know"><img alt="Volkswagen emissions - What you need to know" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Mar07-Badge-VW-w-20150923094426613.JPG" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/volkswagen-emissions-need-know/1365269" title="Volkswagen emissions - What you need to know">Volkswagen emissions - What you need to know</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/latest-car-recalls/1354517" title="The latest car recalls"><img alt="The latest car recalls" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/rangeroverrecalls-20150924020804625.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/latest-car-recalls/1354517" title="The latest car recalls">The latest car recalls</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/best-worst-cheap-small-new-cars/1202101" title="Best and worst cheap small new cars"><img alt="Best and worst cheap small new cars" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Hyundaii10top5-2014042404134058.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/best-worst-cheap-small-new-cars/1202101" title="Best and worst cheap small new cars">Best and worst cheap small new cars</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/promoted-when-cars-go-wrong/1364628" title="Promoted: When cars go wrong"><img alt="Promoted: When cars go wrong" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/fail-20150918111935748.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/promoted-when-cars-go-wrong/1364628" title="Promoted: When cars go wrong">Promoted: When cars go wrong</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/vauxhall/astra/2015-vauxhall-astra-10-turbo-ecoflex-review/1365384" title="2015 Vauxhall Astra 1.0 Turbo Ecoflex review"><img alt="2015 Vauxhall Astra 1.0 Turbo Ecoflex review" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Astra1-20150923025747876.jpg" /></a></figure>
+							<span>First Drive</span>
+							<h2><a href="/car-news/vauxhall/astra/2015-vauxhall-astra-10-turbo-ecoflex-review/1365384" title="2015 Vauxhall Astra 1.0 Turbo Ecoflex review">2015 Vauxhall Astra 1.0 Turbo Ecoflex review</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/top-10-best-used-4x4s/1200374" title="Top 10: The best used 4x4s"><img alt="Top 10: The best used 4x4s" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/1-20150422094528729.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/top-10-best-used-4x4s/1200374" title="Top 10: The best used 4x4s">Top 10: The best used 4x4s</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/deal-day-nissan-leaf/1354607" title="Deal of the Day: Nissan Leaf"><img alt="Deal of the Day: Nissan Leaf" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/NMGB_370_15wc-20150703022218958.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/deal-day-nissan-leaf/1354607" title="Deal of the Day: Nissan Leaf">Deal of the Day: Nissan Leaf</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/kia/ceed/2015-kia-ceed-16-crdi-134-dct-review/1365146" title="2015 Kia Ceed 1.6 CRDi 134 DCT review"><img alt="2015 Kia Ceed 1.6 CRDi 134 DCT review" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/K_diesel-01-20150922020822530.jpg" /></a></figure>
+							<span>First Drive</span>
+							<h2><a href="/car-news/kia/ceed/2015-kia-ceed-16-crdi-134-dct-review/1365146" title="2015 Kia Ceed 1.6 CRDi 134 DCT review">2015 Kia Ceed 1.6 CRDi 134 DCT review</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/top-10-car-hot-list/1334016" title="Top 10: The What Car? hot list"><img alt="Top 10: The What Car? hot list" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Nissan-qashqai-wc-listA-2015021702160037.JPG" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/top-10-car-hot-list/1334016" title="Top 10: The What Car? hot list">Top 10: The What Car? hot list</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-infiniti-q30-exclusive-reader-test-team-preview/1358659" title="2015 Infiniti Q30 - exclusive reader test team preview"><img alt="2015 Infiniti Q30 - exclusive reader test team preview" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/InfinitiQ30prodxxxxxxx-20150921044336387.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-infiniti-q30-exclusive-reader-test-team-preview/1358659" title="2015 Infiniti Q30 - exclusive reader test team preview">2015 Infiniti Q30 - exclusive reader test team preview</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/deal-day-bmw-5-series/1303009" title="Deal of the day: BMW 5 Series"><img alt="Deal of the day: BMW 5 Series" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/xe-triple-test-wc-022-20150922103319549.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/deal-day-bmw-5-series/1303009" title="Deal of the day: BMW 5 Series">Deal of the day: BMW 5 Series</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/car-tested-550-cars-real-world-economy-figures/1364985" title="What Car? has tested 550 cars to get real-world economy figures"><img alt="What Car? has tested 550 cars to get real-world economy figures" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/TrueMPGhub-20150414111232141-20150922102413937.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/car-tested-550-cars-real-world-economy-figures/1364985" title="What Car? has tested 550 cars to get real-world economy figures">What Car? has tested 550 cars to get real-world economy figures</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/vauxhall/astra/2015-vauxhall-astra-14i-150-turbo-review/1363855" title="2015 Vauxhall Astra 1.4i 150 Turbo review"><img alt="2015 Vauxhall Astra 1.4i 150 Turbo review" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/vxl-astra-wc-1-0001-20150914125000627.jpg" /></a></figure>
+							<span>First Drive</span>
+							<h2><a href="/car-news/vauxhall/astra/2015-vauxhall-astra-14i-150-turbo-review/1363855" title="2015 Vauxhall Astra 1.4i 150 Turbo review">2015 Vauxhall Astra 1.4i 150 Turbo review</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/all-new-2016-alfa-romeo-giulia-revealed-official-pictures-details/1353199" title="All-new 2016 Alfa Romeo Giulia revealed - official pictures and details"><img alt="All-new 2016 Alfa Romeo Giulia revealed - official pictures and details" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/alfa-giulia-2015-001-20150624043016436.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/all-new-2016-alfa-romeo-giulia-revealed-official-pictures-details/1353199" title="All-new 2016 Alfa Romeo Giulia revealed - official pictures and details">All-new 2016 Alfa Romeo Giulia revealed - official pictures and details</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/vauxhall/astra/2015-vauxhall-astra-16-cdti-136-review/1364920" title="2015 Vauxhall Astra 1.6 CDTi 136 review"><img alt="2015 Vauxhall Astra 1.6 CDTi 136 review" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/DSC_4589-20150921105845105.JPG" /></a></figure>
+							<span>First Drive</span>
+							<h2><a href="/car-news/vauxhall/astra/2015-vauxhall-astra-16-cdti-136-review/1364920" title="2015 Vauxhall Astra 1.6 CDTi 136 review">2015 Vauxhall Astra 1.6 CDTi 136 review</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/deal-day-hyundai-tucson/1332543" title="Deal of the day: Hyundai Tucson"><img alt="Deal of the day: Hyundai Tucson" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/hyundai-tucson-2015-1-27-20150921105346699.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/deal-day-hyundai-tucson/1332543" title="Deal of the day: Hyundai Tucson">Deal of the day: Hyundai Tucson</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/real-world-mpg-economical-4x4-cars/1321193" title="Real-world MPG: most economical 4x4 cars"><img alt="Real-world MPG: most economical 4x4 cars" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/SkodaOctaviaScoutTrueMPG-20141110032748715.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/real-world-mpg-economical-4x4-cars/1321193" title="Real-world MPG: most economical 4x4 cars">Real-world MPG: most economical 4x4 cars</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/vauxhall/viva-hatchback/suzuki-celerio-vs-vauxhall-viva/1364488" title="Suzuki Celerio vs Vauxhall Viva"><img alt="Suzuki Celerio vs Vauxhall Viva" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/viva-twin-test-0060-20150917023314623.JPG" /></a></figure>
+							<span>First Drive</span>
+							<h2><a href="/car-news/vauxhall/viva-hatchback/suzuki-celerio-vs-vauxhall-viva/1364488" title="Group test - Suzuki Celerio vs Vauxhall Viva">Group test - Suzuki Celerio vs Vauxhall Viva</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/deal-day-smart-forfour/1340227" title="Deal of the Day: Smart ForFour"><img alt="Deal of the Day: Smart ForFour" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/smart-forfourweb-20150918035040901.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/deal-day-smart-forfour/1340227" title="Deal of the Day: Smart ForFour">Deal of the Day: Smart ForFour</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-bmw-x1-readers-give-verdict/1364666" title="2015 BMW X1: readers give their verdict"><img alt="2015 BMW X1: readers give their verdict" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/dsc_7608-20150918032734222.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-bmw-x1-readers-give-verdict/1364666" title="2015 BMW X1: readers give their verdict">2015 BMW X1: readers give their verdict</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-bmw-x1-pricing-pictures-engines-specs/1349753" title="2015 BMW X1 - pricing, pictures, engines, specs"><img alt="2015 BMW X1 - pricing, pictures, engines, specs" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/DSC_7654-20150819011500818.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-bmw-x1-pricing-pictures-engines-specs/1349753" title="2015 BMW X1 - pricing, pictures, engines, specs">2015 BMW X1 - pricing, pictures, engines, specs</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/renault/kadjar/2015-renault-kadjar-uk-review/1349945" title="2015 Renault Kadjar UK review"><img alt="2015 Renault Kadjar UK review" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/DSC_6674-20150917020107897.JPG" /></a></figure>
+							<span>First Drive</span>
+							<h2><a href="/car-news/renault/kadjar/2015-renault-kadjar-uk-review/1349945" title="2015 Renault Kadjar UK review">2015 Renault Kadjar UK review</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-frankfurt-motor-show-stars-show/1364342" title="2015 Frankfurt motor show - our stars of the show"><img alt="2015 Frankfurt motor show - our stars of the show" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/fpace-20150916025449106.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-frankfurt-motor-show-stars-show/1364342" title="2015 Frankfurt motor show - our stars of the show">2015 Frankfurt motor show - our stars of the show</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/best-worst-mpvs-people-carriers/1201813" title="Best and worst: MPVs and people carriers"><img alt="Best and worst: MPVs and people carriers" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Citroen_GC4P_1600-20140424042404783.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/best-worst-mpvs-people-carriers/1201813" title="Best and worst: MPVs and people carriers">Best and worst: MPVs and people carriers</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/citroen/c3-picasso-mpv/2015-citroen-c3-picasso-puretech-110-review/1364420" title="2015 Citroen C3 Picasso PureTech 110 review"><img alt="2015 Citroen C3 Picasso PureTech 110 review" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/citoren-c3-picasso-wc-0001-20150917034224194.jpg" /></a></figure>
+							<span>First Drive</span>
+							<h2><a href="/car-news/citroen/c3-picasso-mpv/2015-citroen-c3-picasso-puretech-110-review/1364420" title="2015 Citroen C3 Picasso PureTech 110 review">2015 Citroen C3 Picasso PureTech 110 review</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-rolls-royce-dawn-revealed/1363147" title="2015 Rolls-Royce Dawn revealed"><img alt="2015 Rolls-Royce Dawn revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/rolls-dawn-wc-0029-20150908110632381.JPG" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-rolls-royce-dawn-revealed/1363147" title="2015 Rolls-Royce Dawn revealed">2015 Rolls-Royce Dawn revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/top-10-best-used-cars/1343054" title="Top 10: The best used cars"><img alt="Top 10: The best used cars" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/UCOTY-20150416034509150.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/top-10-best-used-cars/1343054" title="Top 10: The best used cars">Top 10: The best used cars</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2016-bentley-bentayga-revealed-full-pictures-pricing-engine-details/1285841" title="2016 Bentley Bentayga revealed - full pictures, pricing and engine details"><img alt="2016 Bentley Bentayga revealed - full pictures, pricing and engine details" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/bentleydft-bentaygad3-2015ar-00010038-20150908113344533.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2016-bentley-bentayga-revealed-full-pictures-pricing-engine-details/1285841" title="2016 Bentley Bentayga revealed - full pictures, pricing and engine details">2016 Bentley Bentayga revealed - full pictures, pricing and engine details</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2016-kia-sportage-revealed/1361727" title="2016 Kia Sportage revealed"><img alt="2016 Kia Sportage revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/kia-sportage-new-2015-0001-20150826043000810.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2016-kia-sportage-revealed/1361727" title="2016 Kia Sportage revealed">2016 Kia Sportage revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-kia-optima-revealed/1341286" title="2015 Kia Optima revealed"><img alt="2015 Kia Optima revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/KiaOptimaEuro-02-20150825020153208.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-kia-optima-revealed/1341286" title="2015 Kia Optima revealed">2015 Kia Optima revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-mercedes-benz-c-class-coupe-revealed-pictures-engines-equipment/1359880" title="2015 Mercedes-Benz C-Class Coupé revealed - pictures, engines and equipment"><img alt="2015 Mercedes-Benz C-Class Coupé revealed - pictures, engines and equipment" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/merc-c-coupe-wc-006-20150812035509324.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-mercedes-benz-c-class-coupe-revealed-pictures-engines-equipment/1359880" title="2015 Mercedes-Benz C-Class Coup&#233; revealed - pictures, engines and equipment">2015 Mercedes-Benz C-Class Coup&#233; revealed - pictures, engines and equipment</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2016-mercedes-benz-s-class-cabriolet-revealed/1362301" title="2016 Mercedes-Benz S-Class Cabriolet revealed"><img alt="2016 Mercedes-Benz S-Class Cabriolet revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/merc-s-class-cab-2015-ac-0001-20150901020356826.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2016-mercedes-benz-s-class-cabriolet-revealed/1362301" title="2016 Mercedes-Benz S-Class Cabriolet revealed">2016 Mercedes-Benz S-Class Cabriolet revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2016-nissan-leaf-gets-increased-155-mile-range-new-battery/1363524" title="2016 Nissan Leaf gets increased 155-mile range with new battery"><img alt="2016 Nissan Leaf gets increased 155-mile range with new battery" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Nissan_Leaf_015wc-20150910105702412.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2016-nissan-leaf-gets-increased-155-mile-range-new-battery/1363524" title="2016 Nissan Leaf gets increased 155-mile range with new battery">2016 Nissan Leaf gets increased 155-mile range with new battery</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-porsche-911-facelift-revealed/1362217" title="2015 Porsche 911 facelift revealed"><img alt="2015 Porsche 911 facelift revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/911-sdc3-2015-facelift-1qs-0003-20150906074903652.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-porsche-911-facelift-revealed/1362217" title="2015 Porsche 911 facelift revealed">2015 Porsche 911 facelift revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/bmw-introduce-three-new-hybrid-models-frankfurt-motor-show/1363700" title="BMW introduce three new hybrid models at the Frankfurt motor show"><img alt="BMW introduce three new hybrid models at the Frankfurt motor show" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/bmw-330e-0020-20150911111147127.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/bmw-introduce-three-new-hybrid-models-frankfurt-motor-show/1363700" title="BMW introduce three new hybrid models at the Frankfurt motor show">BMW introduce three new hybrid models at the Frankfurt motor show</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/seat-reveals-leon-cross-sport-frankfurt-motor-show/1363898" title="Seat reveals Leon Cross Sport at Frankfurt motor show"><img alt="Seat reveals Leon Cross Sport at Frankfurt motor show" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Leon1-20150914052928468.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/seat-reveals-leon-cross-sport-frankfurt-motor-show/1363898" title="Seat reveals Leon Cross Sport at Frankfurt motor show">Seat reveals Leon Cross Sport at Frankfurt motor show</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2016-smart-fortwo-cabrio-latest-pictures-spec/1361875" title="2016 Smart Fortwo Cabrio - latest pictures and spec"><img alt="2016 Smart Fortwo Cabrio - latest pictures and spec" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/smart-42-wc-aa-0015-2015082703470666.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2016-smart-fortwo-cabrio-latest-pictures-spec/1361875" title="2016 Smart Fortwo Cabrio - latest pictures and spec">2016 Smart Fortwo Cabrio - latest pictures and spec</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-bmw-7-series-revealed/1351007" title="2015 BMW 7 Series revealed"><img alt="2015 BMW 7 Series revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/bmw-7-series-sdfer-018-20150610024410331.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-bmw-7-series-revealed/1351007" title="2015 BMW 7 Series revealed">2015 BMW 7 Series revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2016-toyota-prius-revealed/1363217" title="2016 Toyota Prius revealed"><img alt="2016 Toyota Prius revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/PRIUS_11_Sept2015-20150908014912358.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2016-toyota-prius-revealed/1363217" title="2016 Toyota Prius revealed">2016 Toyota Prius revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-kia-ceed-facelift-revealed/1353370" title="2015 Kia Cee&#39;d facelift revealed"><img alt="2015 Kia Cee&#39;d facelift revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/kia-ceed-2016-001-20150625021505108.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-kia-ceed-facelift-revealed/1353370" title="2015 Kia Cee&#39;d facelift revealed">2015 Kia Cee&#39;d facelift revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-ds-4-facelift-revealed/1362117" title="2015 DS 4 facelift revealed"><img alt="2015 DS 4 facelift revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/citoren-as2-ds4-2015-0003-20150828030427150.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-ds-4-facelift-revealed/1362117" title="2015 DS 4 facelift revealed">2015 DS 4 facelift revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/new-renault-megane-revealed-frankfurt-motor-show/1363060" title="New Renault Megane revealed at Frankfurt motor show"><img alt="New Renault Megane revealed at Frankfurt motor show" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/reno-megane-ad34ed-0056-20150915114733748.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/new-renault-megane-revealed-frankfurt-motor-show/1363060" title="New Renault Megane revealed at Frankfurt motor show">New Renault Megane revealed at Frankfurt motor show</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/new-volkswagen-tiguan-revealed-frankfurt-motor-show/1363843" title="New Volkswagen Tiguan revealed at Frankfurt motor show"><img alt="New Volkswagen Tiguan revealed at Frankfurt motor show" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/TiguanRLine-04-20150914113322907.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/new-volkswagen-tiguan-revealed-frankfurt-motor-show/1363843" title="New Volkswagen Tiguan revealed at Frankfurt motor show">New Volkswagen Tiguan revealed at Frankfurt motor show</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-audi-a4-revealed-pricing-pictures-engine-details/1330845" title="2015 Audi A4 revealed - pricing, pictures and engine details"><img alt="2015 Audi A4 revealed - pricing, pictures and engine details" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/AudiA41-20150628100618202.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-audi-a4-revealed-pricing-pictures-engine-details/1330845" title="2015 Audi A4 revealed - pricing, pictures and engine details">2015 Audi A4 revealed - pricing, pictures and engine details</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2016-ferrari-488-spider-revealed-pictures-specification-release-date/1357718" title="2016 Ferrari 488 Spider revealed - pictures, specification and release date"><img alt="2016 Ferrari 488 Spider revealed - pictures, specification and release date" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/ferrar-sdfj4jd-488gtb-spider-2-002-20150727115533401.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2016-ferrari-488-spider-revealed-pictures-specification-release-date/1357718" title="2016 Ferrari 488 Spider revealed - pictures, specification and release date">2016 Ferrari 488 Spider revealed - pictures, specification and release date</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/deal-day-nissan-note/1294993" title="Deal of the day: Nissan Note"><img alt="Deal of the day: Nissan Note" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/Note_corner-20140520102243944.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/deal-day-nissan-note/1294993" title="Deal of the day: Nissan Note">Deal of the day: Nissan Note</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-fiat-500-revealed/1354519" title="2015 Fiat 500 revealed"><img alt="2015 Fiat 500 revealed" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/2015Fiat500-0016-20150703091542762.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-fiat-500-revealed/1354519" title="2015 Fiat 500 revealed">2015 Fiat 500 revealed</a></h2>
+						</li>
+						<li class="story">
+							<figure><a href="/car-news/2015-infiniti-q30-unveiled-frankfurt-motor-show/1363858" title="2015 Infiniti Q30 unveiled at Frankfurt motor show"><img alt="2015 Infiniti Q30 unveiled at Frankfurt motor show" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/154/offlinehbpl.hbpl.co.uk/news/RCW/InfinitiQ30ewef-01-20150914125610713.jpg" /></a></figure>
+							<span>News</span>
+							<h2><a href="/car-news/2015-infiniti-q30-unveiled-frankfurt-motor-show/1363858" title="2015 Infiniti Q30 unveiled at Frankfurt motor show">2015 Infiniti Q30 unveiled at Frankfurt motor show</a></h2>
+						</li>
+				</ul>
+			</div>
+		</div>
+
+							</div>
+						</div>
+						<div class="grid2">
+								<div class="zone zone1">
+									<!-- zone 3 -->
+										<div class="textHtmlModule">
+		<div class="featuredInfo">
+<h2>What Car? Finance</h2>
+<div class="fContent">
+<p><span> The best ways to finance, whatever your circumstances or budget, let us reduce your monthly payment </span></p>
+</div>
+<a href="/finance" title="Zero My Excess"> <img title="Buys used cars" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/whatcarfinance1.jpg" alt="Buys used cars" /> </a> <a class="readMore" href="/finance" title="Finance"> Find out more </a></div>
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+  <h2>
+	Zap your insurance excess
+  </h2>
+  <div class="fContent">
+	<p>
+	  <span data-mce-mark="1">
+		Carrying a large insurance excess? Let What Car? reduce your excess to zero from just &pound;15 per year
+	  </span>
+	</p>
+  </div>
+  <a href="http://whatcar.zeromyexcess.com/" title="Zero My Excess">
+	<img title="Buys used cars" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/whatcar-logo.jpg" alt="Buys used cars" />
+  </a>
+  <a class="readMore" href="http://whatcar.zeromyexcess.com/" title="Zero my excess">
+	Protect your insurance excess 
+  </a>
+</div>
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+  <h2>
+	Cars coming soon
+  </h2>
+  <div class="fContent">
+	<p>
+	  Don't pay that deposit until you've checked our list of the hottest new models
+	</p>
+  </div>
+  <img title="Coming soon teaser" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/Cactus176px.jpg" alt="Coming soon teaser" />
+  <a class="readMore" title="Coming soon" href="http://www.whatcar.com/car-news/superminis-small-family-cars/1206442">
+	UK's coming soon cars 
+  </a>
+</div>
+<p>
+</p>
+
+	</div>
+
+								</div>
+								<div class="zone zone2">
+									<!-- zone 4 -->
+										<div class="textHtmlModule">
+		<div class="featuredInfo">
+  <h2>
+	What Car? Awards 2014
+  </h2>
+  <div class="fContent">
+	<p>
+	  The best cars to buy, whatever your budget, as chosen by What Car?'s experts&nbsp;
+	</p>
+  </div>
+  <img title="WhatCar? Awards 2013" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/COTY-Logo-2014-MKII.jpg" alt="WhatCar? Awards 2013" width="131" />
+  <a class="readMore" href="http://www.whatcar.com/awards">
+	See our award winners 
+  </a>
+</div>
+<p>
+</p>
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+  <h2>
+	What Car? warranty
+  </h2>
+  <div class="fContent">
+	<p>
+	  <span>
+		Make expensive repair bills a thing of the past with extended warranty cover from just &pound;15 per month&nbsp; 
+	  </span>
+	</p>
+  </div>
+  <a href="http://www.whatcarwarranty.com">
+	<img title="Warranty Direct" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/Warranty-Logo-small.jpg" alt="Find your TrueMPG" />
+	<br />
+  </a>
+  <a class="readMore" href="http://www.whatcarwarranty.com/">
+	Find out more 
+  </a>
+</div>
+<p>
+</p>
+
+	</div>
+	<div class="textHtmlModule">
+		<div class="featuredInfo">
+<h2>What Car? Used Car Awards</h2>
+<div class="fContent">
+<p>Need to know what the best used cars are? Check out our favourites here</p>
+</div>
+<img style="display: block;" title="Used Car Awards 2014" src="http://offlineHBPL.hbpl.co.uk/pageCreator/RCW/richedit/UCOTY2014.jpg" alt="Used Car Awards 2014" /> <a class="readMore" href="http://www.whatcar.com/awards/2014/ucoty"> See our Used Car Award winners </a></div>
+<p></p>
+	</div>
+
+								</div>
+						</div>
+			</div >
+				</div>
+				<div class="group2 grid1">
+					<div class="zone">
+						<!-- zone 5 -->
+							<div class="textHtmlModule">
+		<span> advertisement </span>
+<div id="gpt_7294_mpu_flexible1"><span> </span></div>
+	</div>
+	<div class="textHtmlModule">
+		<div class="OUTBRAIN" data-widget-id="SF_1" data-ob-template="whatcar" >
+</div>
+<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js">
+</script>
+
+	</div>
+
+
+
+
+
+
+
+
+	<div class="minimalReviewTabs">
+		<div class="tabs">
+			<div class="tabNode">
+				<div class="tabContent">
+					<div class="latest">
+							<h2>Latest reviews</h2>
+		<ul class="review-list">
+	<li>
+		<div class="image">
+			<a href="/car-reviews/vauxhall/astra-hatchback/summary/26269-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Vauxhall/Astra/229151554652.jpg" alt="Vauxhall Astra Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/vauxhall/astra-hatchback/summary/26269-5">Vauxhall Astra Hatchback</a></h3>
+			<span class="price">From &#163;15,295</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/jaguar/xf-saloon/summary/26268-2">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Jaguar/XF/28815154927.jpg" alt="Jaguar XF Saloon"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/jaguar/xf-saloon/summary/26268-2">Jaguar XF Saloon</a></h3>
+			<span class="price">From &#163;32,300</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/honda/jazz-hatchback/summary/26267-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Honda/Jazz/2181515112226.jpg" alt="Honda Jazz Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/honda/jazz-hatchback/summary/26267-5">Honda Jazz Hatchback</a></h3>
+			<span class="price">From &#163;13,495</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating3.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/renault/kadjar-hatchback/summary/26263-7">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Renault/Kadjar/971515125323.jpg" alt="Renault Kadjar Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/renault/kadjar-hatchback/summary/26263-7">Renault Kadjar Hatchback</a></h3>
+			<span class="price">From &#163;17,995</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/honda/hr-v-crossover/summary/23660-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Honda/HR-V/117151534619.jpg" alt="Honda HR-V Crossover"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/honda/hr-v-crossover/summary/23660-5">Honda HR-V Crossover</a></h3>
+			<span class="price">From &#163;17,995</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+		</ul>
+
+					</div>
+				</div>
+			</div>
+			<div class="tabNode">
+				<div class="tabContent">
+					<div class="popular">
+							<h2>Most popular</h2>
+		<ul class="review-list">
+	<li>
+		<div class="image">
+			<a href="/car-reviews/nissan/qashqai-crossover/summary/26210-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Nissan/Qashqai/71141491524.jpg" alt="Nissan Qashqai Crossover"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/nissan/qashqai-crossover/summary/26210-5">Nissan Qashqai Crossover</a></h3>
+			<span class="price">From &#163;18,265</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating5.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/mazda/cx-5-crossover/summary/26070-3">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Mazda/CX-5/2341212515.jpg" alt="Mazda CX-5 Crossover"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/mazda/cx-5-crossover/summary/26070-3">Mazda CX-5 Crossover</a></h3>
+			<span class="price">From &#163;22,995</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating5.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/ford/fiesta-hatchback/summary/25846-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Ford/Fiesta/21131325338.jpg" alt="Ford Fiesta Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/ford/fiesta-hatchback/summary/25846-5">Ford Fiesta Hatchback</a></h3>
+			<span class="price">From &#163;10,145</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating5.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/volvo/xc60-crossover/summary/25808-3">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Volvo/XC60/4315153292.jpg" alt="Volvo XC60 Crossover"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/volvo/xc60-crossover/summary/25808-3">Volvo XC60 Crossover</a></h3>
+			<span class="price">From &#163;31,660</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating4.gif"/></span>
+		</div>
+	</li>
+	<li>
+		<div class="image">
+			<a href="/car-reviews/volkswagen/golf-hatchback/summary/26158-5">
+				<img src="http://cdn.images.whatcar.com/deliver/whatcar/155X80fffffff//Car/Volkswagen/Golf/31012121148130.jpg" alt="Volkswagen Golf Hatchback"  />
+			</a>
+		</div>
+		<div class="info">
+				<h3><a href="/car-reviews/volkswagen/golf-hatchback/summary/26158-5">Volkswagen Golf Hatchback</a></h3>
+			<span class="price">From &#163;17,595</span>	
+			<span class="rating"><img src="/_hbi_ui/_WCR/img/placeholders/rating5.gif"/></span>
+		</div>
+	</li>
+		</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="textHtmlModule">
+		<span> advertisement </span>
+<div id="gpt_7294_mpu2"><span> </span></div>
+	</div>
+
+					</div>
+                </div>
+        <div class="groups">
+        
+				<div class="zoneGrid2">
+						<div class="grid1">
+							<div class="zone">
+								<!-- zone 6 -->
+										<div class="articleModule altLayout genericModule">
+				<header>
+					<h2>Watch our latest videos</h2>
+				</header>
+			<div class="moduleContent featuredNews">
+          			<div class="storyContent">
+						    <figure class="thumbnail ReaderClinic">
+                                <a href=/car-news/video-mazda-cx-3-reader-test-team/1348880>
+                                    <span>
+                                    </span>
+							        <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/210/offlinehbpl.hbpl.co.uk/news/RCW/MazdaCX3RTT-20150527114212900.jpg" />
+                                </a>
+						    </figure>  
+          				    <h3><a href="/car-news/video-mazda-cx-3-reader-test-team/1348880" title="Video: Mazda CX-3 reader test team">Video: Mazda CX-3 reader test team</a></h3>
+                    </div>
+          			<div class="storyContent">
+						    <figure class="thumbnail ReaderClinic">
+                                <a href=/car-news/video-renault-kadjar-gets-assessed-car-readers/1346608>
+                                    <span>
+                                    </span>
+							        <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/210/offlinehbpl.hbpl.co.uk/news/RCW/kadjar-RTT-still-20150511024800634.jpg" />
+                                </a>
+						    </figure>  
+          				    <h3><a href="/car-news/video-renault-kadjar-gets-assessed-car-readers/1346608" title="Video: Renault Kadjar gets assessed by What Car? readers">Video: Renault Kadjar gets assessed by What Car? readers</a></h3>
+                    </div>
+          			<div class="storyContent">
+						    <figure class="thumbnail ReaderClinic">
+                                <a href=/car-news/2015-subaru-outback-reviewed-car-readers/1340798>
+                                    <span>
+                                    </span>
+							        <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/210/offlinehbpl.hbpl.co.uk/news/RCW/Subaru-outback-RTT-20150330110736285.jpg" />
+                                </a>
+						    </figure>  
+          				    <h3><a href="/car-news/2015-subaru-outback-reviewed-car-readers/1340798" title="2015 Subaru Outback reviewed by What Car? readers">2015 Subaru Outback reviewed by What Car? readers</a></h3>
+                    </div>
+          			<div class="storyContent">
+						    <figure class="thumbnail ReaderClinic">
+                                <a href=/car-news/video-readers-test-new-fiat-500x/1337017>
+                                    <span>
+                                    </span>
+							        <img alt="" src="http://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/210/offlinehbpl.hbpl.co.uk/news/RCW/Fiat500XRTTstill-20150306095331337.jpg" />
+                                </a>
+						    </figure>  
+          				    <h3><a href="/car-news/video-readers-test-new-fiat-500x/1337017" title="Video: Readers test the new Fiat 500X">Video: Readers test the new Fiat 500X</a></h3>
+                    </div>
+			</div>
+		</div>
+	<div class="textHtmlModule">
+		<div id="adsense1" data-query="car">
+</div>
+
+	</div>
+
+							</div>
+						</div>
+			</div >
+		</div>
+            <div id="gridBottom" class="grid1">
+                <div class="zone">
+                    <!-- zone 13 -->
+						<div class="textHtmlModule">
+		<div id="gpt_7294_skin" style="height: 0; visibility: hidden;">
+</div>
+
+	</div>
+
+                </div>
+            </div>
+
+
+		    </section>
+			
+
+			
+
+<div id="advertBodyBottom">
+	
+</div>
+		</div>
+	</div>
+	<hr class="a11y" />
+	<div id="footerWrap">
+		<footer id="mainFooter"> 
+			<ul class="footerMainNav">
+       <li          class="cms ">
+		
+            <a href="/my-whatcar">My What Car?</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="http://www.whatcar.com/aboutus">About us</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="/sitemap">Site Map</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="http://www.haymarket.com/CookiePolicy.aspx">Cookie Policy</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="http://www.haymarket.com/PrivacyPolicy.aspx">Privacy</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="/contact-us">Contact What Car?</a>
+	</li>
+    <li          class="cms ">
+		
+            <a href="http://www.haymarket.com/TermsAndConditions.aspx">Terms &amp; Conditions</a>
+	</li>
+    <li             id = "rssLink"
+         class="cms ">
+		
+            <a href="http://feeds.feedburner.com/WhatCarNewsAndReviews">RSS</a>
+	</li>
+    <li             id = "subscribeToWhatCar"
+         class="cms ">
+		
+            <a href="http://www.themagazineshop.com/wcar/wbs15">Subscribe to What Car? Magazine</a>
+	</li>
+
+</ul>
+
+
+<div class="haymarketFooter">
+    <a id="haymarketLogo" title="Haymarket" href="http://www.haymarket.com"><img alt="Haymarket" src="/_hbi_ui/basesitenet/img/responsive/logoHaymarket.png" /></a>
+    <p>What Car? is brought to you by <a href="http://www.haymarket.com/division.aspx?division=1">Haymarket Consumer Media</a></p>
+    <p>What Car? is part of <a href="#">Haymarket Motoring</a></p>
+    <ul>
+        
+    </ul>
+    <p>&copy; Haymarket Media Group 2015</p>
+<!--p id="copyright">
+	<a id="haymarketLogo" title="Haymarket" href="http://www.haymarket.com"><img alt="Haymarket" src="/_hbi_ui/basesitenet/img/responsive/logoHaymarket.png" /></a>
+	Haymarket Business Media sdfsdfsd &copy; 1957 &ndash; 2015 | <a href="/termsandconditions/" title="Terms &amp; Conditions">Terms &amp; Conditions</a> | <a href="/contact/" title="Contact Us">Contact Us</a>
+</p-->
+</div>	
+
+<!-- Feedback button -->
+    <script type="text/javascript">
+    	document.write('<scr' + 'ipt src="' + document.location.protocol + '//fby.s3.amazonaws.com/fby.js"></scr' + 'ipt>');
+    </script>
+	<script type="text/javascript">
+		var fbySetup = {
+			retryCount: 10,
+			init: function () {
+				if (fbySetup.retryCount-- > 0) {
+					if (typeof (FBY) === 'undefined') {
+						setTimeout(function () {
+							fbySetup.init();
+						}, 200);
+					} else {
+						FBY.showTab({ id: '1233', position: 'right', color: '#CF171F' });
+					}
+				}
+			}
+		};
+		fbySetup.init();
+    </script> 
+<!-- Feedback button -->
+		</footer>
+	</div>
+	
+	
+
+
+    <script>
+        // iOS scale bug fix
+        MBP.scaleFix();
+    </script>
+        <script src="//tealium.hs.llnwd.net/o43/utag/haymarket/whatcar/prod/utag.footer.js" type="text/javascript"></script>
+</div>
+</body>
+</html>

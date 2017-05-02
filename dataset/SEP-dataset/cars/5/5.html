@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="carsguide no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="carsguide no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="carsguide no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="carsguide no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQQAVVVTGwcCV1VQAQk="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:23,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&t(4),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:10,2:9,3:7,4:11,5:3,6:24,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],6:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:10,2:9,3:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],7:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=t("ee").create(),i=t(1)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:25,ee:"QJf3ax",gos:"7eSDFh"}],8:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:25,ee:"QJf3ax"}],9:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:25,ee:"QJf3ax"}],10:[function(t,e){function n(t,e,n){t[0]=o(t[0],"fn-",null,n)}var r=t("ee").create(),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:25,ee:"QJf3ax"}],11:[function(t,e){function n(){f.inPlace(this,p,"fn-")}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:7,2:25,ee:"QJf3ax"}],12:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=n(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(e.cat=d.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,o("xhr",[e,r,this.startTime])}}}function n(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=e,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,e){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=n(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{a.emit("internal-error",[n])}catch(r){}}};for(var u=0;c>u;u++)e.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:13,3:11,4:7,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],13:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],14:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:23,2:24,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):void(r.q&&(r.q[t]||(r.q[t]=[]),r.q[t].push(e)))}var r=t("ee").create();e.exports=n,n.ee=r,r.q={}},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){e in t||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document;t(2);var u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-686.min.js"},p=e.exports={offset:i(),origin:u,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()])},{1:23,2:14,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],23:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],24:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],25:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:24,ee:"QJf3ax"}]},{},["G9z0Bl",4,12,6,5]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="google" content="nositelinkssearchbox" />
+<link rel="apple-touch-icon-precomposed" href="/sites/all/themes/carsguide_theme/favicon-152.png?bust=v47" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/sites/all/themes/carsguide_theme/favicon-144.png?bust=v47" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/sites/all/themes/carsguide_theme/favicon-152.png?bust=v47" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/sites/all/themes/carsguide_theme/favicon-144.png?bust=v47" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/sites/all/themes/carsguide_theme/favicon-120.png?bust=v47" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/sites/all/themes/carsguide_theme/favicon-120.png?bust=v47" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/sites/all/themes/carsguide_theme/favicon-72.png?bust=v47" />
+<link rel="apple-touch-icon-precomposed" href="/sites/all/themes/carsguide_theme/favicon-57.png?bust=v47" />
+<link rel="icon" sizes="32x32" href="/sites/all/themes/carsguide_theme/favicon-32.png?bust=v47" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, minimal-ui" />
+<meta name="twitter:site" content="@carsguide" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="publisher" href="https://plus.google.com/117765394071064821584" />
+<link rel="shortcut icon" href="http://resources.carsguide.com.au/faviconv47.ico" type="image/vnd.microsoft.icon" />
+<meta name="twitter:title" content="Car Insurance" />
+<link rel="alternate" type="application/rss+xml" title="RSS - Car Insurance" href="http://www.carsguide.com.au/taxonomy/term/28582/feed" />
+<meta name="twitter:description" content="Find out everything you need to know about car insurance. Read advice from top motoring journalists and let CarsGuide help you find the right car insurance for your vehicle." />
+<meta name="description" content="Find out everything you need to know about car insurance. Read advice from top motoring journalists and let CarsGuide help you find the right car insurance for your vehicle." />
+<meta name="keywords" content="allianz insurance, car insurance" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="http://www.carsguide.com.au/car-insurance" />
+<link rel="shortlink" href="http://www.carsguide.com.au/taxonomy/term/28582" />
+<meta property="og:site_name" content="CarsGuide" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.carsguide.com.au/car-insurance" />
+<meta property="og:title" content="Car Insurance" />
+  <title>Car Insurance | CarsGuide</title>
+
+  <!-- styles -->
+  <style type="text/css" media="all">
+@import url("http://www.carsguide.com.au/modules/system/system.base.css?nv66rz");
+@import url("http://www.carsguide.com.au/modules/system/system.menus.css?nv66rz");
+@import url("http://www.carsguide.com.au/modules/system/system.messages.css?nv66rz");
+@import url("http://www.carsguide.com.au/modules/system/system.theme.css?nv66rz");
+</style>
+<style type="text/css" media="all">
+@import url("http://www.carsguide.com.au/modules/comment/comment.css?nv66rz");
+@import url("http://www.carsguide.com.au/sites/all/modules/contrib/date/date_api/date.css?nv66rz");
+@import url("http://www.carsguide.com.au/sites/all/modules/contrib/date/date_popup/themes/datepicker.1.7.css?nv66rz");
+@import url("http://www.carsguide.com.au/modules/field/theme/field.css?nv66rz");
+@import url("http://www.carsguide.com.au/modules/node/node.css?nv66rz");
+@import url("http://www.carsguide.com.au/sites/all/modules/contrib/picture/picture_wysiwyg.css?nv66rz");
+@import url("http://www.carsguide.com.au/modules/search/search.css?nv66rz");
+@import url("http://www.carsguide.com.au/modules/user/user.css?nv66rz");
+@import url("http://www.carsguide.com.au/sites/all/modules/contrib/workflow/workflow_admin_ui/workflow_admin_ui.css?nv66rz");
+@import url("http://www.carsguide.com.au/sites/all/modules/contrib/views/css/views.css?nv66rz");
+</style>
+
+<!--[if gte IE 10]><!-->
+<link type="text/css" rel="stylesheet" href="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/css/carsguide.css?nv66rz" media="all" />
+<!--<![endif]-->
+
+<!--[if lte IE 10]>
+<link type="text/css" rel="stylesheet" href="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/css/output.css?nv66rz" media="all" />
+<![endif]-->
+
+<!--[if lte IE 10]>
+<link type="text/css" rel="stylesheet" href="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/css/output-blessed1.css?nv66rz" media="all" />
+<![endif]-->
+<style type="text/css" media="all">
+@import url("http://www.carsguide.com.au/sites/all/modules/contrib/ctools/css/ctools.css?nv66rz");
+@import url("http://www.carsguide.com.au/sites/all/modules/contrib/node_embed/plugins/node_embed/node_embed.css?nv66rz");
+@import url("http://www.carsguide.com.au/modules/taxonomy/taxonomy.css?nv66rz");
+@import url("http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/style/bootstrap-select.min.css?nv66rz");
+</style>
+<style type="text/css" media="all">
+@import url("http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/lib/jquery.royalslider/9.5.4/royalslider/royalslider-custom.css?nv66rz");
+@import url("http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/lib/jquery.royalslider/9.5.4/royalslider/skins/carsguide/rs-carsguide.css?nv66rz");
+@import url("http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/css/carsguide-fonts.css?nv66rz");
+</style>
+
+  <!--[if lt IE 9]>
+    <script src="/sites/all/themes/carsguide_theme/assets/lib/html5shiv/dist/html5shiv.js"></script>
+    <script src="/sites/all/themes/carsguide_theme/assets/lib/respond.js/dest/respond.src.js"></script>
+  <![endif]-->
+
+  <!-- scripts -->
+  <script type="text/javascript" src="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/js/lib/gigya.js?nv66rz"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/lib/layout.engine/0.8.1/layout.engine.min.js?nv66rz"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/lib/requirejs/2.1.10/require.js?nv66rz" data-main="/sites/all/themes/carsguide_theme/assets/js/cg-main.js?bust=v47"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/lib/jquery/1.10.2/jquery.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="//cdn.optimizely.com/js/2419140384.js"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/misc/drupal.js?nv66rz"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/modules/carsguide/carsguide_ads/js/carsguide-ads-api.js?nv66rz"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/modules/carsguide/cg_member/js/member.js?nv66rz"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+document.createElement( "picture" );
+//--><!]]>
+</script>
+<script type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
+<script type="text/javascript" src="/misc/jquery.once.js?nv66rz"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/js/lib/min/bootstrap-select.js?nv66rz"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gstrEbIframeLocation = "sites/all/themes/carsguide_theme/assets/js/lib/eyeblaster/addineyeV2.html"
+//--><!]]>
+</script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/lib/modernizr/2.8.3/modernizr.min.js?nv66rz"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"carsguide_theme","theme_token":"cFTNr3-q8SOzvQQr6zYGRDkeIugAuVmm7tIrnlhrc3g","js":{"http:\/\/cdn.gigya.com\/JS\/socialize.js?apikey=3_72-vYxtNi_GOs8xQ263-WeJPN9baXYphR45EXX9CXGa0J7tFV5eTIq_24ATWlNre":1,"0":1,"1":1,"\/\/tealium.hs.llnwd.net\/o43\/utag\/newsltd\/cars\/prod\/utag.js":1,"sites\/all\/modules\/contrib\/picture\/picturefill2\/picturefill.min.js":1,"sites\/all\/modules\/contrib\/picture\/picture.min.js":1,"2":1,"sites\/all\/themes\/carsguide_theme\/assets\/js\/functions\/function.js":1,"sites\/all\/themes\/carsguide_theme\/assets\/js\/lib\/gigya.js":1,"sites\/all\/themes\/carsguide_theme\/assets\/lib\/layout.engine\/0.8.1\/layout.engine.min.js":1,"sites\/all\/themes\/carsguide_theme\/assets\/lib\/requirejs\/2.1.10\/require.js":1,"misc\/jquery.js":1,"\/\/cdn.optimizely.com\/js\/2419140384.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/carsguide\/carsguide_ads\/js\/carsguide-ads-api.js":1,"sites\/all\/modules\/carsguide\/cg_member\/js\/member.js":1,"3":1,"http:\/\/admin.brightcove.com\/js\/BrightcoveExperiences.js":1,"\/misc\/jquery.once.js":1,"sites\/all\/themes\/carsguide_theme\/assets\/js\/lib\/min\/bootstrap-select.js":1,"4":1,"sites\/all\/themes\/carsguide_theme\/assets\/lib\/modernizr\/2.8.3\/modernizr.min.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/contrib\/picture\/picture_wysiwyg.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/workflow\/workflow_admin_ui\/workflow_admin_ui.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/themes\/carsguide_theme\/assets\/css\/carsguide.css":1,"sites\/all\/themes\/carsguide_theme\/assets\/css\/output.css":1,"sites\/all\/themes\/carsguide_theme\/assets\/css\/output-blessed1.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/node_embed\/plugins\/node_embed\/node_embed.css":1,"modules\/taxonomy\/taxonomy.css":1,"sites\/all\/themes\/carsguide_theme\/assets\/style\/bootstrap-select.min.css":1,"sites\/all\/themes\/carsguide_theme\/assets\/css\/origin.css":1,"sites\/all\/themes\/carsguide_theme\/assets\/lib\/jquery.royalslider\/9.5.4\/royalslider\/royalslider-custom.css":1,"sites\/all\/themes\/carsguide_theme\/assets\/lib\/jquery.royalslider\/9.5.4\/royalslider\/skins\/carsguide\/rs-carsguide.css":1,"sites\/all\/themes\/carsguide_theme\/assets\/css\/carsguide-fonts.css":1}},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"}});
+//--><!]]>
+</script>
+  	<script>dataLayer=[{"net_site":"cars","net_section":"editorial","net_subsec":"articletag","net_content_type":"index","ss_cg_article_tags":"carinsurance"}];</script><!-- Google Tag Manager --><noscript><iframe src='//www.googletagmanager.com/ns.html?id=GTM-K2N2T5' height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K2N2T5');</script><!-- End Google Tag Manager --><script type="text/javascript">
+    window.base_url = 'http://www.carsguide.com.au';
+    window.current_path = 'taxonomy/term/28582';
+    window.path_alias = 'car-insurance';
+    // default callback - so this can be overriden from any where.
+    if (!window.UHFCallback) window.UHFCallback = function() {};
+</script>
+    <link type="text/css" rel="stylesheet" href="//www.carsguide.com.au/misc/uhf/uhf.css?1443068980" media="all">
+</head>
+<body class="html not-front not-logged-in no-sidebars page-taxonomy page-taxonomy-term page-taxonomy-term- page-taxonomy-term-28582" >
+
+
+  <div id="universalH" class="uhf-header-wrapper uhf-collapsed universalHF">
+    <header>
+                <div class="uhf-logo">
+            <a href="/" title="carsguide"><img src="/sites/all/themes/carsguide_theme/assets/images/carsguide-logo-collapsed.png" alt="carsguide.com.au"></a>
+        </div>
+
+        <div class="uhf-mobile-menu-btn">
+            <a href="javascript:void(0)" class="uhf-icon-paragraph uhf-open-menu"></a>
+            <a href="javascript:void(0)" class="uhf-icon-cross uhf-close-menu"></a>
+        </div>
+
+        <div class="uhf-menu-wrapper">
+            <!-- .main-nav -->
+            <nav class="uhf-main-nav uhf-clearfix">
+                <ul class="uhf-clearfix">
+                    <li class="uhf-cars-for-sale uhf-dropdown-menu-toggle" id="view_car_deal">
+                        <a href="/buy-a-car/new-and-used-car-search">Cars For Sale</a>
+                        <a href="javascript:void(0)" class="uhf-icon-arrow-up-down" data-toggle-target=".uhf-dropdown-menu-toggle"></a>
+                        <ul class="uhf-dropdown-menu">
+                            <li><a href="/buy-a-car/new-and-used-car-search">Search Cars</a></li>
+                            <li><a href="/buy-a-car/used-car-search">Used Cars Search</a></li>
+                            <li><a href="/buy-a-car/new-car-search">New Cars Search</a></li>
+                            <li><a href="/buy-a-car/advanced-search">Advanced Search</a></li>
+                            <li><a href="/buy-a-car/dealer-search">Find a Dealer</a></li>
+                            <li><a href="/deals?main_nav">New Car Deals <span>New</span></a></li>
+                        </ul>
+                        <div class="uhf-arrow_box" data-condition="document.cookie.indexOf('show_car_deal_bubble') == -1 && window.path_alias == 'homepage'" data-callback="document.cookie = 'show_car_deal_bubble=1'">Check out New Car Deals now.</div>
+                    </li>
+                    <li class="uhf-sell-my-car uhf-dropdown-menu-toggle">
+                        <a href="/sell-my-car">Sell My Car</a>
+                        <a href="javascript:void(0)" class="uhf-icon-arrow-up-down" data-toggle-target=".uhf-dropdown-menu-toggle"></a>
+                        <ul class="uhf-dropdown-menu">
+                            <li><a href="https://sellmycar.carsguide.com.au/sell-your-car/quickstart">Start My FREE Ad</a></li>
+                            <li><a href="/sell-my-car/edit-or-renew-an-ad">Edit Your Ad</a></li>
+                            <li><a href="/car-valuation">Value Your Car</a></li>
+                            <li><a href="/tags/selling-advice">Car Selling Advice</a></li>
+                        </ul>
+                    </li>
+                    <li class="uhf-car-reviews uhf-dropdown-menu-toggle">
+                        <a href="/car-reviews">Car Reviews</a>
+                        <a href="javascript:void(0)" class="uhf-icon-arrow-up-down" data-toggle-target=".uhf-dropdown-menu-toggle"></a>
+                        <ul class="uhf-dropdown-menu">
+                            <li><a href="/car-reviews-by-make">Car Reviews by Make</a></li>
+                            <li><a href="/car-reviews/by-body-type">Car Reviews by Body Type</a></li>
+                            <li><a href="/used-car-reviews/by-make">Used Car Reviews by Make</a></li>
+                            <li><a href="/video-car-reviews">Video Car Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li class="uhf-car-news uhf-dropdown-menu-toggle">
+                        <a href="/car-news">Car News</a>
+                        <a href="javascript:void(0)" class="uhf-icon-arrow-up-down" data-toggle-target=".uhf-dropdown-menu-toggle"></a>
+                        <ul class="uhf-dropdown-menu">
+                            <li><a href="/tags/motor-shows">Motor Shows</a></li>
+                            <li><a href="/tags/concept-cars">Concept Cars</a></li>
+                            <li><a href="/car-videos">Video Car News</a></li>
+                        </ul>
+                    </li>
+                    <li class="uhf-car-insurance">
+                        <a href="/car-insurance">Insurance</a>
+                    </li>
+                    <li class="uhf-car-advice uhf-dropdown-menu-toggle">
+                        <a href="/car-advice">Car Advice</a>
+                        <a href="javascript:void(0)" class="uhf-icon-arrow-up-down" data-toggle-target=".uhf-dropdown-menu-toggle"></a>
+                        <ul class="uhf-dropdown-menu">
+                            <li><a href="/car-advice/buyers-guide">Buyers Guide</a></li>
+                            <li><a href="/car-loans-finance">Car Finance</a></li>
+                            <li><a href="/car-advice/q-and-a">Ask Smithy</a></li>
+                            <li><a href="/contact-us/q-and-a">Ask a Question</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <!-- //.main-nav -->
+
+            <!-- #sign-and-search -->
+            <div class="clearfix" id="compare-notification-container"></div>
+            <div class="uhf-clearfix" id="uhf-sign-and-search">
+
+                <div class="uhf-mobile-login-signup">
+                    <a class="uhf-notifications" href="https://members.carsguide.com.au/customer/account/login/"><span class="uhf-badge" id="total-count-mobile">0</span><span>Notifications</span></a>
+                    <div class="uhf-trip-item"><a href="/trip-planner">Trip Planner</a> <span class="uhf-count" id="trip-planner-count-mobile">0</span></div>
+                            <span class="uhf-login-signup">
+                                <a href="https://members.carsguide.com.au/customer/account/login/">Log in/Sign up</a>
+                                <span id="cg-display-name-secondary" class="uhf-display-name">Guest</span>
+                            </span>
+                </div>
+
+                <!-- #login-button-container -->
+                <div id="uhf-login-button-container" data-memberurl="https://members.carsguide.com.au">
+                    <div class="uhf-dropdown uhf-clearfix" id="uhf-login-state-container">
+                        <a class="uhf-login-state-name uhf-clearfix" href="javascript:void(0)"><span class="uhf-badge" id="total-count">0</span><span id="cg-display-name-primary">Log in/Sign up</span></a>
+
+                        <!-- .dropdown-menu -->
+                        <div class="uhf-dropdown-menu uhf-clearfix">
+
+                            <ul class="uhf-counters">
+                                <li><a href="/compare-cars">Compare Cars</a> <span class="uhf-count" id="compare-count">0</span></li>
+                                <li><a href="https://members.carsguide.com.au/customer/account/shortlist/">Saved Cars</a> <span class="uhf-count" id="shortlist-count"><a href="https://members.carsguide.com.au/customer/account/shortlist/">Log in/Sign up</a><span></span></span></li>
+                                <li class="uhf-trip-item"><a href="/trip-planner">Trip Planner</a> <span class="uhf-count" id="trip-planner-count">0</span></li>
+                                <li><a href="https://members.carsguide.com.au/customer/account/alerts/">Car Alerts</a> <span class="uhf-count" id="alerts-count"><a href="https://members.carsguide.com.au/customer/account/alerts/">Log in/Sign up</a><span></span></span></li>
+                                <li class="uhf-last"><a href="https://members.carsguide.com.au/customer/account/sellmycar/">Your Car Ads</a> <span class="uhf-count" id="ads-count"><a href="https://members.carsguide.com.au/customer/account/sellmycar/">Log in/Sign up</a><span></span></span></li>
+                            </ul>
+
+                            <div class="uhf-social-media-links">
+                                <span>Log in/Sign up with</span>
+                                <div class="uhf-social-icons">
+                                    <a id="uhf-facebook" href='javascript:cgMemberSocialLogin("facebook");'><span class="uhf-social-icon uhf-icon-facebook-circle"></span></a>
+                                    <a id="uhf-google" href='javascript:cgMemberSocialLogin("google");'><span class="uhf-social-icon uhf-icon-googleplus-circle"></span></a>
+                                </div>
+                            </div>
+
+                            <!-- .login-state -->
+                            <div class="uhf-login-state uhf-clearfix">
+                                <a href="https://members.carsguide.com.au/customer/account/edit/" class="uhf-btn-manage-account"><i class="uhf-icon-cog"></i><span>My Profile</span></a>
+                                <a href="https://members.carsguide.com.au/cglogout-home.php" class="uhf-btn-logout"><i class="uhf-icon-logout"></i><span>Logout</span></a>
+                            </div>
+                            <!-- //.login-state -->
+
+                        </div>
+                        <!-- //.dropdown-menu -->
+
+                    </div>
+                    <!-- //#login-state-container -->
+                </div>
+                <!-- //#login-button-container -->
+
+                <!-- .search-box -->
+                <div class="uhf-search-box">
+                    <form name="header_search" action="/cs-search" method="get">
+                        <div class="uhf-input-group">
+                            <span class="uhf-input-group-addon uhf-icon-magnifying-glass"></span>
+                            <input type="text" id="uhf-searchInput" name="keywords" value="" class="uhf-form-control uhf-search-text" placeholder="Search Car News &amp; Reviews">
+                            <a href="javascript:void(0)" data-search-target=".uhf-search-box" class="uhf-input-group-addon uhf-icon-cross"></a>
+                        </div>
+                    </form>
+                </div>
+                <!-- //.search-box -->
+
+            </div>
+            <!-- //#sign-and-search -->
+        </div>
+        <!-- //.menu-wrapper -->
+    </header>
+</div>
+<!--# generated at 2015-09-28 10:32:12 #-->
+
+<div class="head_separator"></div>
+<script type="text/javascript">
+    // Member Centre Links
+    var cgMemberUrl = "https://members.carsguide.com.au";
+</script>
+
+ 	<div id="page_top_ad" class="container ad-wrapper page_top_ad">
+		<script type="text/javascript">		
+			// using native js before loading jquery
+    	var documentWidth = document.body.clientWidth; 
+
+    	// shared ad slot.
+			if(documentWidth > 970) {
+				document.getElementById('page_top_ad').setAttribute("style","min-height:90px");
+				document.write('<div class="ad-block ad-custom" data-ad-size="970x250,728x90"></div>');
+			}
+			else
+			{
+				document.getElementById('page_top_ad').setAttribute("style","min-height:55px");
+				cars.ads.put_ad(['724', 'leader'], ['0','m-banner']);
+			}
+    </script>
+	</div>
+	<!-- ./container ad-wrapper page_top_ad -->
+
+
+
+<!-- .container -->
+<div class="container">
+    <!-- IE grayscale fallback -->
+    <div class="element-invisible">
+    <svg viewBox="0 0 640 360">
+        <filter id="grayscale">
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+    </svg>
+    </div>
+    <!-- // IE grayscale fallback -->
+
+    <!-- .dp-messages -->
+    <div class="dp-messages">
+            </div>
+    <!-- //.dp-messages -->
+
+</div>
+<!-- //.container -->
+
+
+
+
+  
+  <div class="container">
+    <div class="heading main-heading">
+        <h1>Car Insurance<script>window.document.write('<div class="item-ad"><div class="ad-block ad-custom" data-ad-size="100x45"></div></div>');</script></h1>
+    </div>
+  </div>
+
+  
+  <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <div class="term-listing-heading"><div class="container">
+<div class="row">
+<div class="container-flex taxonomy-term vocabulary-article-tags view-mode-cg_curated  clearfix cg-3col-flex no-top has-side1">
+  
+  <div class="flex-item col-lg-9-flex col-md-8-flex col-sm-12-flex main no-top has-side1">
+              
+        
+<div class="paragraphs-items paragraphs-items-field-main-section-paragraphs paragraphs-items-field-main-section-paragraphs-cg-curated paragraphs-items-cg-curated">
+  <div class="field field-name-field-main-section-paragraphs field-type-paragraphs field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><div  class="ds-1col entity entity-paragraphs-item paragraphs-item-cg-para-filter view-mode-full  clearfix">
+
+  
+  <h2><a href="http://www.carsguide.com.au/articles/car-insurance">Latest car insurance stories <span class="icon-arrow-right"></span></a></h2><div class="field field-name-cg-para-filter field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">
+<div class ="row">
+  <div class="big col-md-12">
+        <div class = "r0 row">
+      <div class="col-md-12"><div class="filtered-paragraph">
+<div class="node node-story view-mode-cg_featured_medium  clearfix viewmode-featured">
+  
+  <div class="body">
+        <div class="">
+      <div id="file-71044--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/insurance-money-fistful-of-cashjpg">insurance-money-fistful-of-cash.jpg</a></h2>
+    
+  
+  <div class="content">
+    <picture >
+<!--[if IE 9]><video style="display: none;"><![endif]-->
+<source srcset="http://resources.carsguide.com.au/styles/cg_hero_medium/s3/insurance-money-fistful-of-cash.jpg?timestamp=1442207467 1x" media="(min-width: 1366px)" />
+<source srcset="http://resources.carsguide.com.au/styles/cg_hero_medium/s3/insurance-money-fistful-of-cash.jpg?timestamp=1442207467 1x" media="(min-width: 1024px) and (max-width: 1365px)" />
+<source srcset="http://resources.carsguide.com.au/styles/cg_hero_low/s3/insurance-money-fistful-of-cash.jpg?timestamp=1442207467 1x" media="(max-width: 767px)" />
+<!--[if IE 9]></video><![endif]-->
+<img src="http://resources.carsguide.com.au/styles/cg_hero_low/s3/insurance-money-fistful-of-cash.jpg?timestamp=1442207467" alt="" title="" />
+</picture>  </div>
+
+  
+</div>
+    </div>
+        <a href="http://www.carsguide.com.au/car-advice/it-pays-to-check-your-insurance-options-35808" class="cg_link_overlay"></a>
+
+      <div class="overlay ">
+      <div class="field field-name-title"><h3><a href="/car-advice/it-pays-to-check-your-insurance-options-35808">It pays to check your insurance options</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">14 September 2015 by Sophie Elsworth</div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+ </div></div>
+    </div>
+            <div class="r1 row">
+    <div class="col-md-12"><div class="filtered-paragraph">
+
+<div class="node node-story view-mode-cg_summary  clearfix">
+  
+  <div class="media">
+        <div class="media-left hidden-xs ">
+      <div id="file-66811--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/adelaide-traffic-genericjpg">adelaide-traffic-generic.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/medium/s3/adelaide-traffic-generic.jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+    
+          <div class="media-body ">
+        <div class="field field-name-title"><h3><a href="/car-news/south-australian-ctp-insurance-to-be-overhauled-32430">South Australian CTP insurance to be overhauled</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">8 May 2015 by Sheradyn Holderhead</div>
+      </div>
+</div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><h2>Motorists will be able to pick their compulsory third-party insurance...<a href="/car-news/south-australian-ctp-insurance-to-be-overhauled-32430" class="more-link">Read more</a></h2></div>
+      </div>
+</div>
+      </div>
+        <a href="http://www.carsguide.com.au/car-news/south-australian-ctp-insurance-to-be-overhauled-32430" class="cg_link_overlay"></a>
+  </div>
+
+</div>
+
+</div></div><div class="col-md-12"><div class="filtered-paragraph">
+
+<div class="node node-q-and-a view-mode-cg_summary  clearfix">
+  
+  <div class="media">
+        <div class="media-left hidden-xs ">
+          </div>
+    
+          <div class="media-body ">
+        <div class="field field-name-title"><h3><a href="/car-advice/q-and-a/market-or-agreed-value-insurance-31614">Market or agreed value insurance?</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">10 April 2015</div>
+      </div>
+</div>
+<div class="field field-name-field-qa-question field-type-text-long field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">We have recently been burnt big time with our 18-year old's car 2006...<a href="/car-advice/q-and-a/market-or-agreed-value-insurance-31614" class="more-link">Read more</a></div>
+      </div>
+</div>
+      </div>
+        <a href="http://www.carsguide.com.au/car-advice/q-and-a/market-or-agreed-value-insurance-31614" class="cg_link_overlay"></a>
+  </div>
+
+</div>
+
+</div></div><div class="col-md-12"><div class="filtered-paragraph">
+
+<div class="node node-story view-mode-cg_summary  clearfix">
+  
+  <div class="media">
+        <div class="media-left hidden-xs ">
+      <div id="file-64014--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/filling-out-formjpg">filling-out-form.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/medium/s3/filling-out-form.jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+    
+          <div class="media-body ">
+        <div class="field field-name-title"><h3><a href="/car-advice/how-to-save-on-car-rental-insurance-report-30724">How to save on car rental insurance | report</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">14 January 2015 by Matthew Hatton</div>
+      </div>
+</div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><h2>Car rental insurance can cost up to five times more over the counter...<a href="/car-advice/how-to-save-on-car-rental-insurance-report-30724" class="more-link">Read more</a></h2></div>
+      </div>
+</div>
+      </div>
+        <a href="http://www.carsguide.com.au/car-advice/how-to-save-on-car-rental-insurance-report-30724" class="cg_link_overlay"></a>
+  </div>
+
+</div>
+
+</div></div><div class="col-md-12"><div class="filtered-paragraph last-summary">
+
+<div class="node node-story view-mode-cg_summary  clearfix">
+  
+  <div class="media">
+        <div class="media-left hidden-xs ">
+      <div id="file-63000--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/boughtbarina-widejpg">boughtbarina-wide.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/medium/s3/boughtbarina-wide.jpg" alt="" />  </div>
+
+  
+</div>
+<div class="field field-name-cg-video-icon field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><div class="icon-video icon video-icon-feature"></div>
+</div>
+      </div>
+</div>
+    </div>
+    
+          <div class="media-body ">
+        <div class="field field-name-title"><h3><a href="/car-news/honey-i-crashed-the-barina-30235">Honey, I crashed the Barina</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">20 November 2014 by Joshua Dowling</div>
+      </div>
+</div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p><strong>The Barina in the ‘Buy My Barina’ ad that went viral has been</strong>...<a href="/car-news/honey-i-crashed-the-barina-30235" class="more-link">Read more</a></p></div>
+      </div>
+</div>
+      </div>
+        <a href="http://www.carsguide.com.au/car-news/honey-i-crashed-the-barina-30235" class="cg_link_overlay"></a>
+  </div>
+
+</div>
+
+</div></div>    </div>
+            <div class="row">
+      <div class="r2 col-md-6 col-sm-6 col-xs-12">
+        <div class="filtered-paragraph">
+<div class="node node-story view-mode-cg_featured_mini  clearfix viewmode-featured">
+  
+  <div class="body">
+        <div class="">
+      <div id="file-61468--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/car-insurance-decisionjpg">car-insurance-decision.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/large/s3/car-insurance-decision.jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+        <a href="http://www.carsguide.com.au/car-advice/car-insurance-the-basics-29525" class="cg_link_overlay"></a>
+
+      <div class="overlay ">
+      <div class="field field-name-title"><h3><a href="/car-advice/car-insurance-the-basics-29525">Car insurance | the basics</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">18 September 2014 by Matthew Hatton</div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+      <div class="r3 col-md-6 col-sm-6 col-xs-12">
+        <div class="filtered-paragraph">
+<div class="node node-story view-mode-cg_featured_mini  clearfix viewmode-featured">
+  
+  <div class="body">
+        <div class="">
+      <div id="file-61523--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/sponsor-allianz-family-smalljpg">sponsor-allianz-family-small.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/large/s3/sponsor-allianz-family-small.jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+        <a href="http://www.carsguide.com.au/car-advice/sponsored-what-to-look-for-when-buying-a-family-car-29563" class="cg_link_overlay"></a>
+
+      <div class="overlay ">
+      <div class="field field-name-title"><h3><a href="/car-advice/sponsored-what-to-look-for-when-buying-a-family-car-29563">Sponsored | What to look for when buying a family car</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">18 September 2014 by Allianz</div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+ </div>
+      </div>
+    </div>
+            <div class="r4 row">
+    <div class="col-md-12"><div class="filtered-paragraph">
+
+<div class="node node-story view-mode-cg_summary  clearfix">
+  
+  <div class="media">
+        <div class="media-left hidden-xs ">
+      <div id="file-61526--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/sponsor-allianz-maintenance-smalljpg">sponsor-allianz-maintenance-small.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/medium/s3/sponsor-allianz-maintenance-small.jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+    
+          <div class="media-body ">
+        <div class="field field-name-title"><h3><a href="/car-advice/sponsored-keeping-your-car-roadworthy-29565">Sponsored | Keeping your car roadworthy</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">18 September 2014 by Allianz</div>
+      </div>
+</div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p><strong>Keeping your car roadworthy is an important part of vehicle</strong>...<a href="/car-advice/sponsored-keeping-your-car-roadworthy-29565" class="more-link">Read more</a></p></div>
+      </div>
+</div>
+      </div>
+        <a href="http://www.carsguide.com.au/car-advice/sponsored-keeping-your-car-roadworthy-29565" class="cg_link_overlay"></a>
+  </div>
+
+</div>
+
+</div></div><div class="col-md-12"><div class="filtered-paragraph">
+
+<div class="node node-story view-mode-cg_summary  clearfix">
+  
+  <div class="media">
+        <div class="media-left hidden-xs ">
+      <div id="file-61525--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/sponsor-allianz-concepts-smalljpg">sponsor-allianz-concepts-small.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/medium/s3/sponsor-allianz-concepts-small.jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+    
+          <div class="media-body ">
+        <div class="field field-name-title"><h3><a href="/car-advice/sponsored-latest-concept-cars-the-future-starts-here-29564">Sponsored | Latest concept cars: the future starts here</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">18 September 2014 by Allianz</div>
+      </div>
+</div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p><strong>In recent international showcases, car brands have shared their</strong>...<a href="/car-advice/sponsored-latest-concept-cars-the-future-starts-here-29564" class="more-link">Read more</a></p></div>
+      </div>
+</div>
+      </div>
+        <a href="http://www.carsguide.com.au/car-advice/sponsored-latest-concept-cars-the-future-starts-here-29564" class="cg_link_overlay"></a>
+  </div>
+
+</div>
+
+</div></div><div class="col-md-12"><div class="filtered-paragraph">
+
+<div class="node node-story node-promoted view-mode-cg_summary  clearfix">
+  
+  <div class="media">
+        <div class="media-left hidden-xs ">
+      <div id="file-60567--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/2015-volvo-xc90-safety-1jpg">2015-Volvo-XC90-safety-1.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/medium/s3/2015-Volvo-XC90-safety-1.jpg" alt="2015 Volvo XC90 " title="2015 Volvo XC90 " />  </div>
+
+  
+</div>
+    </div>
+    
+          <div class="media-body ">
+        <div class="field field-name-title"><h3><a href="/car-advice/self-braking-cars-cheaper-to-insure-29150">Self-braking cars cheaper to insure</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">6 August 2014 by Joshua Dowling</div>
+      </div>
+</div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p><strong>Cars that automatically slam on the brakes to avoid a crash are</strong>...<a href="/car-advice/self-braking-cars-cheaper-to-insure-29150" class="more-link">Read more</a></p></div>
+      </div>
+</div>
+      </div>
+        <a href="http://www.carsguide.com.au/car-advice/self-braking-cars-cheaper-to-insure-29150" class="cg_link_overlay"></a>
+  </div>
+
+</div>
+
+</div></div><div class="col-md-12"><div class="filtered-paragraph last-summary">
+
+<div class="node node-story view-mode-cg_summary  clearfix">
+  
+  <div class="media">
+        <div class="media-left hidden-xs ">
+      <div id="file-61431--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/carinsurancewebjpg">Car_insurance_web.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/medium/s3/Car_insurance_web.jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+    
+          <div class="media-body ">
+        <div class="field field-name-title"><h3><a href="/car-advice/understanding-car-insurance-29502">Understanding car insurance</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">1 July 2014 by CarsGuide team</div>
+      </div>
+</div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p>There are four main categories of car insurance.</p><p><strong></strong>...<a href="/car-advice/understanding-car-insurance-29502" class="more-link">Read more</a></p></div>
+      </div>
+</div>
+      </div>
+        <a href="http://www.carsguide.com.au/car-advice/understanding-car-insurance-29502" class="cg_link_overlay"></a>
+  </div>
+
+</div>
+
+</div></div>    </div>
+            <div class="r5 row">
+      <div class="col-md-12"><div class="filtered-paragraph co-md-12">
+<div class="node node-story view-mode-cg_featured_wide  clearfix viewmode-featured">
+  
+  <div class="body">
+        <div class="">
+      <div id="file-59262--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/buyingcarwidejpg">buyingcar_wide.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/cg__latest_deal_carousel__lg_/s3/buyingcar_wide.jpg" width="728" height="300" alt="" />  </div>
+
+  
+</div>
+    </div>
+        <a href="http://www.carsguide.com.au/car-finance/buying-a-car-when-to-organise-car-insurance-28590" class="cg_link_overlay"></a>
+
+      <div class="overlay ">
+      <div class="field field-name-title"><h3><a href="/car-finance/buying-a-car-when-to-organise-car-insurance-28590">Buying a car: when to organise car insurance</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">31 May 2014 by CarsGuide team</div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+</div></div>
+    </div>
+            <div class="r6 row">
+    <div class="col-md-12"><div class="filtered-paragraph last-summary">
+
+<div class="node node-story view-mode-cg_summary  clearfix">
+  
+  <div class="media">
+        <div class="media-left hidden-xs ">
+      <div id="file-54030--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/file/54030">cheaper-car-insurance-w.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/medium/s3/dp/images/uploads_ee2/cheaper-car-insurance-w.jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+    
+          <div class="media-body ">
+        <div class="field field-name-title"><h3><a href="/car-news/how-to-get-cheaper-insurance-19078">How to get cheaper insurance</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">30 September 2011 by Mark Hinchliffe</div>
+      </div>
+</div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p>In the past five years the number of motorists who have chosen to pay...<a href="/car-news/how-to-get-cheaper-insurance-19078" class="more-link">Read more</a></p></div>
+      </div>
+</div>
+      </div>
+        <a href="http://www.carsguide.com.au/car-news/how-to-get-cheaper-insurance-19078" class="cg_link_overlay"></a>
+  </div>
+
+</div>
+
+</div></div>    </div>
+      </div>
+</div>
+</div>
+      </div>
+</div>
+<div class="field field-name-field-para-filter-more field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="http://www.carsguide.com.au/articles/car-insurance">Read more car insurance stories</a></div>
+      </div>
+</div>
+</div>
+
+</div>
+      </div>
+</div>
+</div>
+      </div>
+
+  <div class="flex-item col-lg-3-flex side2 col-md-12-flex col-sm-12-flex ">
+    
+        <div class="right-col-ad new">
+            <script>
+              cars.ads.put_ad([1023, 'halfpage'], [0,'mrec']);
+            </script>
+                    </div>
+                    <div class="field field-name-cg-newsletter-subscription- field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><div id="block-carsguide-layout-cg-newsletter-subscription--2" class="block block-carsguide-layout">
+
+    
+  <div class="content">
+    <!-- Begin MailChimp Signup Form -->
+<div class="right-aside-item sign-up-inbox clearfix">
+    <h3 class="title"><label for="mce_5609172c5d534_EMAIL">Get the latest news, reviews and advice every week</label></h3>
+    <form action="//carsguide.us2.list-manage.com/subscribe/post?u=ec209d40e56b5d78a7a7b7fd6&id=eb347326c5"
+          method="post" 
+          name="mc-embedded-subscribe-form" 
+          class="validate" 
+          target="mc_embed_signup_target" 
+          novalidate
+          data-test='^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$'
+          onsubmit="return window.fn_mc_embed_signup.onsubmit(this);"
+          >
+        <div class="input-row-group">
+            <div class="input-wrapper email form-group">
+                <input type="email" class="form-control" name="EMAIL" id="mce_5609172c5d534_EMAIL" placeholder="Enter your email address" required aria-describedby="input_5609172c5d534_status">
+            </div>
+            <button type="submit" class="cg-btn">Subscribe</button>
+        </div>
+        <div class="input-row-group">
+            <span id="input_5609172c5d534_status"></span>
+        </div>
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <span style="position: absolute; left: -5000px;"><input type="text" name="b_ec209d40e56b5d78a7a7b7fd6_eb347326c5" tabindex="-1" value=""></span>
+    </form>
+    <iframe name="mc_embed_signup_target" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:void(0)" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe>
+    <script>
+    window.fn_mc_embed_signup = {
+        'onsubmit' : function( form ){
+            this.$ = jQuery;
+            this.form = this.$( form );
+            this.form_email = this.form.find( '[name="EMAIL"]' );
+            this.describedby = this.form.find( '[id="' + this.form_email.attr("aria-describedby") + '"]' );
+            this.input_wrapper = this.$( this.form_email.closest( '.form-group' ) );
+            
+            this.remove_status();
+            
+            var bln_success = this.test( this.form.attr('data-test'), this.form_email.val() );
+            
+            if( !bln_success ){
+                this.failed();
+            }else{
+                this.success();
+            }
+            
+            return bln_success;
+        }
+        , 'test' : function( regexp, text ){
+            return ( new RegExp( regexp, 'i' ) ).test( text );
+        }
+        , 'remove_status' : function(){
+            this.describedby.text('');
+            this.describedby.removeClass('red green msg-box');
+            this.describedby.closest('.input-row-group').removeClass('msg-row');
+            this.input_wrapper.removeClass( 'has-error' );
+            this.form_email.closest('.input-row-group').removeClass('hidden');
+        }
+        , 'failed' : function(){
+            this.describedby.text( 'Please enter in a valid email address' );
+            this.describedby.addClass('red');
+            this.describedby.closest('.input-row-group').addClass('msg-row');
+            this.input_wrapper.addClass( 'has-error' );
+        }
+        , 'success' : function(){
+            this.describedby.html( '<span class="icon-tick"></span> <strong>Nice one!</strong> Confirmation email sent :)' );
+            this.describedby.addClass('green-bg msg-box');
+            this.form_email.closest('.input-row-group').addClass('hidden');
+        }
+    };
+    </script>
+</div>
+<!-- End MailChimp Signup Form -->  </div>
+</div>
+</div>
+      </div>
+</div>
+<div class="field field-name-cg-plista- field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><div id="block-carsguide-layout-cg-plista--2" class="block block-carsguide-layout">
+
+    
+  <div class="content">
+    
+        <script>
+            if(jQuery(document).width() >= 1024) {
+              document.write('<div data-widget="plista_widget_sidebar"></div>');
+            }
+        </script>  </div>
+</div>
+</div>
+      </div>
+</div>
+                <div id="fixed_float_top"></div>
+        <div class="right-aside-ads-item clearfix" id="fixed_float_ad" data-stop-at="1365">
+          <script>
+            // shared ad slot.
+            cars.ads.put_ad([1023, 'halfpage'], [0,'none']);
+          </script>
+        </div>  </div>
+
+    <div class="flex-item col-lg-3-flex col-md-4-flex col-sm-12-flex side1 side">
+    
+<div class="paragraphs-items paragraphs-items-field-sidebar-pargraphs paragraphs-items-field-sidebar-pargraphs-cg-curated paragraphs-items-cg-curated">
+  <div class="field field-name-field-sidebar-pargraphs field-type-paragraphs field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><div  class="ds-1col entity entity-paragraphs-item paragraphs-item-cg-para-filter view-mode-full  clearfix">
+
+  
+  <h2><a href="http://www.carsguide.com.au/car-news/">Latest car news <span class="icon-arrow-right"></span></a></h2><div class="field field-name-cg-para-filter field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">
+<div class="row">
+  <div class="featured">
+       <div class ="column col-md-4 col-sm-12">
+        <div class="row">
+          <div class="r0 col-md-12 col-sm-6 col-xs-12 "><div class="filtered-paragraph">
+<div class="node node-story view-mode-cg_featured_mini  clearfix viewmode-featured">
+  
+  <div class="body">
+        <div class="">
+      <div id="file-71463" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/toyota-hilux-2015-3jpg">toyota-hilux-2015-(3).jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/large/s3/toyota-hilux-2015-(3).jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+        <a href="http://www.carsguide.com.au/car-news/2015-toyota-hilux-new-car-sales-price-36029" class="cg_link_overlay"></a>
+
+      <div class="overlay ">
+      <div class="field field-name-title"><h3><a href="/car-news/2015-toyota-hilux-new-car-sales-price-36029">2015 Toyota HiLux | new car sales price</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">5 hours by Joshua Dowling</div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+ </div></div>
+          <div class="r1 col-md-12 col-sm-6 col-xs-12 "><div class="filtered-paragraph">
+<div class="node node-story view-mode-cg_featured_tall  clearfix viewmode-featured">
+  
+  <div class="body">
+        <div class="">
+      <div id="file-71461" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/nissan-godzilla-livery-bathurst-1000-2015jpg">nissan-godzilla-livery-bathurst-1000-2015.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/cg_hero_low/s3/nissan-godzilla-livery-bathurst-1000-2015.jpg" alt="" />  </div>
+
+  
+</div>
+    </div>
+        <a href="http://www.carsguide.com.au/car-news/nissan-to-sport-classic-skyline-livery-at-2015-bathurst-1000-36028" class="cg_link_overlay"></a>
+
+      <div class="overlay ">
+      <div class="field field-name-title"><h3><a href="/car-news/nissan-to-sport-classic-skyline-livery-at-2015-bathurst-1000-36028">Nissan to sport classic Skyline livery at 2015 Bathurst 1000</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">9 hours by James Phelps</div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+ </div></div>
+        </div>
+      </div>
+      <div class="column col-md-8 col-sm-12">
+       <div class="row">
+        <div class="r2 col-md-12 "><div class="filtered-paragraph">
+<div class="node node-story view-mode-cg_featured_medium  clearfix viewmode-featured">
+  
+  <div class="body">
+        <div class="">
+      <div id="file-71152" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/toyota-hilux-2016-accessories8djpg">Toyota-HiLux-2016-Accessories(8d).jpg</a></h2>
+    
+  
+  <div class="content">
+    <picture >
+<!--[if IE 9]><video style="display: none;"><![endif]-->
+<source srcset="http://resources.carsguide.com.au/styles/cg_hero_medium/s3/Toyota-HiLux-2016-Accessories(8d).jpg?timestamp=1442378250 1x" media="(min-width: 1366px)" />
+<source srcset="http://resources.carsguide.com.au/styles/cg_hero_medium/s3/Toyota-HiLux-2016-Accessories(8d).jpg?timestamp=1442378250 1x" media="(min-width: 1024px) and (max-width: 1365px)" />
+<source srcset="http://resources.carsguide.com.au/styles/cg_hero_low/s3/Toyota-HiLux-2016-Accessories(8d).jpg?timestamp=1442378250 1x" media="(max-width: 767px)" />
+<!--[if IE 9]></video><![endif]-->
+<img src="http://resources.carsguide.com.au/styles/cg_hero_low/s3/Toyota-HiLux-2016-Accessories(8d).jpg?timestamp=1442378250" alt="" title="" />
+</picture>  </div>
+
+  
+</div>
+    </div>
+        <a href="http://www.carsguide.com.au/car-news/why-australias-ute-love-is-stronger-than-ever-36005" class="cg_link_overlay"></a>
+
+      <div class="overlay ">
+      <div class="field field-name-title"><h3><a href="/car-news/why-australias-ute-love-is-stronger-than-ever-36005">Why Australia&#039;s ute love is stronger than ever</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">27 September 2015 by Joshua Dowling</div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+ </div></div>
+        <div class="r3 col-lg-6 col-md-6 col-sm-6 col-xs-12"><div class="filtered-paragraph">
+<div class="node node-story view-mode-cg_featured_mini  clearfix viewmode-featured">
+  
+  <div class="body">
+        <div class="">
+      <div id="file-71423" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/mercedes-c-class-1jpg">Mercedes-C-Class-1.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/large/s3/Mercedes-C-Class-1.jpg" alt="2015 Mercedes-Benz C-Class" />  </div>
+
+  
+</div>
+    </div>
+        <a href="http://www.carsguide.com.au/car-news/why-we-cant-buy-enough-luxury-cars-36014" class="cg_link_overlay"></a>
+
+      <div class="overlay ">
+      <div class="field field-name-title"><h3><a href="/car-news/why-we-cant-buy-enough-luxury-cars-36014">Why we can&#039;t buy enough luxury cars</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">25 September 2015 by Joshua Dowling</div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+ </div></div>
+        <div class="r4 col-lg-6 col-md-6 col-sm-6 col-xs-12"><div class="filtered-paragraph">
+<div class="node node-story view-mode-cg_featured_mini  clearfix viewmode-featured">
+  
+  <div class="body">
+        <div class="">
+      <div id="file-71419" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/vw-logo-1jpg">VW-logo-(1).jpg</a></h2>
+    
+  
+  <div class="content">
+    <img src="http://resources.carsguide.com.au/styles/large/s3/VW-logo-(1).jpg" alt="Volkswagen" />  </div>
+
+  
+</div>
+    </div>
+        <a href="http://www.carsguide.com.au/car-news/lawyers-weigh-in-on-vw-diesel-scandal-36026" class="cg_link_overlay"></a>
+
+      <div class="overlay ">
+      <div class="field field-name-title"><h3><a href="/car-news/lawyers-weigh-in-on-vw-diesel-scandal-36026">Lawyers weigh in on VW diesel scandal</a></h3></div><div class="field field-name-cg-submitted-by field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">25 September 2015 by Joshua Dowling</div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+ </div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+</div>
+<div class="field field-name-field-para-filter-more field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="http://www.carsguide.com.au/car-news/">Read more car news</a></div>
+      </div>
+</div>
+</div>
+
+</div>
+      </div>
+</div>
+</div>
+  </div>
+  
+  
+</div>
+</div>
+</div>
+</div>  </div>
+</div>
+  </div>
+
+<div class="footer">
+
+    <div class="container-fluid ad-wrapper">
+    
+      <!-- .ad-block.ad-leader -->
+      <script>cars.ads.put_ad(['1000', 'leader'], ['0','m-banner'],['position',2]);</script>
+      <!-- // .ad-block.ad-leader -->
+
+    </div>
+
+    
+<footer id="universalF" class="universalHF">
+    <div class="uhf-footer-upper">
+        <div class="uhf-container">
+            <div class="uhf-footer-nav">
+                <ul>
+                    <li>
+                        <a href="/about-carsguide">
+                            <span class="uhf-icon uhf-icon-info"></span>
+                            <span class="uhf-title">About CarsGuide</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/careers" data-gtm-category="head and footer" data-gtm-event="click" data-gtm-label="footer careers" data-gtm-value="">
+                            <span class="uhf-icon uhf-icon-briefcase"></span>
+                            <span class="uhf-title">Careers</span>
+                        </a>
+                    </li>                    
+                    <li>
+                        <a href="/dealer">
+                            <span class="uhf-icon uhf-icon-people"></span>
+                            <span class="uhf-title">For Dealers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/media-centre">
+                            <span class="uhf-icon uhf-icon-media"></span>
+                            <span class="uhf-title">Media Centre</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/help-security-centre">
+                            <span class="uhf-icon uhf-icon-help"></span>
+                            <span class="uhf-title">Help &amp; Security Centre</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact-us">
+                            <span class="uhf-icon uhf-icon-paper-plane"></span>
+                            <span class="uhf-title">Contact Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="uhf-footer-lower">
+        <div class="uhf-container">
+            <div class="uhf-footer-links">
+                <a href="/conditions-of-use">Terms</a> •
+                <a href="/privacy-policy">Privacy</a> •
+                <a href="/site-map">Site Map</a>
+                <span class="uhf-copyright">&copy; 2015 Carsguide.com.au. All rights reserved.</span>
+            </div>
+            <div class="uhf-footer-links uhf-fast_fifty">
+                <span class="uhf-copyright"><img src="/sites/all/themes/carsguide_theme/assets/images/homepage-search/fast50.png"></span>
+            </div>
+            <div class="uhf-social-links">
+                <a href="https://www.facebook.com/carsguide.australia" class="uhf-icon uhf-icon-facebook"></a>
+                <a href="https://twitter.com/Carsguide" class="uhf-icon uhf-icon-twitter"></a>
+                <a href="https://plus.google.com/+carsguide/posts" class="uhf-icon uhf-icon-googleplus"></a>
+                <a href="http://www.youtube.com/user/CARSguideVideo" class="uhf-icon uhf-icon-youtube"></a>
+                <a href="http://www.pinterest.com/carsguideaus/" class="uhf-icon uhf-icon-pinterest"></a>
+            </div>
+        </div>
+        <span class="uhf-version">prod-171</span>
+    </div>
+
+    <div class="uhf-footer-partner">
+        <div class="uhf-container">
+            <div class="uhf-footer-links">
+                <span class="uhf-separator">Partner sites:</span>
+                <a href="http://www.news.com.au">news.com.au</a>
+                <span class="uhf-separator">|</span>
+                <a href="http://www.careerone.com.au">careerone.com.au</a>
+                <span class="uhf-separator">|</span>
+                <a href="http://www.realestate.com.au">realestate.com.au</a>
+                <span class="uhf-separator">|</span>
+                <a href="http://www.foxsports.com.au">foxsports.com.au</a>
+                <span class="uhf-separator">|</span>
+                <a href="http://www.taste.com.au">taste.com.au</a>
+            </div>
+        </div>
+    </div>
+
+</footer>
+    <script type="text/javascript" src="//www.carsguide.com.au/misc/uhf/uhf.js?1443068980"></script>
+    
+</div>
+<!-- // footer -->
+<script type="text/javascript" src="http://cdn.gigya.com/JS/socialize.js?apikey=3_72-vYxtNi_GOs8xQ263-WeJPN9baXYphR45EXX9CXGa0J7tFV5eTIq_24ATWlNre"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.ads_extra = window.ads_extra || {};
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+utag_data = window.utag_data || {};
+  utag_data.ad_ajax = true;
+  utag_data.net_pn = "carsguide | motoring";
+  var wut = window.utag_data || (window.utag_data = {});
+  wut.ad_net = "87064291";
+  wut.ad_unit = "carsguide";
+  var wa = window.ads_api = window.ads_api || {}, wac = wa.conf = wa.conf || {};
+  wac.double_slash = false;
+  utag_data = window.utag_data || {};
+  utag_data.net_site = 'carsguide';
+  utag_data.net_section = 'motoring';
+  utag_data.net_subsec = 'editorial';
+  utag_data.net_subsubsec = 'car insurance';
+  utag_data.net_content_type = 'index';
+  window.ads_extra = window.ads_extra || {};
+window.ads_extra.relatedtags="carinsurance";
+utag_data.ad_pagetype="index";
+utag_data.adsense_client='ca-nd-carsguide_js';
+utag_data.adsense_channel='content';
+cars.ads.init();
+
+//--><!]]>
+</script>
+<script type="text/javascript" src="//tealium.hs.llnwd.net/o43/utag/newsltd/cars/prod/utag.js"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/modules/contrib/picture/picturefill2/picturefill.min.js?v=2.3.1"></script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/modules/contrib/picture/picture.min.js?v=7.33"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+if (!window.PLISTA || !PLISTA.publickey) {
+     window.PLISTA = {publickey: 'c837c52981f43cc6ef9e19c6'};
+    (function(){var n='script',d=document,s=d.createElement(n),s0=d.getElementsByTagName(n)[0];
+    s.async='async';s.type='text/javascript';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//static.plista.com/async.js';
+    s0.parentNode.insertBefore(s,s0)}());
+}//if possible place this script tag just before the closing body tag
+//--><!]]>
+</script>
+<script type="text/javascript" src="http://www.carsguide.com.au/sites/all/themes/carsguide_theme/assets/js/functions/function.js?nv66rz"></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"5ab5008507","applicationID":"4234268","transactionName":"MgNVbUsFVhJRWxBcWQtJdlpNDVcPH1sDakIAFFpKZhJRBEdnCVpSADlDWEELVg5dQTtBUxcLaElYA10=","queueTime":0,"applicationTime":1383,"atts":"HkRWGwMfRRw=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-686.min.js"}</script></body>
+</html>

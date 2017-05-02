@@ -49,28 +49,19 @@ def starttag(tag_name):
         return False
     return impl
 
-#
-# def attrname(attr_name):
-#     def impl(e):
-#         if "attrs" in e:
-#             if attr_name in e["attrs"]:
-#                 return True
-#         return False
-#     return impl
-#
-#
-# def tagattr(tag_name, attr_name, attr_value):
-#     def impl(e):
-#         if attr_name == "class":
-#             return False
-#         if "tag" in e and "attrs" in e:
-#             if e["tag"] == tag_name:
-#                 for n, v in e["attrs"]:
-#                     if attr_name == n and attr_value == v:
-#                         return True
-#         return False
-#     return impl
-#
+
+def tagattr(tag_name, attr_name, attr_value):
+    def impl(e):
+        if attr_name == "class":
+            return False
+        if "tag" in e and "attrs" in e:
+            if e["tag"] == tag_name:
+                for n, v in e["attrs"]:
+                    if attr_name == n and attr_value == v:
+                        return True
+        return False
+    return impl
+
 #
 # def class_(class_name):
 #     def impl(e):

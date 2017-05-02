@@ -53,30 +53,26 @@ class Engine(object):
 
         if mode == "suggest":
             tagname_candidates = set()
-            attr_candidates = set()
+            tagattr_candidates = set()
             class_candidates = set()
             inner_text_candidates = set()
 
-            features = list(map(lambda x: Tokenizer.feature("html", x), invariant_segments))
-            for doc_index, data_segments in enumerate(data):
-                print(template.select(features, [selector.starttag("title")], 1))
-
-            # for seg_index in range(len(invariant_segments)):
-            #     features = Tokenizer.feature("html", invariant_segments[seg_index])
-            #     if features is not None:
-            #         for each_tag in features:
-            #             if "tag" in each_tag:
-            #                 tagname_candidates.add(each_tag["tag"])
-            #             if "attrs" in each_tag:
-            #                 for attr_name, attr_value in each_tag["attrs"]:
-            #                     attr_candidates.add((attr_name, attr_value))
-            #                     if attr_name =="class":
-            #                         classes = attr_value.split()
-            #                         for t in classes:
-            #                             class_candidates.add(t)
-
-            # selector_candidates = list()
-
+            features_all = list(map(lambda x: Tokenizer.feature("html", x), invariant_segments))
+            for features in features_all:
+                for each_tag in features:
+                    if "tag" in each_tag:
+                        tagname_candidates.add(each_tag["tag"])
+                    if "attrs" in each_tag:
+                        for attr_name, attr_value in each_tag["attrs"]:
+                            tagattr_candidates.add((each_tag["tag"], attr_name, attr_value))
+                            if attr_name == "class":
+                                classes = attr_value.split()
+                                for class_ in classes:
+                                    class_candidates.add(class_)
+                    if "data" in each_tag:
+                        inner_text = each_tag["data"].strip()
+                        if util.in_range(len(inner_text), 1, 80): # hardcoded (to ignore scripts)
+                            inner_text_candidates.add(inner_text)
 
         for seg_index in range(len(invariant_segments)+1):
             found_index_data = index is None or seg_index == int(index[0])
@@ -92,6 +88,28 @@ class Engine(object):
                     print("## Data Segment {} ##".format(seg_index))
                     for doc_index, data_segments in enumerate(data):
                         print("{}{}\033[0m".format(color_set["data_seg"][doc_index % len(color_set["data_seg"])], data_segments[seg_index].strip()))
+
+                    if mode == "suggest":
+                        selector_candidates = list()
+                        for candidate in tagname_candidates:
+                            selected_index = template.select(features_all, [selector.starttag(candidate)], 0)
+                            if selected_index is not None:
+                                selector_candidates.append((selected_index - seg_index,
+                                                            "selector.starttag(\"{}\")".format(candidate),
+                                                            selected_index))
+
+                        for tag_name, attr_name, attr_value in tagattr_candidates:
+                            if attr_name == "id":
+                                selected_index = template.select(features_all, [selector.tagattr(tag_name, attr_name, attr_value)], 0)
+                                if selected_index is not None:
+                                    selector_candidates.append((selected_index - seg_index,
+                                                                "selector.tagattr(\"{}\", \"{}\", \"{}\")".format(tag_name, attr_name, attr_value),
+                                                                selected_index))
+
+                        selector_candidates = sorted(selector_candidates, key=lambda x: (abs(x[0]+1),x[1]))
+                        for candidate in selector_candidates:
+                            print(candidate)
+                        print("")
 
 
             if found_index_invariant:
