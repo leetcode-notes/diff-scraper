@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "src/diffscraper.py", line 143, in main
+      output_dir=args.output_dir[0], force=is_force)
+      TypeError: 'NoneType' object is not subscriptable
+
+--compress with --output_dir
+
+
