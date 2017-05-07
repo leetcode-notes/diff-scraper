@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	    <title>Variational Inference using Implicit Models Part II: Amortised Inference</title>
+	    <meta name="description" content="" />
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/assets/styles/crisp.css?v=a4a8b7e06d">
+		<link rel="shortcut icon" href="/content/images/2014/Mar/face.png"/>
+	    <meta name="HandheldFriendly" content="True" />
+	    <meta name="MobileOptimized" content="320" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	    <link rel="canonical" href="http://www.inference.vc/variational-inference-with-implicit-models-part-ii-amortised-inference-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="http://www.inference.vc/variational-inference-with-implicit-models-part-ii-amortised-inference-2/amp/" />
+    
+    <meta property="og:site_name" content="inFERENCe" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Variational Inference using Implicit Models Part II: Amortised Inference" />
+    <meta property="og:description" content="This post is part of a series on Variational Inference with Implicit Models. Here is a table of contents: Part I: Introduction, Inference of single, global variable (Bayesian logistic regression)  ➡️️Part II (you are here): Amortised Inference via the Prior-Contrastive Method (Explaining Away Demo) Part III: Amortised Inference via a" />
+    <meta property="og:url" content="http://www.inference.vc/variational-inference-with-implicit-models-part-ii-amortised-inference-2/" />
+    <meta property="og:image" content="http://www.inference.vc/content/images/2017/01/Screen-Shot-2017-01-17-at-5.54.21-PM.png" />
+    <meta property="article:published_time" content="2017-01-19T14:03:55.000Z" />
+    <meta property="article:modified_time" content="2017-02-09T14:13:27.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Variational Inference using Implicit Models Part II: Amortised Inference" />
+    <meta name="twitter:description" content="This post is part of a series on Variational Inference with Implicit Models. Here is a table of contents: Part I: Introduction, Inference of single, global variable (Bayesian logistic regression)  ➡️️Part II (you are here): Amortised Inference via the Prior-Contrastive Method (Explaining Away Demo) Part III: Amortised Inference via a" />
+    <meta name="twitter:url" content="http://www.inference.vc/variational-inference-with-implicit-models-part-ii-amortised-inference-2/" />
+    <meta name="twitter:image" content="http://www.inference.vc/content/images/2017/01/Screen-Shot-2017-01-17-at-5.54.21-PM.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Ferenc Huszar" />
+    <meta name="twitter:site" content="@fhuszar" />
+    <meta property="og:image:width" content="882" />
+    <meta property="og:image:height" content="932" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "inFERENCe",
+        "logo": "http://www.inference.vc/content/images/2014/Mar/face.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ferenc Huszar",
+        "image": "//www.gravatar.com/avatar/943e71b49d8fa0b3725fa6c82c97163d?d=404",
+        "url": "http://www.inference.vc/author/ferenc-huszar/",
+        "sameAs": []
+    },
+    "headline": "Variational Inference using Implicit Models Part II: Amortised Inference",
+    "url": "http://www.inference.vc/variational-inference-with-implicit-models-part-ii-amortised-inference-2/",
+    "datePublished": "2017-01-19T14:03:55.000Z",
+    "dateModified": "2017-02-09T14:13:27.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://www.inference.vc/content/images/2017/01/Screen-Shot-2017-01-17-at-5.54.21-PM.png",
+        "width": 882,
+        "height": 932
+    },
+    "description": "This post is part of a series on Variational Inference with Implicit Models. Here is a table of contents: Part I: Introduction, Inference of single, global variable (Bayesian logistic regression)  ➡️️Part II (you are here): Amortised Inference via the Prior-Contrastive Method (Explaining Away Demo) Part III: Amortised Inference via a",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://www.inference.vc"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="inFERENCe" href="http://www.inference.vc/rss/" />
+    <script src="//load.sumome.com/" data-sumo-site-id="a378ae33aa68caa37662d339c31c409600c8a85e240c12fceaeb0c70684208c0" async="async"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96562474-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+		<script>
+			!function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
+			arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+			d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
+			insertBefore(d,q)}(window,document,'script','_gs');
+
+			_gs('GSN-053712-R');
+		</script>
+	</head>
+	<body class="post-template">
+		<header id="header">
+			<a id="logo" href="http://www.inference.vc"><img src="/content/images/2014/Mar/face.png" alt="inFERENCe" /></a>
+			<h1><a href="http://www.inference.vc">inFERENCe</a></h1>
+			<p>posts on machine learning, statistics, opinions on things I&#x27;m reading in the space</p>
+			<h6><a href="http://www.inference.vc/about">About</a></h6>
+		</header>
+		<main id="content">
+			<article id="98" class="post">
+    <span class="post-stamp">January 19th, 2017</span>
+    <h1 class="post-title">Variational Inference using Implicit Models Part II: Amortised Inference</h1>
+    <p>This post is part of a series on Variational Inference with Implicit Models. Here is a table of contents:</p>
+
+<ul>
+<li><a href="http://www.inference.vc/variational-inference-with-implicit-probabilistic-models-part-1-2/">Part I</a>: Introduction, Inference of single, global variable (Bayesian logistic regression) </li>
+<li>➡️️<a href="http://www.inference.vc/variational-inference-with-implicit-models-part-ii-amortised-inference-2/">Part II</a> (you are here): Amortised Inference via the Prior-Contrastive Method (Explaining Away Demo)</li>
+<li><a href="http://www.inference.vc/variational-inference-using-implicit-models-part-iii-joint-contrastive-inference-ali-and-bigan/">Part III</a>: Amortised Inference via a Joint-Contrastive Method (ALI, BiGAN)</li>
+<li><a href="http://www.inference.vc/variational-inference-using-implicit-models-part-iv-denoisers-instead-of-discriminators/">Part IV</a>: Using Denoisers instead of Discriminators</li>
+</ul>
+
+<p><a href="http://www.inference.vc/variational-inference-using-implicit-models-part-iv-denoisers-instead-of-discriminators/">http://www.inference.vc/variational-inference-using-implicit-models-part-iv-denoisers-instead-of-discriminators/</a></p>
+
+<p>In a previous post I showed a simple way to use a GAN-style algorithm to perform <a href="http://www.inference.vc/variational-inference-with-implicit-probabilistic-models-part-1-2/">approximate inference with implicit variational distributions</a>. There, I used a Bayesian linear regression model where we aim to infer a single global hidden variable given a set of conditionally i.i.d. observations. In this post I will consider a slightly more complicated model with one latent variable per observation, and just like in variational autoencoders (VAEs), we are going to derive an amortised variational inference scheme.</p>
+
+<p>The graphical model now looks like this:</p>
+
+<p><img src="/content/images/2017/01/One-Random-Variable-Per-Observation.png" alt="" /></p>
+
+<p>For each observation $y_n$ there is an associated latent variable $x_n$, which are drawn i.i.d. from some prior $p(x)$. <br><small>As for the notation: the $x$ for latents, $y$ for observed data notation is used in some old-school statistical ML literature such as <a href="http://mlg.eng.cam.ac.uk/zoubin/papers/lds.pdf">my favourite paper</a> - in the GAN/VAE literature, my $x$ would be a $z$ and my $y$ would be an $x$. Sorry for the confusion, I wrote it this way, but I should probably adapt to the times at some point and update my notation</small></p>
+
+<p>Variational inference in such model would involve introducing variational distributions $q_n(x)$ for each observation $y_n$, but doing so would require a lot of parameters, growing linearly with observations. Furthermore, we could not quickly infer $x$ given a previously unseen observation. We will therefore perform <em>amortised inference</em> where we introduce a recognition model $q(x_n\vert y_n; \psi)$, parametrised by the observation $y$, and only adjust a single set of parameters $\psi$ that is shared across all observations. In the following I will omit the parameter $\psi$ and just refer to the variational distribution as $q(x_n\vert y_n)$.</p>
+
+<h4 id="asummaryofthispost">A summary of this post</h4>
+
+<ul>
+<li>I look at using an implicit $q(x_n\vert y_n)$ for VI: one we can sample from but whose density we cannot evaluate</li>
+<li>there are (at least) two ways of doing this using GAN-style algorithms which involves a discriminator</li>
+<li>here, I will focus on what I call <em>prior contrastive</em> inference, in which we estimate the average density ratio between the prior and the variational distribution</li>
+<li>we need one discriminator per observation, so we are going to <em>amortise the discriminator</em>, too.</li>
+<li>I introduce a simple toy model following the well-known sprinkler-rain anecdote which exhibits <em>explaining away</em>.</li>
+<li>I implement the prior-contrastive inference method on this toy problem (with an <a href="https://gist.github.com/fhuszar/063fe369e5a6b7458821f21ac4633d16">iPython notebook</a>)</li>
+<li>as it turns out what I did is pretty much the same as this brand new arXiv paper by <a href="https://arxiv.org/abs/1701.04722">Mescheder et al. 2017</a>, so go read that paper, too.</li>
+<li>there is a second way to derive a GAN-type algorithm from first principles in this context. This leads to an algorithm similar to ALI (<a href="https://arxiv.org/pdf/1606.00704v2.pdf">Dumoulin et al, 2016</a>) and BiGAN (<a href="https://arxiv.org/pdf/1605.09782v6.pdf">Donahue et al, 2016</a>). I will leave this as homework for you to figure out, and will cover in more detail in a future post.</li>
+</ul>
+
+<h2 id="takeastepbackwhy">Take a step back: Why?</h2>
+
+<p>A question I never really went into in the previous post is: why do we even want to perform variational inference with implicit models? There can be many reasons but perhaps most importantly, we can model <em>more complicated distributions</em> with implicit models. In normal VI we are often limited to exponential family distributions such as Gaussians. When dealing with joint distributions we often approximate these with products of independent factors. Even in VAEs, although the recognition model can be a very complex function of its input, at the end of the day we usually outputs just a single Gaussian. We are interested in improving approximate inference in models whose posteriors will be very complicated, maybe multimodal, or concentrated on a manifold, or handle weird shapes that arise when dealing with non-identifiability. The parametric assumptions we make in VI are often too strong, and implicit models would be one way to relax these.</p>
+
+<h2 id="priorcontrastivediscrimination">Prior-contrastive discrimination</h2>
+
+<p>Let's follow the same footsteps as <a href="(http://www.inference.vc/variational-inference-with-implicit-probabilistic-models-part-1-2/)">in the first post</a> and rearrange the KL divergence in terms of the log density ratio between the prior and the approximate posteriors:</p>
+
+<p>$$
+\frac{1}{N} \sum_{n=1}^{N} \operatorname{KL}\left[q(x\vert y_n) \middle\| p(x\vert y_n) \right]  = \frac{1}{N} \sum_{n=1}^{N} \operatorname{KL}\left[q(x\vert y_n) \middle\| p(x) \right] - \frac{1}{N} \sum_{n=1}^{N} \mathbb{E}_{x \sim q(x\vert y_n)} \log p(y_n \vert x) + p(y_{1\ldots N})
+$$</p>
+
+<p>As a reminder, $q(x\vert y)$ is an implicit recognition model, so we need a method for estimating the logarithmic density ratio $q(x\vert y_n)/p(x)$ for any observation $y$. Again, we can use logistic regression to do this, introducing a discriminator. I call this approach <em>prior-contrastive</em> as the discriminator will learn the contrast between $q$ and the prior.</p>
+
+<p>As for the discriminator, we could either</p>
+
+<ol>
+<li>train one logistic regression discriminator $D_n(x)$ for each observation $y_n$, or  </li>
+<li><strong>amortise the discriminator</strong>, that is learn a logistic regression classifier $D(x, y)$ that takes a $y$ as input in addition to $x$.</li>
+</ol>
+
+<p>We will follow the second option to obtain the following iterative algorithm:</p>
+
+<p>Discriminator loss: <br />
+$$
+\mathcal{L}(D; G) = \frac{1}{N} \sum_{n=1}^{N} \mathbb{E}_{x\sim q(x \vert y_n)} \log D(x,y_n) + \mathbb{E}_{x\sim p(x)} \log (1 - D(x, y_n))
+$$</p>
+
+<p>Generator loss: <br />
+\begin{align}
+\mathcal{L}(G; D) &amp;= \frac{1}{N} \sum_{n=1}^{N} \mathbb{E}_{x\sim q(x\vert y_n)} \left[ \log \frac{D(x, y_n)}{1 - D(x, y_n)}- \log p(y_n \vert x)\right]\\
+&amp;= \frac{1}{N} \sum_{n=1}^{N} \mathbb{E}_{z\sim\mathcal{N}(0,I)} \left[ \log \frac{D(G(z,y_n), y_n)}{1 - D(G(z,y_n), y_n)}- \log p(y_n \vert x)\right]
+\end{align}</p>
+
+<p>So in the first step, given the generator $G$ we train a discriminator $D$ to classify $(x,y)$ pairs, where $y$ is always a real datapoint and $x$ is sampled either conditionally using the recognition model, or independently, from the prior. Then, keeping the discriminator fixed, we take a single gradient step to improve the generator.</p>
+
+<p>I note here that the generator's loss function is an approximation to the variational lower bound (with a minus sign), so we can minimise the same loss with respect to parameters of $p(y\vert x)$ to obtain a VAE-like learning algorithm. If we do this, assuming that the generator and discriminator can be perfect all the time, this provides us a way to perform approximate maximum likelihood. In what follows, I will only care about approximate inference in a fixed model.</p>
+
+<h3 id="simpledemoexplainingaway">Simple Demo: Explaining Away</h3>
+
+<p>To demonstrate that this method works, I coded up a simple toy model, which has 2-dimensional real-valued latent variables ($x_n$) and univariate positive real observations ($y_n$). </p>
+
+<p>It's the simplest model I could come up with which exhibits <em>explaining away</em>: The prior on the two latent features is independent, but conditioned on the observation, the latent features become dependent. Explaining Away is a super-important pattern for inference, there are lots of sources to read up on it if you're not familiar with it.</p>
+
+<p>My simple <em>explaining away</em> model looks like this:</p>
+
+<p>\begin{align}
+x &amp;\sim \mathcal{N}(0, \sigma^2 I)\\ <br />
+y\vert x &amp;\sim \operatorname{EXP}(3 + max(0,x_1)^3 + max(0,x_2)^3), <br />
+\end{align}</p>
+
+<p>where $\operatorname{EXP}(\beta)$ denotes an exponential random variable with mean $\beta$, and $max(0,x_1)$ is better known as ReLU. Basically what's happening here: if either $x_1$ or $x_2$ has a large value, we observe a higher $y$ value. To connect this to the usual <a href="http://strategicreasoning.org/wp-content/uploads/2010/03/pami93.pdf">sprinkler example</a>: if $x_1$ is the sprinkler, $x_2$ is the rain, and $y$ the wetness of the grass.</p>
+
+<p>Here is what the (unnormalised) posteriors $Zp(x\vert y)$ look like for different values of $y$:</p>
+
+<p><img src="/content/images/2017/01/9kM1dgWv3OUAAAAABJRU5ErkJggg--.png" alt="" /></p>
+
+<p>One can see that these posteriors are multimodal and oddly shaped, so trying to match them with a Gaussian - which is what the simplest variational method would do - would likely fail to capture everything that is going on. So this is a simple but great example (I think) of a situation where we might need flexible approximate posteriors.</p>
+
+<h4 id="letsseehowwellthisworks">Let's see how well this works</h4>
+
+<p>I have coded up the prior-contrastive method above to perform approximate inference in the explaining away toy model. As before, I am sharing an <a href="https://gist.github.com/fhuszar/063fe369e5a6b7458821f21ac4633d16">iPython notebook</a>, which is perhaps even messier than before, but hopefully still useful for most of you.</p>
+
+<p>Here are the approximate posteriors I got, using this simple method (the bottom row shows the real posteriors, for reference):</p>
+
+<p><img src="/content/images/2017/01/-k0AAAAAoPQJAAAAoBmCGgAAAIBGCGoAAAAAGiGoAQAAAGiEoAYAAACgEf8BNWdjfdkgYXgAAAAASUVORK5CYII--1.png" alt="" /></p>
+
+<p>these results are far from perfect, it doesn't quite capture the symmetry of the problem, and it only partially models the multimodality of the $y=50$ case, but it does a decent job. Let me also say that I spent very little time actually trying to make this work, and I would expect it to work much better when given appropriate care - probably in the form of better models for both $q$ and $D$.</p>
+
+<p>As I noted in the previous post, we also know what the discriminator should converge to, and we expect $\Phi^{-1}(D(x,y))$ to converge to the log-likelihood $p(y\vert x)$ up to a constant. Here is what these unnormalised discriminators look like (top) compared to what we expect them to be (bottom):</p>
+
+<p><img src="/content/images/2017/01/1kf1vXzvxraAAAAAElFTkSuQmCC-2.png" alt="" /></p>
+
+<p>Again, these are far from perfect, but I'd say they look qualitatively OK. </p>
+
+<h2 id="relatedpapers">Related Papers</h2>
+
+<p>Between writing this, and publishing it, there's a paper on arXiv that does more or less the same thing:</p>
+
+<ul>
+<li>Mescheder, Nowozin and Geiger (2017) <a href="https://arxiv.org/abs/1701.04722">Adversarial Variational Bayes: Unifying Variational Autoencoders and Generative Adversarial Networks</a>.</li>
+</ul>
+
+<p>Please go read that paper for a proper experiments and more details on derivations.</p>
+
+<p>This technique is similar to ALI (<a href="https://arxiv.org/pdf/1606.00704v2.pdf">Dumoulin et al, 2016</a>) and BiGAN (<a href="https://arxiv.org/pdf/1605.09782v6.pdf">Donahue et al, 2016</a>), two independently discovered versions of the same algorithm. They, too, train a discriminator on $(x,y)$ pairs, but while in the method I showed you here $y$ is always a real datapoint, in ALI and BiGAN, in one class it is sampled conditionally given $x$ using the likelihood $p(y\vert x)$. They also don't have the extra likelihood term that we have when train $q$.</p>
+
+<p>This is also related to AffGAN (<a href="https://arxiv.org/abs/1610.04490">Sønderby et al, 2016</a>) which is derived for image superresolution. The main difference there is that the likelihood is degenerate, and the $q$ network is designed so that the likelihood of its output is constant. This simplifies a number of things: Firstly, the discriminator no longer has to take $(x,y)$ pairs, it only works on $x$. Secondly, the likelihood term in the generator's loss is constant so it can be omitted.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Here I've shown a method for amortised variational inference using implicit variational distributions. I have simply expressed the variational lower bound in terms of the logarithmic probability ratio between the variational distributions $q(x\vert y)$ and the prior $p(x)$, and I used logistic regression to approximate this density ratio from samples. This gives rise to a GAN-style algorithm where the discriminator $D(x,y)$ discriminates between $(x,y)$ pairs. For both classes, $y$ is drawn from the dataset, for the synthetic class, $x$ is generated conditionally using the recongintion model, while for the "real" class, $x$ is sampled from the prior.  I called this the prior-contrastive approach.</p>
+
+<h3 id="hierarchicalmodels">Hierarchical models</h3>
+
+<p>One can see that in order to maximise the variational bound with respect to parameters of the prior $p(x)$, one has to minimise $\operatorname{KL}[\hat{q}(x)\vert p(x)]$, where $\hat{q}(x) = \frac{1}{N} q(x\vert y_n)$ is the aggregate posterior. This is the same as maximum likelihood learning, where we want to fit $p(x)$ onto data sampled from $\hat{q}(x)$. We can therefore make $p(x)$ a latent variable model itself, and repeat the variational inference method to create a hierarchical variational model.</p>
+
+<h3 id="criticism">Criticism</h3>
+
+<p>There are a few problems with this approach:</p>
+
+<ol>
+<li>As before, the posterior is likely to be quite dissimilar from the prior, which might mean that the estimate of the discriminator loss will require too many samples to provide meaningful gradients. Logistic regression works best for density ratio estimation when the distributions are similar.  </li>
+<li>This method still requires the likelihood $p(y\vert x)$ to be analytical, while $p(x)$ and the variational posterior $q(x\vert y)$ can be implicit. This method doesn't work if $p(y\vert x)$ itself is implicit. By contrast, methods like ALI or BiGAN relax even this requirement.</li>
+</ol>
+
+<h3 id="homework1">Homework #1</h3>
+
+<p>As I'm now home with my newborn daughter (shoutout to twitter for their amazing employee benefits which includes the industry's best parental leave program) I don't have much time to work out details myself, so in the spirit of learning, I'll give you homework.</p>
+
+<p>First one: vanilla VAE can be reproduced as a special case of this. Try to modify the code so that $q(x\vert y)$ is more like the VAE Gaussian recognition model. You only need to change the network  by moving the noise at the very end, mimicking the reparametrisation trick. Run the thing and see what you get. My bet is a lopsided approximate posterior: it will learn one of the posterior modes and ignore the other mode completely.</p>
+
+<h3 id="homework2">Homework #2</h3>
+
+<p>What's the next step from this? As I already mentioned, there is another way to express the variational bound in terms of a KL divergence, and if one uses logistic regression to estimate relevant log density ratios, one gets an alternative GAN-type algorithm. I already gave you a clue in the intro saying that the resulting algorithm will look <strong>a lot</strong> like ALI or BiGAN. Off you go.</p>
+
+<p>Finally, thanks to Ben Poole for some comments on this draft, and for pointing out the new paper by Mescheder and colleagues.</p>
+</article>
+
+<div id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'http://www.inference.vc/variational-inference-with-implicit-models-part-ii-amortised-inference-2/';
+            this.page.identifier = 98;
+            };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script'); s.src = '//inference.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+		</main>
+		<footer id="footer">
+			<section id="footer-message">&copy; 2017 inFERENCe. All rights reserved. Powered by <a href="http://ghost.org" target="_blank">Ghost</a>. <a href="http://github.com/kathyqian/crisp" target="_blank">Crisp</a> theme by <a href="http://kathyqian.com" target="_blank">Kathy Qian</a>.</section>
+		</footer>
+	<!-- You can safely delete this line if your theme does not require jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript"     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+		    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+		});
+		</script>
+	</body>
+
+</html>

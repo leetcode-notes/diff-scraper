@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	    <title>Evolution Strategies, Variational Optimisation and Natural ES</title>
+	    <meta name="description" content="" />
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/assets/styles/crisp.css?v=a4a8b7e06d">
+		<link rel="shortcut icon" href="/content/images/2014/Mar/face.png"/>
+	    <meta name="HandheldFriendly" content="True" />
+	    <meta name="MobileOptimized" content="320" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	    <link rel="canonical" href="http://www.inference.vc/evolution-strategies-variational-optimisation-and-natural-es-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="http://www.inference.vc/evolution-strategies-variational-optimisation-and-natural-es-2/amp/" />
+    
+    <meta property="og:site_name" content="inFERENCe" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Evolution Strategies, Variational Optimisation and Natural ES" />
+    <meta property="og:description" content="In my last post I conveyed my enthusiasm about evolution strategies (ES), and particularly the highly scalable distributed version. I have to admit, this was the first time I had come across this particular formulation, and unexpectedly, people were quick to point out a whole body of research that I" />
+    <meta property="og:url" content="http://www.inference.vc/evolution-strategies-variational-optimisation-and-natural-es-2/" />
+    <meta property="og:image" content="http://www.inference.vc/content/images/2017/04/Screen-Shot-2017-04-06-at-2.43.56-PM.png" />
+    <meta property="article:published_time" content="2017-04-06T13:54:11.000Z" />
+    <meta property="article:modified_time" content="2017-04-06T19:42:05.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Evolution Strategies, Variational Optimisation and Natural ES" />
+    <meta name="twitter:description" content="In my last post I conveyed my enthusiasm about evolution strategies (ES), and particularly the highly scalable distributed version. I have to admit, this was the first time I had come across this particular formulation, and unexpectedly, people were quick to point out a whole body of research that I" />
+    <meta name="twitter:url" content="http://www.inference.vc/evolution-strategies-variational-optimisation-and-natural-es-2/" />
+    <meta name="twitter:image" content="http://www.inference.vc/content/images/2017/04/Screen-Shot-2017-04-06-at-2.43.56-PM.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Ferenc Huszar" />
+    <meta name="twitter:site" content="@fhuszar" />
+    <meta property="og:image:width" content="946" />
+    <meta property="og:image:height" content="856" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "inFERENCe",
+        "logo": "http://www.inference.vc/content/images/2014/Mar/face.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ferenc Huszar",
+        "image": "//www.gravatar.com/avatar/943e71b49d8fa0b3725fa6c82c97163d?d=404",
+        "url": "http://www.inference.vc/author/ferenc-huszar/",
+        "sameAs": []
+    },
+    "headline": "Evolution Strategies, Variational Optimisation and Natural ES",
+    "url": "http://www.inference.vc/evolution-strategies-variational-optimisation-and-natural-es-2/",
+    "datePublished": "2017-04-06T13:54:11.000Z",
+    "dateModified": "2017-04-06T19:42:05.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://www.inference.vc/content/images/2017/04/Screen-Shot-2017-04-06-at-2.43.56-PM.png",
+        "width": 946,
+        "height": 856
+    },
+    "description": "In my last post I conveyed my enthusiasm about evolution strategies (ES), and particularly the highly scalable distributed version. I have to admit, this was the first time I had come across this particular formulation, and unexpectedly, people were quick to point out a whole body of research that I",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://www.inference.vc"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="inFERENCe" href="http://www.inference.vc/rss/" />
+    <script src="//load.sumome.com/" data-sumo-site-id="a378ae33aa68caa37662d339c31c409600c8a85e240c12fceaeb0c70684208c0" async="async"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96562474-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+		<script>
+			!function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
+			arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+			d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
+			insertBefore(d,q)}(window,document,'script','_gs');
+
+			_gs('GSN-053712-R');
+		</script>
+	</head>
+	<body class="post-template">
+		<header id="header">
+			<a id="logo" href="http://www.inference.vc"><img src="/content/images/2014/Mar/face.png" alt="inFERENCe" /></a>
+			<h1><a href="http://www.inference.vc">inFERENCe</a></h1>
+			<p>posts on machine learning, statistics, opinions on things I&#x27;m reading in the space</p>
+			<h6><a href="http://www.inference.vc/about">About</a></h6>
+		</header>
+		<main id="content">
+			<article id="106" class="post">
+    <span class="post-stamp">April 6th, 2017</span>
+    <h1 class="post-title">Evolution Strategies, Variational Optimisation and Natural ES</h1>
+    <p>In my <a href="http://www.inference.vc/evolutionary-strategies-embarrassingly-parallelizable-optimization/">last post</a> I conveyed my enthusiasm about evolution strategies (ES), and particularly the highly scalable distributed version. I have to admit, this was the first time I had come across this particular formulation, and unexpectedly, people were quick to point out a whole body of research that I probably should have read or known about.</p>
+
+<p>Here, I want to highlight two such papers:</p>
+
+<ul>
+<li>Staines and Barber (2013) <a href="https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2013-65.pdf">Optimization by Variational Bounding</a> ESANN</li>
+<li>Wierstra et al (2014) <a href="http://www.jmlr.org/papers/volume15/wierstra14a/wierstra14a.pdf">Natural Evolution Strategies</a> JMLR</li>
+</ul>
+
+<p>And I also highly recommend <a href="https://davidbarber.github.io/blog/2017/04/03/variational-optimisation/">David's blog post</a>. This post is just a summary of what I've learnt about ES, a bit of an addendum to last week's post. Thanks to David Barber, Olivier Grisel and Nando de Freitas for their comments and pointers.</p>
+
+<h2 id="theupperboundview">The upper bound view</h2>
+
+<p>In optimisation we seek the global minimum of a function. The value of the minimum can be upper bounded by minimum over average function values as follows:</p>
+
+<p>$$
+\min_x f(x) \leq \min_\theta \mathbb{E}_{x\sim p(x\vert \theta)} [f(x)] = \min_\theta J(\theta,f)
+$$</p>
+
+<p>This is pretty easy to prove: the average (convex combination) of a set of numbers can never be lower than the lowest number in that set.</p>
+
+<p>So, instead of optimising $f(x)$ w.r.t. $x$, one can optimise $J(\theta,f)$ with respect to $\theta$. Staines and Barber call this Variational Optimisation (VO), a name I much prefer to evolution strategies (ES). Crucially, even if $f$ itself is non-differentiable, $J(\theta)$ might be. This means it makes sense to run gradient descent on it. The gradient $\nabla_\theta J(\theta,f)$ itself can be conveniently expressed as:</p>
+
+<p>\begin{align}
+\frac{\partial}{\partial \theta} \mathbb{E}_{x\sim p(x\vert \theta)} f(x) &amp;= \frac{\partial}{\partial \theta} \int p(x\vert \theta) f(x) dx\\
+ &amp;= \int \frac{\partial}{\partial \theta} p(x\vert \theta) f(x) dx\\
+ &amp;= \int p(x \vert \theta) \frac{\partial}{\partial \theta} \log p(x\vert \theta) f(x) dx \\
+ &amp;= \mathbb{E}_{x\sim p(x\vert \theta)} f(x) \frac{\partial}{\partial \theta} \log p(x\vert \theta)
+\end{align}</p>
+
+<p>where we used the chain rule on $\log p(x\vert \theta)$. Thus, as long as we can compute the score $\frac{\partial}{\partial \theta} \log p(x\vert \theta)$, we can construct an unbiased Monte Carlo estimate to the gradient $\nabla_\theta J(\theta)$, and run SGD on $J$.</p>
+
+<p>It's easy to show that when $p$ is an isotropic Gaussian with fixed covariance, the VO gradient w.r.t. $\theta$ looks exactly like our gradient estimate in <a href="http://www.inference.vc/evolutionary-strategies-embarrassingly-parallelizable-optimization/">vanilla evolution strategies</a>. But what's cool about the VO formulation is that it also provides a meaningful farmework to optimise the perturbation variance $\sigma^2$, or indeed any other parameter of the sampling distribution.</p>
+
+<h2 id="visualisingwhatsgoingon">Visualising what's going on</h2>
+
+<p>Let's consider seeking the global minimum of a 1D function, such as the sinc:</p>
+
+<p><img src="/content/images/2017/04/zzmjFjhnJycnTTTTfZXR4AxA0BGAAAAEmFFggAAAAkFQIwAAAAkgoBGAAAAEmFAAwAAICkQgAGAABAUiEAAwAAIKkQgAEAAJBUCMAAAABIKgRgAAAAJBUCMAAAAJIKARgAAABJ5f8HSb4KkjD7wQYAAAAASUVORK5CYII-.png" alt="" /></p>
+
+<p>Now consider minimsing $J(\theta) = \mathbb{E}_{x\sim p(x\vert \theta)}f(x)$ using a Gaussian $p(x\vert \theta)$, whose parameters are $\theta = [\mu, \sigma]$. We have turned our 1D optimisation problem into a 2D one where the objective function looks like this:</p>
+
+<p><img src="/content/images/2017/04/JNXBjUHcrkwAAAABJRU5ErkJggg---2.png" alt="" /></p>
+
+<p>Notice a few things:</p>
+
+<ul>
+<li>we are now minimising $\mu$ and $\sigma$, rather than $x$</li>
+<li>the global minimum of this $J$ is in the blue bit at the bottom: $\mu=0$ as $\sigma\rightarrow 0$.</li>
+<li>if $f$ has a unique global minimum, so does $J(\mu,\sigma)$. If $f$ is convex, so is $J$.</li>
+<li>reaching the global minimum of $f$ via gradient descent seems tricky as it has lots of local minima, but if you start with a $\sigma$ around $1.5$, finding the global minimum of $J(\mu,\sigma)$ via gradient descent seems a lot easier.</li>
+<li>getting to the optimum involves going down into an increasingly narrow tunnel (the blue bit). This is a situation in which vanilla stochastic gradient descent might struggle with. You really want to use Adam, or some other smart momentum method (or natural graidents, see second part of this post) to avoid ping-ponging between the walls of this canyon.</li>
+</ul>
+
+<p>For $\sigma\rightarrow0$ the function is the same as the original $f$, and as you increase sigma, the function starts looking more and more like a constant.</p>
+
+<p>Now consider a non-differentiable function such as a quantized sinc:</p>
+
+<p><img src="/content/images/2017/04/PmvkVdM2iAAAAAElFTkSuQmCC.png" alt="" /></p>
+
+<p>The variational bound is still differentiable (because the Gaussian pdf is differentiable) for all positive $\sigma$s, but approaches the non-differentiable $f$ as $\sigma\rightarrow 0$:</p>
+
+<p><img src="/content/images/2017/04/vCH8cY3vlGIBVpPkAXIzNDQUFx88cV1NwOgdpYWAACQJRVZAACyJMgCAJAlQRYAgCwJsgAAZEmQBQAgS4IsAABZEmQBAMiSIAsAQJYEWQAAsiTIAgCQpf8HTqS5xGoEBTYAAAAASUVORK5CYII--1.png" alt="" /></p>
+
+<p>In fact, the two bounds look very similar except here you get increasingly non-differentiable behaviour as you decrease $\sigma$.</p>
+
+<h2 id="whatifyoudontadjustdsigmad">What if you don't adjust $\sigma$</h2>
+
+<p>What if you keep $\sigma$ fixed in ES? What kind of problems can it cause? Consider minimsing the following function:</p>
+
+<p><img src="/content/images/2017/04/QAAAABJRU5ErkJggg---1.png" alt="" /></p>
+
+<p>The corresponding VO objective J looks like this:</p>
+
+<p><img src="/content/images/2017/04/9V-ltbXV9HAAwBhaCwDAMa-99pp84hOfIMQCCB5BFgAc09XVJZdddpnpYQCAcbQWAAAAwElUZAEAAOAkgiwAAACcRJAFAACAkwiyAAAAcBJBFgAAAE4iyAIAAMBJBFkAAAA4iSALAAAAJxFkAQAA4CSCLAAAAJz0fwEbvrAURZ454QAAAABJRU5ErkJggg--.png" alt="" /></p>
+
+<p>The global minimum of this objective is at $\mu=2, \sigma\rightarrow 0$. However, if you consider a fixed $\sigma=0.2$ (shown above by white dashed line), the global optimum of that function is now at $\mu=-2$.</p>
+
+<p><img src="/content/images/2017/04/XpatmypMiwichAVYhERh8jOzubCCy80HUNExHa0ZEJEREREHE0zxCIiIiLiaCrEIiIiIuJoKsQiIiIi4mgqxCIiIiLiaCrEIiIiIuJoKsQiIiIi4mgqxCIiIiLiaCrEIiIiIuJoKsQiIiIi4mgqxCIiIiLiaP8PewIeecTatoIAAAAASUVORK5CYII-.png" alt="" /></p>
+
+<p>So while it may be quite hard in this case for full VO to find the global minimum, at least we know that the global minimum is also a global minimum of $f$. If we optimise for a fixed $\sigma$, then suboptimal local minima with smaller curvature around them might appear superior to the actual global minimum which has higher curvature.</p>
+
+<blockquote>
+  <p>generally speaking, Gaussian VO might bias you towards local minima with low curvature compared to lower local minima but with higher curvature.</p>
+</blockquote>
+
+<h2 id="taylorexpansionvsvariationaloptimisation">Taylor expansion vs Variational Optimisation</h2>
+
+<p>In <a href="http://www.inference.vc/evolutionary-strategies-embarrassingly-parallelizable-optimization/">last week's post</a> I derived the ES gradient estimate from a second order Taylor approximation to $f$. Interestingly, in the 1D case, the Taylor-expansion derivation [from my previous post works - without any change whatsoever - for any symmetric noise distribution, as long as it has the same variance $\sigma^2$. This is because the Taylor-expansion-based approximation really only requires $\mathbb{E}[\epsilon^1]=\mathbb{E}[\epsilon^3]=0$ and $\mathbb{E}[\epsilon^2]=\sigma^2$.</p>
+
+<p>VO, however, would behave differently for different $p(x\vert \theta)$, as in VO you multiply your function output by the score $\frac{\partial}{\partial \theta} \log p(x\vert \theta)$. Consider a Laplace distribution $\log p(x\vert \theta) \propto -\left\vert \frac{x - \mu}{\sqrt{2}\sigma } \right\vert$. Under the Taylor-approximation view you could still step in the direction of:</p>
+
+<p>$$
+\frac{\partial f}{\partial x} \approx \frac{1}{\sigma^2K}\sum_{k=1}^{K} \epsilon_k f(\epsilon_k)
+$$</p>
+
+<p>However, VO would take a gradient step in the direction of:</p>
+
+<p>$$
+\frac{\partial f}{\partial \mu} \approx \frac{1}{\sqrt{2}\sigma K}\sum_{k=1}^{K} \operatorname{sign}(\epsilon_k) f(\epsilon_k)
+$$</p>
+
+<p>The question is, which gradient makes more sense? The first one is a slightly biased estimate to the gradient of a supposedly differentiable $f$. The second is an unbiased estimate of a (more-or-less) differentiable upper bound to a potentially non-differentiable $f$. Would you rather do SGD with biased gradient estimates, or SGD with unbiased gradient estimates but on an upper bound?</p>
+
+<p>I personally prefer the latter as at least it's easier to think about making the upper bound tighter than it is to think about reducing the bias of gradient estimates. Which is, of course, the real benefit of VO is that you can adjust $\sigma$ and other parameters in a principled way.</p>
+
+<h2 id="naturales">Natural ES</h2>
+
+<p>One practical problem with letting VO adjust $\sigma$ is that the optimisation may have a hard time actually converging. As the figures above show, to reach the global minimum of $J$ the optimisation procedure needs to converge into an increasingly narrow tunnel. Not only that, as $\sigma$ decreases, the variance of our Monte Carlo estimates of $\nabla_\theta J(\theta)$ also increases. The paper itself gives a more precise example of what is going on, although be careful as I think some of the equations in Section 2.2 are missing a few terms.</p>
+
+<p>We can do several things to mitigate that, the natural ES paper (thanks to Olivier Grisel for pointing it out) proposes using natural gradient descent on the VO objective. If you can do this, it solves both the narrow tunnel problem and the exploding gradient variance problem. However, natural gradients requires calculating the Fisher information matrix, which is simply too large for general high-dimensional Gaussians. In practice, just using Adam on top of VO might be enough to mitigate these convergence issues of SGD.</p>
+
+<p>It's also worth pointing out that doing natural gradients on $J$ is not the same thing as using VO to do natural gradients on $f$. Natural ES involves using the Fisher information matrix of $p(x\vert \theta)$ which is independent of the function $f$. Natural gradient on $f$ would involve calculating the Fisher information matrix of a predictive model inside $f$. That said, there may be some connections between Gaussian VO an performing 2nd order optimisation of f - but that's irrespective of whether we do natural ES or not.</p>
+</article>
+
+<div id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'http://www.inference.vc/evolution-strategies-variational-optimisation-and-natural-es-2/';
+            this.page.identifier = 106;
+            };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script'); s.src = '//inference.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+		</main>
+		<footer id="footer">
+			<section id="footer-message">&copy; 2017 inFERENCe. All rights reserved. Powered by <a href="http://ghost.org" target="_blank">Ghost</a>. <a href="http://github.com/kathyqian/crisp" target="_blank">Crisp</a> theme by <a href="http://kathyqian.com" target="_blank">Kathy Qian</a>.</section>
+		</footer>
+	<!-- You can safely delete this line if your theme does not require jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript"     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+		    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+		});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	    <title>Unsupervised Learning by Predicting Noise: an Information Maximization View</title>
+	    <meta name="description" content="" />
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/assets/styles/crisp.css?v=a4a8b7e06d">
+		<link rel="shortcut icon" href="/content/images/2014/Mar/face.png"/>
+	    <meta name="HandheldFriendly" content="True" />
+	    <meta name="MobileOptimized" content="320" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	    <link rel="canonical" href="http://www.inference.vc/unsupervised-learning-by-predicting-noise-an-information-maximization-view-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="http://www.inference.vc/unsupervised-learning-by-predicting-noise-an-information-maximization-view-2/amp/" />
+    
+    <meta property="og:site_name" content="inFERENCe" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Unsupervised Learning by Predicting Noise: an Information Maximization View" />
+    <meta property="og:description" content="This note is about a recent paper that was making rounds on the internet yesterday: Bojanowski and Joulin (2017): Unsupervised Learning by Predicting Noise The method is simple yet powerful, and it is perhaps a bit surprising and conter-intuitive: it learns representations by mapping data to to randomly sampled noise" />
+    <meta property="og:url" content="http://www.inference.vc/unsupervised-learning-by-predicting-noise-an-information-maximization-view-2/" />
+    <meta property="og:image" content="http://www.inference.vc/content/images/2017/04/Screen-Shot-2017-04-20-at-1.32.10-PM-1.png" />
+    <meta property="article:published_time" content="2017-04-21T11:25:19.000Z" />
+    <meta property="article:modified_time" content="2017-04-24T20:52:55.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Unsupervised Learning by Predicting Noise: an Information Maximization View" />
+    <meta name="twitter:description" content="This note is about a recent paper that was making rounds on the internet yesterday: Bojanowski and Joulin (2017): Unsupervised Learning by Predicting Noise The method is simple yet powerful, and it is perhaps a bit surprising and conter-intuitive: it learns representations by mapping data to to randomly sampled noise" />
+    <meta name="twitter:url" content="http://www.inference.vc/unsupervised-learning-by-predicting-noise-an-information-maximization-view-2/" />
+    <meta name="twitter:image" content="http://www.inference.vc/content/images/2017/04/Screen-Shot-2017-04-20-at-1.32.10-PM-1.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Ferenc Huszar" />
+    <meta name="twitter:site" content="@fhuszar" />
+    <meta property="og:image:width" content="1696" />
+    <meta property="og:image:height" content="1092" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "inFERENCe",
+        "logo": "http://www.inference.vc/content/images/2014/Mar/face.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ferenc Huszar",
+        "image": "//www.gravatar.com/avatar/943e71b49d8fa0b3725fa6c82c97163d?d=404",
+        "url": "http://www.inference.vc/author/ferenc-huszar/",
+        "sameAs": []
+    },
+    "headline": "Unsupervised Learning by Predicting Noise: an Information Maximization View",
+    "url": "http://www.inference.vc/unsupervised-learning-by-predicting-noise-an-information-maximization-view-2/",
+    "datePublished": "2017-04-21T11:25:19.000Z",
+    "dateModified": "2017-04-24T20:52:55.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://www.inference.vc/content/images/2017/04/Screen-Shot-2017-04-20-at-1.32.10-PM-1.png",
+        "width": 1696,
+        "height": 1092
+    },
+    "description": "This note is about a recent paper that was making rounds on the internet yesterday: Bojanowski and Joulin (2017): Unsupervised Learning by Predicting Noise The method is simple yet powerful, and it is perhaps a bit surprising and conter-intuitive: it learns representations by mapping data to to randomly sampled noise",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://www.inference.vc"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="inFERENCe" href="http://www.inference.vc/rss/" />
+    <script src="//load.sumome.com/" data-sumo-site-id="a378ae33aa68caa37662d339c31c409600c8a85e240c12fceaeb0c70684208c0" async="async"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96562474-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+		<script>
+			!function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
+			arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+			d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
+			insertBefore(d,q)}(window,document,'script','_gs');
+
+			_gs('GSN-053712-R');
+		</script>
+	</head>
+	<body class="post-template">
+		<header id="header">
+			<a id="logo" href="http://www.inference.vc"><img src="/content/images/2014/Mar/face.png" alt="inFERENCe" /></a>
+			<h1><a href="http://www.inference.vc">inFERENCe</a></h1>
+			<p>posts on machine learning, statistics, opinions on things I&#x27;m reading in the space</p>
+			<h6><a href="http://www.inference.vc/about">About</a></h6>
+		</header>
+		<main id="content">
+			<article id="108" class="post">
+    <span class="post-stamp">April 21st, 2017</span>
+    <h1 class="post-title">Unsupervised Learning by Predicting Noise: an Information Maximization View</h1>
+    <p>This note is about a recent paper that was making rounds on the internet yesterday:</p>
+
+<ul>
+<li>Bojanowski and Joulin (2017): <a href="https://arxiv.org/pdf/1704.05310.pdf">Unsupervised Learning by Predicting Noise</a></li>
+</ul>
+
+<p>The method is simple yet powerful, and it is perhaps a bit surprising and conter-intuitive: it learns representations by mapping data to to randomly sampled noise vectors. The authors call the methods <em>noise-as-target (NAT)</em>.</p>
+
+<p>In this post, I'm going to assume you've at least skimread the paper and may have been left wondering what really is going on here. I will only add my perspective on it: I re-interpret the algorithm as a proxy to information maximisation. I think that if you start thinking about the algorithm it from this perspective, perhaps it becomes less surprising that the method actually works.</p>
+
+<h4 id="summary">Summary</h4>
+
+<ol>
+<li>I start from infomax: how to learn optimal compact representations by maximising the amount of information retained about the input data.</li>
+<li>I show why restricting the representation to the unit sphere - as it is done in the paper - makes sense in the Infomax framework.</li>
+<li>It's easy to show that if there is a deterministic representation that achieves uniform distribution, it maximises the infomax criterion. Therefore, if we believe such a solution exists, it makes sense to directly seek deterministic mappings that produce a distribution close to uniform.</li>
+<li>this is exactly what NAT does: it seeks a deterministic mapping whose marginal distribution is uniform on the unit sphere, and it does so by minimising a sort of empirical earth movers' distance from uniform samples.</li>
+<li>finally, I talk a bit about convergence of the stochastic Hungarian algorithm used in the paper for updating the assignment matrix.</li>
+</ol>
+
+<h2 id="learningrepresentationsbymaximisinginformation">Learning representations by maximising information</h2>
+
+<p>Let's say we are trying to learn a compact representation of data $x_n$ drawn i.i.d. from some distribution $p_X$. In general, the representation can be described as a random variable $z_n$ that is sampled conditionally i.i.d. fashion from some parametric conditional distribution $p_{Z\vert X, \theta}$:</p>
+
+<p>\begin{align}
+x_n &amp;\sim p_{X}\\ <br />
+z_n &amp;\sim p_{Z\vert X=x_n, \theta} <br />
+\end{align}</p>
+
+<p>In variational autoencoders, this $p_{Z\vert X, \theta}$ would be called the encoder or recognition model or amortized variational posterior. But, importantly, we now work directly with the encoder, without having to specify a generative distribution $p_{X\vert Z;\theta}$ explicitly.</p>
+
+<p>The InfoMax principle says that a good representation is compact (in terms of it's entropy) while it simultaneously retains as much information about the input $X$ as possible. (see e.g. <a href="https://arxiv.org/abs/1606.03657">Chen et al, 2016</a> - <a href="http://www.inference.vc/infogan-variational-bound-on-mutual-information-twice/">InfoGAN</a>, <a href="https://papers.nips.cc/paper/2410-information-maximization-in-noisy-channels-a-variational-approach.pdf">Barber and Agakov, 2003</a>). This goal can be formalised as follows:</p>
+
+<p>$$
+\theta^{\text{infomax}} = \operatorname{argmax}_{\theta:\mathbb{H}[p_{Z;\theta}] \leq h} \mathbb{I}[p_{X,Z;\theta}],
+$$</p>
+
+<p>where $\mathbb{I}$ denotes mutual information and $\mathbb{H}$ the Shannon's entropy. I also introduced the following notation for distributions:</p>
+
+<p>\begin{align}
+p_{Z;\theta} &amp;= \mathbb{E}_{x\sim p_X} p_{Z\vert X=x,\theta} \\ <br />
+p_{X,Z;\theta}(x,z) &amp;= p_X(x) p_{Z\vert X=x;\theta}(z\vert x) <br />
+\end{align}</p>
+
+<p>In real-valued spaces, this optimisation problem can be ill-posed, and it has a few problems:</p>
+
+<ol>
+<li>The marginal entropy of the representation is hard to estimate in the general case. We need a smart way to implement the restriction $\mathbb{H}[p_{Z;\theta}]\leq h$ without actually having to compute the entropy.</li>
+<li>If the representation has deterministic and invertible components, the mutual information ends up infinite (in continuous spaces), and the optimisation problem becomes meaningless. To make the optimisation problem meaningful one needs to ensure that the pathological invertible case is never reached.</li>
+</ol>
+
+<p>To address these problems, we can make the following changes:</p>
+
+<ol>
+<li>Firstly, let's restrict the domain of $Z$ to a finite volume (finite Lebesgue measure) subset of $\mathbb{R}^d$. This way, the differential entropy $\mathbb{H}[p_{Z;\theta}]$ is always upper bounded by the entropy of the uniform distribution on that domain. To be consistent with the paper, we can limit the domain of the representation to the unit Euclidean sphere $\|z\|_2^2=1$.</li>
+<li>Secondly, let's consider maximising the information between $x$ and the noise-corrupted representation $\tilde{z} = z + \epsilon$ where $\epsilon$ is i.i.d. noise. I'm going to assume that $\epsilon$ follows a spherical distribution for simplicity. What this added noise does in practice is it places an upper bound on the predictability of $x$ from any given $\tilde{z}$ (or the an upper bound on the invertibility of the representation) thereby also limiting the mutual information to well-behaved, finite values. Our optimization problem thus becomes:</li>
+</ol>
+
+<p>$$
+\operatorname{argmax}_{\theta: \mathbb{P}_{Z;\theta}(\|z\|_2^2=1)=1} \mathbb{I}[p_{X,\tilde{Z};\theta}],
+$$</p>
+
+<p>This loss function makes a intuitive sense: you are trying to map your inputs $x_n$ to values $z_n$ on the unit sphere, potentially in a stochastic fashion, but in such a way that the original datapoints $x_n$ are easily recoverable (under the log-loss) from $\tilde{z}_n$ which is a noisy version of $z_n$ . In other words, we seek a representation that is in some sense robust to additive noise.</p>
+
+<h2 id="deterministicanduniformrepresentations">Deterministic and uniform representations</h2>
+
+<p>It is not hard to show that if there is at least a single representation $p_{Z\vert X;\theta}$ which has the following two properties:</p>
+
+<ol>
+<li>$z_n$ is a deterministic function of $x_n$, and</li>
+<li>$p_{Z;\theta}$ is the uniform distribution on the unit sphere,</li>
+</ol>
+
+<p>then this $p_{Z\vert X;\theta}$ is a global maximizer of the InfoMax objective.</p>
+
+<p>Crucially, this deterministic solution may not be unique, there may be an infinite number of equally good representations, especially when $\operatorname{dim}(z)\ll \operatorname{dim}(x)$. Consider the case when $X$ is a multivariate standard Gaussian, and the representation Z is a normalised orthogonal projection of $X$, i.e. for some orthogonal transformation $A$:</p>
+
+<p>$$
+z_n = \frac{Ax_n}{\sqrt{x_n^TA^TAx_n}} <br />
+$$</p>
+
+<p>Marginally, Z will have uniform distribution on the unit sphere, and it is also a deterministic mapping, therefore $Z$ is a maximum information representation and it is equally good for any orthogonal $A$.</p>
+
+<p>So, if we assume there is at least one deterministic and uniform representation of $p_X$, it makes sense to seek only deterministic representations, and to seek ones that map data to an approximately uniform distribution in representation space. </p>
+
+<blockquote>
+  <p>This is exactly what the noise as targets (NAT) objective is trying to achieve</p>
+</blockquote>
+
+<p>The way NAT tries to achieve a uniform distribution in representation space is by minimising a kind of empirical earth mover distance: first, we randomly draw as many uniform random representations as we have datapoints - these are the $c_n$. Then we try to optimally pair each $c_n$ to a datapoint so that the mean squared distance between $c_n$ and the corresponding representation $z_m=f(x_m,\theta)$ is minimal. Once a pairing is found, the mean squared distance between paired representations and noise vectors can be thought of as a measure of uniformity - indeed it's a sort of empirical estimate of the Wasserstein distance between $p_Z$ and a uniform.</p>
+
+<h3 id="isaninfomaxrepresentationagoodrepresentation">Is an InfoMax representation a good representation?</h3>
+
+<p>I've had too many conversations of this nature in the last few days at DALI: what is a good representation? What does unsupervised representation learning even mean? You can ask the same question about InfoMAX: is it a good guiding principle for finding good representations?</p>
+
+<p>I don't think it is enough, in itself. For starters: you can transform your representation in arbitrary ways, and as long as your transformation is invertible, the mutual information should stay the same. So you can arbitrarily entangle or disentangle any representation using invertible transformations, without the InfoMAX objective noticing. Hence, the InfoMax criterion alone can't be trusted to find you disentangled representations, for example.</p>
+
+<p>It is far more likely that the empirical success we see is the combination of ConvNets with the InfoMax principle. We optimise information only among representations that are easy to represent by a ConvNet. And it may be that the intersection of ConvNet-friendly representations with InfoMax representations somehow end up pretty useful.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>I showed that the <em>noise-as-targets (NAT)</em> representation-learning principle can be interpreted as seeking InfoMax representations: representations of limited entropy that retain maximum information about the input data in a way that is robust to noise. A similar information-maximisation-based interpretation can be given to Exemplar-CNNs (<a href="https://arxiv.org/abs/1406.6909">Dosovitsky et al, 2014</a>) which work by trying to guess the index of a datapoint from a noisy version of the datapoint. These algorithms often look very odd and counterintuitive when you first encounter them, reinterpreting them as information maximisation helps demistify them a bit. At least I think it helps me.</p>
+
+<h3 id="bonustracknotesonstochasticversionofearthmoverdistance">Bonus track: Notes on Stochastic version of earth-mover-distance</h3>
+
+<p>The difficulty in implementing the earth mover's distance in this literal form is that you need to find the optimal assignment between the two empirical distributions and that scales as $O(N^3)$ in the number of samples $N$. To sidestep this, the authors propose a 'stochastic' update to the optimal assignment matrix whereby the pairings are only updated one minibatch at a time.</p>
+
+<p>Not that I expect this to be a big deal, but it's worth pointing out that this algorithm is prone to getting stuck in local minima. Let's assume parameters of the representation $\theta$ are fixed, and the only thing we want to update is the assignments. Let's consider a toy situation illustrated in the figure below:</p>
+
+<p><img src="/content/images/2017/04/Screen-Shot-2017-04-20-at-1.32.10-PM.png" alt="" /></p>
+
+<p>Consider three datapoints $x_1, x_2, x_3$, whose embeddings are equidistant and lie on the 2D unit sphere (my Mom - or any sane person - would probably call this a circle). Also consider three possible noise assignments $c_1, c_2, c_3$ which are also equidistant as shown. The optimal assignment would clearly pairing $x_1$ with $c_1$, $x_2$ with $c_2$ and $x_3$ with $c_3$. Let's assume our current mapping is suboptimal as shown by the blue arrows, and we are only allowed to update the assigmnent <em>on minibatches of size 2</em>. On a minibatch of size 2, there are only two possibilities to consider: either keep it as it was before, or swap things around, which is shown by the red arrows. In this toy example, keeping the previous assignment (blue arrows) is preferable to switchinig (red arrows) under the squared loss. Hence, the minibatch-based algorithm gets stuck in this "local minimum" with respect to minibatch updates.</p>
+
+<p>This is not to say that the method doesn't work, especially as $\theta$ is also simultaneously updated, which may actually help getting the algorithm out of this local minimum anyway. Secondly, the larger the batchsize, the harder it may be to find such local minima.</p>
+
+<p>The way to think about local minima of this stochastic Hungarian algorithm is to think of it as a graph: each node is a state of the assignment matrix (a permutation), and each edge corresponds to a valid update based on a minibatch. A local minimum is a node which has a lower cost than any node in its immediate neighbourhood. If we consider minibatches of size $B$, with a total sample size $N$, there will be $N!$ nodes in the graph and each node will have an out-degree of ${N \choose B}B!$. Therefore, the probability of any two nodes being connected will be $\frac{1}{(N-B)!}$. As we increase the batchsize $B$, the graph gets more and more connected, so local minima start to disappear.</p>
+</article>
+
+<div id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'http://www.inference.vc/unsupervised-learning-by-predicting-noise-an-information-maximization-view-2/';
+            this.page.identifier = 108;
+            };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script'); s.src = '//inference.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+		</main>
+		<footer id="footer">
+			<section id="footer-message">&copy; 2017 inFERENCe. All rights reserved. Powered by <a href="http://ghost.org" target="_blank">Ghost</a>. <a href="http://github.com/kathyqian/crisp" target="_blank">Crisp</a> theme by <a href="http://kathyqian.com" target="_blank">Kathy Qian</a>.</section>
+		</footer>
+	<!-- You can safely delete this line if your theme does not require jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript"     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+		    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+		});
+		</script>
+	</body>
+
+</html>

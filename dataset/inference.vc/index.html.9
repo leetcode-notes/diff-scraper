@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	    <title>Is Maximum Likelihood Useful for Representation Learning?</title>
+	    <meta name="description" content="" />
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/assets/styles/crisp.css?v=a4a8b7e06d">
+		<link rel="shortcut icon" href="/content/images/2014/Mar/face.png"/>
+	    <meta name="HandheldFriendly" content="True" />
+	    <meta name="MobileOptimized" content="320" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	    <link rel="canonical" href="http://www.inference.vc/maximum-likelihood-for-representation-learning-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="http://www.inference.vc/maximum-likelihood-for-representation-learning-2/amp/" />
+    
+    <meta property="og:site_name" content="inFERENCe" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Is Maximum Likelihood Useful for Representation Learning?" />
+    <meta property="og:description" content="A few weeks ago at the DALI Theory of GANs workshop we had a great discussion about what GANs are even useful for. Pretty much everybody agreed that generating random images from a model is not really our goal. We either want to use GANs to train conditional probabilistic models" />
+    <meta property="og:url" content="http://www.inference.vc/maximum-likelihood-for-representation-learning-2/" />
+    <meta property="og:image" content="http://www.inference.vc/content/images/2017/05/download-5.png" />
+    <meta property="article:published_time" content="2017-05-04T14:20:51.000Z" />
+    <meta property="article:modified_time" content="2017-05-04T19:31:52.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Is Maximum Likelihood Useful for Representation Learning?" />
+    <meta name="twitter:description" content="A few weeks ago at the DALI Theory of GANs workshop we had a great discussion about what GANs are even useful for. Pretty much everybody agreed that generating random images from a model is not really our goal. We either want to use GANs to train conditional probabilistic models" />
+    <meta name="twitter:url" content="http://www.inference.vc/maximum-likelihood-for-representation-learning-2/" />
+    <meta name="twitter:image" content="http://www.inference.vc/content/images/2017/05/download-5.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Ferenc Huszar" />
+    <meta name="twitter:site" content="@fhuszar" />
+    <meta property="og:image:width" content="598" />
+    <meta property="og:image:height" content="626" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "inFERENCe",
+        "logo": "http://www.inference.vc/content/images/2014/Mar/face.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ferenc Huszar",
+        "image": "//www.gravatar.com/avatar/943e71b49d8fa0b3725fa6c82c97163d?d=404",
+        "url": "http://www.inference.vc/author/ferenc-huszar/",
+        "sameAs": []
+    },
+    "headline": "Is Maximum Likelihood Useful for Representation Learning?",
+    "url": "http://www.inference.vc/maximum-likelihood-for-representation-learning-2/",
+    "datePublished": "2017-05-04T14:20:51.000Z",
+    "dateModified": "2017-05-04T19:31:52.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://www.inference.vc/content/images/2017/05/download-5.png",
+        "width": 598,
+        "height": 626
+    },
+    "description": "A few weeks ago at the DALI Theory of GANs workshop we had a great discussion about what GANs are even useful for. Pretty much everybody agreed that generating random images from a model is not really our goal. We either want to use GANs to train conditional probabilistic models",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://www.inference.vc"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="inFERENCe" href="http://www.inference.vc/rss/" />
+    <script src="//load.sumome.com/" data-sumo-site-id="a378ae33aa68caa37662d339c31c409600c8a85e240c12fceaeb0c70684208c0" async="async"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96562474-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+		<script>
+			!function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
+			arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+			d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
+			insertBefore(d,q)}(window,document,'script','_gs');
+
+			_gs('GSN-053712-R');
+		</script>
+	</head>
+	<body class="post-template">
+		<header id="header">
+			<a id="logo" href="http://www.inference.vc"><img src="/content/images/2014/Mar/face.png" alt="inFERENCe" /></a>
+			<h1><a href="http://www.inference.vc">inFERENCe</a></h1>
+			<p>posts on machine learning, statistics, opinions on things I&#x27;m reading in the space</p>
+			<h6><a href="http://www.inference.vc/about">About</a></h6>
+		</header>
+		<main id="content">
+			<article id="111" class="post">
+    <span class="post-stamp">May 4th, 2017</span>
+    <h1 class="post-title">Is Maximum Likelihood Useful for Representation Learning?</h1>
+    <p>A few weeks ago at the <a href="http://dalimeeting.org/dali2017/generative-adversarial-networks.html">DALI Theory of GANs workshop</a> we had a great discussion about what GANs are even useful for. Pretty much everybody agreed that generating random images from a model is not really our goal. We either want to use GANs to train conditional probabilistic models (like we do for <a href="https://arxiv.org/abs/1610.04490">image super-resolution</a> or speech synthesis, or something along those lines), or as a means of unsupervised representation learning. Indeed, many papers examine the latent space representations that GANs learn.</p>
+
+<p>But the elephant in the room is that nobody really agrees on what unsupervised representation learning really means, and why any GAN variant should be any better or worse at it than others, whether GANs or VAEs are better for that. So I thought I'd write a post to address this, focussing now on maximum likelihood learning and variational autoencoders, but many of these things holds true for variants of GANs as well.</p>
+
+<h2 id="latentvariablemodelsforrepresentationlearning">Latent variable models for representation learning</h2>
+
+<p>A common approach to unsupervised representation learning is via probabilistic latent variable models (LVMs). A latent variable model is essentially a joint distribution $p(x,z)$ over observations $x_n$ and associated latent variables $z_n$.</p>
+
+<p>In any latent variable model $p(x,z)$ we can use the posterior $p(z\vert x)$ to - perhaps stochastically - map our datapoints $x_n$ to their representation $z_n$. We want this representation to be useful. The elephant in the room of course is that no-one really agrees on how to properly define, measure, let alone optimise for usefulness in the unsupervised setting. But one thing is certain: whatever our definition of the usefulness of the representation it depends on the posterior $p(z\vert x)$. As there are several joint models $p(x,z)$ with exactly the same posterior $p(z\vert x)$, there can be several LVMs whose posterior and hence representation is equally useful.</p>
+
+<p>The maximum likelihood approach to training an LVM $p(x,z)$ is to maximise the log marginal likelihood $\log p(x)$ of observations. Equivalently, we can say maximum likelihood is trying to reduce the KL divergence $\operatorname{KL}[p_{\mathcal{D}}(x)\|p(x)]$ between the true data distribution $p_{\mathcal{D}}$ and the model marginal $p(x)$</p>
+
+<p>The problem with this is that the marginal $p(x)$ and the posterior $p(z\vert x)$ are orthogonal properties of a LVM: any combination of $p(x)$ and $p(z\vert x)$ defines a valid LVM, and vice versa, any LVM can be uniquely characterised as a $p(x)$, $p(z\vert x)$ pair. This orthogonality is illustrated in the figure below (the shading corresponds to the objective function value):</p>
+
+<p><img src="/content/images/2017/05/download.png" alt="" /></p>
+
+<p>So here is the dichotomy: the usefulness of representation only depends on the y axis, $p(z\vert x)$, but maximum likelihood is only sensitive to x axis, $p(x)$. Therefore, maximum likelihood, without additional constraints on the LVM is a perfectly useless objective function for representation learning, irrespective of how you measure the usefulness of $p(z\vert x)$.</p>
+
+<h3 id="waitwhat">Wait, what?</h3>
+
+<p>So, why does it work at all? It works because you never (rarely) do maximum likelihood over all possible LVMs, you only do maximum likelihood on a parametric model class $\mathcal{Q}$ of LVMs. So let's see what happens if we do maximum likelihood with a constraint:</p>
+
+<p><img src="/content/images/2017/05/download-1.png" alt="" /></p>
+
+<p>It is the structure of the model class $\mathcal{Q}$ which introduces some sort of coupling between the marginal likelihood $p_\theta(x)$ and the posterior $p_\theta(z\vert x)$. The objective function pushes you towards the left, but at some point you're squashed towards the boundary of your model class, which may push you up as well. In reality, the dimensionality of $\mathcal{Q}$ might be orders of magnitude smaller than the space of all LVMs, so this amoeba is much more likely to be some kind of nonlinear manifold. But you get the idea.</p>
+
+<p>This also means that, if you choose your model-class poorly, you might be able to achieve a higher marginal likelihood, yet end up with a less useful representation:</p>
+
+<p><img src="/content/images/2017/05/download-2.png" alt="" /></p>
+
+<p>Here, model class $\mathcal{Q}_2$ has an unfortunate shape which means you can achieve a high likelihood with a pretty useless representation.</p>
+
+<p>Can this happen in practice? Sure it can. If you define a variational autoencoder-like model with Gaussian $p_\theta(z) = \mathcal{N}(0,I)$ and <em>arbitrarily powerful</em> $p_\theta(x\vert z)$, something like this might happen:</p>
+
+<p><img src="/content/images/2017/05/download-6.png" alt="" /></p>
+
+<p>Why is this? If $p_\theta(x\vert z)$ is given arbitrary flexibility, it can in fact learn to ignore $z$ completely and always output the data distribution for each $z$: $p_\theta(x\vert z) = p_{\mathcal{D}}(x)$. Now, your LVM becomes $p(x,z) = p(z)p_{\mathcal{D}}(x)$, which has perfect likelihood, yet the posterior in this model is independent of your data so it is completely useless for representation learning. Try it, this actually happens. If you make the generator of a VAE too complex, give it lots of modelling power on top of $z$, it will ignore your latent variables as they are not needed to achieving a good likelihood.</p>
+
+<h3 id="noteonoverfitting">Note on overfitting</h3>
+
+<p>A few commenters confused what I talked about here with the topic of overfitting. This is not overfitting. Overfitting is the discrepancy between training error and generalisation/test error. Overfitting results from the fact that although we would really like to minimise the KL divergence from the true population distribution of the data, in practice we have to estimate that KL divergence from a finite training dataset. So in essence we end up minimising the KL divergence between the empirical distribution of the training data. But overfitting is a property of how we optimise the loss function, not a property of the loss function itself.</p>
+
+<p>Consider $p_{\mathcal{D}}$ which appears on my x axis to be the true, population distribution of data - not the empirical distribution of the training data. Consider my x axis to be the negative test likelihood on an infinitely large held out test/validation set which is never used for training. If we do this, we have abstracted away from overfitting, indeed, we have abstracted away from machine learning itself: there is no reference to any training dataset anymore, and I'm not even telling you how to find the optimal $\theta$, all I'm saying that models which have higher test likelihood don't necessarily provide a more useful representation.</p>
+
+<p>Another way to resolve the overfitting confusion is to consider super simple LVMs with binary or discrete $x$ and $z$. If $x$ and $z$ can only take a small, finite number of values jointly, then the entire joint distribution can be represented by a joint probability table. In this case, it is not unthinkable that we can have a large enough training set that overfitting should not even be an issue at all. My argument still holds. When I say <em>arbitrarily flexible</em> I don't mean <em>stupidly overparametrised neural network</em>, I mean flexible enough to contain a large portion of all LVMs that are concievable between $x$ and $z$.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>The take home message is that a good likelihood is not - by itself - a sufficient, nor a necessary condition for an LVM to develop useful representations. Indeed, whether or not a maximum likelihood LVM develops useful representations depends largely on the restrictions you place on your model class. If you let your model class be arbitrarily flexible, you can achieve a perfect likelihood without learning a representation at all. These observations are independent of how you define the usefulness of the representation, as long as you use the posterior $p(z\vert x)$ as your representation.</p>
+
+<p>In practice, VAE-type deep generative models restrict the model class by fixing $p(x\vert z)$ to be Gaussian with a fixed covariance. This tends to be a useful restriction as it encourages $z$ to retain information about $x$.</p>
+
+<p>Finally, the same cricitism holds for vanilla GANs as well - at least as long as we interpret of GANs as an LVM and use the posterior for representation learning. From a generative modelling perspective, GANs are very similar to maximum likelihood, but instead of minimising the KL divergence, they minimise different divergences between $p_{\mathcal{D}}$ and the marginal model $p(x)$, such as the Jensen-Shannon, reverse-KL or f-divergences. So the same figures still apply, but with the divergence on the x-axis replaced accordingly.</p>
+
+<h3 id="variationalinferencealibigansinfogans">Variational Inference, ALI, BiGANs, InfoGANs</h3>
+
+<p>...stay tuned for follow-ups to this post. In the next one, I will talk about how variational learning is different from maximum likelihood. In variational learning instead of the likelihood, we use the evidence lower bound (ELBO, or - thanks to Dustin Tran -  💪). As ELBO no longer depends on $p(x)$ alone, it changes the picture slightly, maybe even for the better.</p>
+</article>
+
+<div id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'http://www.inference.vc/maximum-likelihood-for-representation-learning-2/';
+            this.page.identifier = 111;
+            };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script'); s.src = '//inference.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+		</main>
+		<footer id="footer">
+			<section id="footer-message">&copy; 2017 inFERENCe. All rights reserved. Powered by <a href="http://ghost.org" target="_blank">Ghost</a>. <a href="http://github.com/kathyqian/crisp" target="_blank">Crisp</a> theme by <a href="http://kathyqian.com" target="_blank">Kathy Qian</a>.</section>
+		</footer>
+	<!-- You can safely delete this line if your theme does not require jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript"     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+		    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+		});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	    <title>Evolution Strategies: Almost Embarrassingly Parallel Optimization</title>
+	    <meta name="description" content="" />
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/assets/styles/crisp.css?v=a4a8b7e06d">
+		<link rel="shortcut icon" href="/content/images/2014/Mar/face.png"/>
+	    <meta name="HandheldFriendly" content="True" />
+	    <meta name="MobileOptimized" content="320" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	    <link rel="canonical" href="http://www.inference.vc/evolutionary-strategies-embarrassingly-parallelizable-optimization/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="http://www.inference.vc/evolutionary-strategies-embarrassingly-parallelizable-optimization/amp/" />
+    
+    <meta property="og:site_name" content="inFERENCe" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Evolution Strategies: Almost Embarrassingly Parallel Optimization" />
+    <meta property="og:description" content="I watched Ilya Sutskever&#x27;s talk on their new evolutionary strategies paper. Here&#x27;s the paper: Salimans et al (2017) Evolution Strategies as a Scalable Alternative to Reinforcement Learning The reason this paper is fascinating is that they use a relatively dumb, simple stochastic method of optimisation that shouldn&#x27;t really work well" />
+    <meta property="og:url" content="http://www.inference.vc/evolutionary-strategies-embarrassingly-parallelizable-optimization/" />
+    <meta property="og:image" content="http://www.inference.vc/content/images/2017/03/Screen-Shot-2017-03-30-at-3.05.27-PM.png" />
+    <meta property="article:published_time" content="2017-03-30T14:01:18.000Z" />
+    <meta property="article:modified_time" content="2017-04-05T13:07:23.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Evolution Strategies: Almost Embarrassingly Parallel Optimization" />
+    <meta name="twitter:description" content="I watched Ilya Sutskever&#x27;s talk on their new evolutionary strategies paper. Here&#x27;s the paper: Salimans et al (2017) Evolution Strategies as a Scalable Alternative to Reinforcement Learning The reason this paper is fascinating is that they use a relatively dumb, simple stochastic method of optimisation that shouldn&#x27;t really work well" />
+    <meta name="twitter:url" content="http://www.inference.vc/evolutionary-strategies-embarrassingly-parallelizable-optimization/" />
+    <meta name="twitter:image" content="http://www.inference.vc/content/images/2017/03/Screen-Shot-2017-03-30-at-3.05.27-PM.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Ferenc Huszar" />
+    <meta name="twitter:site" content="@fhuszar" />
+    <meta property="og:image:width" content="306" />
+    <meta property="og:image:height" content="298" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "inFERENCe",
+        "logo": "http://www.inference.vc/content/images/2014/Mar/face.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ferenc Huszar",
+        "image": "//www.gravatar.com/avatar/943e71b49d8fa0b3725fa6c82c97163d?d=404",
+        "url": "http://www.inference.vc/author/ferenc-huszar/",
+        "sameAs": []
+    },
+    "headline": "Evolution Strategies: Almost Embarrassingly Parallel Optimization",
+    "url": "http://www.inference.vc/evolutionary-strategies-embarrassingly-parallelizable-optimization/",
+    "datePublished": "2017-03-30T14:01:18.000Z",
+    "dateModified": "2017-04-05T13:07:23.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://www.inference.vc/content/images/2017/03/Screen-Shot-2017-03-30-at-3.05.27-PM.png",
+        "width": 306,
+        "height": 298
+    },
+    "description": "I watched Ilya Sutskever&#x27;s talk on their new evolutionary strategies paper. Here&#x27;s the paper: Salimans et al (2017) Evolution Strategies as a Scalable Alternative to Reinforcement Learning The reason this paper is fascinating is that they use a relatively dumb, simple stochastic method of optimisation that shouldn&#x27;t really work well",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://www.inference.vc"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="inFERENCe" href="http://www.inference.vc/rss/" />
+    <script src="//load.sumome.com/" data-sumo-site-id="a378ae33aa68caa37662d339c31c409600c8a85e240c12fceaeb0c70684208c0" async="async"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96562474-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+		<script>
+			!function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
+			arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+			d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
+			insertBefore(d,q)}(window,document,'script','_gs');
+
+			_gs('GSN-053712-R');
+		</script>
+	</head>
+	<body class="post-template">
+		<header id="header">
+			<a id="logo" href="http://www.inference.vc"><img src="/content/images/2014/Mar/face.png" alt="inFERENCe" /></a>
+			<h1><a href="http://www.inference.vc">inFERENCe</a></h1>
+			<p>posts on machine learning, statistics, opinions on things I&#x27;m reading in the space</p>
+			<h6><a href="http://www.inference.vc/about">About</a></h6>
+		</header>
+		<main id="content">
+			<article id="105" class="post">
+    <span class="post-stamp">March 30th, 2017</span>
+    <h1 class="post-title">Evolution Strategies: Almost Embarrassingly Parallel Optimization</h1>
+    <p>I watched <a href="https://www.technologyreview.com/s/603921/elon-musks-openai-unveils-a-simpler-way-for-machines-to-learn/">Ilya Sutskever's talk</a> on their new evolutionary strategies paper. Here's the paper:</p>
+
+<ul>
+<li>Salimans et al (2017) <a href="https://arxiv.org/abs/1703.03864">Evolution Strategies as a Scalable Alternative to Reinforcement Learning</a></li>
+</ul>
+
+<p>The reason this paper is fascinating is that they use a relatively dumb, simple stochastic method of optimisation that shouldn't really work well in practice, and show that it is actually competitive with SGD/back-propagation-based methods in RL. This is mainly due to the fact that it parallelizes so naturally. In this respect it's an eye-opening paper.</p>
+
+<p>In this note I explain the rather basic math behind the technique, and talk a bit about a few random ideas that may further improve the efficiency of the method:</p>
+
+<ul>
+<li>second order derivatives</li>
+<li>importance sampling for variance reduction</li>
+<li>reusing samples from previous steps</li>
+<li>Bayesian optimisation</li>
+</ul>
+
+<p><em>Caveat:</em> I am pretty sure there is vast literature on evolution strategies and related methods that I am simply not familiar with. This post is a collection of my first ideas I had after my first encounter with this technique. It is highly likely, almost certain, that many of the things I talk about here have been done before - sorry if I miss references.</p>
+
+<p>If you're interested in, also check out David Barber's post on <a href="https://davidbarber.github.io/blog/2017/04/03/variational-optimisation/">variational optimisation</a> and its connections to ES.</p>
+
+<h3 id="whatises">What is ES?</h3>
+
+<p>Evolution strategies (ES) is can be best described as a gradient descent method which uses gradients estimated from stochastic perturbations around the current parameter value. While the authors did comparisons in the context of RL, and there are many RL-specific advantages, here I'm focussing on ES as a general black-box optimisation method.</p>
+
+<p>The main observation is this: if $f$ is a differentiable function with respect to $\theta$, it's gradients can be approximated as follows:</p>
+
+<p>$$
+\frac{\partial}{\partial \theta}f(\theta) \approx \frac{1}{\sigma^2}\mathbb{E}_{\epsilon \sim \mathcal{N}(0,\sigma^2)} \epsilon f(\theta + \epsilon)
+$$</p>
+
+<p>It's actually very easy to see why. Let's approximate $f$ locally as a second-order Taylor expansion (I'm going to write everything as for one dimensional $\theta$ to simplify notation, but it works out analogously in the multivariate case as well):</p>
+
+<p>$$
+f(\theta+\epsilon) \approx f(\theta) + f'(\theta)\epsilon + \frac{f''(\theta)\epsilon^2}{2} <br />
+$$</p>
+
+<p>Substituting this back to the expectation before we have that:</p>
+
+<p>\begin{align}
+\mathbb{E}_{\epsilon \sim \mathcal{N}(0,\sigma^2)} \epsilon f(\theta + \epsilon) &amp;= \mathbb{E}_{\epsilon \sim \mathcal{N}(0,\sigma^2)} \left[ f(\theta)\epsilon + f'(\theta)\epsilon^2 + \frac{f''(\theta)\epsilon^3}{2} \right] \\
+&amp;= f'(\theta) \sigma^2,
+\end{align}</p>
+
+<p>using the fact that the $p^{th}$ central moment of a Gaussian is always $0$ for odd $p$.</p>
+
+<p>This is it. In each step, ES perturbs the current parameter value by additive Gaussian noise, evaluates the function at the perturbed values, finally combines these function values into a gradient estimate and takes a step in that direction.</p>
+
+<p>Here is a figure <a href="https://blog.openai.com/evolution-strategies/">taken from OpenAI's blog post</a> visually illustrating how the method works for optimising a 2D function:</p>
+
+<p><img src="/content/images/2017/03/Screen-Shot-2017-03-30-at-2.54.10-PM.png" alt="" /></p>
+
+<p>When $\theta$ is high dimensional, this approximation can have very high variance, so common sense dictates you shouldn't use this in practice, especially when you can actually calculate gradients via back-propagation. The ES paper, however, debunked common sense.</p>
+
+<p>ES can be a very competitive method in scenarios when:</p>
+
+<ul>
+<li>you have a <strong>very large number of nodes</strong> to distribute computations to</li>
+<li>your parameter space is huge so sending parameter values between nodes would be expensive</li>
+<li>you are dealing with a non-differentiable objectives where SGD doesn't quite work or needs approximations.</li>
+</ul>
+
+<h2 id="almostembarrassinglyparallel">Almost embarrassingly parallel</h2>
+
+<p>Distributed versions of SGD exist, but they almost always need to communicate parameter updates between nodes, or to a central parameter server. When your parameter-space is huge, sending a high-dimensional $\theta$ over the network quicklih becomes the most time consuming thing you do, slowing everything down a bit.</p>
+
+<p>Distributed ES use a smart observation: Each worker calculates $f_i = f(\theta + \epsilon_i)$ for its own $\epsilon_i$. To estimate the gradient, one needs all the $\epsilon_i$s and all the computed $f_i$ values. Communicating $f_i$s is cheap as they are scalars, communicating $\epsilon_i$s are just as expensive as communicating $\theta$. However, since $\epsilon_i$ are pseudorandom numbers <em>you don't need to communicate these</em> assuming workers know each others' random seed. The workers can simulate other workers' random number generators locally.</p>
+
+<p>This makes distributed ES almost embarrassingly parallel, where only single scalars need to be communicated in each update cycle. This time saving, combined with the fact that we don't do back-prop (which is typically about twice as time consuming than the forward pass), makes ES super fast compared to SGD. So even though your gradient estimates are noisy, you can take a lot more noisy gradient steps in the same timeframe. Ironically, This has a similar effect to reducing the batchsize in SGD: your gradients get noisier, but you update more frequently.</p>
+
+<h2 id="nondifferentiability">Non-differentiability</h2>
+
+<p>SGD deals with objective functions which are of the following form - broadly speaking:</p>
+
+<p>$$
+f(\theta) = \mathbb{E}_{x} f(\theta; x) <br />
+$$</p>
+
+<p>SGD requires that individual $f(\theta; x)$ are all differentiable w.r.t. $\theta$ for all values of $x$. In this case you can just swap the expectation with the differentiation as follows:</p>
+
+<p>$$
+\frac{\partial}{\partial \theta}f(\theta) = \mathbb{E}_{x} \frac{\partial}{\partial \theta}f(\theta; x)
+$$</p>
+
+<p>However, in many applications $f(\theta; x)$ is not actually differentiable. Examples include:</p>
+
+<ul>
+<li>POMDPs/RL with discrete action or state space</li>
+<li>variational autoencoders with discrete latent variables (Jang et al, 2016)</li>
+<li>GANs with discrete generators (Hjelm et al, 2017)</li>
+</ul>
+
+<p>ES still works in these scenarios, because you can simply swap expectations with respect to $x$ and $\epsilon$ (unlike swapping the expectation with the differentiation).</p>
+
+<p>\begin{align}
+\mathbb{E}_\epsilon \epsilon f(\theta + \epsilon) &amp;= \mathbb{E}_\epsilon \epsilon \mathbb{E}_{x} f(\theta + \epsilon; x) \\
+&amp;= \mathbb{E}_{x} \mathbb{E}_\epsilon \epsilon f(\theta + \epsilon; x)
+\end{align}</p>
+
+<p>This is why ES is so powerful in RL: it can solve RL problems in a way that is not possible with explicit stochastic gradient descent, because the reward in individual episodes is not differentiable w.r.t. parameters of the policy.</p>
+
+<h2 id="secondorderes">Second order ES</h2>
+
+<p>ES is in fact a special case of SGD, rather than an alternative. The most general formulation of SGD only really requires an <em>unbiased estimate of the gradients</em> (unbiased = noisy but correct on average). In the usual minibatch-backprop SGD the unbiased but noisy estimates come from subsampling of i.i.d. data. In ES, the gradient estimates may be ever so slightly biased (due to the approximation of $f$ as 2nd order Taylor expansion), but for all practical purposes you can think of it as unbiased. The main difference then is the source of randomness in the gradient estimates: in backprop-SGD it's data subsampling (minibatches), in ES it's random perturbations in addition to data subsampling. As a result, all the tricks you could apply to backprop SGD you can still apply to ES and expect success. The authors show that batchnorm, Adam, etc. still work, for example.</p>
+
+<p>Is there anything ES can do that normal backprop-SGD cannot? Well, for one, you can compute direct estimates of second order gradients with minimal overhead using exactly the same $(\epsilon_i, f_i)$ pairs you used to estimate gradients:</p>
+
+<p>\begin{align}
+\mathbb{E}_\epsilon \left(\frac{\epsilon^2}{\sigma^2} - 1\right) f(\theta+\epsilon) &amp;\approx 
+\frac{1}{\sigma^2}\mathbb{E}_{\epsilon} \left[ f(\theta)\epsilon^2 + f'(\theta)\epsilon^3 + \frac{f''(\theta)\epsilon^4}{2} \right] -
+\mathbb{E}_{\epsilon} \left[ f(\theta) + f'(\theta)\epsilon + \frac{f''(\theta)\epsilon^2}{2} \right]\\
+&amp;=  \frac{1}{\sigma^2}\left(\sigma^2 f(\theta) + 3 \sigma^4 f''(\theta)\right) - \left(f(\theta) + \frac{\sigma^2 f''(\theta)}{2}\right)\\
+&amp;= \frac{\sigma^2 5}{2} f''(\theta)
+\end{align}</p>
+
+<p>Of course this estimate may be biased and outrageously high variance as well. So, if your outer SGD algorithm allows for preconditioning with second order derivative information, you may be able to use these estimates that come out of the data you already computed for free. Some commenters mentioned that the authors already use Adam and batchnorm, and Adam and batchnorm already are approximating second order behaviour, so whether the additional noisy estimate of the Hessian can add to that remains an open question.</p>
+
+<h2 id="importancesampling">Importance Sampling</h2>
+
+<p>The variance of the estimator may be significantly reduced using importance sampling. Instead of sampling $\epsilon$ from an isotropic Gaussian, one could sample it from a different proposal distribution $q$, and then correct for the mismatch between $q$ and the Gaussian by introducing importance weights:</p>
+
+<p>$$
+\mathbb{E}_{\epsilon\sim \mathcal{N}}\left[ \epsilon f(\theta + \epsilon)\right[ = \mathbb{E}_{\epsilon \sim q} \left[\epsilon \frac{\mathcal{N}(\epsilon)}{q(\epsilon)}f(\theta + \epsilon)\right]
+$$</p>
+
+<p>As long as the workers know what the proposal distribution $q$ is, and know each others' random seed, the algorithm is still trivially parallelisable.</p>
+
+<h5 id="howcanwechooseaproposaldistribution">How can we choose a proposal distribution?</h5>
+
+<p>Well, one could do some sort of momentum-based proposal. Instead of drawing $\epsilon$ from a $0$-mean Gaussian, one could sample from a Gaussian with mean $\mu$ where $\mu$ is some kind of momentum of the gradient descent, like the exponential weighted average of previous gradient estimates.</p>
+
+<p>Alternatively, one could use importance sampling as a way to reuse calculations from previous timesteps. In the vanilla version of ES, once you calculated the gradient estimate, you discard all the $f_i$ values. But if the parameters only move a little bit, these values might still carry a lot of information. So, they can be used to contribute to our estimate of the gradient around the new parameter $\theta$:</p>
+
+<p>$$
+f'(\theta) \approx \frac{1}{I} \sum_i f(\theta^{old} + \epsilon^{old}_i) \left(\epsilon^{old}_i + \theta^{old} - \theta\right) \frac{\mathcal{N}\left(\epsilon^{old}_i + \theta^{old} - \theta; 0, \sigma^2\right)}{\mathcal{N}\left(\epsilon^{old}_i; 0, \sigma^2\right)} <br />
+$$</p>
+
+<h2 id="distributedbayesianoptimisation">distributed Bayesian optimisation</h2>
+
+<p>Another thought is this: once you have calculated the function value at a bunch of perturbed locations, can you do something smarter with those $(\epsilon_i, f_i)$ pairs than using a second order Taylor approximation? In particular, imagine you could use some simple machine learning to perform local regression of the objective function, and jump right into where you expect the most significant gain. This only works of course, if the regression and subsequent optimisation steps can be done very cheaply and quickly, otherwise you're taking time away from other things like calculating derivatives, or evaluating the function at more points. But there may be a sweet-spot where the <em>workers know each other's random seed</em> idea can be applied more generally in a Bayesian optimisation setting.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>This paper may be controversial, some think it's overhyped. I don't think it is, I think there's something in there, and this may be the beginning of a new line of research (well, within deep learning, much of these have probably been done by optimisation people before). I personally find the terminology 'Evolution Strategies' quite unfortunate (it's not the authors of this paper who came up with the nname). I think it's going to be much more fruitful for machine learning to think about this method from the perspective of stochastic gradient estimates than as a special case of evolutionary algorithms as the name implies.</p>
+
+<p>Previously, very good things have come out of researchers questioning fundamental assumptions about our methods: If you think about it, replacing smooth sigmoid activations with non-differentiable rectified linear units sounds like a pretty bad idea - until you actually realise they work. Dropout may sound like something to be avoided, until you realise why it works. Stochastic gradient descent was born out of necessity: you couldn't fit more than a certain amount of data on a GPU, and it was impractical to loop over the entire dataset for each gradient update. The variance of gradient estimates was initially seen as a bad thing. But it turns out, the noise introduced by small batchsizes can actually be beneficial in itself - and even if you could do non-stochastic GD, SGD often works better.</p>
+
+<p>So ES may well be one of these things. Salimans et al questioned a fundamental thing that everybody takes for granted: that neural networks are optimised via SGD using backpropagation. Well, maybe not always.</p>
+</article>
+
+<div id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'http://www.inference.vc/evolutionary-strategies-embarrassingly-parallelizable-optimization/';
+            this.page.identifier = 105;
+            };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script'); s.src = '//inference.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+		</main>
+		<footer id="footer">
+			<section id="footer-message">&copy; 2017 inFERENCe. All rights reserved. Powered by <a href="http://ghost.org" target="_blank">Ghost</a>. <a href="http://github.com/kathyqian/crisp" target="_blank">Crisp</a> theme by <a href="http://kathyqian.com" target="_blank">Kathy Qian</a>.</section>
+		</footer>
+	<!-- You can safely delete this line if your theme does not require jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript"     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+		    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+		});
+		</script>
+	</body>
+
+</html>
