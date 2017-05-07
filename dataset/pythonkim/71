@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="alternate" type="application/rss+xml" title="파이쿵" href="http://pythonkim.tistory.com/rss" />
+<link href="//s1.daumcdn.net/cfs.tistory/custom/blog/207/2072317/skin/images/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="//s1.daumcdn.net/cfs.tistory/custom/blog/207/2072317/skin/style.css?_T_=1470399111" rel="stylesheet">
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>파이쿵 :: 텐서플로우 0.10 + 우분투 16.04 + CUDA 8.0 + 파이썬 3.5 설치</title>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+		
+<!-- 구글 애널리틱스 -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76456208-1', 'auto');
+  ga('send', 'pageview');
+</script>
+	
+
+<style type="text/css">
+		#daumSearchBox {
+			height: 21px;
+			background-image : url(http://i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bg_search2_2.gif);
+			margin: 5px auto ;
+			padding: 0;
+		}
+		#daumSearchBox input {
+			background: none;
+			margin : 0;
+			padding : 0;
+			border : 0;
+		}
+		#daumSearchBox #daumLogo {
+			width: 34px;
+			height: 21px;
+			float: left;
+			margin-right: 5px;
+			background-image : url(http://i1.daumcdn.net/img-media/tistory/img/bg_search1_2_2010ci.gif);
+		}
+		#daumSearchBox #show_q {
+			background-color: transparent;
+			border: none;
+			font: 12px Gulim, Sans-serif;
+			color: #555;
+			margin-top: 4px;
+			margin-right: 15px;
+			float: left;
+		}
+
+		#daumSearchBox #show_btn {
+			background-image : url(http://i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bt_search_2.gif);
+			width: 37px;
+			height: 21px;
+			float: left;
+			margin:0;
+			cursor:pointer;
+			text-indent:-1000em;
+		}
+	</style><link rel="stylesheet" href="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/plugins/lightbox/assets/css/lightbox.min.css" />
+<link rel="stylesheet" type="text/css" href="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/plugins/TistoryProfileLayer/style.css" />
+<script type="text/javascript" src="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/plugins/TistoryProfileLayer/profile.js"></script>
+	<style type="text/css">
+		.another_category { border: 1px solid #E5E5E5; padding: 10px 10px 5px; margin:10px 0; clear: both; }
+		.another_category h4 { font-size: 12px !important; margin: 0 !important; border-bottom: 1px solid #E5E5E5 !important; padding: 2px 0 6px !important; }
+		.another_category h4 a { font-weight: bold !important; }
+		.another_category table { table-layout: fixed; border-collapse: collapse; width: 100% !important; margin-top: 10px !important; }
+		* html .another_category table { width: auto !important; }
+		*:first-child+html .another_category table { width: auto !important; }
+		.another_category th, .another_category td { padding: 0 0 4px !important; }
+		.another_category th { text-align: left; font-size: 12px !important; font-weight: normal;  word-break: break-all; overflow: hidden; line-height: 1.5; }
+		.another_category td { text-align: right; width: 80px; font-size: 11px; }
+		.another_category th a { font-weight: normal; text-decoration: none; border: none !important; }
+		.another_category th a.current{ font-weight: bold; text-decoration: none !important; border-bottom: 1px solid !important; }
+		.another_category th span { font-weight: normal; text-decoration: none; font: 10px Tahoma, Sans-serif; border: none !important; }
+
+		.another_category_color_gray, .another_category_color_gray h4 { border-color: #E5E5E5 !important; }
+		.another_category_color_gray * { color: #909090 !important; }
+		.another_category_color_gray th a.current{border-color:#909090 !important;}
+		.another_category_color_gray h4, .another_category_color_gray h4 a { color: #737373 !important; }
+
+
+		.another_category_color_red, .another_category_color_red h4 { border-color: #F6D4D3 !important;  }
+		.another_category_color_red * { color: #E86869 !important; }
+		.another_category_color_red th a.current{border-color:#E86869 !important;}
+		.another_category_color_red h4, .another_category_color_red h4 a { color: #ED0908 !important; }
+
+
+		.another_category_color_green, .another_category_color_green h4 { border-color: #CCE7C8 !important; }
+		.another_category_color_green * { color: #64C05B !important; }
+		.another_category_color_green th a.current{border-color:#64C05B !important;}
+		.another_category_color_green h4, .another_category_color_green h4 a { color: #3EA731 !important; }
+
+
+		.another_category_color_blue, .another_category_color_blue h4 { border-color: #C8DAF2 !important; }
+		.another_category_color_blue * { color: #477FD6 !important; }
+		.another_category_color_blue th a.current{border-color:#477FD6 !important;}
+		.another_category_color_blue h4, .another_category_color_blue h4 a { color: #1960CA !important; }
+
+
+		.another_category_color_violet, .another_category_color_violet h4 { border-color: #E1CEEC !important;  }
+		.another_category_color_violet * { color:#9D64C5 !important; }
+		.another_category_color_violet th a.current{border-color:#9D64C5 !important;}
+		.another_category_color_violet h4, .another_category_color_violet h4 a { color: #7E2CB5 !important; }
+	</style>
+<script type="text/javascript">
+window.TistoryBlog = {
+    url: "http://pythonkim.tistory.com",
+	tistoryUrl: "http://pythonkim.tistory.com"
+};
+var servicePath = "";
+var blogURL = "";
+</script>
+<script type="text/javascript" src="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/script/_/base.js"></script>
+<link rel="stylesheet" type="text/css" href="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/style/dialog.css"/>
+<link rel="stylesheet" type="text/css" href="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/style/menubar.css"/><style type="text/css">.tt_article_useless_p_margin p {padding-top:0 !important;padding-bottom:0 !important;margin-top:0 !important;margin-bottom:0 !important;}</style><meta name="referrer" content="always"><link rel="shortcut icon" href="http://i1.daumcdn.net/cfs.tistory/static/top/favicon_0630.ico"/><meta name="description" content="이번 글의 수명이 길지는 않을 것으로 보인다. 텐서플로우는 RC 버전이고, 그래픽 카드 또한 최신이고, 우분투 16.04도 방금 나온 최신 버전이고, 파이썬도 최신 버전이고. 검증하지 않은 것들이 모일 수 있기 때문에 설치 과정에서 수많은 시행착오를 거칠 수밖에 없었다. 최신이어서 참고할 사이트도 많이 없다. 컴퓨터 사양   문제점 1. 지포스 10 시리즈는 PASCAL 방식으로 제작되었다고 한다. 그래서인지 CUDA 7.5와 연동하..">
+
+<!-- BEGIN OPENGRAPH -->
+<link rel="canonical" href="http://pythonkim.tistory.com/71" /><meta property="og:type" content="article"><meta property="og:url" content="http://pythonkim.tistory.com/71" ><meta property="og:site_name" content="파이쿵" ><meta property="og:title" content="텐서플로우 0.10 + 우분투 16.04 + CUDA 8.0 + 파이썬 3.5 설치" ><meta name="by" content="사과쿵" ><meta property="og:description" content="이번 글의 수명이 길지는 않을 것으로 보인다. 텐서플로우는 RC 버전이고, 그래픽 카드 또한 최신이고, 우분투 16.04도 방금 나온 최신 버전이고, 파이썬도 최신 버전이고. 검증하지 않은 것들이 모일 수 있기 때문에 설치 과정에서 수많은 시행착오를 거칠 수밖에 없었다. 최신이어서 참고할 사이트도 많이 없다. 컴퓨터 사양   문제점 1. 지포스 10 시리즈는 PASCAL 방식으로 제작되었다고 한다. 그래서인지 CUDA 7.5와 연동하.." ><meta property="og:image" content="http://cfile28.uf.tistory.com/image/2437824057C648EF1EDA50" >
+<!-- END OPENGRAPH -->
+
+
+
+<!-- BEGIN TWITTERCARD -->
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@TISTORY"><meta name="twitter:title" content="텐서플로우 0.10 + 우분투 16.04 + CUDA 8.0 + 파이썬 3.5 설치" ><meta name="twitter:description" content="이번 글의 수명이 길지는 않을 것으로 보인다. 텐서플로우는 RC 버전이고, 그래픽 카드 또한 최신이고, 우분투 16.04도 방금 나온 최신 버전이고, 파이썬도 최신 버전이고. 검증하지 않은 것들이 모일 수 있기 때문에 설치 과정에서 수많은 시행착오를 거칠 수밖에 없었다. 최신이어서 참고할 사이트도 많이 없다. 컴퓨터 사양   문제점 1. 지포스 10 시리즈는 PASCAL 방식으로 제작되었다고 한다. 그래서인지 CUDA 7.5와 연동하.." ><meta property="twitter:image" content="http://cfile28.uf.tistory.com/image/2437824057C648EF1EDA50" >
+<!-- END TWITTERCARD -->
+
+
+
+<!-- BEGIN DAUMAPP -->
+<meta property="dg:plink" content="http://pythonkim.tistory.com/71" ><meta name="plink" content="http://pythonkim.tistory.com/71" ><meta name="title" content="텐서플로우 0.10 + 우분투 16.04 + CUDA 8.0 + 파이썬 3.5 설치" ><meta name="article:media_name" content="파이쿵" ><meta property="article:mobile_url" content="http://pythonkim.tistory.com/m/71" ><meta property="article:pc_url" content="http://pythonkim.tistory.com/71" ><meta property="article:mobile_view_url" content="http://pythonkim.tistory.com/m/71" ><meta property="article:pc_view_url" content="http://pythonkim.tistory.com/71" ><meta property="article:pc_service_home" content="http://www.tistory.com" ><meta property="article:mobile_service_home" content="http://www.tistory.com/m" ><meta property="article:txid" content="2072317_71" /><meta property="article:published_time" content="2016-08-31T12:39:53+09:00" ><meta property="og:regDate" content="20160831123953" ><meta property="article:modified_time" content="2016-09-02T23:58:52+09:00" >
+<!-- END DAUMAPP -->
+
+
+
+<!-- BEGIN STRUCTURED_DATA -->
+<script type="application/ld+json">{"@context":"http://schema.org", "@type":"BlogPosting","mainEntityOfPage":{"@id": "http://pythonkim.tistory.com/71"},"url":"http://pythonkim.tistory.com/71","headline":"텐서플로우 0.10 + 우분투 16.04 + CUDA 8.0 + 파이썬 3.5 설치","description":"이번 글의 수명이 길지는 않을 것으로 보인다. 텐서플로우는 RC 버전이고, 그래픽 카드 또한 최신이고, 우분투 16.04도 방금 나온 최신 버전이고, 파이썬도 최신 버전이고. 검증하지 않은 것들이 모일 수 있기 때문에 설치 과정에서 수많은 시행착오를 거칠 수밖에 없었다. 최신이어서 참고할 사이트도 많이 없다. 컴퓨터 사양   문제점 1. 지포스 10 시리즈는 PASCAL 방식으로 제작되었다고 한다. 그래서인지 CUDA 7.5와 연동하..","author":{"@type":"Person","name":"사과쿵"},"image":{"@type":"ImageObject","url":"http://cfile28.uf.tistory.com/image/2437824057C648EF1EDA50","width":"800px","height":"800px"},"datePublished":"20160831T12:39:53+09:00","dateModified":"20160902T23:58:52+09:00","publisher":{"@type":"Organization","name":"TISTORY","logo":{"@type":"ImageObject","url":"https://t1.daumcdn.net/cssjs/icon/557567EA016E200001","width":"800px","height":"800px"}}}</script>
+<!-- END STRUCTURED_DATA -->
+
+<link rel="apple-touch-icon" href="//i1.daumcdn.net/thumb/C180x180/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F211AB7495706515D201F0D">
+<link rel="apple-touch-icon" sizes="76x76" href="//i1.daumcdn.net/thumb/C76x76/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F211AB7495706515D201F0D">
+<link rel="apple-touch-icon" sizes="120x120" href="//i1.daumcdn.net/thumb/C120x120/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F211AB7495706515D201F0D">
+<link rel="apple-touch-icon" sizes="152x152" href="//i1.daumcdn.net/thumb/C152x152/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F211AB7495706515D201F0D"></head>
+
+<body>
+
+<script type="text/javascript">
+	T.config = {"TOP_SSL_URL":"https:\/\/www.tistory.com","PREVIEW":false,"ROLE":"guest","PREV_PAGE":"\/72","NEXT_PAGE":"\/70","BLOG":{"isDormancy":false,"title":"\ud30c\uc774\ucff5"},"NEED_COMMENT_LOGIN":false,"COMMENT_LOGIN_CONFIRM_MESSAGE":"","LOGIN_URL":"https:\/\/www.tistory.com\/auth\/login\/?redirectUrl=http%3A%2F%2Fpythonkim.tistory.com%2F71","DEFAULT_URL":"http:\/\/pythonkim.tistory.com","USER":{"name":null,"homepage":null}};
+</script>
+
+<script type="text/javascript" src="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/script/blog/common.js"></script>
+<div style="margin:0; padding:0; border:none; background:none; float:none; clear:none; z-index:0"></div>
+
+
+<div id="header">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Wrapper for slides 가로세로 비율(4:1)-->
+				<div id="carousel" class="carousel slide" data-ride="carousel">
+					<div class="centered carousel-inner" role="listbox">
+						<div class="item active">
+							<img src="//s1.daumcdn.net/cfs.tistory/custom/blog/207/2072317/skin/images/slider_01.png" width="100%" alt="Carousel 01">
+							<div class="carousel-caption">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- header close -->
+
+<div id="content">					<!-- 슬라이드와 본문 사이의 여백 -->
+	<div class="container">
+		<div class="row">				<!-- 본문 수평 마진 결정 -->
+			<div class="col-md-9">
+				
+
+				
+
+				
+					<div class="entry">
+						<div class="titleWrap jumbotron">
+							<!-- 현재 보여지는 글의 제목 -->
+							<h2>텐서플로우 0.10 + 우분투 16.04 + CUDA 8.0 + 파이썬 3.5 설치</h2>
+							<!-- 현재 보여지는 글 제목의 아래에 있는 레이블 박스 2개 -->
+							<!--<span class="category label label-primary">이것저것</span> -->
+							<!--<span class="date label label-info">2016.08.31 12:39</span> -->
+						</div>
+						
+						<!-- 현재 보여지는 글의 본문과 본문 아래 글 목록까지 함께. _article_rep_desc_로 동시 처리 -->
+						<div class="article">
+							<p>이번 글의 수명이 길지는 않을 것으로 보인다. 텐서플로우는 RC 버전이고, 그래픽 카드 또한 최신이고, 우분투 16.04도 방금 나온 최신 버전이고, 파이썬도 최신 버전이고. 검증하지 않은 것들이 모일 수 있기 때문에 설치 과정에서 수많은 시행착오를 거칠 수밖에 없었다. 최신이어서 참고할 사이트도 많이 없다.</p><p><br /></p><p><b><span style="font-size: 12pt;">컴퓨터 사양</span></b></p><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:624px;;height:auto;max-width:100%"><img src="http://cfile28.uf.tistory.com/image/2437824057C648EF1EDA50" style="max-width:100%;height:auto" width="624" height="194" filename="cuda_01.PNG" filemime="image/jpeg"/></span></p><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:667px;;height:auto;max-width:100%"><img src="http://cfile21.uf.tistory.com/image/262AA74057C648EF265891" style="max-width:100%;height:auto" width="667" height="497" filename="cuda_02.PNG" filemime="image/jpeg"/></span></p><p><br /></p><p><b><span style="font-size: 12pt;">문제점</span></b></p><p>1. 지포스 10 시리즈는 PASCAL 방식으로 제작되었다고 한다. 그래서인지 CUDA 7.5와 연동하면 정확도가 떨어지는 문제점이 있었다. 90%의 정확도가 아니라 10%의 정확도로 나와서 경악을 금치 못했다. 속도는 무지 빨랐다.</p><p>2. 텐서플로우 0.10과 CUDA 7.5 연동이 잘 되지 않았다. 처음에는 괜찮았던 기억이 있는데, 어느 순간부터는 충돌이 발생하면서 설치할 수 없었다. CUDA 8.0 설치를 포기해야겠다고 생각하면서 하위 버전 설치에 꽤나 주력했었다.</p><p>3. CUDA 8.0을 사용하려면 텐서플로우를 바이너리 버전이 아니라 소스코드 버전으로 설치해야 한다. 현재 시점에서는 텐서플로우 0.10에 대한 링크가 없어서 바이너리 버전 설치는 불가능했다. 당연히 0.9 버전을 설치하기 위해서도 많이 애를 썼었다. 소스코드 버전 설치는 컴파일부터 진행하기 때문에 해야 할 게 무척 많아진다.</p><p><br /></p><p><b><span style="font-size: 12pt;">공통 사항</span></b></p><p>1. 터미널(콘솔)</p><p><b>단축키 : ctrl + alt + t 또는 ctrl + alt + f1</b><br />처음에 터미널 창을 열면 항상 ~ 폴더에서 시작한다.&nbsp;~ 폴더는 사용자의 홈 폴더를 말하고,&nbsp;어디에 있건 "cd ~" 명령을 통해 항상 홈 폴더로 이동할 수 있다.</p><p>모든 설치는 터미널에서 진행되기 때문에 그래픽 화면이 전혀 사용되지 않는다. 화면 캡쳐할 것이 없다는 뜻이다. 입력하기가 번거롭기 때문에 본문에 있는 명령을 붙여 넣는 것이 쉬울 것이다. 터미널에서는 [ctrl+c, ctrl+v] 단축키가 동작하지 않으므로, 마우스 오른쪽 버튼 메뉴를 사용해야 한다.</p><p>[ctrl + alt + f1]은 그래픽 모드로부터 완전히 벗어난 형태의 터미널을 생성한다. 모니터 전체를 터미널이 덮는 모드를 말한다. 이와 같은 전체 터미널 모드는 엔비디아 드라이버를 설치할 때, 딱 한 번만 사용하고, 나머지는 모두 [ctrl + alt + t]를 사용한다.</p><p><br /></p><p>2. 명령줄 자동완성</p><p>파일 이름을 입력할 때, TAB키를 누르면 일치하는 파일 이름을 자동으로 입력해 준다. 파일 이름을 여러 번 입력하기 때문에 기억하면 매우 편리하다. 간혹 동작하지 않을 때도 있는데, 잘못된 것이 아니라 리눅스의 환경 문제이므로, 그런 경우에는 차분하게 파일 이름을 모두 입력해야 한다.</p><p><br /></p><p><b>3. 무한 로그인 에러 해결 방법</b></p><p>[ctrl + alt + f1] 단축키를 사용해서 터미널로 이동해서 다시 엔비디아 드라이버를 설치하면 된다. 무한 로그인 에러는 엔비디아 드라이버와의 충돌 과정에서 발생하기 때문에 다시 설치하면 사라진다.</p><p>이 에러는 상상을 초월할 정도의 유명한 에러인데, 별의별 방법으로 해결을 하려고 노력했지만 끝내 하지 못했었다. 이 방법을 알고 있었다면, 우분투 설치 횟수를 25회 정도로 막을 수도 있었다. 생각할수록 화가 난다.</p><p>그래픽 화면으로 넘어갈 때는 [alt + f7] 단축키. 다만 그 전에 아래 명령을 사용해서 그래픽 모드를 활성화시켜야 한다.<br /><b>$ sudo service lightdm start</b></p><p><br /></p><p>4. 텍스트 파일 편집</p><p>경로 등을 저장하기 위해 텍스트 파일을 편집하게 되는데, 이 때&nbsp;gedit 프로그램을 사용한다. 파일을 열거나 저장할 때 아래와 같은 경고가 뜨는데, 설치와는 전혀 상관없다. 터미널에서 그래픽에 접근하는 과정에서 표시되는 경고일 뿐이다.</p><p>(gedit:27848): IBUS-WARNING **: The owner of /home/python-kim/.config/ibus/bus is not root!<br />(gedit:27848): Gtk-WARNING **: Calling Inhibit failed: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files</p><p>** (gedit:27848): WARNING **: Set document metadata failed: metadata::gedit-spell-enabled 속성 설정은 지원하지 않습니다<br />** (gedit:27848): WARNING **: Set document metadata failed: metadata::gedit-encoding 속성 설정은 지원하지 않습니다<br />** (gedit:27848): WARNING **: Set document metadata failed: metadata::gedit-position 속성 설정은 지원하지 않습니다</p><p><br /></p><p><b><span style="font-size: 12pt;">참고 사이트</span></b></p><p>1. 성공 사이트</p><p><a href="https://marcnu.github.io" target="_blank" class="tx-link">https://marcnu.github.io</a><br /><a href="https://marcnu.github.io/2016-08-17/Tensorflow-v0.10-installed-from-scratch-Ubuntu-16.04-CUDA8.0RC-cuDNN5.1-1080GTX" target="_blank" class="tx-link">https://marcnu.github.io/2016-08-17/Tensorflow-v0.10-installed-from-scratch-Ubuntu-16.04-CUDA8.0RC-cuDNN5.1-1080GTX</a></p><p>순서대로 정리가 너무 잘 되어 있는 외국 사이트. 텐서플로우KR에 누가 올려놓은 자료인데.. 일단 내 컴퓨터와는 궁합이 너무 잘 맞았다.</p><p><br /></p><p>2. 실패 사이트</p><p><a href="http://textminingonline.com/dive-into-tensorflow-part-iii-gtx-1080-ubuntu16-04-cuda8-0-cudnn5-0-tensorflow" target="_blank" class="tx-link">http://textminingonline.com/dive-into-tensorflow-part-iii-gtx-1080-ubuntu16-04-cuda8-0-cudnn5-0-tensorflow</a></p><p>이 사이트의 내용에 대해서는 매번 실패를 했지만, CROSSTOOL.tlp 파일을 수정하는 부분만 있으면 성공할 거라고 생각한다. 이 방식은 그래픽 모드에서 전혀 벗어나지 않기 때문에 설치된다고 하면 이 방식이 훨씬 낫다. 설치 명령과 함께 에러 메시지도 표시하기 때문에 안심하고 진행할 수 있는 장점도 있다.</p><p><br /></p><p><b><span style="font-size: 12pt;">엔비디아 다운로드</span></b></p><p>헷갈리지 않게 미리 다운로드 받아서 설치 가능한 상태로 만들어 놓고 시작한다. 순서가 너무 많아서 헷갈린다. 윈도우와 똑같이 다운로드한 파일은 다운로드 폴더에 저장된다. <b><span style="color: rgb(255, 0, 0);">다운로드한 파일을 모두 홈 폴더로 복사하자.</span></b> 나 같은 리눅스 초보는 홈 폴더에서 작업하는 것이 좋다. 리눅스 공부는 설치가 끝난 다음에 하도록 하자. 파일 복사는 윈도우와 동일한 탐색기를 사용하면 된다.</p><p><br /></p><p>1. <a href="http://www.nvidia.fr/Download/index.aspx" target="_blank" class="tx-link">드라이버 다운로드</a> (버전 367.44)</p><p>자신의 그래픽 카드에 맞는 드라이버를 다운로드 받아야 한다. 현재 버전은 367.44이고, Linux 64-bit 버전이어야 한다. 64비트 버전이 보이지 않으면, Operatiing System 항목에서&nbsp;[Show all Operating Systems] 메뉴를 선택한다. 쉽게 실행할 수 있도록 실행 모드를 추가한다. 이제 실행 파일처럼 더블클릭으로 실행할 수 있는 상태가 된다.</p><p><b>$ chmod +x&nbsp;NVIDIA-Linux-x86_64-367.44.run</b></p><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:800px;;height:auto;max-width:100%"><span data-url="http://cfile5.uf.tistory.com/attach/277F463857C681B31222AD" data-lightbox="lightbox"><img src="http://cfile5.uf.tistory.com/image/277F463857C681B31222AD" style="cursor: pointer;max-width:100%;height:auto" width="800" height="337" filename="cuda_05.PNG" filemime="image/png" /></span></span></p><p><br /></p><p>2. <a href="https://developer.nvidia.com/cuda-release-candidate-download" target="_blank" class="tx-link">CUDA 다운로드</a> (버전 8.0RC) 회원 가입 필수<br /></p><p>그림에 나와 있는 것처럼 정확하게 우분투16.04,&nbsp;64비트 버전을 선택한다. 파일을 다운로드 받아서 설치하는 runfile(local)까지 선택한다. 이 파일의 확장자는 run이다. 현재 시점에서는 우분투에 기본 설치되는 gcc 5.4에 대한 패치 파일이 별도로 존재한다. 이 파일까지 함께 받는다. 파일 2개에 대해 한 번에&nbsp;실행 권한을 준다.</p><p><b>$ chmod +x cuda_8.0.27_linux.run &nbsp;</b><b>cuda_8.0.27.1_linux.run</b><b><br /></b></p><div><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:800px;;height:auto;max-width:100%"><span data-url="http://cfile2.uf.tistory.com/attach/2273B23857C681B31DB2B0" data-lightbox="lightbox"><img src="http://cfile2.uf.tistory.com/image/2273B23857C681B31DB2B0" style="cursor: pointer;max-width:100%;height:auto" width="800" height="866" filename="cuda_06.PNG" filemime="image/png" /></span></span></p></div><p></p><p><br /></p><p>3. <a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" class="tx-link">cuDNN 다운로드</a> (버전 5.1 Library for Linux)&nbsp;회원 가입 필수</p><p>다운로드한 파일의 압축을 풀고, 외부 모듈이 실행할 수 있도록 이동하고 접근 권한을 바꾼다. 압축을 풀면 현재 폴더에 cuda 폴더를 생성하고 그 안에 파일을 넣어 둔다. 여기서는 CUDA 8.0을 사용하기 때문에 목표 폴더 이름에 cuda-8.0이 들어간다.</p><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:800px;;height:auto;max-width:100%"><span data-url="http://cfile9.uf.tistory.com/attach/26021D3457C68249171BA1" data-lightbox="lightbox"><img src="http://cfile9.uf.tistory.com/image/26021D3457C68249171BA1" style="cursor: pointer;max-width:100%;height:auto" width="800" height="586" filename="cuda_03.PNG" filemime="image/jpeg" /></span></span></p><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:800px;;height:auto;max-width:100%"><span data-url="http://cfile9.uf.tistory.com/attach/2607023857C681B20CA88D" data-lightbox="lightbox"><img src="http://cfile9.uf.tistory.com/image/2607023857C681B20CA88D" style="cursor: pointer;max-width:100%;height:auto" width="800" height="753" filename="cuda_04.PNG" filemime="image/png" /></span></span></p><p><br /></p><p><b><span style="font-size: 12pt;">엔비디아 설치</span></b></p><p>1. 드라이버 설치</p><p>윈도우와 같은 그래픽 환경에서 이 글을 볼 것이다. 그렇다면 [ctrl + alt + f1]을 눌러서 터미널로 이동한다. 그래픽 화면을 종료하고 그래픽 카드를 구동하는 드라이버를 설치한다. 드라이버가 설치되면, 게임도 할 수 있고, 동영상도 볼 수 있고, 그래픽 카드를 사용하는 대부분의 것들을 할 수 있게 된다. 내 경우는 모니터 2대를 연결해서 사용할 수 있게 되었다. 드라이버 설치가 끝나면, 컴퓨터를 껐다가 켠다. (리부팅)</p><p>지금 보는 화면은 그래픽 화면이기 때문에 터미널 모드로 들어가면, 지금 보는 설명을 볼 수 없다. 외워도 좋고, 안 되면 종이에 써놓고 터미널로 입장하자.</p><p>드라이버 설치할 때 여러 번 엔터 키를 눌러야 한다. accept나&nbsp;yes와 같은 긍정적인 것들만 선택하도록 한다. 6~7번 정도 필요하다.</p><p><b>$ sudo service lightdm stop<br />$ sudo init 3<br />$ sudo ./NVIDIA-Linux-x86_64-367.44.run<br />$ sudo reboot</b></p><p><br /></p><p>드라이버 파일에 실행 권한을 주지 않았다면, 아래 명령을 통해서 run 파일을 구동할 수 있다. 다만 파일 이름을 자동으로 완성할 수 없기 때문에 직접 입력해야 한다.</p><p><b>$ sudo sh NVIDIA-Linux-x86_64-367.44.run</b></p><p><br /></p><p>2. CUDA 메인&nbsp;설치</p><p>컴퓨터가 새로 켜졌다. 터미널 모드로 입장해야 하니까, [ctrl + alt + t] 단축키를 누른다. 패치 파일을 포함한 2개 파일을 순서대로 모두 설치한다. 메인 파일에만 --override 옵션이 붙는다. gcc 5.3까지만 인정하기 때문에 이걸 무시하기 위해 추가하는 것이 override 옵션이다. 이걸 수정하기 위한 파일이 패치 파일이다.</p><p><b>$ sudo ./cuda_8.0.27_linux.run --override</b></p><p>드라이버 설치와 마찬가지로 실행 권한을 주지 않았다면, 아래 명령을 사용한다.</p><p><b>$ sudo sh cuda_8.0.27_linux.run --override<br /></b></p><p>아래에 빨간 글자처럼 입력한다. '엔터'라고 되어 있는 항목은 default 값을 사용한다는 뜻이다. 가장 중요한 항목은 두 번째에 있는 361.77 드라이버 설치 문항이다. yes라고 입력하면, 앞에서 설치한 최신 버전을 덮어 쓴다. sample은 설치하지 않아도 되지만, CUDA가 설치되었는지 sample을 통해 확인할 수 있기 때문에 설치하는 것이 좋다.</p><p><br /></p><p># ----------------------------- 설치 내용 --------------------------------- #<br /></p><p>
+Do you accept the previously read EULA? accept/decline/quit: <b style="color: rgb(255, 0, 0);">accept</b><br />
+Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 361.77? (y)es/(n)o/(q)uit: <b style="color: rgb(255, 0, 0);">n</b><br />
+Install the CUDA 8.0 Toolkit? (y)es/(n)o/(q)uit: <b style="color: rgb(255, 0, 0);">y</b><br />
+Enter Toolkit Location [ default is /usr/local/cuda-8.0 ]: <b style="color: rgb(255, 0, 0);">엔터</b><br />
+Do you want to install a symbolic link at /usr/local/cuda? (y)es/(n)o/(q)uit: <b style="color: rgb(255, 0, 0);">y</b><br />
+Install the CUDA 8.0 Samples? (y)es/(n)o/(q)uit: <b style="color: rgb(255, 0, 0);">y</b><br />
+Enter CUDA Samples Location [ default is /home/python-kim ]: <b style="color: rgb(255, 0, 0);">엔터</b><br />
+<br />
+Installing the CUDA Toolkit in /usr/local/cuda-8.0 ...<br />
+ Missing recommended library: libGLU.so.<br />
+ Missing recommended library: libX11.so<br />
+ Missing recommended library: libXi.so<br />
+ Missing recommended library: libXmu.so<br /><br />
+Installing the CUDA Samples in /home/python-kim ...<br />
+Copying samples to /home/python-kim/NVIDIA_CUDA-8.0_Samples now...<br /><br />
+Finished copying samples.<br /><br />
+============ Summary ============<br /><br />
+<b>Driver: &nbsp; Not Selected</b><br />
+<b>Toolkit: &nbsp;Installed in /usr/local/cuda-8.0</b><br />
+<b>Samples: &nbsp;Installed in /home/python-kim, but missing recommended libraries</b><br />
+</p><p>Summary에서 Driver는 설치되지 않은 것을 볼 수 있다. Toolkit은 설치되었지만, Samples는 설치되지 않은 항목이 있다. 361.77 드라이버를 설치할 때, OpenGL 라이브러리 설치를 물어보는데, 우리는 설치하지 않았기 때문에 OpenGL 샘플도 설치하지 않았다는 뜻이다. OpenGL은 우분투에서 그래픽 카드와 충돌나기로 유명하다. 우리는 자연스럽게 설치를 피했다.</p><p><br /></p><p>3. CUDA 패치 설치</p><p>우분투에 기본으로 설치된 gcc&nbsp;5.4 버전을 위한 패치 파일을 실행시킨다. override 옵션은 필요 없다. 설치가 너무 간단해서 신경써서 입력할 항목이 없다.</p><p><b>$ sudo ./cuda_8.0.27.1_linux.run</b></p><p><br /></p><p>드라이버 설치와 마찬가지로 실행 권한을 주지 않았다면, 아래 명령을 사용한다.</p><p><b>$ sudo sh cuda_8.0.27.1_linux.run</b><br /></p><p><br /></p><p># ----------------------------- 설치 내용 --------------------------------- #</p><p>Do you accept the previously read EULA?<br />accept/decline/quit: <b style="color: rgb(255, 0, 0);">accept</b><br /><br />
+Enter CUDA Toolkit installation directory<br /> [ default is /usr/local/cuda-8.0 ]: <b style="color: rgb(255, 0, 0);">엔터</b><br /><br />
+Installation complete!<br />
+Installation directory: /usr/local/cuda-8.0<br /></p><p><br /></p><p>4. 환경 구성</p><p>라이브러리와 CUDA를 사용할 수 있도록 경로를 추가한다. 먼저 환경 파일을 연다.</p><p><b>$ sudo gedit ~/.bashrc</b></p><p><br /></p><p>아래 내용은 .bashrc&nbsp;파일의 마지막에 추가한다.</p><p><b>export CUDA_HOME=/usr/local/cuda-8.0<br />export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}<br />export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}</b></p><p><br /></p><p>추가한 내용을 즉각 반영한다.</p><p><b>$ source ~/.bashrc</b></p><div><br /></div><p>5. 드라이버 및 CUDA&nbsp;설치 확인</p><p><b>$ nvcc --version</b></p><p>nvcc: NVIDIA (R) Cuda compiler driver<br />Copyright (c) 2005-2016 NVIDIA Corporation<br />Built on Wed_May__4_21:01:56_CDT_2016<br />Cuda compilation tools, release 8.0, V8.0.26</p><p><br /></p><p><b>$ nvidia-smi</b></p><p>터미널에서는 깔끔하게 출력이 되는데, html 파일에서는 깨진다. 감안하고 보자.</p><p>Tue Aug 30 19:59:47 2016<br />
++-----------------------------------------------------------------------------+<br />
+| NVIDIA-SMI 367.44 &nbsp; &nbsp; &nbsp; &nbsp; Driver Version: 367.44 &nbsp; &nbsp; &nbsp; &nbsp;|<br />
+|-------------------------------+----------------------+----------------------+<br />
+| GPU &nbsp;Name &nbsp; &nbsp; &nbsp; &nbsp;Persistence-M| Bus-Id &nbsp; &nbsp; &nbsp; &nbsp;Disp.A | Volatile Uncorr. ECC |<br />
+| Fan &nbsp;Temp &nbsp;Perf &nbsp;Pwr:Usage/Cap| &nbsp; &nbsp; &nbsp; &nbsp; Memory-Usage | GPU-Util &nbsp;Compute M. |<br />
+|===============================+======================+======================|<br />
+| &nbsp; 0 &nbsp;GeForce GTX 106... &nbsp;Off &nbsp;| 0000:01:00.0 &nbsp; &nbsp; &nbsp;On | &nbsp; &nbsp; &nbsp; &nbsp;N/A |<br />
+| 33% &nbsp; 33C &nbsp; &nbsp;P8 &nbsp; &nbsp;10W / 130W | &nbsp; &nbsp;257MiB / &nbsp;6064MiB | &nbsp; 0% &nbsp; Default |<br />
++-------------------------------+----------------------+----------------------+<br />
++-----------------------------------------------------------------------------+<br />
+| Processes: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GPU Memory |<br />
+| &nbsp;GPU &nbsp;PID &nbsp;Type &nbsp;Process name &nbsp; &nbsp; Usage |<br /> 
+|=============================================================================|<br />
+| &nbsp; 0 &nbsp; 2733 &nbsp; G &nbsp; /usr/lib/xorg/Xorg &nbsp; &nbsp; &nbsp; 227MiB |<br />
+| &nbsp; 0 &nbsp; 3461 &nbsp; G &nbsp; compiz &nbsp; &nbsp; &nbsp;28MiB |<br />
++-----------------------------------------------------------------------------+</p><p><br /></p><p>6. CUDA 샘플 구동</p><p>현재 폴더(사용자 홈)에 샘플 폴더가 설치되고, 이름은 NVIDIA_CUDA-8.0_Samples. 이 폴더 안에 들어가면 여러 개의 폴더가 보이는데, 모두 CUDA로 확인할 수 있는 샘플들이다. 샘플을 구동하는 규칙은 모두 같다. 해당 폴더로 이동해서 make 명령을 입력하고, 생성된 실행 파일을 실행시킨다.</p><p><b>$ cd NVIDIA_CUDA-8.0_Samples/1_Utilities/bandwidthTest/<br />$ make</b></p><p>"/usr/local/cuda-8.0"/bin/nvcc -ccbin g++ -I../../common/inc &nbsp;-m64 &nbsp; &nbsp;-gencode arch=compute_20,code=sm_20 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_37,code=sm_37 -gencode arch=compute_50,code=sm_50 -gencode arch=compute_52,code=sm_52 -gencode arch=compute_60,code=sm_60 -gencode arch=compute_60,code=compute_60 -o bandwidthTest.o -c bandwidthTest.cu<br />"/usr/local/cuda-8.0"/bin/nvcc -ccbin g++ &nbsp; -m64 &nbsp; &nbsp; &nbsp;-gencode arch=compute_20,code=sm_20 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_37,code=sm_37 -gencode arch=compute_50,code=sm_50 -gencode arch=compute_52,code=sm_52 -gencode arch=compute_60,code=sm_60 -gencode arch=compute_60,code=compute_60 -o bandwidthTest bandwidthTest.o <br />mkdir -p ../../bin/x86_64/linux/release<br />cp bandwidthTest ../../bin/x86_64/linux/release</p><p><b>$ ./bandwidthTest&nbsp;</b></p><p>[CUDA Bandwidth Test] - Starting...<br />Running on...<br /><br />&nbsp;Device 0: GeForce GTX 1060 6GB<br />&nbsp;Quick Mode<br /><br />&nbsp;Host to Device Bandwidth, 1 Device(s)<br />&nbsp;PINNED Memory Transfers<br />&nbsp; &nbsp;Transfer Size (Bytes) &nbsp; &nbsp;Bandwidth(MB/s)<br />&nbsp; &nbsp;33554432 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;12542.1<br /><br />&nbsp;Device to Host Bandwidth, 1 Device(s)<br />&nbsp;PINNED Memory Transfers<br />&nbsp; &nbsp;Transfer Size (Bytes) &nbsp; &nbsp;Bandwidth(MB/s)<br />&nbsp; &nbsp;33554432 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;12322.1<br /><br />&nbsp;Device to Device Bandwidth, 1 Device(s)<br />&nbsp;PINNED Memory Transfers<br />&nbsp; &nbsp;Transfer Size (Bytes) &nbsp; &nbsp;Bandwidth(MB/s)<br />&nbsp; &nbsp;33554432 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;141467.7<br /><br />Result = PASS<br /><br />NOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.</p><p><br /></p><p>7. cuDNN 설치</p><p>이건 설치할 게 없다. 다운로드한 파일을 압축을 풀어서 복사해서 붙여넣기만 하면 된다. 앞에서 CUDA 샘플을 구동하기 위해 샘플 폴더로 이동했기 때문에 홈 폴더로 이동하는 것까지 포함한다.</p><p><b>$ cd ~</b><br /><b>$ tar xvzf cudnn-8.0-linux-x64-v5.1.tgz</b><br /><b>$ sudo cp cuda/include/cudnn.h /usr/local/cuda-8.0/include/</b><br /><b>$ sudo cp cuda/lib64/* /usr/local/cuda-8.0/lib64/</b></p><p><br /></p><p><b><span style="font-size: 12pt;">텐서플로우 설치</span></b></p><p>1. 파이썬 환경 구축</p><p>우분투 16.04에는 파이썬 2.7과 3.5가 모두 설치되어 있다. 최신 버전을 무조건 좋아하기 때문에 여기서는 3.5 버전을 중심으로 얘기한다. 일단 텐서플로우 설치에 사용할 파이썬 도구를 설치한다. 혹시라도 이번 명령이 동작하지 않으면, 바로 아래 있는 [자바 JDK 설치]를 먼저 진행하기 바란다.컴퓨터를 껐다 켜게 되면, 설치 중인 정보가 날아가서 이번 명령이 실패할 수도 있다. 이때, [자바 JDK 설치]가 정보를 복구해줄 수도 있다.</p><p><br /></p><p>파이썬 3.5<br /><b>$ sudo apt-get install python3-pip python3-numpy swig python3-dev python3-wheel</b></p><p>파이썬 2.7<br /><b>$ sudo apt-get install python-pip python-numpy swig python-dev python-wheel</b></p><p><br /></p><p>2. 자바 JDK 설치</p><p>텐서플로우를 빌드하기 위해 JDK를 먼저 설치해야 한다. Bazel에서 필요로 한다. 이 부분은 파이썬 버전과 상관이 없다.</p><p><b>$ sudo add-apt-repository ppa:webupd8team/java</b><br /><b>$ sudo apt-get update</b><br /><b>$ sudo apt-get install oracle-java8-installer</b></p><p><br /></p><p>3. Bazel 설치</p><div><p>Bazel은 구글 내에서 사용하는 프로젝트를 빌드하기 위한 범용 도구이다. 여기서는 텐서플로우를 빌드하기 위해 사용한다. 이번 명령이 좀 길기는 하지만, 복사해서 붙여넣기할 거니까 빠지지 않도록 조심한다. 리눅스 명령에 익숙하면 분리할 수도 있는데, 좀 해봤는데.. 잘 안됐다. 나중에 고민하도록 하자.</p><p></p><p><b>$ echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list</b><br /><b>$ curl https://storage.googleapis.com/bazel-apt/doc/apt-key.pub.gpg | sudo apt-key add -</b><br /><b>$ sudo apt-get update &amp;&amp; sudo apt-get install bazel</b><br /><b>$ sudo apt-get upgrade bazel</b><br /></p><p><br /></p><p>4. 텐서플로우 소스코드 다운로드</p><p>git을 설치한다. 혹시 설치되어 있다면, 당연히 건너뛰어도 된다.</p><p><b>$ sudo apt install git</b></p><p><br /></p><p>텐서플로우 소스코드 저장소 구축</p><p><b>$ git clone -b r0.10 https://github.com/tensorflow/tensorflow</b></p><p><br /></p><p>5.&nbsp;CROSSTOOL 파일 수정</p><p>이 부분이 가장 중요하게 생각된다. 실제로 이전에 시도한 수없이 많은 방법 중에서 이 부분을 제외하면 그다지 다를 것이 없었다. 그런데, 동작하지 않았다. 수정할 파일은 홈 폴더의 "tensorflow/third_party/gpus/crosstool" 폴더에 있는&nbsp;CROSSTOOL.tpl 파일이다.</p><p><br /></p><p>파일 열기<br /><b>$ sudo gedit ~/tensorflow/third_party/gpus/crosstool/CROSSTOOL.tpl</b></p><p><br /></p><p>추가할 내용<br /><b>cxx_builtin_include_directory: "/usr/local/cuda-8.0/include"</b></p><p><br /></p><p>추가할 위치(내 경우엔 67행)<br />
+cxx_builtin_include_directory: "/usr/lib/gcc/"<br />
+cxx_builtin_include_directory: "/usr/local/include"<br />
+cxx_builtin_include_directory: "/usr/include"<br /><b>
+cxx_builtin_include_directory: "/usr/local/cuda-8.0/include" &nbsp; &nbsp;&lt;----- 여기 추가</b><br />
+tool_path { name: "gcov" path: "/usr/bin/gcov" }</p><p><br /></p><p>6. Bazel 환경 구축</p><p>먼저 tensorflow 폴더로 이동한 다음에 configure 파일을 실행시킨다. 역시 빨간색으로 처리된 부분을 정확하게 입력하도록 한다. 파이썬 3.5를 사용하기 때문에 첫 번째 항목에서 python3이라고 했다. 2.7을 사용한다면 아무 것도 입력하지 않으면 된다. 구글 플랫폼의 두 번째 항목은 필요없기 때문에 No라고 입력했다.</p><p>마지막의 그래픽 카드 버전이 가장 여려운데, 기본은 3.5와 5.2의 두 가지다. 1060의 경우 6.1로 입력해야 하는데, 다음 주소를&nbsp;통해 그래픽 카드의 버전 숫자를 찾을 수 있다. (<a href="https://developer.nvidia.com/cuda-gpus" target="_blank" class="tx-link">그래픽 카드 버전 숫자 찾기로 이동</a>)</p><p><br /></p><p><b>$cd ~/tensorflow</b><br /><b>$ ./configure</b><br />
+Please specify the location of python. [Default is /usr/bin/python]: <b><span style="color: rgb(255, 0, 0);">/usr/bin/python3</span></b><br />
+Do you wish to build TensorFlow with Google Cloud Platform support? [y/N] <b><span style="color: rgb(255, 0, 0);">N</span></b><br />
+No Google Cloud Platform support will be enabled for TensorFlow<br />
+Do you wish to build TensorFlow with GPU support? [y/N] <b><span style="color: rgb(255, 0, 0);">y</span></b><br />
+GPU support will be enabled for TensorFlow<br />Please specify which gcc should be used by nvcc as the host compiler. [Default is /usr/bin/gcc]: <b style="color: rgb(255, 0, 0);">엔터</b><br />
+Please specify the Cuda SDK version you want to use, e.g. 7.0. [Leave empty to use system default]:&nbsp;<b style="color: rgb(255, 0, 0);">엔터</b><br />
+Please specify the location where CUDA &nbsp;toolkit is installed. Refer to README.md for more details.<br />
+[Default is /usr/local/cuda]:&nbsp;<b style="color: rgb(255, 0, 0);">usr/local/cuda-8.0</b><br />
+Please specify the Cudnn version you want to use. [Leave empty to use system default]:&nbsp;<b style="color: rgb(255, 0, 0);">엔터</b><br />
+Please specify the location where cuDNN &nbsp;library is installed. Refer to README.md for more details. <br />[Default is /usr/local/cuda-8.0]:&nbsp;<b style="color: rgb(255, 0, 0);">엔터</b><br />
+Please specify a list of comma-separated Cuda compute capabilities you want to build with.<br />
+You can find the compute capability of your device at: https://developer.nvidia.com/cuda-gpus.<br />
+Please note that each additional compute capability significantly increases your build time and binary size.<br />
+[Default is: "3.5,5.2"]: <b><span style="color: rgb(255, 0, 0);">6.1</span></b><br />
+<br />
+...<br />
+<br />
+INFO: All external dependencies fetched successfully.<br />Configuration finished<br /></p><p><br /></p><p>7. 텐서플로우 설치</p><p>bazel을 사용해서 텐서플로우를 빌드한다. 빌드한 결과물은 /tmp/tensor_pkg 폴더에 들어간다.</p><p><b>$ bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package</b><br /><b>$ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg</b></p><p><br /></p><p>앞에서 사용한 결과물을 pip 명령을 통해 설치한다. 버전2와 버전3에서 파일 이름이 다른데, 중요하지 않다. 중요한 것은 /tmp/tensorflow_pkg 폴더에 있는 파일을 사용해야 한다는 점이다. 이름을 외울 필요는 없다. tensor까지 입력하고 tab 키를 누르면 자동 완성된다. 파일이 1개밖에 없다.</p><p><br /></p><p>파이썬 3.5<br /><b>$ pip3 install /tmp/tensorflow_pkg/tensorflow-0.10.0rc0-py3-none-any.whl</b></p><div>파이썬 2.7<br /><b>$ pip install /tmp/tensorflow_pkg/tensorflow-0.10.0rc0-py2-none-any.whl</b></div><p><br /></p><p>8. 텐서플로우 사용</p><p>아쉽지만, 우분투를 재시동해야 한다. 내 경우는 그랬다. 조금만 참자.<br />컴퓨터가 새로 켜졌다면 터미널에 아래와 같이 입력해 보자.</p><p><br /></p><p>파이썬 3.5<br /><b>$ python3 -c 'import tensorflow'</b></p><p>파이썬 2.7<br /><b>$ python -c 'import tensorflow'</b></p><p><br /></p><p>출력 결과는 아래와 같이 나와야 한다. 만약 아무 것도 출력되지 않았다면, 실패한 것이다. 이 시점에서 정말 많은 눈물을 흘려야 했다. 나타나지 않았다면, 우분투를 다시 설치하는 것부터 시작하면 된다. 윈도우는 그대로 둬도 된다.</p><p>I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcublas.so locally<br />
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcudnn.so locally<br />
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcufft.so locally<br />
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcuda.so.1 locally<br />
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcurand.so locally</p><p><br /></p><p>잘 됐다면 진짜 코드로 확인을 해야 한다. mnist 예제를 돌려 보자.<br /></p><p><br /></p><p>파이썬 3.5<br /><b>$ python3 tensorflow/tensorflow/models/image/mnist/convolutional.py</b></p><p>파이썬 2.7<br /><b>$ python tensorflow/tensorflow/models/image/mnist/convolutional.py</b></p><p><br /></p><p>놀랍게도 1시간 걸리던 예제가 불과 1분만에 해결됐다. 에러는 0.8*, 정확도 99.2%의 훌륭한 결과를 보여줬다.<br /></p><p>I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcublas.so locally<br />
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcudnn.so locally<br />
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcufft.so locally<br />
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcuda.so.1 locally<br />
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcurand.so locally<br />
+Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.<br />
+Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.<br />
+Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.<br />
+Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.<br />
+Extracting data/train-images-idx3-ubyte.gz<br />
+Extracting data/train-labels-idx1-ubyte.gz<br />
+Extracting data/t10k-images-idx3-ubyte.gz<br />
+Extracting data/t10k-labels-idx1-ubyte.gz<br />
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:925] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero<br />
+I tensorflow/core/common_runtime/gpu/gpu_init.cc:102] Found device 0 with properties:<br />
+name: GeForce GTX 1060 6GB<br />
+major: 6 minor: 1 memoryClockRate (GHz) 1.759<br />
+pciBusID 0000:01:00.0<br />
+Total memory: 5.92GiB<br />
+Free memory: 5.55GiB<br />
+I tensorflow/core/common_runtime/gpu/gpu_init.cc:126] DMA: 0<br />
+I tensorflow/core/common_runtime/gpu/gpu_init.cc:136] 0:   Y<br />
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -&gt; (device: 0, name: GeForce GTX 1060 6GB, pci bus id: 0000:01:00.0)<br />
+Initialized!<br />
+Step 0 (epoch 0.00), 19.7 ms<br />
+Minibatch loss: 12.054, learning rate: 0.010000<br />
+Minibatch error: 90.6%<br />
+Validation error: 84.6%<br />
+...<br />
+...<br />
+Step 8400 (epoch 9.77), 7.2 ms<br />
+Minibatch loss: 1.596, learning rate: 0.006302<br />
+Minibatch error: 0.0%<br />
+Validation error: 0.8%<br />
+Step 8500 (epoch 9.89), 7.2 ms<br />
+Minibatch loss: 1.603, learning rate: 0.006302<br />
+Minibatch error: 0.0%<br />
+Validation error: 0.8%<br />
+<b>Test error: 0.8%</b><br /></p></div><p><br /></p><div style="width:100%;margin-top:30px;clear:both;height:30px">		<div class="entry-ccl" style="float:right;margin-top:0;height:0">
+			<a href="http://creativecommons.org/licenses/by/4.0/deed.ko" target="_blank" style="text-decoration: none">
+				<img id="ccl-icon-71-0" class="entry-ccl-by" src="//i1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/static/admin/editor/ccl_black01.png"
+				     onmouseover="tistoryCcl.show(this, 3)"
+				     onmouseout="tistoryCcl.hide()" alt="저작자 표시" style="width:15px;height:15px"/>
+								<!--
+	<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+		<Work rdf:about="">
+			<license rdf:resource="http://creativecommons.org/licenses/by-fr/2.0/kr/" />
+		</Work>
+		<License rdf:about="http://creativecommons.org/licenses/by-fr/">
+			<permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+			<permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+			<requires rdf:resource="http://web.resource.org/cc/Notice"/>
+			<requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+			<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+		</License>
+	</rdf:RDF>
+	-->
+			</a>
+		</div>
+					<script type="text/javascript">
+				if (/MSIE [0-6]\./.test(navigator.userAgent)) {
+					for (var i = 0; i <1; i++) {
+						var el = document.getElementById('ccl-icon-71-' + i);
+						el.style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + el.src + '",sizingMethod="image")';
+						el.src = '//i1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/static/admin/form/s.gif';
+					}
+				}
+			</script>
+			<div style="width:31px;float:left;"><a href="/toolbar/popup/abuseReport/?entryId=71" onclick="window.open(this.href, 'tistoryThisBlogPopup', 'width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no'); return false;"><img style="border:0" src="//t1.daumcdn.net/tistory_admin/static/ico/ico_spam_report.png" alt="신고"></a></div></div><div class="another_category another_category_color_gray">
+<h4>'<a href="/category/이것저것">이것저것</a>' 카테고리의 다른 글</h4>
+<table>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/78" >[파이썬] scipy 설치</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.01.11</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/71"  class ="current" >텐서플로우 0.10 + 우분투 16.04 + CUDA 8.0 + 파이썬 3.5 설치</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.08.31</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/70" >듀얼 부팅 - 윈도우 10 + 우분투 16.04</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.08.31</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/55" >[도커] 윈도우 폴더 공유</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.08.11</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/51" >텐서플로우 GPU 버전 설치 문제점</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.08.10</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/50" >우분투 16.04 설치 이후 작업</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.08.10</td>
+</tr>
+</table></div>
+						</div>
+
+						<!-- 글 목록 하단의 프로필. 이미지와 간략한 소개 나오는 곳 -->
+						<!-- 프로필 아래에 "받은 트랙백이 없고, 댓글이 없습니다." <div class="actionTrail"> -->
+						
+					</div> 					<!-- end of entry -->
+				
+
+			<!-- 하단 목록 번호 1 2 3 .. 9 10 <s_paging> -->
+			</div>
+			
+			<div class="col-md-3">
+				<!-- 기본 사이드바 -->
+				<div class="sidebar">
+				
+					<!-- 오른쪽 사이드바의 공지사항 모듈. 없앨려면, s_sidebar_element 안쪽을 주석으로 막아야 한다. b 태그 추가했다 -->
+						
+							<div id="notice" class="widget">
+								<h3><i class="fa fa-bullhorn"></i>공지사항</h3>
+								<ul class="fa-ul">
+									
+										<li><i class="fa-ul fa fa-chevron-right"></i>
+											<a href="/notice/77"><b>파이썬 동영상</b></a> </li>
+									
+										<li><i class="fa-ul fa fa-chevron-right"></i>
+											<a href="/notice/76"><b>머신러닝 동영상</b></a> </li>
+									
+										<li><i class="fa-ul fa fa-chevron-right"></i>
+											<a href="/notice/25"><b>머신러닝 목차</b></a> </li>
+									
+								</ul>
+							</div>
+						
+					
+					<!-- 오른쪽 사이드바의 카테고리 모듈. 없앨려면, s_sidebar_element 안쪽을 주석으로 막아야 한다. -->
+						<div id="category" class="widget">
+							<h3><i class="fa fa-folder"></i>카테고리</h3>
+							<ul class="tt_category">
+	<li class="">
+		<a class="link_tit" href="/category">
+			분류 전체보기							<span class="c_cnt">(70)</span>
+			
+					</a>
+
+				<ul class="category_list">
+							<li class="">
+					<a class="link_item" href="/category/프로필">
+						프로필													<span class="c_cnt">(0)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="/category/머신러닝">
+						머신러닝													<span class="c_cnt">(3)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="/category/머신러닝_김성훈교수님">
+						머신러닝_김성훈교수님													<span class="c_cnt">(45)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="/category/텐서플로우">
+						텐서플로우													<span class="c_cnt">(12)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="/category/이것저것">
+						이것저것													<span class="c_cnt">(10)</span>
+						
+											</a>
+
+					
+				</li>
+					</ul>
+			</li>
+</ul>
+
+						</div>
+					
+						<div class="author alert alert-success">
+							<img src="http://cfile4.uf.tistory.com/image/211AB7495706515D201F0D" alt="블로그 이미지" 
+									 class="img-responsive img-circle text-center" width="50%">
+							<p><span class="text label label-primary"></span></p>
+							<p>얼떨결에 붙인 이름 파이썬_킴</p>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--	
+<div id="footer">
+	<div class="container">
+		<div class="row">
+				<div class="copyright">
+					<p class="text-center">Copyright 2016 파이썬_킴. All Rights Reserved.<br/>
+				</div>
+		</div>
+	</div>
+</div>
+-->
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="//s1.daumcdn.net/cfs.tistory/custom/blog/207/2072317/skin/images/bootstrap.min.js"></script>
+<script>
+$(window).scroll(function() {
+  if ($(document).scrollTop() > 50) {
+    $('nav').addClass('shrink');
+  } else {
+    $('nav').removeClass('shrink');
+  }
+});
+</script>
+<script id="DragSearchJs" type="text/javascript" src="http://s1.daumcdn.net/img.search/front/js/searchDragSelection.js?nil_ch=tistory" charset="euc-kr"></script>
+<script>
+$("body").bind('copy', function (e) {
+    if (typeof window.getSelection == "undefined") {//IE8 or earlier...
+        event.preventDefault();
+
+        var pagelink = '\n\n 출처: ' + decodeURI(document.location.href),
+            copytext =  window.getSelection() + pagelink;
+
+        if (window.clipboardData) {
+            window.clipboardData.setData('Text', copytext);
+        }
+        return;
+    }
+    var body_element = document.getElementsByTagName('body')[0];
+    var selection = window.getSelection();
+
+    //if the selection is short let's not annoy our users
+    if (("" + selection).length < 30) return;
+
+    //create a div outside of the visible area
+    var newdiv = document.createElement('div');
+    newdiv.style.position = 'absolute';
+    newdiv.style.left = '-99999px';
+    body_element.appendChild(newdiv);
+    newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+    //we need a <pre> tag workaround
+    //otherwise the text inside "pre" loses all the line breaks!
+    if (selection.getRangeAt(0).commonAncestorContainer.nodeName == "PRE") {
+        newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+    }
+
+    newdiv.innerHTML += "<br /><br />출처: <a href='"
+        + document.location.href + "'>"
+        + decodeURI(document.location.href) + "</a> [파이쿵]";
+
+    selection.selectAllChildren(newdiv);
+    window.setTimeout(function () { body_element.removeChild(newdiv); }, 200);
+});
+</script><script> if (!window.jQuery) document.write("<script src=\"http://t1.daumcdn.net/tistory_admin/lib/jquery-1.12.4.min.js\"><\/script>") </script>
+	<script src="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/plugins/lightbox/assets/js/lightbox.min.js"></script>
+	<script>
+	    lightbox.option({
+			"fadeDuration": 200,
+		    "resizeDuration": 200,
+		    "wrapAround": false,
+			"albumLabel": "%1 / %2",
+			"fitImagesInViewport":true ,
+			"stopEvent": false
+	    })
+	</script><script type="text/javascript">
+var _tiq = 'undefined' !== typeof _tiq ? _tiq : []; // Global Variables
+_tiq.push(["__setParam", "title", "파이쿵 :: 텐서플로우 0.10 + 우분투 16.04 + CUDA 8.0 + 파이썬 3.5 설치"]);
+_tiq.push(["__setParam", "svcdomain", "user.tistory.com"]);
+_tiq.push(["__setParam", "category", ""]);
+_tiq.push(["__setParam", "articleno", "71"]);
+_tiq.push(["__setParam", "plink", "http://pythonkim.tistory.com/71"]);
+_tiq.push(["__setParam", "date", "2016-08-31 12:39:53"]);
+_tiq.push(["__setParam", "author", "pythonkim"]);
+_tiq.push(["__setParam", "length", "32423"]);
+_tiq.push(["__setParam", "isauthor", "N"]);
+_tiq.push(["__setParam", "ishidden", "1"]);
+_tiq.push(["__setParam", "comments", "0"]);
+_tiq.push(["__setParam", "param1", "0"]);
+_tiq.push(["__setParam", "param2", "e"]);
+_tiq.push(["__setParam", "param3", ""]);
+_tiq.push(["__trackPageview"]);
+(function(d) {
+	var se = d.createElement('script'); se.type = 'text/javascript'; se.async = true;
+	se.src = location.protocol + '//m2.daumcdn.net/tiara/js/td.min.js';
+	var s = d.getElementsByTagName('head')[0]; s.appendChild(se);
+})(document);
+</script>
+<script type="text/javascript">
+var __TiaraObj = __TiaraObj || {}; if ('undefined' === typeof __TiaraObj.startTime) { __TiaraObj.startTime = new Date(); }
+var addEvent = function (evt, fn) { window.addEventListener ? window.addEventListener(evt, fn, false) : window.attachEvent('on' + evt, fn); };
+var ua = navigator.userAgent.toLowerCase(); var isIOS = /iP[ao]d|iPhone/i.test(ua); var contentStat = function() {
+_tiq.push(['__content', 't_content', {
+"c_id":"2072317_71", 
+"c_title":"파이쿵 :: 텐서플로우 0.10 + 우분투 16.04 + CUDA 8.0 + 파이썬 3.5 설치", 
+"type":"article", 
+"author":"사과쿵", 
+"author_id":"1415031", 
+"cp":"pythonkim", 
+"cp_id":"2072317", 
+"regdata":"2016-08-31 12:39:53", 
+"plink":"http://pythonkim.tistory.com/71", 
+"media":"pcweb", 
+"comment_cnt":0, 
+"duration": (new Date()).getTime() - __TiaraObj.startTime.getTime()
+}]); };
+addEvent(isIOS ? "pagehide" : "beforeunload", contentStat);
+</script>
+<script type="text/javascript">window.roosevelt_params_queue = window.roosevelt_params_queue || []; window.roosevelt_params_queue.push({channel_id: "dk", channel_label: "tistory"});</script>
+<script type="text/javascript" src="//adimg.daumcdn.net/rt/dk_bt/roosevelt_dk_bt.js" async></script><script type="text/javascript">if(window.console!=undefined){setTimeout(console.log.bind(console,"%cTISTORY","font:8em Arial;color:#EC6521;font-weight:bold"),0);setTimeout(console.log.bind(console,"%c  나를 표현하는 블로그","font:2em sans-serif;color:#333;"),0);}</script>		<div id="tistorytoolbarid"
+		     style="position:absolute;height:20px;top:4px;right:0px;background-color:transparent;background-image:none;z-index:11;">
+			<div class="tistorytoolbar tt_menubar_login">
+				<div
+					class="tt_menubar_whiteBar">
+					<div id="ttMenubarInnerWrap" class="tt_menubar_inner">
+						<div class="tt_menubar_bg_toolbar"></div>
+						<h2 style="display:none;">티스토리 툴바</h2>
+						<div class="tt_menubar_mainmenu"><a
+								class="tt_menubar_link_tit tt_menubar_link_tit_daum tt_menubar_link_tit_eng"
+								href="http://www.daum.net/?nil_ref=tistory"
+								target="_blank">Daum</a></div>
+						<div class="tt_menubar_bg_bar"></div>
+						<div class="tt_menubar_mainmenu"><a class="tt_menubar_link_tit tt_menubar_link_tit_eng"
+						                                    href="http://www.tistory.com">Tistory</a>
+						</div>
+						<div class="tt_menubar_bg_bar"></div>
+						<div class="tt_menubar_logout"><a class="tt_menubar_link_tit"
+														  href="https://www.tistory.com/auth/login">로그인</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</body>
+</html>

@@ -1,0 +1,13 @@
+Dear Bob,
+
+Thank you for your Dr. Seuss Store purchase!
+
+Order No. 98213
+
+Items:
+Cat in the Hat
+Lorax
+
+Tax: $1.17
+Total price: $10.97
+

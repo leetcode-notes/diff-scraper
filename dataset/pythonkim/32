@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="alternate" type="application/rss+xml" title="파이쿵" href="http://pythonkim.tistory.com/rss" />
+<link href="//s1.daumcdn.net/cfs.tistory/custom/blog/207/2072317/skin/images/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="//s1.daumcdn.net/cfs.tistory/custom/blog/207/2072317/skin/style.css?_T_=1470399111" rel="stylesheet">
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>파이쿵 :: 23. 딥러닝의 기본 개념2- Back-propagation 과 2006-2007 '딥'의 출현 (lec 08-2)</title>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+		
+<!-- 구글 애널리틱스 -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76456208-1', 'auto');
+  ga('send', 'pageview');
+</script>
+	
+
+<style type="text/css">
+		#daumSearchBox {
+			height: 21px;
+			background-image : url(http://i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bg_search2_2.gif);
+			margin: 5px auto ;
+			padding: 0;
+		}
+		#daumSearchBox input {
+			background: none;
+			margin : 0;
+			padding : 0;
+			border : 0;
+		}
+		#daumSearchBox #daumLogo {
+			width: 34px;
+			height: 21px;
+			float: left;
+			margin-right: 5px;
+			background-image : url(http://i1.daumcdn.net/img-media/tistory/img/bg_search1_2_2010ci.gif);
+		}
+		#daumSearchBox #show_q {
+			background-color: transparent;
+			border: none;
+			font: 12px Gulim, Sans-serif;
+			color: #555;
+			margin-top: 4px;
+			margin-right: 15px;
+			float: left;
+		}
+
+		#daumSearchBox #show_btn {
+			background-image : url(http://i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bt_search_2.gif);
+			width: 37px;
+			height: 21px;
+			float: left;
+			margin:0;
+			cursor:pointer;
+			text-indent:-1000em;
+		}
+	</style><link rel="stylesheet" href="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/plugins/lightbox/assets/css/lightbox.min.css" />
+<link rel="stylesheet" type="text/css" href="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/plugins/TistoryProfileLayer/style.css" />
+<script type="text/javascript" src="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/plugins/TistoryProfileLayer/profile.js"></script>
+	<style type="text/css">
+		.another_category { border: 1px solid #E5E5E5; padding: 10px 10px 5px; margin:10px 0; clear: both; }
+		.another_category h4 { font-size: 12px !important; margin: 0 !important; border-bottom: 1px solid #E5E5E5 !important; padding: 2px 0 6px !important; }
+		.another_category h4 a { font-weight: bold !important; }
+		.another_category table { table-layout: fixed; border-collapse: collapse; width: 100% !important; margin-top: 10px !important; }
+		* html .another_category table { width: auto !important; }
+		*:first-child+html .another_category table { width: auto !important; }
+		.another_category th, .another_category td { padding: 0 0 4px !important; }
+		.another_category th { text-align: left; font-size: 12px !important; font-weight: normal;  word-break: break-all; overflow: hidden; line-height: 1.5; }
+		.another_category td { text-align: right; width: 80px; font-size: 11px; }
+		.another_category th a { font-weight: normal; text-decoration: none; border: none !important; }
+		.another_category th a.current{ font-weight: bold; text-decoration: none !important; border-bottom: 1px solid !important; }
+		.another_category th span { font-weight: normal; text-decoration: none; font: 10px Tahoma, Sans-serif; border: none !important; }
+
+		.another_category_color_gray, .another_category_color_gray h4 { border-color: #E5E5E5 !important; }
+		.another_category_color_gray * { color: #909090 !important; }
+		.another_category_color_gray th a.current{border-color:#909090 !important;}
+		.another_category_color_gray h4, .another_category_color_gray h4 a { color: #737373 !important; }
+
+
+		.another_category_color_red, .another_category_color_red h4 { border-color: #F6D4D3 !important;  }
+		.another_category_color_red * { color: #E86869 !important; }
+		.another_category_color_red th a.current{border-color:#E86869 !important;}
+		.another_category_color_red h4, .another_category_color_red h4 a { color: #ED0908 !important; }
+
+
+		.another_category_color_green, .another_category_color_green h4 { border-color: #CCE7C8 !important; }
+		.another_category_color_green * { color: #64C05B !important; }
+		.another_category_color_green th a.current{border-color:#64C05B !important;}
+		.another_category_color_green h4, .another_category_color_green h4 a { color: #3EA731 !important; }
+
+
+		.another_category_color_blue, .another_category_color_blue h4 { border-color: #C8DAF2 !important; }
+		.another_category_color_blue * { color: #477FD6 !important; }
+		.another_category_color_blue th a.current{border-color:#477FD6 !important;}
+		.another_category_color_blue h4, .another_category_color_blue h4 a { color: #1960CA !important; }
+
+
+		.another_category_color_violet, .another_category_color_violet h4 { border-color: #E1CEEC !important;  }
+		.another_category_color_violet * { color:#9D64C5 !important; }
+		.another_category_color_violet th a.current{border-color:#9D64C5 !important;}
+		.another_category_color_violet h4, .another_category_color_violet h4 a { color: #7E2CB5 !important; }
+	</style>
+<script type="text/javascript">
+window.TistoryBlog = {
+    url: "http://pythonkim.tistory.com",
+	tistoryUrl: "http://pythonkim.tistory.com"
+};
+var servicePath = "";
+var blogURL = "";
+</script>
+<script type="text/javascript" src="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/script/_/base.js"></script>
+<link rel="stylesheet" type="text/css" href="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/style/dialog.css"/>
+<link rel="stylesheet" type="text/css" href="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/style/menubar.css"/><style type="text/css">.tt_article_useless_p_margin p {padding-top:0 !important;padding-bottom:0 !important;margin-top:0 !important;margin-bottom:0 !important;}</style><meta name="referrer" content="always"><link rel="shortcut icon" href="http://i1.daumcdn.net/cfs.tistory/static/top/favicon_0630.ico"/><meta name="description" content="머신러닝의 발전에 엄청난 공을 세운 캐나다의 단체. 이 단체 덕분에 머신러닝을 주도하는 연구소나 학자들은 캐나다의 몬트리올, 토론토 출신. 1987년 Hinton 교수가 이 단체의 지원을 받기 위해 캐나다로 이주하면서 발생한 현상.  가장 어려웠던 시기에 도박과도 같은 베팅을 Hinton에게 했던 CIFAR.  Hinton은 2006년과 2007년 머신러닝을 부활시킬 수 있는 논문 발표. 1987년 이주 이후 20년만에 거둔 성과.  여러 개의 l..">
+
+<!-- BEGIN OPENGRAPH -->
+<link rel="canonical" href="http://pythonkim.tistory.com/32" /><meta property="og:type" content="article"><meta property="og:url" content="http://pythonkim.tistory.com/32" ><meta property="og:site_name" content="파이쿵" ><meta property="og:title" content="23. 딥러닝의 기본 개념2- Back-propagation 과 2006-2007 '딥'의 출현 (lec 08-2)" ><meta name="by" content="사과쿵" ><meta property="og:description" content="머신러닝의 발전에 엄청난 공을 세운 캐나다의 단체. 이 단체 덕분에 머신러닝을 주도하는 연구소나 학자들은 캐나다의 몬트리올, 토론토 출신. 1987년 Hinton 교수가 이 단체의 지원을 받기 위해 캐나다로 이주하면서 발생한 현상.  가장 어려웠던 시기에 도박과도 같은 베팅을 Hinton에게 했던 CIFAR.  Hinton은 2006년과 2007년 머신러닝을 부활시킬 수 있는 논문 발표. 1987년 이주 이후 20년만에 거둔 성과.  여러 개의 l.." ><meta property="og:image" content="http://cfile5.uf.tistory.com/image/235D7134579D77671E048D" ><meta property="article:section" content="과학" >
+<!-- END OPENGRAPH -->
+
+
+
+<!-- BEGIN TWITTERCARD -->
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@TISTORY"><meta name="twitter:title" content="23. 딥러닝의 기본 개념2- Back-propagation 과 2006-2007 '딥'의 출현 (lec 08-2)" ><meta name="twitter:description" content="머신러닝의 발전에 엄청난 공을 세운 캐나다의 단체. 이 단체 덕분에 머신러닝을 주도하는 연구소나 학자들은 캐나다의 몬트리올, 토론토 출신. 1987년 Hinton 교수가 이 단체의 지원을 받기 위해 캐나다로 이주하면서 발생한 현상.  가장 어려웠던 시기에 도박과도 같은 베팅을 Hinton에게 했던 CIFAR.  Hinton은 2006년과 2007년 머신러닝을 부활시킬 수 있는 논문 발표. 1987년 이주 이후 20년만에 거둔 성과.  여러 개의 l.." ><meta property="twitter:image" content="http://cfile5.uf.tistory.com/image/235D7134579D77671E048D" >
+<!-- END TWITTERCARD -->
+
+
+
+<!-- BEGIN DAUMAPP -->
+<meta property="dg:plink" content="http://pythonkim.tistory.com/32" ><meta name="plink" content="http://pythonkim.tistory.com/32" ><meta name="title" content="23. 딥러닝의 기본 개념2- Back-propagation 과 2006-2007 '딥'의 출현 (lec 08-2)" ><meta name="article:media_name" content="파이쿵" ><meta property="article:mobile_url" content="http://pythonkim.tistory.com/m/32" ><meta property="article:pc_url" content="http://pythonkim.tistory.com/32" ><meta property="article:mobile_view_url" content="http://pythonkim.tistory.com/m/32" ><meta property="article:pc_view_url" content="http://pythonkim.tistory.com/32" ><meta property="article:pc_service_home" content="http://www.tistory.com" ><meta property="article:mobile_service_home" content="http://www.tistory.com/m" ><meta property="article:txid" content="2072317_32" /><meta property="article:published_time" content="2016-07-31T13:27:53+09:00" ><meta property="og:regDate" content="20160731132753" ><meta property="article:modified_time" content="2017-01-18T23:50:53+09:00" >
+<!-- END DAUMAPP -->
+
+
+
+<!-- BEGIN STRUCTURED_DATA -->
+<script type="application/ld+json">{"@context":"http://schema.org", "@type":"BlogPosting","mainEntityOfPage":{"@id": "http://pythonkim.tistory.com/32"},"url":"http://pythonkim.tistory.com/32","headline":"23. 딥러닝의 기본 개념2- Back-propagation 과 2006-2007 '딥'의 출현 (lec 08-2)","description":"머신러닝의 발전에 엄청난 공을 세운 캐나다의 단체. 이 단체 덕분에 머신러닝을 주도하는 연구소나 학자들은 캐나다의 몬트리올, 토론토 출신. 1987년 Hinton 교수가 이 단체의 지원을 받기 위해 캐나다로 이주하면서 발생한 현상.  가장 어려웠던 시기에 도박과도 같은 베팅을 Hinton에게 했던 CIFAR.  Hinton은 2006년과 2007년 머신러닝을 부활시킬 수 있는 논문 발표. 1987년 이주 이후 20년만에 거둔 성과.  여러 개의 l..","author":{"@type":"Person","name":"사과쿵"},"image":{"@type":"ImageObject","url":"http://cfile5.uf.tistory.com/image/235D7134579D77671E048D","width":"800px","height":"800px"},"datePublished":"20160731T13:27:53+09:00","dateModified":"20170118T23:50:53+09:00","publisher":{"@type":"Organization","name":"TISTORY","logo":{"@type":"ImageObject","url":"https://t1.daumcdn.net/cssjs/icon/557567EA016E200001","width":"800px","height":"800px"}}}</script>
+<!-- END STRUCTURED_DATA -->
+
+<link rel="apple-touch-icon" href="//i1.daumcdn.net/thumb/C180x180/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F211AB7495706515D201F0D">
+<link rel="apple-touch-icon" sizes="76x76" href="//i1.daumcdn.net/thumb/C76x76/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F211AB7495706515D201F0D">
+<link rel="apple-touch-icon" sizes="120x120" href="//i1.daumcdn.net/thumb/C120x120/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F211AB7495706515D201F0D">
+<link rel="apple-touch-icon" sizes="152x152" href="//i1.daumcdn.net/thumb/C152x152/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F211AB7495706515D201F0D"></head>
+
+<body>
+
+<script type="text/javascript">
+	T.config = {"TOP_SSL_URL":"https:\/\/www.tistory.com","PREVIEW":false,"ROLE":"guest","PREV_PAGE":"\/33","NEXT_PAGE":"\/31","BLOG":{"isDormancy":false,"title":"\ud30c\uc774\ucff5"},"NEED_COMMENT_LOGIN":false,"COMMENT_LOGIN_CONFIRM_MESSAGE":"","LOGIN_URL":"https:\/\/www.tistory.com\/auth\/login\/?redirectUrl=http%3A%2F%2Fpythonkim.tistory.com%2F32","DEFAULT_URL":"http:\/\/pythonkim.tistory.com","USER":{"name":null,"homepage":null}};
+</script>
+
+<script type="text/javascript" src="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/script/blog/common.js"></script>
+<div style="margin:0; padding:0; border:none; background:none; float:none; clear:none; z-index:0"></div>
+
+
+<div id="header">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Wrapper for slides 가로세로 비율(4:1)-->
+				<div id="carousel" class="carousel slide" data-ride="carousel">
+					<div class="centered carousel-inner" role="listbox">
+						<div class="item active">
+							<img src="//s1.daumcdn.net/cfs.tistory/custom/blog/207/2072317/skin/images/slider_01.png" width="100%" alt="Carousel 01">
+							<div class="carousel-caption">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- header close -->
+
+<div id="content">					<!-- 슬라이드와 본문 사이의 여백 -->
+	<div class="container">
+		<div class="row">				<!-- 본문 수평 마진 결정 -->
+			<div class="col-md-9">
+				
+
+				
+
+				
+					<div class="entry">
+						<div class="titleWrap jumbotron">
+							<!-- 현재 보여지는 글의 제목 -->
+							<h2>23. 딥러닝의 기본 개념2- Back-propagation 과 2006-2007 '딥'의 출현 (lec 08-2)</h2>
+							<!-- 현재 보여지는 글 제목의 아래에 있는 레이블 박스 2개 -->
+							<!--<span class="category label label-primary">머신러닝_김성훈교수님</span> -->
+							<!--<span class="date label label-info">2016.07.31 13:27</span> -->
+						</div>
+						
+						<!-- 현재 보여지는 글의 본문과 본문 아래 글 목록까지 함께. _article_rep_desc_로 동시 처리 -->
+						<div class="article">
+							<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:689px;;height:auto;max-width:100%"><img src="http://cfile5.uf.tistory.com/image/235D7134579D77671E048D" style="max-width:100%;height:auto" width="689" height="342" filename="lec_08_15.png" filemime="image/jpeg"/></span></p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:690px;;height:auto;max-width:100%"><img src="http://cfile29.uf.tistory.com/image/214C403A579D77C93971E9" style="max-width:100%;height:auto" width="690" height="387" filename="lec_08_16.png" filemime="image/png"/></span></p>
+<p>머신러닝의 발전에 엄청난 공을 세운 캐나다의 단체. 이 단체 덕분에 머신러닝을 주도하는 연구소나 학자들은 캐나다의 몬트리올, 토론토 출신. 1987년 Hinton 교수가 이 단체의 지원을 받기 위해 캐나다로 이주하면서 발생한 현상.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:701px;;height:auto;max-width:100%"><img src="http://cfile6.uf.tistory.com/image/22640C34579D776918A3C8" style="max-width:100%;height:auto" width="701" height="376" filename="lec_08_17.png" filemime="image/jpeg"/></span></p>
+<p>가장 어려웠던 시기에 도박과도 같은 베팅을 Hinton에게 했던 CIFAR.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:690px;;height:auto;max-width:100%"><img src="http://cfile26.uf.tistory.com/image/26020234579D776A02BECE" style="max-width:100%;height:auto" width="690" height="406" filename="lec_08_18.png" filemime="image/jpeg"/></span></p>
+<p>Hinton은 2006년과 2007년 머신러닝을 부활시킬 수 있는 논문 발표. 1987년 이주 이후 20년만에 거둔 성과.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:659px;;height:auto;max-width:100%"><img src="http://cfile3.uf.tistory.com/image/21438934579D776A32374C" style="max-width:100%;height:auto" width="659" height="393" filename="lec_08_19.png" filemime="image/jpeg"/></span></p>
+<ul style="list-style-type: square;"><li>여러 개의 layer가 있어도 초기값을 잘 선택하면 학습이 가능하다.</li><li>신경망을 잘 구성하면 복잡한 문제를 효율적으로 풀 수 있다.</li><li>Neural Network 대신 사람들의 주의를 끌 수 있는 Deep Learning으로 rebranding.</li></ul><div><br /></div>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:683px;;height:auto;max-width:100%"><img src="http://cfile26.uf.tistory.com/image/214D1E34579D776B28F8C3" style="max-width:100%;height:auto" width="683" height="414" filename="lec_08_20.png" filemime="image/jpeg"/></span></p>
+<p>이미지가 무엇인지 맞추는 ImageNet 경진대회에서 Hinton 교수님 밑에 있는 대학원생이 AlexNet으로 획기적인 성능 향상. 사람들의 관심을 끌어올린 계기가 됨.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:619px;;height:auto;max-width:100%"><img src="http://cfile4.uf.tistory.com/image/26433334579D776C3293FE" style="max-width:100%;height:auto" width="619" height="393" filename="lec_08_21.png" filemime="image/jpeg"/></span></p>
+<p>ImageNet은 2015년 사람보다 더 잘 구별할 수 있는 수준인 97%까지 발전. 스탠포드 대학생의 수준은 95%.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:651px;;height:auto;max-width:100%"><img src="http://cfile4.uf.tistory.com/image/26587536579D776D226650" style="max-width:100%;height:auto" width="651" height="380" filename="lec_08_22.png" filemime="image/jpeg"/></span></p>
+<p>현재는 사진의 상황까지 설명 가능.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:725px;;height:auto;max-width:100%"><img src="http://cfile26.uf.tistory.com/image/223E2C36579D776E341C36" style="max-width:100%;height:auto" width="725" height="392" filename="lec_08_23.png" filemime="image/jpeg"/></span></p>
+<p>김성훈 교수님 연구실에서 하는 연구 중의 하나. 사람이 음성으로 내린 명령을 분석해서 실행해 줌. 공상과학 영화에 나오는 한 장면.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:753px;;height:auto;max-width:100%"><img src="http://cfile26.uf.tistory.com/image/21415936579D776E319821" style="max-width:100%;height:auto" width="753" height="381" filename="lec_08_24.png" filemime="image/jpeg"/></span></p>
+<p>중국 바이두에서 개발한 음성 인식 기술. 소음이 심한 곳에서도 사람의 음성을 90%까지 인식 가능.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:704px;;height:auto;max-width:100%"><img src="http://cfile24.uf.tistory.com/image/24414D36579D776F30D778" style="max-width:100%;height:auto" width="704" height="391" filename="lec_08_25.png" filemime="image/jpeg"/></span></p>
+<p>사람보다 게임을 더 잘 한다는 딥러닝</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:693px;;height:auto;max-width:100%"><img src="http://cfile2.uf.tistory.com/image/243F0136579D7770331507" style="max-width:100%;height:auto" width="693" height="310" filename="lec_08_26.png" filemime="image/jpeg"/></span></p>
+<p>알파고에도 일부 포함되어 있다는 딥러닝.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:747px;;height:auto;max-width:100%"><img src="http://cfile9.uf.tistory.com/image/24504C36579D7771285039" style="max-width:100%;height:auto" width="747" height="380" filename="lec_08_27.png" filemime="image/jpeg"/></span></p><p style="text-align: left; clear: none; float: none;">Hinton 교수님께서 지금까지 발견한 것들에 대한 요약.</p><ul style="list-style-type: square;"><li>labeled 데이터셋이 너무 작았고</li><li>컴퓨터는 수백만 배 느렸다.</li><li>초기화를 잘 하지 못했고</li><li>non-linearity(sigmoid)를 잘못 사용했다.</li></ul>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:569px;;height:auto;max-width:100%"><img src="http://cfile6.uf.tistory.com/image/273CB736579D7772342C55" style="max-width:100%;height:auto" width="569" height="303" filename="lec_08_28.png" filemime="image/jpeg"/></span></p>
+<p>왜 머신러닝을 공부해야하는지 묻는다면?<br />데이터를 갖고 있거나 무언가를 팔고 있거나 비지니스를 하고 있다면, 누구라도 머신러닝을 활용할 수 있다!<br />머신러닝은 이미 우리 옆에 있고, 세상을 이롭게 할 준비가 된 상태이다. 주인공이 우리가 되면 더 좋지 않겠는가?</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:515px;;height:auto;max-width:100%"><img src="http://cfile26.uf.tistory.com/image/224A7E36579D77732BD190" style="max-width:100%;height:auto" width="515" height="321" filename="lec_08_29.png" filemime="image/jpeg"/></span></p>
+<p>음성을 인식해서 자동으로 표시되는 유튜브 자막. 사람이 입력한 것이 아님.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:735px;;height:auto;max-width:100%"><img src="http://cfile30.uf.tistory.com/image/246FC63A579D77742B51CF" style="max-width:100%;height:auto" width="735" height="354" filename="lec_08_30.png" filemime="image/jpeg"/></span></p>
+<p>친구들이 올린 내용 중에서 내가 좋아할 만한 것만 추천하는 페이스북 뉴스피드 시스템.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:750px;;height:auto;max-width:100%"><img src="http://cfile26.uf.tistory.com/image/275C7C3A579D7775318338" style="max-width:100%;height:auto" width="750" height="321" filename="lec_08_31.png" filemime="image/jpeg"/></span></p>
+<p>구글 검색 시스템. 내가 찾고 싶은 것을 상위에 표시해 줌.</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:552px;;height:auto;max-width:100%"><img src="http://cfile9.uf.tistory.com/image/2750F53A579D77753510B7" style="max-width:100%;height:auto" width="552" height="366" filename="lec_08_32.png" filemime="image/jpeg"/></span></p>
+<p>올 여름에 내가 볼 영화를 넷플릭스는 알고 있다!</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:595px;;height:auto;max-width:100%"><img src="http://cfile27.uf.tistory.com/image/235ED63A579D7777300ADD" style="max-width:100%;height:auto" width="595" height="373" filename="lec_08_33.png" filemime="image/jpeg"/></span></p>
+<p>아마존의 제품추천 시스템. 머신러닝을 사용하지 않고 비즈니스는 가능한 것일까?</p>
+<p><br /></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:613px;;height:auto;max-width:100%"><img src="http://cfile23.uf.tistory.com/image/236E2C3A579D77782BA699" style="max-width:100%;height:auto" width="613" height="340" filename="lec_08_34.png" filemime="image/jpeg"/></span></p>
+<p>왜 지금이어야 할까?</p>
+<ul style="list-style-type: square;"><li>세계적인 전문가가 되기에 늦지 않았고, 그렇게 복잡하지도 않다.</li><li>실제 사용할 수 정도로 정확하고, 공개된 도구 또한 많고, 파이썬과 같은 쉬운 언어가 있다.</li><li>그럼에도 불구하고 가장 중요한 것은, 재밌다!!</li></ul><p><br /></p><div class="daum_like_wrapper"><iframe class="daum_like_button" id="daum_like_button_32" frameborder="0" scrolling="no" allowTransparency="true" src="http://pythonkim.tistory.com/like/?uid=2072317_32&sc=404%2CblogId_2072317&url=http%3A%2F%2Fpythonkim.tistory.com%2F32&published=1469939273" style="width:100%;height:44px;margin:10px auto"></iframe></div><div style="width:100%;margin-top:30px;clear:both;height:30px">		<div class="entry-ccl" style="float:right;margin-top:0;height:0">
+			<a href="http://creativecommons.org/licenses/by/4.0/deed.ko" target="_blank" style="text-decoration: none">
+				<img id="ccl-icon-32-0" class="entry-ccl-by" src="//i1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/static/admin/editor/ccl_black01.png"
+				     onmouseover="tistoryCcl.show(this, 3)"
+				     onmouseout="tistoryCcl.hide()" alt="저작자 표시" style="width:15px;height:15px"/>
+								<!--
+	<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+		<Work rdf:about="">
+			<license rdf:resource="http://creativecommons.org/licenses/by-fr/2.0/kr/" />
+		</Work>
+		<License rdf:about="http://creativecommons.org/licenses/by-fr/">
+			<permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+			<permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+			<requires rdf:resource="http://web.resource.org/cc/Notice"/>
+			<requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+			<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+		</License>
+	</rdf:RDF>
+	-->
+			</a>
+		</div>
+					<script type="text/javascript">
+				if (/MSIE [0-6]\./.test(navigator.userAgent)) {
+					for (var i = 0; i <1; i++) {
+						var el = document.getElementById('ccl-icon-32-' + i);
+						el.style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + el.src + '",sizingMethod="image")';
+						el.src = '//i1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/static/admin/form/s.gif';
+					}
+				}
+			</script>
+			<div style="width:31px;float:left;"><a href="/toolbar/popup/abuseReport/?entryId=32" onclick="window.open(this.href, 'tistoryThisBlogPopup', 'width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no'); return false;"><img style="border:0" src="//t1.daumcdn.net/tistory_admin/static/ico/ico_spam_report.png" alt="신고"></a></div></div><div class="another_category another_category_color_gray">
+<h4>'<a href="/category/머신러닝_김성훈교수님">머신러닝_김성훈교수님</a>' 카테고리의 다른 글</h4>
+<table>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/34" >25. 파이썬으로 XOR 조합 찾아보기</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.08.01</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/33" >24. XOR 문제 딥러닝으로 풀기 (lec 09-1)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.08.01</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/32"  class ="current" >23. 딥러닝의 기본 개념2- Back-propagation 과 2006-2007 '딥'의 출현 (lec 08-2)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.07.31</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/31" >22. 딥러닝의 기본 개념- 시작과 XOR 문제 (lec 08-1)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.07.31</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/28" >21. 로그 함수 정리</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.07.29</td>
+</tr>
+<tr>
+<th>
+<a href="http://pythonkim.tistory.com/27" >20. 2주차 스터디 정리</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2016.07.29</td>
+</tr>
+</table></div>
+						</div>
+
+						<!-- 글 목록 하단의 프로필. 이미지와 간략한 소개 나오는 곳 -->
+						<!-- 프로필 아래에 "받은 트랙백이 없고, 댓글이 없습니다." <div class="actionTrail"> -->
+						
+					</div> 					<!-- end of entry -->
+				
+
+			<!-- 하단 목록 번호 1 2 3 .. 9 10 <s_paging> -->
+			</div>
+			
+			<div class="col-md-3">
+				<!-- 기본 사이드바 -->
+				<div class="sidebar">
+				
+					<!-- 오른쪽 사이드바의 공지사항 모듈. 없앨려면, s_sidebar_element 안쪽을 주석으로 막아야 한다. b 태그 추가했다 -->
+						
+							<div id="notice" class="widget">
+								<h3><i class="fa fa-bullhorn"></i>공지사항</h3>
+								<ul class="fa-ul">
+									
+										<li><i class="fa-ul fa fa-chevron-right"></i>
+											<a href="/notice/77"><b>파이썬 동영상</b></a> </li>
+									
+										<li><i class="fa-ul fa fa-chevron-right"></i>
+											<a href="/notice/76"><b>머신러닝 동영상</b></a> </li>
+									
+										<li><i class="fa-ul fa fa-chevron-right"></i>
+											<a href="/notice/25"><b>머신러닝 목차</b></a> </li>
+									
+								</ul>
+							</div>
+						
+					
+					<!-- 오른쪽 사이드바의 카테고리 모듈. 없앨려면, s_sidebar_element 안쪽을 주석으로 막아야 한다. -->
+						<div id="category" class="widget">
+							<h3><i class="fa fa-folder"></i>카테고리</h3>
+							<ul class="tt_category">
+	<li class="">
+		<a class="link_tit" href="/category">
+			분류 전체보기							<span class="c_cnt">(70)</span>
+			
+					</a>
+
+				<ul class="category_list">
+							<li class="">
+					<a class="link_item" href="/category/프로필">
+						프로필													<span class="c_cnt">(0)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="/category/머신러닝">
+						머신러닝													<span class="c_cnt">(3)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="/category/머신러닝_김성훈교수님">
+						머신러닝_김성훈교수님													<span class="c_cnt">(45)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="/category/텐서플로우">
+						텐서플로우													<span class="c_cnt">(12)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="/category/이것저것">
+						이것저것													<span class="c_cnt">(10)</span>
+						
+											</a>
+
+					
+				</li>
+					</ul>
+			</li>
+</ul>
+
+						</div>
+					
+						<div class="author alert alert-success">
+							<img src="http://cfile4.uf.tistory.com/image/211AB7495706515D201F0D" alt="블로그 이미지" 
+									 class="img-responsive img-circle text-center" width="50%">
+							<p><span class="text label label-primary"></span></p>
+							<p>얼떨결에 붙인 이름 파이썬_킴</p>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--	
+<div id="footer">
+	<div class="container">
+		<div class="row">
+				<div class="copyright">
+					<p class="text-center">Copyright 2016 파이썬_킴. All Rights Reserved.<br/>
+				</div>
+		</div>
+	</div>
+</div>
+-->
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="//s1.daumcdn.net/cfs.tistory/custom/blog/207/2072317/skin/images/bootstrap.min.js"></script>
+<script>
+$(window).scroll(function() {
+  if ($(document).scrollTop() > 50) {
+    $('nav').addClass('shrink');
+  } else {
+    $('nav').removeClass('shrink');
+  }
+});
+</script>
+<script id="DragSearchJs" type="text/javascript" src="http://s1.daumcdn.net/img.search/front/js/searchDragSelection.js?nil_ch=tistory" charset="euc-kr"></script>
+<script>
+$("body").bind('copy', function (e) {
+    if (typeof window.getSelection == "undefined") {//IE8 or earlier...
+        event.preventDefault();
+
+        var pagelink = '\n\n 출처: ' + decodeURI(document.location.href),
+            copytext =  window.getSelection() + pagelink;
+
+        if (window.clipboardData) {
+            window.clipboardData.setData('Text', copytext);
+        }
+        return;
+    }
+    var body_element = document.getElementsByTagName('body')[0];
+    var selection = window.getSelection();
+
+    //if the selection is short let's not annoy our users
+    if (("" + selection).length < 30) return;
+
+    //create a div outside of the visible area
+    var newdiv = document.createElement('div');
+    newdiv.style.position = 'absolute';
+    newdiv.style.left = '-99999px';
+    body_element.appendChild(newdiv);
+    newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+    //we need a <pre> tag workaround
+    //otherwise the text inside "pre" loses all the line breaks!
+    if (selection.getRangeAt(0).commonAncestorContainer.nodeName == "PRE") {
+        newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+    }
+
+    newdiv.innerHTML += "<br /><br />출처: <a href='"
+        + document.location.href + "'>"
+        + decodeURI(document.location.href) + "</a> [파이쿵]";
+
+    selection.selectAllChildren(newdiv);
+    window.setTimeout(function () { body_element.removeChild(newdiv); }, 200);
+});
+</script><script> if (!window.jQuery) document.write("<script src=\"http://t1.daumcdn.net/tistory_admin/lib/jquery-1.12.4.min.js\"><\/script>") </script>
+	<script src="//s1.daumcdn.net/cfs.tistory/resource/0c59a9d20b31be342e2141a1d0559a4755f3d334/blog/plugins/lightbox/assets/js/lightbox.min.js"></script>
+	<script>
+	    lightbox.option({
+			"fadeDuration": 200,
+		    "resizeDuration": 200,
+		    "wrapAround": false,
+			"albumLabel": "%1 / %2",
+			"fitImagesInViewport":true ,
+			"stopEvent": false
+	    })
+	</script><script type="text/javascript">
+var _tiq = 'undefined' !== typeof _tiq ? _tiq : []; // Global Variables
+_tiq.push(["__setParam", "title", "파이쿵 :: 23. 딥러닝의 기본 개념2- Back-propagation 과 2006-2007 '딥'의 출현 (lec 08-2)"]);
+_tiq.push(["__setParam", "svcdomain", "user.tistory.com"]);
+_tiq.push(["__setParam", "category", ""]);
+_tiq.push(["__setParam", "articleno", "32"]);
+_tiq.push(["__setParam", "plink", "http://pythonkim.tistory.com/32"]);
+_tiq.push(["__setParam", "date", "2016-07-31 13:27:53"]);
+_tiq.push(["__setParam", "author", "pythonkim"]);
+_tiq.push(["__setParam", "length", "7267"]);
+_tiq.push(["__setParam", "isauthor", "N"]);
+_tiq.push(["__setParam", "ishidden", "1"]);
+_tiq.push(["__setParam", "comments", "0"]);
+_tiq.push(["__setParam", "param1", "0"]);
+_tiq.push(["__setParam", "param2", "e"]);
+_tiq.push(["__setParam", "param3", ""]);
+_tiq.push(["__setParam", "like_ex", "{'serviceId': 'tistory', 'uniqueId': '2072317_32', 'serviceCategories': '404,blogId_2072317'}"]);
+_tiq.push(["__trackPageview"]);
+(function(d) {
+	var se = d.createElement('script'); se.type = 'text/javascript'; se.async = true;
+	se.src = location.protocol + '//m2.daumcdn.net/tiara/js/td.min.js';
+	var s = d.getElementsByTagName('head')[0]; s.appendChild(se);
+})(document);
+</script>
+<script type="text/javascript">
+var __TiaraObj = __TiaraObj || {}; if ('undefined' === typeof __TiaraObj.startTime) { __TiaraObj.startTime = new Date(); }
+var addEvent = function (evt, fn) { window.addEventListener ? window.addEventListener(evt, fn, false) : window.attachEvent('on' + evt, fn); };
+var ua = navigator.userAgent.toLowerCase(); var isIOS = /iP[ao]d|iPhone/i.test(ua); var contentStat = function() {
+_tiq.push(['__content', 't_content', {
+"c_id":"2072317_32", 
+"c_title":"파이쿵 :: 23. 딥러닝의 기본 개념2- Back-propagation 과 2006-2007 '딥'의 출현 (lec 08-2)", 
+"type":"article", 
+"author":"사과쿵", 
+"author_id":"1415031", 
+"cp":"pythonkim", 
+"cp_id":"2072317", 
+"regdata":"2016-07-31 13:27:53", 
+"plink":"http://pythonkim.tistory.com/32", 
+"media":"pcweb", 
+"comment_cnt":0, 
+"duration": (new Date()).getTime() - __TiaraObj.startTime.getTime()
+}]); };
+addEvent(isIOS ? "pagehide" : "beforeunload", contentStat);
+</script>
+<script type="text/javascript">window.roosevelt_params_queue = window.roosevelt_params_queue || []; window.roosevelt_params_queue.push({channel_id: "dk", channel_label: "tistory"});</script>
+<script type="text/javascript" src="//adimg.daumcdn.net/rt/dk_bt/roosevelt_dk_bt.js" async></script><script type="text/javascript">if(window.console!=undefined){setTimeout(console.log.bind(console,"%cTISTORY","font:8em Arial;color:#EC6521;font-weight:bold"),0);setTimeout(console.log.bind(console,"%c  나를 표현하는 블로그","font:2em sans-serif;color:#333;"),0);}</script>		<div id="tistorytoolbarid"
+		     style="position:absolute;height:20px;top:4px;right:0px;background-color:transparent;background-image:none;z-index:11;">
+			<div class="tistorytoolbar tt_menubar_login">
+				<div
+					class="tt_menubar_whiteBar">
+					<div id="ttMenubarInnerWrap" class="tt_menubar_inner">
+						<div class="tt_menubar_bg_toolbar"></div>
+						<h2 style="display:none;">티스토리 툴바</h2>
+						<div class="tt_menubar_mainmenu"><a
+								class="tt_menubar_link_tit tt_menubar_link_tit_daum tt_menubar_link_tit_eng"
+								href="http://www.daum.net/?nil_ref=tistory"
+								target="_blank">Daum</a></div>
+						<div class="tt_menubar_bg_bar"></div>
+						<div class="tt_menubar_mainmenu"><a class="tt_menubar_link_tit tt_menubar_link_tit_eng"
+						                                    href="http://www.tistory.com">Tistory</a>
+						</div>
+						<div class="tt_menubar_bg_bar"></div>
+						<div class="tt_menubar_logout"><a class="tt_menubar_link_tit"
+														  href="https://www.tistory.com/auth/login">로그인</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</body>
+</html>

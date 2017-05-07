@@ -1,0 +1,13 @@
+# To append the file extension
+
+find . -type f -exec mv '{}' '{}'.html \;
+
+# Except 'urls.txt' file
+mv urls.txt.html urls.txt
+
+# To convert file encoding to UTF-8
+
+find . -type f -exec recode euc-kr..utf-8 {} \;
+find . -type f -exec recode ISO-8859-1..utf-8 {} \;
+
+
