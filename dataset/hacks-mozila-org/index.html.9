@@ -1,0 +1,289 @@
+
+
+<!doctype html>
+<html lang="en-US">
+<head data-template-path="https://hacks.mozilla.org/wp-content/themes/Hax">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Metadata for Facebook -->
+  <meta property="og:site_name" content="Mozilla Hacks &#8211; the Web developer blog">
+  <meta property="og:url" content="https://hacks.mozilla.org/2017/03/a-practitioners-perspective-on-a-frame-interview-with-roland-dubois/">
+  <meta property="og:title" content="A practitioner’s perspective on A-Frame:  —Interview with Roland Dubois">
+  <meta property="og:description" content="In this conversation, we chat with Roland Dubois, a Virtuleap finalist and founding designer at studio.zeldman. Roland is the creator of gravr.io, a cloud service ...">
+          <meta property="og:image" content="https://hacks.mozilla.org/files/2017/03/0d44f0c2-d6e1-11e6-8b4f-7fb14c05a492-500x93.jpeg">
+          <meta property="og:image" content="https://hacks.mozilla.org/files/2017/03/gravr.io-shake-component-500x281.gif">
+          <meta property="og:image" content="https://hacks.mozilla.org/files/2017/03/gravr.io-gravr-component-500x281.gif">
+  
+  <!-- Metadata for Twitter -->
+  <meta property="twitter:title" content="A practitioner’s perspective on A-Frame:  —Interview with Roland Dubois">
+  <meta property="twitter:description" content="In this conversation, we chat with Roland Dubois, a Virtuleap finalist and founding designer at studio.zeldman. Roland is the creator of gravr.io, a cloud service ...">
+  <meta name="twitter:card" content="summary_large_image">
+          <meta property="twitter:image" content="https://hacks.mozilla.org/files/2017/03/0d44f0c2-d6e1-11e6-8b4f-7fb14c05a492-500x93.jpeg">
+          <meta property="twitter:image" content="https://hacks.mozilla.org/files/2017/03/gravr.io-shake-component-500x281.gif">
+          <meta property="twitter:image" content="https://hacks.mozilla.org/files/2017/03/gravr.io-gravr-component-500x281.gif">
+    <meta name="twitter:site" content="@mozhacks">
+
+  <link rel="alternate" type="application/rss+xml" title="Mozilla Hacks &#8211; the Web developer blog RSS Feed" href="https://hacks.mozilla.org/feed/">
+
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link href="//addons.cdn.mozilla.net/static/css/tabzilla/tabzilla.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/style.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.6.0/styles/solarized_light.min.css">
+
+  <title>  A practitioner’s perspective on A-Frame:  —Interview with Roland Dubois &#x2605;
+        Mozilla Hacks &#8211; the Web developer blog  </title>
+
+  <script type="text/javascript">
+    window.hacks = {};
+    // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+    var removeUtms  =   function(){
+        var l = window.location;
+        if( l.hash.indexOf( "utm" ) != -1 ){
+            var anchor = l.hash.match(/#(?!utm)[^&]+/);
+            anchor  =   anchor? anchor[0]: '';
+            if(!anchor && window.history.replaceState){
+                history.replaceState({},'', l.pathname + l.search);
+            } else {
+                l.hash = anchor;
+            }
+        };
+    };
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35433268-8'],
+              ['_setAllowAnchor', true]);
+    _gaq.push (['_gat._anonymizeIp']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push( removeUtms );
+    (function(d, k) {
+      var ga = d.createElement(k); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = 'https://ssl.google-analytics.com/ga.js';
+      var s = d.getElementsByTagName(k)[0]; s.parentNode.insertBefore(ga, s);
+    })(document, 'script');
+  </script>
+
+  <link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Mozilla Hacks - the Web developer blog &raquo; A practitioner’s perspective on A-Frame:  —Interview with Roland Dubois Comments Feed" href="https://hacks.mozilla.org/2017/03/a-practitioners-perspective-on-a-frame-interview-with-roland-dubois/feed/" />
+<link rel='stylesheet' id='wp-syntax-css-css'  href='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/js/analytics.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/js/socialshare.min.js?ver=4.7.3'></script>
+<link rel='https://api.w.org/' href='https://hacks.mozilla.org/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://hacks.mozilla.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://hacks.mozilla.org/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='A new CSS Grid demo on mozilla.org' href='https://hacks.mozilla.org/2017/03/a-new-css-grid-demo-on-mozilla-org/' />
+<link rel='next' title='A Saturday Night: Track and record movement in WebVR' href='https://hacks.mozilla.org/2017/03/a-saturday-night-track-and-record-movement-in-webvr/' />
+<link rel="canonical" href="https://hacks.mozilla.org/2017/03/a-practitioners-perspective-on-a-frame-interview-with-roland-dubois/" />
+<link rel='shortlink' href='https://hacks.mozilla.org/?p=30585' />
+<link rel="alternate" type="application/json+oembed" href="https://hacks.mozilla.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhacks.mozilla.org%2F2017%2F03%2Fa-practitioners-perspective-on-a-frame-interview-with-roland-dubois%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://hacks.mozilla.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhacks.mozilla.org%2F2017%2F03%2Fa-practitioners-perspective-on-a-frame-interview-with-roland-dubois%2F&#038;format=xml" />
+            <script type="text/javascript">
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-36116321-4', 'auto');
+                ga('set', 'dimension1', 'Mozilla Hacks - the Web developer blog');
+                ga('send', 'pageview');
+            </script><link rel="shortcut icon" type="image/x-icon" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/favicon.ico" /><style>#wpadminbar #wp-admin-bar-site-name>.ab-item:before { content: none !important;}li#wp-admin-bar-site-name a { background: url( "https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/favicon.ico" ) left center/20px no-repeat !important; padding-left: 21px !important; background-size: 20px !important; } li#wp-admin-bar-site-name { margin-left: 5px !important; } li#wp-admin-bar-site-name {} #wp-admin-bar-site-name div a { background: none !important; }
+</style></head>
+<body>
+  <div class="outer-wrapper">
+    <header class="section section--fullwidth header">
+      <div class="masthead row">
+        <div id="tabzilla">
+          <a href="https://www.mozilla.org/">Mozilla</a>
+        </div>
+        <div class="branding block block--3">
+          <h1><a href="https://hacks.mozilla.org"><img src="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/img/mdn-logo-mono.svg" alt="Mozilla"><span>Hac<span class="logo-askew">k</span>s</span></a></h1>
+        </div>
+        <div class="search block block--2">
+          <form class="search__form" method="get" action="https://hacks.mozilla.org/">
+            <input type="search" name="s" class="search__input" placeholder="Search Mozilla Hacks" value="">
+            <i class="fa fa-search search__badge"></i>
+          </form>
+        </div>
+        <nav class="social">
+          <a class="social__link youtube" href="http://www.youtube.com/user/mozhacks" title="YouTube"><i class="fa fa-youtube"></i><span>Hacks on YouTube</span></a>
+          <a class="social__link twitter" href="https://twitter.com/mozhacks" title="Twitter"><i class="fa fa-twitter"></i><span>@mozhacks on Twitter</span></a>
+          <a class="social__link rss" href="https://hacks.mozilla.org/feed/" title="RSS Feed"><i class="fa fa-rss"></i><span>Hacks RSS Feed</span></a>
+        </nav>
+      </div>
+    </header>
+
+  
+<div id="content-head" class="section">
+  <h1 class="post__title">A practitioner’s perspective on A-Frame:  —Interview with Roland Dubois</h1>
+  <div class="byline">
+    <h3 class="post__author">
+                      <img alt='' src='https://secure.gravatar.com/avatar/51e4f6459f94a04520ee141daeed3af0?s=64&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/51e4f6459f94a04520ee141daeed3af0?s=128&amp;d=mm&amp;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' />        By
+                                        <a class="url" href="http://unoyunodiez.com" rel="external me">Salva</a>                            </h2>
+    <div class="post__meta">
+      Posted on
+      <abbr class="published" title="2017-03-28T07:58:56-07:00">
+        March 28, 2017      </abbr>
+      <span class="entry-cat">in
+        <a href="https://hacks.mozilla.org/category/featured/" rel="category tag" title="View all posts in Featured Article" >Featured Article</a>, <a href="https://hacks.mozilla.org/category/web-developers/" rel="category tag" title="View all posts in Web Developers" >Web Developers</a>,  and <a href="https://hacks.mozilla.org/category/webvr/" rel="category tag" title="View all posts in WebVR" >WebVR</a>      </span>
+            <div class="socialshare" data-type="bubbles"></div>
+    </div>
+  </div>
+</div>
+
+<main id="content-main" class="section article">
+  <article class="post" role="article">
+    <p>There is a growing awareness and interest in WebVR among Web developers, and as a result, high-level tools and libraries are emerging to populate the JavaScript ecosystem.</p>
+<p>One of the libraries is <a href="http://aframe.io/">A-Frame</a>, supported by Mozilla. A-Frame simplifies the boilerplate required to start creating virtual reality experiences, and uses HTML and the DOM API to build and manipulate the VR scene easily, in a way that is familiar to web developers.</p>
+<p>Recently, our friends at Virtuleap, a WebVR demo destination and continuous hackathon website, announced the finalists of <a href="http://www.virtuleap.com/page/view/competition">their first WebVR contest</a> with prizes up to $30 000. It turns out that <a href="https://aframe.io/blog/awoa-49/">nine out of ten finalists used A-Frame</a> to build their projects. We wanted to talk with them to learn more about their experience developing VR for the Web, and what they liked working with A-Frame.</p>
+<p>In this conversation, I chat with <a href="http://rolanddubois.com/">Roland Dubois</a>, a Virtuleap finalist and founding designer at <a href="https://studio.zeldman.com/">studio.zeldman</a>. Roland is the creator of <a href="http://gravr.io/">gravr.io</a>,<br />
+a cloud service that allows you to create a VR profile and ‘avatar’ and synchronize your VR preferences and pre-sets for accessibility and comfort across multiple VR devices.</p>
+<p><a href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/files/2017/03/gravr.io-gravr-component.gif"><img src="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/files/2017/03/gravr.io-gravr-component-500x281.gif" alt="Along with your gravr.io component, there are several profiles, each coming with different presets for height, field of view, motion sickness reduction, etc." width="500" height="281" class="aligncenter size-large wp-image-30635" srcset="https://hacks.mozilla.org/files/2017/03/gravr.io-gravr-component-500x281.gif 500w, https://hacks.mozilla.org/files/2017/03/gravr.io-gravr-component-220x125.gif 220w, https://hacks.mozilla.org/files/2017/03/gravr.io-gravr-component-250x140.gif 250w" sizes="(max-width: 500px) 100vw, 500px" /></a></p>
+<hr class="dino" />
+<p><strong>What is your background in development and VR?</strong></p>
+<p>I went to school for design, and over time, I focused increasingly on development and code. I played with 3D software like Cinema4D, 3D Studio Max and Blender, mainly for modelling and animation. I worked on a 3D game project where you fly a mouse-sized spaceship through a family home and get chased by the cat. I was in charge of story, 3D models, textures and gameplay and a friend programmed in C# and compiled the game for native PC (.exe).</p>
+<p>I have been working on websites for over a decade, and I’m a big fan of web standards which is why I’m so excited about A-Frame, a framework with semantic markup, which renders content in Canvas &#8211; the best of both worlds.</p>
+<p><strong>Why did you use A-Frame?</strong></p>
+<p>WebGL and WebVR are JavaScript bibraries and APIs. They are powerful but really complicated. To be fair, I am not a JavaScript ninja, and I’m used to working with libraries and plugins like jQuery or <a href="http://prototypejs.org/">Prototype</a>. Lately, I’m using vanilla JavaScript, but for web designers/developers like me, WebGL and WebVR come with a huge learning curve before any VR content can be created. I am working closely with <a href="https://twitter.com/zeldman">Jeffrey Zeldman</a>, and we are part of large community of web designers and developers that embrace the concept of a free and open web. A-Frame, a semantic HTML framework for VR on the web, is an incredibly useful and attractive tool for the community and all its creative minds. Consuming content in virtual experiences is going to be the future of the web and A-Frame will be essential to creating these experiences.</p>
+<p><strong>Say something you love about A-Frame? And something you hate?</strong></p>
+<p>Support is great and the community does help you. VR is a blank canvas, and there&#8217;s an opportunity to shape the standards, creatively look outside of the box, and make an impact on innovation.</p>
+<p>I don’t really hate anything, but documentation is lacking. We need more samples focusing on gaze- or voice-based interactions and case studies that don’t require Vive controllers. I understand this is a space that grows over time, but currently, it’s hard to find answers to many questions that don’t require in-depth knowledge of <a href="https://threejs.org/">three.js</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API">WebVR</a>.</p>
+<p><strong>What would you like to see in the next release?</strong></p>
+<p>I would really like to see a way to manipulate “user-height”, “fov” and XYZ/ABC angles after you’ve entered vr view mode. I would also like to see some kind of CSS-like implementation for entity properties.</p>
+<p><strong>What did you miss when developing for WebVR? Performance tools? Hardware emulation?</strong></p>
+<p>I debug mostly with Chrome DevTools and Console. I develop locally in vagrant/VM and clean up my files with gulp. What I’m missing are measurement tools and framerate/performance count.</p>
+<p>I’m using the A-Frame inspector mostly for orientation, and I think it makes a lot of sense. However, I would like to have the ability to modify the source code in HTML within an extra modal. I would love to know if there’s a way to add extra modal windows for camera views and simulate a preview in VR mode.</p>
+<p><strong>At Mozilla, we understand the Internet as a universal shared resource and we are concerned about VR content not reaching certain audiences due to accessibility, exclusivity or affordability issues. Roland also seems to share these concerns. In his own words:</strong></p>
+<p>In my opinion, WebVR interaction relies far too much on VR controllers from Vive, Oculus or Daydream. There are so many opportunities that lie within the hardware components of a generic smartphone of today that haven’t been considered. Why not just use the smartphone itself as a controller instead of needing to buy more and more expensive gadgets and controllers to do the same thing?</p>
+<p><strong>So, aside from A-Frame, we wanted to ask a couple more questions around interaction:</strong></p>
+<p><strong>What can you tell me about the components you created? Why do you provide the shake component? What&#8217;s your opinion of VR interaction?</strong></p>
+<p>If we use our smartphones right now along with a $5 cardboard viewer, then we’ll need to think about ways to trigger content on a screen that is not touchable. We have gaze controls that access the gyrometer. We have voice controls that access the microphone, which would work great, except if you’re somewhere loud. However, my <a href="https://github.com/rdub80/aframe-shake2show-component">shake component</a> provides an additional trigger independent of gaze and voice. The component accesses the accelerometer, a hardware feature in pretty much every smartphone today, which only requires a quick, light tap on the side of the device.</p>
+<figure>
+<pre><code class="html language-html">&lt;head&gt;
+  &lt;title&gt;My A-Frame Scene&lt;/title&gt;
+  &lt;script src="https://aframe.io/releases/0.3.0/aframe.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://rawgit.com/rdub80/aframe-shake2show-component/master/dist/aframe-shake2show-component.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;a-scene&gt;
+  &lt;a-entity shake2show visible="false"&gt;&lt;/a-entity&gt;
+  &lt;a-entity camera look-controls&gt;&lt;/a-entity&gt;
+  &lt;/a-scene&gt;
+&lt;/body&gt;</code></pre><figcaption>This is all the code needed to integrate Roland&#8217;s shake2show component into an A-Frame scene.</figcaption></figure>
+<p><a href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/files/2017/03/gravr.io-shake-component.gif"><img src="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/files/2017/03/gravr.io-shake-component-500x281.gif" alt="The component shake2show makes the device detect a shake toggling the visibility of the component's entity" width="500" height="281" class="aligncenter size-large wp-image-30634" srcset="https://hacks.mozilla.org/files/2017/03/gravr.io-shake-component-500x281.gif 500w, https://hacks.mozilla.org/files/2017/03/gravr.io-shake-component-220x125.gif 220w, https://hacks.mozilla.org/files/2017/03/gravr.io-shake-component-250x140.gif 250w" sizes="(max-width: 500px) 100vw, 500px" /></a></p>
+<p><strong>Do you believe in a sort of progressive enhancement of VR experiences? I mean, designing for limited hardware and improving interaction as you interact with upgraded hardware?</strong></p>
+<p>I absolutely believe in the progressive enhancement of WebVR&#8230; The web is for everyone and a developer for the web should do their best to cater for everyone. Dropping $1500 or more on a new hardware setup just to consume WebVR content is against all my principles. We cannot focus on the newest gadgets to make VR mainstream.</p>
+<p>&#8230;If you’re using the smartphone alone, you’ll navigate via gaze control or voice. If you are on a GearVR headset you’ll get an extra button to click. If you have a Bluetooth controller connected or a Leap Motion sensor, the WebVR experience will offer you an enhanced user experience. If you have none of the above, but you’re using your smartphone, you should be able to have a comparable experience without all the other expensive extra hardware out there.</p>
+<hr class="dino" />
+<p>The first Oculus Rift developer kit was released four years ago, but VR interaction is still uncharted territory and it exposes new and interesting usability challenges. Roland reminds us:</p>
+<blockquote class="pullquote"><p>The VR developer is completely in charge of creating an entirely new world and can’t accommodate personal preferences and adjustments that we use every day in our normal digital setups. No developer has had this much responsibility since the birth of the iPhone.</p></blockquote>
+<p>The A-Frame project is committed to exploring and experimenting with Virtual and Augmented Reality as a medium, providing the Web community with accessible tools to create production quality content.</p>
+<p>The feedback coming from developers like Roland while implementing projects like <a href="https://gravr.io">gravr.io</a> is crucial to battle-test A-Frame and discover new use cases. We are eager to see more development that pushes the envelope and helps evolve the A-Frame API, from simple demos to full-featured experiences.</p>
+<p>I would like to end this interview by thanking Roland for sharing his time: Roland, It’s been a pleasure talking with you directly about your impressions of working with A-Frame. From Mozilla, we wish you all the best with <a href="https://gravr.io">gravr.io</a></p>
+    <section class="about">
+                                <h2 class="about__header">About
+                          <a class="url" href="http://unoyunodiez.com" rel="external me">
+                Salva              </a>
+                      </h3>
+                      <p>Front-end developer at Mozilla. Open-web advocate, I love programming languages, cinema, music, video-games and beer.</p>
+                    <ul class="author-meta fa-ul"><li><i class="fa-li fa fa-globe"></i><a href="http://unoyunodiez.com" class="website" rel="me">unoyunodiez.com</a></li><li><i class="fa-li fa fa-twitter"></i><a href="http://twitter.com/salvadelapuente" class="twitter" rel="me">@salvadelapuente</a></li></ul>            <p><a class="url" href="https://hacks.mozilla.org/author/sdelapuentemozilla-com/">More articles by Salva&hellip;</a></p>
+                  </section>
+  </article>
+  
+
+<section class="discussion">
+  <hr class="dino">
+  <div class="comments">
+    <header class="comments__head">
+      <h3>One comment</h3>
+    </header>
+
+          <ol class="comments__list" class="hfeed">
+      
+ <li id="comment-20974" class="comment even thread-even depth-1">
+      <b class="comment__title vcard">
+      <cite class="author fn">daizhilong</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>love work</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2017/03/a-practitioners-perspective-on-a-frame-interview-with-roland-dubois/#comment-20974" rel="bookmark" title="Permanent link to this comment by daizhilong"><abbr class="published" title="2017-03-30">March 30th, 2017</abbr> at 01:10</a>
+
+      <p class="comment__util"> </p>
+  </li><!-- #comment-## -->
+      </ol>
+      </div>
+
+<p class="comments__closed"><b>Comments are closed for this article.</b></p>
+
+
+</main><!-- /#content-main -->
+
+  
+
+    <footer class="footer section section--fullwidth">
+      <div class="row">
+        <p class="block block--1">
+          Except where otherwise noted, content on this site is licensed
+          under the
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license external">Creative Commons Attribution Share-Alike License v3.0</a>
+          or any later version.
+        </p>
+        <img class="footer__logo" alt="the Mozilla dino logo" src="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/img/dino.svg">
+      </div>
+    </footer>
+  </div>
+  <link rel='stylesheet' id='hljstheme-css'  href='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-code-highlightjs/styles/default.css?ver=0.5.17' type='text/css' media='all' />
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-syntax/js/wp-syntax.js?ver=1.1'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-code-highlightjs/highlight.common.pack.js?ver=0.5.17'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-code-highlightjs/highlight.custom.pack.js?ver=0.5.17'></script>
+    <style>pre.hljs {padding: 5px;}
+pre.hljs code {}</style>
+    <script type="text/javascript">
+    (function($, window) {
+        var init_fn_flag = false;
+        var init_fn = (function() {
+            if (init_fn_flag)
+                return;
+            init_fn_flag = true;
+             hljs.configure({"tabReplace":"    "});
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+        $(document).ready(init_fn);
+        $(window).on("load", init_fn);
+    })(jQuery, window);
+    </script>
+  <script>
+    // External links should open in a new tab.
+    (function () {
+      var postLinks = document.querySelectorAll('#content-main a');
+
+      var origin = location.origin;
+
+      for (var i = 0; i < postLinks.length; i++) {
+        var link = postLinks[i];
+        if (link.origin !== origin && !link.getAttribute('target')) {
+          link.setAttribute('target', '_blank');
+        }
+      }
+    })();
+
+    window.addEventListener('load', function () {
+      if (document.querySelector('#newsletterForm')) {
+        var script = document.createElement('script');
+        var path = document.head.getAttribute('data-template-path');
+        script.setAttribute('src', path + '/js/newsletter.js');
+        document.head.appendChild(script);
+      }
+    });
+  </script>
+</body>
+</html>

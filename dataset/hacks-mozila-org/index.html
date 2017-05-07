@@ -1,0 +1,389 @@
+
+
+<!doctype html>
+<html lang="en-US">
+<head data-template-path="https://hacks.mozilla.org/wp-content/themes/Hax">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Metadata for Facebook -->
+  <meta property="og:site_name" content="Mozilla Hacks &#8211; the Web developer blog">
+  <meta property="og:url" content="https://hacks.mozilla.org/2017/05/debugging-web-push-in-mozilla-firefox/">
+  <meta property="og:title" content="Debugging Web Push in Mozilla Firefox">
+  <meta property="og:description" content="Introduction This article is part of an ongoing series about using and working with WebPush and Mozilla’s WebPush service. This article is not meant to ...">
+          <meta property="og:image" content="https://hacks.mozilla.org/files/2017/04/BrowserConsole-500x477.png">
+  
+  <!-- Metadata for Twitter -->
+  <meta property="twitter:title" content="Debugging Web Push in Mozilla Firefox">
+  <meta property="twitter:description" content="Introduction This article is part of an ongoing series about using and working with WebPush and Mozilla’s WebPush service. This article is not meant to ...">
+  <meta name="twitter:card" content="summary_large_image">
+          <meta property="twitter:image" content="https://hacks.mozilla.org/files/2017/04/BrowserConsole-500x477.png">
+    <meta name="twitter:site" content="@mozhacks">
+
+  <link rel="alternate" type="application/rss+xml" title="Mozilla Hacks &#8211; the Web developer blog RSS Feed" href="https://hacks.mozilla.org/feed/">
+
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link href="//addons.cdn.mozilla.net/static/css/tabzilla/tabzilla.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/style.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.6.0/styles/solarized_light.min.css">
+
+  <title>  Debugging Web Push in Mozilla Firefox &#x2605;
+        Mozilla Hacks &#8211; the Web developer blog  </title>
+
+  <script type="text/javascript">
+    window.hacks = {};
+    // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+    var removeUtms  =   function(){
+        var l = window.location;
+        if( l.hash.indexOf( "utm" ) != -1 ){
+            var anchor = l.hash.match(/#(?!utm)[^&]+/);
+            anchor  =   anchor? anchor[0]: '';
+            if(!anchor && window.history.replaceState){
+                history.replaceState({},'', l.pathname + l.search);
+            } else {
+                l.hash = anchor;
+            }
+        };
+    };
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35433268-8'],
+              ['_setAllowAnchor', true]);
+    _gaq.push (['_gat._anonymizeIp']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push( removeUtms );
+    (function(d, k) {
+      var ga = d.createElement(k); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = 'https://ssl.google-analytics.com/ga.js';
+      var s = d.getElementsByTagName(k)[0]; s.parentNode.insertBefore(ga, s);
+    })(document, 'script');
+  </script>
+
+  <link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Mozilla Hacks - the Web developer blog &raquo; Debugging Web Push in Mozilla Firefox Comments Feed" href="https://hacks.mozilla.org/2017/05/debugging-web-push-in-mozilla-firefox/feed/" />
+<link rel='stylesheet' id='wp-syntax-css-css'  href='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/js/fc-checkcomment.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/js/analytics.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/js/socialshare.min.js?ver=4.7.3'></script>
+<link rel='https://api.w.org/' href='https://hacks.mozilla.org/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://hacks.mozilla.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://hacks.mozilla.org/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Fathom: a framework for understanding web pages' href='https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/' />
+<link rel="canonical" href="https://hacks.mozilla.org/2017/05/debugging-web-push-in-mozilla-firefox/" />
+<link rel='shortlink' href='https://hacks.mozilla.org/?p=30729' />
+<link rel="alternate" type="application/json+oembed" href="https://hacks.mozilla.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhacks.mozilla.org%2F2017%2F05%2Fdebugging-web-push-in-mozilla-firefox%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://hacks.mozilla.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhacks.mozilla.org%2F2017%2F05%2Fdebugging-web-push-in-mozilla-firefox%2F&#038;format=xml" />
+            <script type="text/javascript">
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-36116321-4', 'auto');
+                ga('set', 'dimension1', 'Mozilla Hacks - the Web developer blog');
+                ga('send', 'pageview');
+            </script><link rel="shortcut icon" type="image/x-icon" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/favicon.ico" /><style>#wpadminbar #wp-admin-bar-site-name>.ab-item:before { content: none !important;}li#wp-admin-bar-site-name a { background: url( "https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/favicon.ico" ) left center/20px no-repeat !important; padding-left: 21px !important; background-size: 20px !important; } li#wp-admin-bar-site-name { margin-left: 5px !important; } li#wp-admin-bar-site-name {} #wp-admin-bar-site-name div a { background: none !important; }
+</style></head>
+<body>
+  <div class="outer-wrapper">
+    <header class="section section--fullwidth header">
+      <div class="masthead row">
+        <div id="tabzilla">
+          <a href="https://www.mozilla.org/">Mozilla</a>
+        </div>
+        <div class="branding block block--3">
+          <h1><a href="https://hacks.mozilla.org"><img src="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/img/mdn-logo-mono.svg" alt="Mozilla"><span>Hac<span class="logo-askew">k</span>s</span></a></h1>
+        </div>
+        <div class="search block block--2">
+          <form class="search__form" method="get" action="https://hacks.mozilla.org/">
+            <input type="search" name="s" class="search__input" placeholder="Search Mozilla Hacks" value="">
+            <i class="fa fa-search search__badge"></i>
+          </form>
+        </div>
+        <nav class="social">
+          <a class="social__link youtube" href="http://www.youtube.com/user/mozhacks" title="YouTube"><i class="fa fa-youtube"></i><span>Hacks on YouTube</span></a>
+          <a class="social__link twitter" href="https://twitter.com/mozhacks" title="Twitter"><i class="fa fa-twitter"></i><span>@mozhacks on Twitter</span></a>
+          <a class="social__link rss" href="https://hacks.mozilla.org/feed/" title="RSS Feed"><i class="fa fa-rss"></i><span>Hacks RSS Feed</span></a>
+        </nav>
+      </div>
+    </header>
+
+  
+<div id="content-head" class="section">
+  <h1 class="post__title">Debugging Web Push in Mozilla Firefox</h1>
+  <div class="byline">
+    <h3 class="post__author">
+                      <img alt='' src='https://secure.gravatar.com/avatar/3343b4acccf9b7bc26e69371653df213?s=64&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/3343b4acccf9b7bc26e69371653df213?s=128&amp;d=mm&amp;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' />        By
+                                        <a class="url" href="https://hacks.mozilla.org/author/jconlinmozilla-com/">JR Conlin</a>                            </h2>
+    <div class="post__meta">
+      Posted on
+      <abbr class="published" title="2017-05-02T08:07:24-07:00">
+        May 2, 2017      </abbr>
+      <span class="entry-cat">in
+        <a href="https://hacks.mozilla.org/category/featured/" rel="category tag" title="View all posts in Featured Article" >Featured Article</a> and <a href="https://hacks.mozilla.org/category/webapi/" rel="category tag" title="View all posts in Web APIs" >Web APIs</a>      </span>
+            <div class="socialshare" data-type="bubbles"></div>
+    </div>
+  </div>
+</div>
+
+<main id="content-main" class="section article">
+  <article class="post" role="article">
+    <h2>Introduction</h2>
+<p><i>This article is part of <a href="https://blog.mozilla.org/services/category/push/">an ongoing series</a> about using and working with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API">WebPush</a> and Mozilla’s WebPush service. This article is not meant to be a general guide, but instead offers suggestions and insight into best using the service. Some knowledge of Javascript, Python, or other technologies is presumed.</i></p>
+<p>One of the challenges with Web Push implementation issues is trying to figure out what went wrong. Web Push has a large number of &#8220;moving parts&#8221;, systems and components that need to work together in order for your message to be successfully sent and received. While this article can&#8217;t address all the reasons that a given Push message might fail, I will try to provide tools and guidance for the more common problems.</p>
+<h2>Common Problems</h2>
+<h3>Error reporting</h3>
+<p>The largest problem we see is from sites that do not pay attention to the return codes we provide. A <a href="https://blog.mozilla.org/services/2017/02/23/managing-push-subscriptions/">previous post</a> mentioned how you can manage subscriptions to reduce your cost of sending out messages that will never be delivered. It&#8217;s also important to pay attention to the error that is returned.</p>
+<p>An error can return a body that looks like the following:</p>
+<pre><code class="js">{
+  'errno': 102,
+  'message': 'Request did not validate invalid token',
+  'code': 404,
+  'more_info': 'http://autopush.readthedocs.io/en/latest/http.html#error-codes',
+  'error': 'Not Found'
+}
+</code></pre>
+<p>The list of <code>errno</code> values are available in <a href="http://autopush.readthedocs.io/en/latest/http.html#error-codes">the Autopush documentation</a>. (<em>Autopush</em> is the name of the open source server we run to handle receiving and forwarding push subscription updates.) The server tries to provide as much detail and help as possible, so if your messages aren&#8217;t getting through, the Autopush messages may help quite a bit.</p>
+<h3>VAPID concerns</h3>
+<p>Another potential problem is confusion around <a href="https://blog.mozilla.org/services/2016/04/04/using-vapid-with-webpush">VAPID</a>. VAPID is a developing specification for subscription-providing sites to &#8220;self identify&#8221;. This means that if there&#8217;s a significant problem, the push server operator has a way to contact whomever is sending the problematic messages. If you are seeing a large number of &#8220;401&#8221; status code response messages, chances are you have a problem with your VAPID authentication.</p>
+<p>VAPID also allows a site to create &#8220;<a href="https://tools.ietf.org/html/draft-ietf-webpush-vapid-02#section-4">restricted subscriptions</a>&#8220;. These subscriptions are locked down so that only the party that has the VAPID key can send them. This can be a bit confusing.</p>
+<p>Very simply, VAPID is a block of data cryptographically signed with a key that has two parts: a Private key that you never share and is used to sign the VAPID token, and a Public key that is safe to share and is used to create the restricted subscription. Generally, you have a VAPID key that lasts for quite some time. It&#8217;s not a good idea to have it last forever, but it can certainly last for a year or so. I&#8217;ll talk about the implications of that in a bit.</p>
+<p>When your app <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe">requests a push endpoint</a>, you have the option of providing your VAPID Public key as the <code>applicationServerKey</code>. This will create a new subscription endpoint that is locked to that key. In order to send a successful subscription request, you must sign the VAPID block using the corresponding Private key, and include the Public key with your request. (How you include the public key <a href="https://tools.ietf.org/rfcdiff?url2=draft-ietf-webpush-vapid-02.txt">changed</a> between Draft 01 and <a href="https://tools.ietf.org/html/draft-ietf-webpush-vapid-02">Draft 02</a>. You probably want to find <a href="https://github.com/web-push-libs/">a library</a> that does the signing. You&#8217;ll also want to consult the documentation for the push service you choose to see which forms they accept. Most push platforms accept Draft 02.)</p>
+<p>Note that the VAPID Public key is tied to the URL that you&#8217;ve requested. That means that you need to use that same key pair every time you want to send data to that URL. If you ever want to change the VAPID key, you&#8217;ll need to fetch a new endpoint and discard the old one. You decide how to do this, of course. Your app could simply fetch the new Public key from a known location, generate a new URL request and send the new registration information back to your server. This exercises much of the same code that you would want in place for a <a href="https://developer.mozilla.org/en-US/docs/Web/Events/pushsubscriptionchange"><code>pushsubscriptionchange</code></a> event.</p>
+<p>So, for VAPID 401 errors, you will want to check:</p>
+<ol>
+<li>Are you using the same key pair you used to acquire the restricted subscription?</li>
+<li>Have you properly signed your VAPID authorization key?</li>
+<li>Have you included all required VAPID headers with your request?</li>
+</ol>
+<h3>Data encryption</h3>
+<p>Finally, there&#8217;s the actual message encryption. This can be the trickiest to debug because the push server has no way of knowing if the encryption is correct when it accepts a message for delivery. In addition, a message is only delivered by the User Agent (UA) if the UA can successfully decrypt it. This prevents your app from waking up to false messages, which can drain battery life.</p>
+<p>Again, the best way to solve these sorts of problems is to use <a href="https://github.com/web-push-libs/">a library</a>. This isn&#8217;t always possible, and you may have a situation where you need to &#8220;hand roll&#8221; your own. There is <a href="https://mozilla-services.github.io/WebPushDataTestPage/">a page</a> that can help walk you through the process of encrypting your data, however it currently only works on Firefox.</p>
+<p>Be advised that there are several changes in the specs that may not be supported yet. As of publication date, most push implementations will accept ECE Draft 03 &#8220;aesgcm&#8221; encoding. There is <a href="https://github.com/w3c/push-api/commit/813f9af75d59e3fa1522db9aeeaa2bd158ff10bf">a proposal</a> that the User Agent report back the forms of cryptography it supports, but this has not been formally accepted yet. Unfortunately, this is one of the issues with using a technology that&#8217;s still in development. If you wish to follow the changes that are being proposed, you should follow the working groups.</p>
+<p><!-- Attn JR: could you provide a working group link or a link to "ECE Draft 03 encoding - if you deem reasonable? Thanks, Havi --></p>
+<p>Unfortunately, many encryption errors are not detected by the Push Service. This is because the Push Service cannot decrypt your message. Fortunately, it is possible to &#8220;peek inside&#8221; the client to see if there might be an error.</p>
+<h2>Debugging the Desktop</h2>
+<p>Use the <a href="https://developer.mozilla.org/en-US/docs/Tools/Browser_Console">Browser Console</a> to help debug the desktop. Note, this is different than the &#8220;Web Console&#8221; that appears as part of the <a href="https://developer.mozilla.org/en-US/docs/Tools">developer tools panel</a>. The Browser Console displays much higher level messages that may not be visible to the page or the web console.</p>
+<p>The benefit is that you will be able to see messages that your service worker may log, as well as other push messages. For instance, if you look at a testing page that we use, you might see something similar in your browser:<br />
+<div id="attachment_30730" style="width: 510px" class="wp-caption alignnone"><a href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/files/2017/04/BrowserConsole.png"><img src="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/files/2017/04/BrowserConsole-500x477.png" alt="" width="500" height="477" class="size-large wp-image-30730" srcset="https://hacks.mozilla.org/files/2017/04/BrowserConsole-500x477.png 500w, https://hacks.mozilla.org/files/2017/04/BrowserConsole-250x238.png 250w, https://hacks.mozilla.org/files/2017/04/BrowserConsole-768x732.png 768w, https://hacks.mozilla.org/files/2017/04/BrowserConsole-32x32.png 32w, https://hacks.mozilla.org/files/2017/04/BrowserConsole.png 877w" sizes="(max-width: 500px) 100vw, 500px" /></a><p class="wp-caption-text"><figcaption>An example of the browser console output</figcaption></p></div></p>
+<p>Near the bottom of that window, you&#8217;ll notice four messages from &#8220;sw.js&#8221;. The first three are <code>console.info()</code> messages stating that a new message has arrived, what the content of the new message is, and the associated clients. Note that the fourth message is a <code>console.error()</code> saying <code>"Service worker couldn't send message: Error: No valid client to send to."</code> This can happen when a service worker loses its claimed association with the parent. In short: the good news is that the message came in fine, the bad news is it had nowhere to go.</p>
+<p>Another useful tool to consider is the <em>service worker debugging</em> page at <code>about:debugging#workers</code>. This page shows all the registered service worker scripts and allows you to unregister them, optionally send push events, and debug the service worker scripts. Mozilla Hacks has more <a href="https://hacks.mozilla.org/2016/03/debugging-service-workers-and-push-with-firefox-devtools/">details about the about:debugging page</a>.</p>
+<h3>Debugging Android</h3>
+<p>Debugging push on Android is somewhat similar. Much like the desktop, you will want to set <code>dom.push.debug</code> to <code>true</code> and <code>dom.push.loglevel</code> to <code>debug</code>. Unfortunately, unlike the desktop, there is no easy way to view the browser console from Android. Messages are logged to the android error log, so it&#8217;s possible to use a command like <code><a href="https://developer.android.com/studio/command-line/adb.html">adb</a> logcat</code> to tail the error log.  Some developers may be able to use <code>grep</code> to look for only records containing <code>"Gecko(Push|Console)"</code>.</p>
+<p>Sadly, this view isn&#8217;t quite as pretty, but does show much the same, including console messages from service workers which may help identify and resolve bugs. It is worth noting that adb may truncate very long messages.</p>
+<p>A sample adb log might look like:</p>
+<pre style="max-height:75vh;overflow:auto;padding:0.5em"><code class="nohighlight">04-24 15:18:04.432  7015  7037 I GeckoPushGCM: Cached GCM token exists: crWSbvAk4e4:APA91bHozW8bSTCrBwPerd7...
+04-24 15:18:04.432  7015  7037 D GeckoPushManager: Existing uaid is fresh; no need to request from autopush endpoint.
+04-24 15:18:04.488  7015  7037 I GeckoPushManager: Got chid: c0ef2... and endpoint: https://updates.push.services...
+04-24 15:18:04.500  7015  7038 I GeckoPush: console.debug: PushServiceAndroidGCM:
+04-24 15:18:04.520  7015  7038 I GeckoConsole: put() [object Object]
+04-24 15:18:04.521  7015  7038 I Gecko   :   put()
+04-24 15:18:04.522  7015  7038 I Gecko   : Object
+04-24 15:18:04.522  7015  7038 I Gecko   :     - pushEndpoint = https://updates.push.services.mozilla.com/wpush/v1/...
+04-24 15:18:04.522  7015  7038 I Gecko   :     - scope = https://jrconlin.github.io/Webpush_QA/
+                                               ...
+04-24 15:18:04.526  7015  7038 I Gecko   : console.debug: PushDB:
+04-24 15:18:04.528  7015  7038 I GeckoConsole: put: Request successful. Updated record c0ef2...
+04-24 15:18:04.528  7015  7038 I Gecko   :   put: Request successful. Updated record
+04-24 15:18:04.528  7015  7038 I Gecko   :   c0ef2...
+04-24 15:18:04.563  7015  7038 I GeckoConsole: receiverKey BNPFRn...
+04-24 15:18:04.565  7015  7038 I GeckoConsole: Auth key:  0Gkt8...
+04-24 15:18:04.567  7015  7038 I GeckoConsole: data: Amidst the mists and coldest frosts, I thrust my fists against ...
+                                               ...
+04-24 15:18:04.650  7015  7038 I GeckoConsole: echo -ne "\xa\xc6\xfb\xd3\x13\x0e\xa\xa\xa\xad\x59\xad\x71\xa\xa\...
+04-24 15:18:04.652  7015  7038 I GeckoConsole: payload 191,40,74,54,29,62,188,190,133,70,86,70,120,194,173,100,62,...
+04-24 15:18:04.653  7015  7038 I GeckoConsole: Fetching: https://updates.push.services.mozilla.com/wpush/v1/gAAAAA...
+04-24 15:18:04.960  7015  7038 I GeckoConsole: Message sent 201
+04-24 15:18:05.753  7015  9696 D GeckoPushGCM: Message received.  Processing on background thread.
+04-24 15:18:05.754  7015  7037 I GeckoPushService: Google Play Services GCM message received; delivering.
+                                              ...
+04-24 15:18:05.774  7015  7038 I Gecko   : console.debug: PushService:
+04-24 15:18:05.774  7015  7037 I GeckoPushService: Delivering dom/push message to Gecko!
+04-24 15:18:05.777  7015  7038 I GeckoPush: console.debug: PushServiceAndroidGCM:
+04-24 15:18:05.781  7015  7038 I GeckoPush:   ReceivedPushMessage with data
+04-24 15:18:05.782  7015  7038 I GeckoPush: Object
+04-24 15:18:05.782  7015  7038 I GeckoPush:     - channelID = c0ef2...
+04-24 15:18:05.782  7015  7038 I GeckoPush:     - con = aesgcm
+                                                ...
+04-24 15:18:05.783  7015  7038 I GeckoPush: console.debug: PushServiceAndroidGCM:
+04-24 15:18:05.784  7015  7038 I GeckoConsole: Delivering message to main PushService: [object ArrayBuffer] ...
+                                           ...
+04-24 15:18:05.786  7015  7038 I Gecko   : console.debug: PushService:
+04-24 15:18:05.787  7015  7038 I GeckoConsole: receivedPushMessage()
+04-24 15:18:05.787  7015  7038 I Gecko   :   receivedPushMessage()
+04-24 15:18:05.788  7015  7038 I Gecko   : console.debug: PushDB:
+04-24 15:18:05.789  7015  7038 I GeckoConsole: getByKeyID()
+04-24 15:18:05.789  7015  7038 I Gecko   :   getByKeyID()
+04-24 15:18:05.795  7015  7038 I Gecko   : console.debug: PushDB:
+04-24 15:18:05.797  7015  7038 I GeckoConsole: getByKeyID: Got record [object Object]
+04-24 15:18:05.810  7015  7038 I Gecko   : console.debug: PushDB:
+04-24 15:18:05.811  7015  7038 I GeckoConsole: update: Update successful c0ef2...
+                                               ...
+04-24 15:18:05.840  7015  7038 I Gecko   : console.debug: PushService:
+04-24 15:18:05.841  7015  7038 I GeckoConsole: notifyApp() https://jrconlin.github.io/Webpush_QA/
+04-24 15:18:05.841  7015  7038 I Gecko   :   notifyApp()
+04-24 15:18:05.841  7015  7038 I Gecko   :   https://jrconlin.github.io/Webpush_QA/
+04-24 15:18:05.848  7015  7038 I GeckoConsole: **** Recv'd a push message:: {"isTrusted":true}
+04-24 15:18:05.850  7015  7038 I GeckoConsole: Service worker just got: Amidst the mists and coldest frosts, I ...
+04-24 15:18:05.853  7015  7038 I GeckoConsole: Service worker found clients {}
+04-24 15:18:05.854  7015  7038 I GeckoConsole: Service worker sending to client... [object WindowClient]
+04-24 15:18:05.857  7015  7038 I GeckoConsole: Service Worker sent: {"type":"content","content":"Amidst the mists ...
+04-24 15:18:08.033   527 32517 E ResourceManagerService: Rejected removeResource call with invalid pid.
+04-24 15:18:05.865  7015  7015 D GeckoToolbar: onTabChanged: LOCATION_CHANGE
+</code></pre>
+<p>Note that you get a bit more information here, including messages indicating that GCM received the message and relayed it to Gecko. Many log messages have been removed or trimmed for space for publication, but these can help isolate if the problem is in your app vs. in the network.</p>
+<h2>Conclusion</h2>
+<p>Working with Push is rewarding, but remember that it is a new technology. This means that things can change, and there may be rough bits to watch out for. As always, we appreciate bugs when you find them and suggestions on how to make things easier. You can find us on <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Getting_Started_with_IRC">irc.mozilla.org</a> in the #push channel if you have questions.</p>
+    <section class="about">
+                                <h2 class="about__header">About
+                          <a class="url" href="https://hacks.mozilla.org/author/jconlinmozilla-com/">
+                JR Conlin              </a>
+                      </h3>
+                      <p>Web Push server developer who would like to thank you to subscribing to Cat Facts.</p>
+                                <p><a class="url" href="https://hacks.mozilla.org/author/jconlinmozilla-com/">More articles by JR Conlin&hellip;</a></p>
+                  </section>
+  </article>
+  
+
+<section class="discussion">
+  <hr class="dino">
+  <div class="comments">
+    <header class="comments__head">
+      <h3>2 comments</h3>
+    </header>
+
+          <ol class="comments__list" class="hfeed">
+      
+ <li id="comment-21165" class="comment even thread-even depth-1">
+      <b class="comment__title vcard">
+      <cite class="author fn">Martin Gray</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>How can I unfreeze a frozen web page without shutting down and starting over?</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2017/05/debugging-web-push-in-mozilla-firefox/#comment-21165" rel="bookmark" title="Permanent link to this comment by Martin Gray"><abbr class="published" title="2017-05-04">May 4th, 2017</abbr> at 09:27</a>
+
+      <p class="comment__util"><a rel='nofollow' class='comment-reply-link' href='https://hacks.mozilla.org/2017/05/debugging-web-push-in-mozilla-firefox/?replytocom=21165#respond' onclick='return addComment.moveForm( "comment-21165", "21165", "respond", "30729" )' aria-label='Reply to Martin Gray'>Reply</a> </p>
+  <ol class="children">
+
+ <li id="comment-21166" class="comment byuser comment-author-jconlinmozilla-com bypostauthor odd alt depth-2">
+      <b class="comment__title vcard">
+      <cite class="author fn">JR Conlin</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>This really isn&#8217;t the best place to get help about topics like that. I&#8217;d suggest going to <a href="https://support.mozilla.org/" rel="nofollow">https://support.mozilla.org/</a>, where you can find answers and ask questions and lots of folks can help you out.</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2017/05/debugging-web-push-in-mozilla-firefox/#comment-21166" rel="bookmark" title="Permanent link to this comment by JR Conlin"><abbr class="published" title="2017-05-04">May 4th, 2017</abbr> at 09:32</a>
+
+      <p class="comment__util"><a rel='nofollow' class='comment-reply-link' href='https://hacks.mozilla.org/2017/05/debugging-web-push-in-mozilla-firefox/?replytocom=21166#respond' onclick='return addComment.moveForm( "comment-21166", "21166", "respond", "30729" )' aria-label='Reply to JR Conlin'>Reply</a> </p>
+  </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+      </ol>
+      </div>
+  <div class="response" id="respond">
+        <form id="comment-form" action="https://hacks.mozilla.org/wp-comments-post.php" method="post">
+        <h3>Post Your Comment</h3>
+        <p id="cancel-comment-reply"><a rel="nofollow" id="cancel-comment-reply-link" href="/2017/05/debugging-web-push-in-mozilla-firefox/#respond" style="display:none;">Cancel Reply</a></p>
+              <div class="field" id="cmt-name">
+          <label for="author">Your name <abbr title="(required)">*</abbr></label>
+          <input type="text" name="author" id="author" size="25" required aria-required='true'>
+        </div>
+        <div class="field" id="cmt-email">
+          <label for="email">Your e-mail <abbr title="(required)">*</abbr></label>
+          <input type="email" name="email" id="email" size="25" required aria-required='true'>
+        </div>
+        <div id="cmt-ackbar">
+          <label for="age">Spam robots, please fill in this field. Humans should leave it blank.</label>
+          <input type="text" name="age" id="age" size="4" tabindex="-1">
+        </div>
+            <div class="field" id="cmt-cmt">
+        <label for="comment">Your comment</label> <textarea name="comment" id="comment" cols="50" rows="10" required="required" aria-required="true"></textarea>
+      </div>
+      <div class="field" id="comment-submit">
+        <button name="submit" type="submit">Submit Comment</button>
+      </div>
+      <input type='hidden' name='comment_post_ID' value='30729' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+      <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="dcb26d39ac" /></p><div class='stcr-form hidden'><!-- Subscribe to Comments Reloaded version 160915 --><!-- BEGIN: subscribe to comments reloaded --><p class='comment-form-subscriptions'><label for='subscribe-reloaded'><input style='width:30px' type='checkbox' name='subscribe-reloaded' id='subscribe-reloaded' value='yes' /> Notify me of followup comments via e-mail. You can also <a href='https://hacks.mozilla.org/comment-subscriptions/?srp=30729&amp;srk=b8ac6d753af413e6c79f4598a838b6ad&amp;sra=s&amp;srsrc=f'>subscribe</a> without commenting.</label></p><!-- END: subscribe to comments reloaded --></div><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="75"/></p></div>
+    </form>
+      </div></section><script>jQuery("#comment-form").submit(function() { return fc_checkform('req'); });</script>
+
+
+</main><!-- /#content-main -->
+
+  
+
+    <footer class="footer section section--fullwidth">
+      <div class="row">
+        <p class="block block--1">
+          Except where otherwise noted, content on this site is licensed
+          under the
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license external">Creative Commons Attribution Share-Alike License v3.0</a>
+          or any later version.
+        </p>
+        <img class="footer__logo" alt="the Mozilla dino logo" src="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/img/dino.svg">
+      </div>
+    </footer>
+  </div>
+  <script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/akismet/_inc/form.js?ver=3.3'></script>
+<link rel='stylesheet' id='hljstheme-css'  href='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-code-highlightjs/styles/default.css?ver=0.5.17' type='text/css' media='all' />
+<link rel='stylesheet' id='stcr-plugin-style-css'  href='https://blog.mozilla.org/hacks/wp-content/plugins/subscribe-to-comments-reloaded/includes/css/stcr-plugin-style.css?ver=4.7.3' type='text/css' media='all' />
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-syntax/js/wp-syntax.js?ver=1.1'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/comment-reply.min.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-code-highlightjs/highlight.common.pack.js?ver=0.5.17'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-code-highlightjs/highlight.custom.pack.js?ver=0.5.17'></script>
+<script type='text/javascript' src='https://blog.mozilla.org/hacks/wp-content/plugins/subscribe-to-comments-reloaded/includes/js/stcr-plugin.js?ver=4.7.3'></script>
+    <style>pre.hljs {padding: 5px;}
+pre.hljs code {}</style>
+    <script type="text/javascript">
+    (function($, window) {
+        var init_fn_flag = false;
+        var init_fn = (function() {
+            if (init_fn_flag)
+                return;
+            init_fn_flag = true;
+             hljs.configure({"tabReplace":"    "});
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+        $(document).ready(init_fn);
+        $(window).on("load", init_fn);
+    })(jQuery, window);
+    </script>
+  <script>
+    // External links should open in a new tab.
+    (function () {
+      var postLinks = document.querySelectorAll('#content-main a');
+
+      var origin = location.origin;
+
+      for (var i = 0; i < postLinks.length; i++) {
+        var link = postLinks[i];
+        if (link.origin !== origin && !link.getAttribute('target')) {
+          link.setAttribute('target', '_blank');
+        }
+      }
+    })();
+
+    window.addEventListener('load', function () {
+      if (document.querySelector('#newsletterForm')) {
+        var script = document.createElement('script');
+        var path = document.head.getAttribute('data-template-path');
+        script.setAttribute('src', path + '/js/newsletter.js');
+        document.head.appendChild(script);
+      }
+    });
+  </script>
+</body>
+</html>

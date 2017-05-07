@@ -1,0 +1,397 @@
+
+
+<!doctype html>
+<html lang="en-US">
+<head data-template-path="https://hacks.mozilla.org/wp-content/themes/Hax">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Metadata for Facebook -->
+  <meta property="og:site_name" content="Mozilla Hacks &#8211; the Web developer blog">
+  <meta property="og:url" content="https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/">
+  <meta property="og:title" content="Fathom: a framework for understanding web pages">
+  <meta property="og:description" content="Meet Fathom, a mini-language for writing semantic extractors, that you can use client- or server-side to extract meaning from the content of a web page. ...">
+
+  <!-- Metadata for Twitter -->
+  <meta property="twitter:title" content="Fathom: a framework for understanding web pages">
+  <meta property="twitter:description" content="Meet Fathom, a mini-language for writing semantic extractors, that you can use client- or server-side to extract meaning from the content of a web page. ...">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@mozhacks">
+
+  <link rel="alternate" type="application/rss+xml" title="Mozilla Hacks &#8211; the Web developer blog RSS Feed" href="https://hacks.mozilla.org/feed/">
+
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link href="//addons.cdn.mozilla.net/static/css/tabzilla/tabzilla.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/style.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.6.0/styles/solarized_light.min.css">
+
+  <title>  Fathom: a framework for understanding web pages &#x2605;
+        Mozilla Hacks &#8211; the Web developer blog  </title>
+
+  <script type="text/javascript">
+    window.hacks = {};
+    // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+    var removeUtms  =   function(){
+        var l = window.location;
+        if( l.hash.indexOf( "utm" ) != -1 ){
+            var anchor = l.hash.match(/#(?!utm)[^&]+/);
+            anchor  =   anchor? anchor[0]: '';
+            if(!anchor && window.history.replaceState){
+                history.replaceState({},'', l.pathname + l.search);
+            } else {
+                l.hash = anchor;
+            }
+        };
+    };
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35433268-8'],
+              ['_setAllowAnchor', true]);
+    _gaq.push (['_gat._anonymizeIp']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push( removeUtms );
+    (function(d, k) {
+      var ga = d.createElement(k); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = 'https://ssl.google-analytics.com/ga.js';
+      var s = d.getElementsByTagName(k)[0]; s.parentNode.insertBefore(ga, s);
+    })(document, 'script');
+  </script>
+
+  <link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Mozilla Hacks - the Web developer blog &raquo; Fathom: a framework for understanding web pages Comments Feed" href="https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/feed/" />
+<link rel='stylesheet' id='wp-syntax-css-css'  href='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/js/fc-checkcomment.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/js/analytics.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/js/socialshare.min.js?ver=4.7.3'></script>
+<link rel='https://api.w.org/' href='https://hacks.mozilla.org/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://hacks.mozilla.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://hacks.mozilla.org/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Firefox 53: Quantum Compositor, Compact Themes, CSS Masks, and More' href='https://hacks.mozilla.org/2017/04/firefox-53-quantum-compositor-compact-themes-css-masks-and-more/' />
+<link rel='next' title='Debugging Web Push in Mozilla Firefox' href='https://hacks.mozilla.org/2017/05/debugging-web-push-in-mozilla-firefox/' />
+<link rel="canonical" href="https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/" />
+<link rel='shortlink' href='https://hacks.mozilla.org/?p=30721' />
+<link rel="alternate" type="application/json+oembed" href="https://hacks.mozilla.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhacks.mozilla.org%2F2017%2F04%2Ffathom-a-framework-for-understanding-web-pages%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://hacks.mozilla.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhacks.mozilla.org%2F2017%2F04%2Ffathom-a-framework-for-understanding-web-pages%2F&#038;format=xml" />
+            <script type="text/javascript">
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-36116321-4', 'auto');
+                ga('set', 'dimension1', 'Mozilla Hacks - the Web developer blog');
+                ga('send', 'pageview');
+            </script><link rel="shortcut icon" type="image/x-icon" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/favicon.ico" /><style>#wpadminbar #wp-admin-bar-site-name>.ab-item:before { content: none !important;}li#wp-admin-bar-site-name a { background: url( "https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/favicon.ico" ) left center/20px no-repeat !important; padding-left: 21px !important; background-size: 20px !important; } li#wp-admin-bar-site-name { margin-left: 5px !important; } li#wp-admin-bar-site-name {} #wp-admin-bar-site-name div a { background: none !important; }
+</style></head>
+<body>
+  <div class="outer-wrapper">
+    <header class="section section--fullwidth header">
+      <div class="masthead row">
+        <div id="tabzilla">
+          <a href="https://www.mozilla.org/">Mozilla</a>
+        </div>
+        <div class="branding block block--3">
+          <h1><a href="https://hacks.mozilla.org"><img src="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/img/mdn-logo-mono.svg" alt="Mozilla"><span>Hac<span class="logo-askew">k</span>s</span></a></h1>
+        </div>
+        <div class="search block block--2">
+          <form class="search__form" method="get" action="https://hacks.mozilla.org/">
+            <input type="search" name="s" class="search__input" placeholder="Search Mozilla Hacks" value="">
+            <i class="fa fa-search search__badge"></i>
+          </form>
+        </div>
+        <nav class="social">
+          <a class="social__link youtube" href="http://www.youtube.com/user/mozhacks" title="YouTube"><i class="fa fa-youtube"></i><span>Hacks on YouTube</span></a>
+          <a class="social__link twitter" href="https://twitter.com/mozhacks" title="Twitter"><i class="fa fa-twitter"></i><span>@mozhacks on Twitter</span></a>
+          <a class="social__link rss" href="https://hacks.mozilla.org/feed/" title="RSS Feed"><i class="fa fa-rss"></i><span>Hacks RSS Feed</span></a>
+        </nav>
+      </div>
+    </header>
+
+  
+<div id="content-head" class="section">
+  <h1 class="post__title">Fathom: a framework for understanding web pages</h1>
+  <div class="byline">
+    <h3 class="post__author">
+                      <img alt='' src='https://secure.gravatar.com/avatar/73bfa51d6f44afed026160b59299faf2?s=64&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/73bfa51d6f44afed026160b59299faf2?s=128&amp;d=mm&amp;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' />        By
+                                        <a class="url" href="https://www.grinchcentral.com/" rel="external me">Erik Rose</a>                            </h2>
+    <div class="post__meta">
+      Posted on
+      <abbr class="published" title="2017-04-26T08:07:29-07:00">
+        April 26, 2017      </abbr>
+      <span class="entry-cat">in
+        <a href="https://hacks.mozilla.org/category/developer-tools/" rel="category tag" title="View all posts in Developer Tools" >Developer Tools</a>, <a href="https://hacks.mozilla.org/category/featured/" rel="category tag" title="View all posts in Featured Article" >Featured Article</a>,  and <a href="https://hacks.mozilla.org/category/javascript/" rel="category tag" title="View all posts in JavaScript" >JavaScript</a>      </span>
+            <div class="socialshare" data-type="bubbles"></div>
+    </div>
+  </div>
+</div>
+
+<main id="content-main" class="section article">
+  <article class="post" role="article">
+    <p>It’s time we went beyond a browser that just renders pages. On the modern web, trying to accomplish a simple task can get you buffeted by pop-overs, squinting at content crammed into a tiny column, and trying to suss out the behavior of yet another site’s custom widgets. To restore a balance of power and reclaim user efficiency, we need a smarter browser.</p>
+<p>Imagine if Firefox understood pages like a human does:</p>
+<ul>
+<li>Arduous sign-on could be a thing of the past. The browser could recognize a Log In link, follow it in the background, and log you in, all without losing your place. The links could disappear from the page and be moved into a standard browser UI.</li>
+<li>Products could be recognized as such and manipulated as cohesive chunks. You could drag them to a shopping cart, complete with pictures and prices, for cross-site comparison shopping. You could enjoy easily scannable columns rather than a circus of tabs.</li>
+<li>Inefficient and inconsistent UI could be ironed out at last. We could have browser-provided hotkeys for dismissing popovers, navigating to the next logical page, standardizing the look of interface elements, or recognizing and flattening out needlessly paginated slideshows.</li>
+<li>On small screens or windows, superfluous navigation or header sections could be hidden, even on pages that don’t use responsive design. We could intelligently figure out what to print, even in the absence of print stylesheets.</li>
+</ul>
+<p>These possible futures all assume the browser can identify meaningful parts of the page. Over the decades, there have been many attempts to make this easier. But microformats, semantic tags, RDF, and link/rel header elements have failed to take over the world, due both to sites’ incentive to remain unscrapeable and to the extra work they represent. As a result, modern search engines and browsers’ reader modes have taken an alternative tack: they extract meaning by embracing the mess, bulling straight through unsemantic markup with a toolbelt full of heuristics.</p>
+<p>But a problem remains: these projects are single-purpose and expensive to produce. <a href="https://medium.com/@readability/an-important-announcement-for-all-readability-api-users-32dbee232b29">Readability</a>, the basis of Safari and Firefox&#8217;s reader modes, is 1,800 lines of JavaScript and was recently shut down. Chrome&#8217;s DOM Distiller is 23,000 lines of Java. These imperative approaches get bogged down in the mechanics of DOM traversal and state accumulation, obscuring the operative parts of the <em>“</em>understanders<em>”</em> and making them arduous to write and difficult to comprehend. They are further entangled with the ad hoc fuzzy scoring systems and the site-specific heuristics they need to include. The economics are against them from the start, and consequently few of them are created, especially outside large organizations.</p>
+<p>But what if understanders were cheap to write? What if Readability could be implemented in just 4 simple rules?</p>
+<pre><code class="js">const rules = ruleset(
+    rule(dom('p,div,li,code,blockquote,pre,h1,h2,h3,h4,h5,h6'),
+         props(scoreByLength).type('paragraphish')),
+    rule(type('paragraphish'),
+         score(fnode =&gt; (1 - linkDensity(fnode,
+                                         fnode.noteFor('paragraphish')
+                                              .inlineLength))
+                        * 1.5)),
+    rule(dom('p'),
+         score(4.5).type('paragraphish')),
+    rule(type('paragraphish')
+            .bestCluster({splittingDistance: 3,
+                          differentDepthCost: 6.5,
+                          differentTagCost: 2,
+                          sameTagCost: 0.5,
+                          strideCost: 0}),
+         out('content').allThrough(domSort))
+);</code></pre>
+<p>That scores within 7% of Readability’s output on a selection of its own test cases, measured by Levenshtein distance<sup>1</sup>. The framework enabling this is Fathom, and it drives the cost of writing understanders through the floor.</p>
+<p>Fathom is a mini-language for writing semantic extractors. The sets of <em>rules</em> that make up its programs are embedded in JavaScript, so you can use it client- or server-side as privacy dictates. And Fathom handles all your bookkeeping so you can concentrate on your heuristics:</p>
+<ul>
+<li>Tree-walking goes away. Fathom is a data-flow language like Prolog, so data conveniently “turns up” when there are applicable rules that haven’t yet seen it.</li>
+<li>Flow control goes away. Fathom determines execution order based on dependencies, running only what it needs to answer your query and caching intermediate results.</li>
+<li>The temptation to write plugin systems goes away. Fathom rules are unordered, so additional ones can be added as easily as adding a new element to a JavaScript array. This makes Fathom programs (or <em>rulesets</em>) inherently pluggable. They commingle like streams of water, having only to agree on type names, making them ripe for collaborative experimentation or special-casing without making a mess.</li>
+<li>The need to keep parallel data structures to the DOM goes away. Fathom provides proxy DOM nodes you can scribble on, along with a black-and-white system of types and a shades-of-grey system of scores to categorize nodes and guide decisions.</li>
+<li>The need to come up with the optimal balance of weights for your heuristics goes away, thanks to an <a href="https://mozilla.github.io/fathom/optimization.html">optimization harness</a> based on <a href="https://en.wikipedia.org/wiki/Simulated_annealing">simulated annealing</a>. All those fiddly numerical constants in the code above were figured out by siccing the machine on a selection of input and correct output and walking away.</li>
+</ul>
+<p>The best part is that Fathom rulesets are data. They look like JavaScript function calls, but the calls are just making annotations in a sort of syntax tree, making the whole thing easily machine-manipulable. Today, that gets us automatic tuning of score constants. Tomorrow, it could get us automatic generation of rules themselves!</p>
+<p>Fathom is young but feisty. It’s already in production powering <a href="https://testpilot.firefox.com/experiments/activity-stream">Firefox’s Activity Stream</a>, where it picks out page descriptions, main images, and such. In 70 lines, it replaced a well-known commercial metadata-parsing service.</p>
+<p>What we need now is imagination. Scoop up all those ideas you threw away because they required too much understanding by the browser. We can do that now. It’s cheap.</p>
+<p>Have an idea? Great! Check out the <a href="https://mozilla.github.io/fathom/">full documentation</a> to get started, grab the <a href="https://www.npmjs.com/package/fathom-web">npm package</a>, <a href="https://github.com/mozilla/fathom">submit patches</a>, and join us in the #fathom channel on irc.mozilla.org and on the <a href="https://mail.mozilla.org/listinfo/fathom">mailing list</a> as you build. Let’s make a browser that is, in bold new ways, the user’s agent!</p>
+<hr class="dino" />
+<p><sup>1</sup>The caveats of the example are quite manageable. It’s slower than Readability, because clustering is O(n<sup>2</sup> log n). But there is also much low-hanging fruit left unpicked: we do nothing in the above to take advantage of CSS classes or semantic tags like <code>&lt;article&gt;</code>, both rich sources of signal, and we don&#8217;t try to pare down the clustering candidates with thresholds. Finally, some of the 7% difference actually represents improvements over Readability’s output.</p>
+    <section class="about">
+                                <h2 class="about__header">About
+                          <a class="url" href="https://www.grinchcentral.com/" rel="external me">
+                Erik Rose              </a>
+                      </h3>
+                      <p>Erik chips away at the barrier between human cognition and machine execution, through projects like DXR (search &amp; static analysis on Mozilla codebases), Fathom (semantic extraction from web pages), parsers, new languages, and a whole mess of Python libraries.</p>
+                    <ul class="author-meta fa-ul"><li><i class="fa-li fa fa-globe"></i><a href="https://www.grinchcentral.com/" class="website" rel="me">https://www.grinchcentral.com/</a></li><li><i class="fa-li fa fa-twitter"></i><a href="http://twitter.com/ErikRose" class="twitter" rel="me">@ErikRose</a></li></ul>            <p><a class="url" href="https://hacks.mozilla.org/author/erosemozilla-com/">More articles by Erik Rose&hellip;</a></p>
+                  </section>
+  </article>
+  
+
+<section class="discussion">
+  <hr class="dino">
+  <div class="comments">
+    <header class="comments__head">
+      <h3>6 comments</h3>
+    </header>
+
+          <ol class="comments__list" class="hfeed">
+      
+ <li id="comment-21132" class="comment even thread-even depth-1">
+      <b class="comment__title vcard">
+      <cite class="author fn">Steve Glick</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Not sure exactly what parser is currently used by Firefox&#8217;s reader view, but I think it&#8217;s worth mentioning that whatever parser is used doesn&#8217;t like article titles with colons (eg. this article). It only shows the part of the title after the colon.</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/#comment-21132" rel="bookmark" title="Permanent link to this comment by Steve Glick"><abbr class="published" title="2017-04-26">April 26th, 2017</abbr> at 17:05</a>
+
+      <p class="comment__util"><a rel='nofollow' class='comment-reply-link' href='https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/?replytocom=21132#respond' onclick='return addComment.moveForm( "comment-21132", "21132", "respond", "30721" )' aria-label='Reply to Steve Glick'>Reply</a> </p>
+  <ol class="children">
+
+ <li id="comment-21136" class="comment odd alt depth-2">
+      <b class="comment__title vcard">
+      <cite class="author fn">Taylor Hunt</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>That would be <a href="https://github.com/mozilla/readability" rel="nofollow">https://github.com/mozilla/readability</a> . Thanks for the bug report!</p>
+<p>Your bug looks like it already has an issue, so I added your comment as another example: <a href="https://github.com/mozilla/readability/issues/295#issuecomment-297798459" rel="nofollow">https://github.com/mozilla/readability/issues/295#issuecomment-297798459</a></p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/#comment-21136" rel="bookmark" title="Permanent link to this comment by Taylor Hunt"><abbr class="published" title="2017-04-27">April 27th, 2017</abbr> at 11:24</a>
+
+      <p class="comment__util"><a rel='nofollow' class='comment-reply-link' href='https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/?replytocom=21136#respond' onclick='return addComment.moveForm( "comment-21136", "21136", "respond", "30721" )' aria-label='Reply to Taylor Hunt'>Reply</a> </p>
+  </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+
+ <li id="comment-21134" class="comment even thread-odd thread-alt depth-1">
+      <b class="comment__title vcard">
+      <cite class="author fn">Gerd Neumann</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Is Fathom FOSS? Neither this blog post nor its docs include a link to a repo.</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/#comment-21134" rel="bookmark" title="Permanent link to this comment by Gerd Neumann"><abbr class="published" title="2017-04-27">April 27th, 2017</abbr> at 02:27</a>
+
+      <p class="comment__util"><a rel='nofollow' class='comment-reply-link' href='https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/?replytocom=21134#respond' onclick='return addComment.moveForm( "comment-21134", "21134", "respond", "30721" )' aria-label='Reply to Gerd Neumann'>Reply</a> </p>
+  <ol class="children">
+
+ <li id="comment-21135" class="comment byuser comment-author-erosemozilla-com bypostauthor odd alt depth-2">
+      <b class="comment__title vcard">
+      <cite class="author fn">Erik Rose</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Absolutely; everything Mozilla does is open-source. Thanks for pointing out the omission! I&#8217;ve added more links to the bottom of the article, and here they are again:</p>
+<p><a href="https://github.com/mozilla/fathom" rel="nofollow">https://github.com/mozilla/fathom</a><br />
+<a href="https://www.npmjs.com/package/fathom-web" rel="nofollow">https://www.npmjs.com/package/fathom-web</a></p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/#comment-21135" rel="bookmark" title="Permanent link to this comment by Erik Rose"><abbr class="published" title="2017-04-27">April 27th, 2017</abbr> at 05:12</a>
+
+      <p class="comment__util"><a rel='nofollow' class='comment-reply-link' href='https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/?replytocom=21135#respond' onclick='return addComment.moveForm( "comment-21135", "21135", "respond", "30721" )' aria-label='Reply to Erik Rose'>Reply</a> </p>
+  <ol class="children">
+
+ <li id="comment-21141" class="comment even depth-3">
+      <b class="comment__title vcard">
+      <cite class="author fn">Gerd Neumann</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Good to know. FWIW, you might also want to add a not-to-be-overseen &#8220;Fork on GitHub&#8221; or similar link to the repo at the docs page: <a href="https://mozilla.github.io/fathom/" rel="nofollow">https://mozilla.github.io/fathom/</a></p>
+<p>I personally rather look at GitHub stars and contributor numbers when choosing a library. And if I have a hard time even finding the repo, then I am not soo confident in the state of the software.</p>
+<p>Thanks for answering.</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/#comment-21141" rel="bookmark" title="Permanent link to this comment by Gerd Neumann"><abbr class="published" title="2017-04-28">April 28th, 2017</abbr> at 01:24</a>
+
+      <p class="comment__util"><a rel='nofollow' class='comment-reply-link' href='https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/?replytocom=21141#respond' onclick='return addComment.moveForm( "comment-21141", "21141", "respond", "30721" )' aria-label='Reply to Gerd Neumann'>Reply</a> </p>
+  <ol class="children">
+
+ <li id="comment-21145" class="comment byuser comment-author-erosemozilla-com bypostauthor odd alt depth-4">
+      <b class="comment__title vcard">
+      <cite class="author fn">Erik Rose</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Done. Added a link to the GH repo and another to the npm package. Good catch!</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/#comment-21145" rel="bookmark" title="Permanent link to this comment by Erik Rose"><abbr class="published" title="2017-04-28">April 28th, 2017</abbr> at 10:45</a>
+
+      <p class="comment__util"><a rel='nofollow' class='comment-reply-link' href='https://hacks.mozilla.org/2017/04/fathom-a-framework-for-understanding-web-pages/?replytocom=21145#respond' onclick='return addComment.moveForm( "comment-21145", "21145", "respond", "30721" )' aria-label='Reply to Erik Rose'>Reply</a> </p>
+  </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+      </ol>
+      </div>
+  <div class="response" id="respond">
+        <form id="comment-form" action="https://hacks.mozilla.org/wp-comments-post.php" method="post">
+        <h3>Post Your Comment</h3>
+        <p id="cancel-comment-reply"><a rel="nofollow" id="cancel-comment-reply-link" href="/2017/04/fathom-a-framework-for-understanding-web-pages/#respond" style="display:none;">Cancel Reply</a></p>
+              <div class="field" id="cmt-name">
+          <label for="author">Your name <abbr title="(required)">*</abbr></label>
+          <input type="text" name="author" id="author" size="25" required aria-required='true'>
+        </div>
+        <div class="field" id="cmt-email">
+          <label for="email">Your e-mail <abbr title="(required)">*</abbr></label>
+          <input type="email" name="email" id="email" size="25" required aria-required='true'>
+        </div>
+        <div id="cmt-ackbar">
+          <label for="age">Spam robots, please fill in this field. Humans should leave it blank.</label>
+          <input type="text" name="age" id="age" size="4" tabindex="-1">
+        </div>
+            <div class="field" id="cmt-cmt">
+        <label for="comment">Your comment</label> <textarea name="comment" id="comment" cols="50" rows="10" required="required" aria-required="true"></textarea>
+      </div>
+      <div class="field" id="comment-submit">
+        <button name="submit" type="submit">Submit Comment</button>
+      </div>
+      <input type='hidden' name='comment_post_ID' value='30721' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+      <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="38b2872f01" /></p><div class='stcr-form hidden'><!-- Subscribe to Comments Reloaded version 160915 --><!-- BEGIN: subscribe to comments reloaded --><p class='comment-form-subscriptions'><label for='subscribe-reloaded'><input style='width:30px' type='checkbox' name='subscribe-reloaded' id='subscribe-reloaded' value='yes' /> Notify me of followup comments via e-mail. You can also <a href='https://hacks.mozilla.org/comment-subscriptions/?srp=30721&amp;srk=b8ac6d753af413e6c79f4598a838b6ad&amp;sra=s&amp;srsrc=f'>subscribe</a> without commenting.</label></p><!-- END: subscribe to comments reloaded --></div><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="209"/></p></div>
+    </form>
+      </div></section><script>jQuery("#comment-form").submit(function() { return fc_checkform('req'); });</script>
+
+
+</main><!-- /#content-main -->
+
+  
+
+    <footer class="footer section section--fullwidth">
+      <div class="row">
+        <p class="block block--1">
+          Except where otherwise noted, content on this site is licensed
+          under the
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license external">Creative Commons Attribution Share-Alike License v3.0</a>
+          or any later version.
+        </p>
+        <img class="footer__logo" alt="the Mozilla dino logo" src="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/img/dino.svg">
+      </div>
+    </footer>
+  </div>
+  <script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/akismet/_inc/form.js?ver=3.3'></script>
+<link rel='stylesheet' id='hljstheme-css'  href='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-code-highlightjs/styles/default.css?ver=0.5.17' type='text/css' media='all' />
+<link rel='stylesheet' id='stcr-plugin-style-css'  href='https://blog.mozilla.org/hacks/wp-content/plugins/subscribe-to-comments-reloaded/includes/css/stcr-plugin-style.css?ver=4.7.3' type='text/css' media='all' />
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-syntax/js/wp-syntax.js?ver=1.1'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/comment-reply.min.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=4.7.3'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-code-highlightjs/highlight.common.pack.js?ver=0.5.17'></script>
+<script type='text/javascript' src='https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/plugins/wp-code-highlightjs/highlight.custom.pack.js?ver=0.5.17'></script>
+<script type='text/javascript' src='https://blog.mozilla.org/hacks/wp-content/plugins/subscribe-to-comments-reloaded/includes/js/stcr-plugin.js?ver=4.7.3'></script>
+    <style>pre.hljs {padding: 5px;}
+pre.hljs code {}</style>
+    <script type="text/javascript">
+    (function($, window) {
+        var init_fn_flag = false;
+        var init_fn = (function() {
+            if (init_fn_flag)
+                return;
+            init_fn_flag = true;
+             hljs.configure({"tabReplace":"    "});
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+        $(document).ready(init_fn);
+        $(window).on("load", init_fn);
+    })(jQuery, window);
+    </script>
+  <script>
+    // External links should open in a new tab.
+    (function () {
+      var postLinks = document.querySelectorAll('#content-main a');
+
+      var origin = location.origin;
+
+      for (var i = 0; i < postLinks.length; i++) {
+        var link = postLinks[i];
+        if (link.origin !== origin && !link.getAttribute('target')) {
+          link.setAttribute('target', '_blank');
+        }
+      }
+    })();
+
+    window.addEventListener('load', function () {
+      if (document.querySelector('#newsletterForm')) {
+        var script = document.createElement('script');
+        var path = document.head.getAttribute('data-template-path');
+        script.setAttribute('src', path + '/js/newsletter.js');
+        document.head.appendChild(script);
+      }
+    });
+  </script>
+</body>
+</html>
