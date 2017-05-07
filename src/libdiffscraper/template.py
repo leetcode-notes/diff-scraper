@@ -109,22 +109,31 @@ def find_next_candidates(tokens_of, tokens_with_loc, current_line):
     return candidates
 
 
-def find_unique_invariants(tokens_of, tokens_with_loc, current_line, candidate_tree, node_cache):
+def find_unique_invariants(tokens_of, tokens_with_loc, current_line):
     """
     In order to find the candidate tree quickly
     :param tokens_of:
     :param tokens_with_loc:
     :param current_line:
-    :param candidate_tree:
-    :param node_cache:
     :return:
     """
-
-    # current_line must be in the range of documents
-    while True:
+    candidate_tree = nary_tree() # the root node
+    candidate_tree.set_value("<root>")
+    node_cache = dict()
+    working_set = list()
+    working_set.append((current_line, "<root>"))
+    node_cache["<root>"] = candidate_tree
+    while working_set:
+        current_line, origin_line = working_set[0]
+        working_set.pop()
+        # current_line must be in the range of documents
+        is_out_of_range = False
         for doc_index, tokens in enumerate(tokens_of):
             if current_line[doc_index] >= len(tokens):
-                return
+                is_out_of_range = True
+                break
+        if is_out_of_range:
+            continue
         is_detected = False
         candidates = find_next_candidates(tokens_of, tokens_with_loc, current_line)
 
@@ -134,18 +143,35 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line, candidate_t
                 token_hash = compute_hash(tokens_of[doc_index][token_index])
                 token_freq = compute_freq(tokens_with_loc[token_hash][doc_index], token_index)
                 freq.append(token_freq)
-            if all(map(lambda x:x == 1, freq)):
-                if candidate not in node_cache:
+            if all(map(lambda x:x == 1, freq)): # onlf for unique invariant tokens
+                if candidate not in node_cache: # do not recompute the path that was already searched
                     new_branch = nary_tree()
                     new_branch.set_value(candidate)
                     node_cache[candidate] = new_branch
-                    find_unique_invariants(tokens_of, tokens_with_loc, get_next_line(candidate), new_branch, node_cache)
                     is_detected = True
-                candidate_tree.insert(node_cache[candidate])
+                    working_set.append((get_next_line(candidate), candidate))
+
+                node_cache[origin_line].insert(node_cache[candidate])
+
         if not is_detected:
-            current_line = get_next_line(current_line)
+            working_set.append((get_next_line(current_line), origin_line))
+
+    # Getting the longest path
+    working_set = list()
+    working_set.append((candidate_tree, list()))
+    current_tree = None
+    temp = list()
+    while working_set:
+        current_tree, current_path = working_set[0]
+        working_set.pop()
+        if current_tree.get_value() != "<root>":
+            current_path.append(current_tree.get_value())
+        if not current_tree.get_children():
+            temp.append(current_path)
         else:
-            return
+            for child in current_tree.get_children():
+                working_set.append((child, current_path))
+    return temp
 
 
 def compute_tokens_with_loc(tokens_of):
@@ -183,11 +209,7 @@ def invariant_matching_algorithm(documents):
     tokens_with_loc = compute_tokens_with_loc(tokens_of)
 
     # Search unique invariant tokens and construct a candidate tree
-    candidate_tree = nary_tree() # the root node
-    candidate_tree.set_value("<root>")
-    find_unique_invariants(tokens_of, tokens_with_loc, (0,) * num_of_docs, candidate_tree, dict())
-    candidates = list()
-    candidate_tree.update_candidates(candidates)
+    candidates = find_unique_invariants(tokens_of, tokens_with_loc, (0,) * num_of_docs)
 
     # Choose the best one from the candidate tree (almost optimal)
     max_length_of = 0

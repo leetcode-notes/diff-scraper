@@ -9,32 +9,27 @@
 # n-ary tree implementation
 class nary_tree(object):
     def __init__(self):
-        self.children = []
-        self.value = None
-        self.tag = object()
+        self._children = []
+        self._value = None
+        self._tag = object()
 
-    def children(self):
-        return self.children
+    def get_children(self):
+        return self._children
 
     def set_value(self, value):
-        self.value = value
+        self._value = value
 
     def get_value(self):
-        return self.value
+        return self._value
+
+    def get_tag(self):
+        return self._tag
 
     def insert(self, new_tree):
-        if self.children is None:
-            self.children = []
+        if self._children is None:
+            self._children = []
         if type(new_tree) is nary_tree:
-            if new_tree not in self.children:
-                self.children.append(new_tree)
+            if new_tree not in self._children:
+                self._children.append(new_tree)
         else:
             raise Exception("Invalid type")
-
-    def update_candidates(self, candidates, temp=list()):
-        if self.get_value() != "<root>":
-            temp.append(self.get_value())
-        for child in self.children:
-            child.update_candidates(candidates, list(temp))
-        if not self.children:
-            candidates.append(temp)
