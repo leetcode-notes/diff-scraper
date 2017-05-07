@@ -125,7 +125,7 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line):
     node_cache["<root>"] = candidate_tree
     while working_set:
         current_line, origin_line = working_set[0]
-        working_set.pop()
+        working_set.pop(0)
         # current_line must be in the range of documents
         is_out_of_range = False
         for doc_index, tokens in enumerate(tokens_of):
@@ -136,6 +136,8 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line):
             continue
         is_detected = False
         candidates = find_next_candidates(tokens_of, tokens_with_loc, current_line)
+ #       print("cur ", current_line)
+#        print("candidates ", candidates)
 
         for candidate in candidates:
             freq = []
@@ -143,7 +145,8 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line):
                 token_hash = compute_hash(tokens_of[doc_index][token_index])
                 token_freq = compute_freq(tokens_with_loc[token_hash][doc_index], token_index)
                 freq.append(token_freq)
-            if all(map(lambda x:x == 1, freq)): # onlf for unique invariant tokens
+#            print(candidate, freq)
+            if all(map(lambda x:x == 1, freq)): # only for unique invariant tokens
                 if candidate not in node_cache: # do not recompute the path that was already searched
                     new_branch = nary_tree()
                     new_branch.set_value(candidate)
@@ -152,9 +155,15 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line):
                     working_set.append((get_next_line(candidate), candidate))
 
                 node_cache[origin_line].insert(node_cache[candidate])
+#                print("{} -> {}".format(origin_line, candidate))
+
 
         if not is_detected:
+ #           print("***")
             working_set.append((get_next_line(current_line), origin_line))
+
+#        print(working_set)
+#        input()
 
     # Getting the longest path
     working_set = list()
@@ -163,14 +172,15 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line):
     temp = list()
     while working_set:
         current_tree, current_path = working_set[0]
-        working_set.pop()
+        working_set.pop(0)
         if current_tree.get_value() != "<root>":
             current_path.append(current_tree.get_value())
         if not current_tree.get_children():
             temp.append(current_path)
         else:
             for child in current_tree.get_children():
-                working_set.append((child, current_path))
+                working_set.append((child, list(current_path)))
+#    print(temp)
     return temp
 
 

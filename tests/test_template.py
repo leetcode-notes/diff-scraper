@@ -131,6 +131,12 @@ class TestInvariantMatchingAlgorithm(TestCase):
         if invariant_segments_text != ['<d><e>', '<img/><f><f><f><f><a><b><c>']:
             self.fail()
 
+    def test_5(self):
+        docs = ["<a/><c/><a/>", "<html/><c/><a/><a/>", "<html/><c/><a/><a/><a/>"]
+        invariant_segments_text, _ = invariant_matching_algorithm(docs)
+        if invariant_segments_text != ['<c/><a/>']:
+            self.fail()
+
 
 class TestGenerate(TestCase):
     def test_1(self):
