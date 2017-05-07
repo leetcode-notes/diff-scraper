@@ -1,0 +1,214 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+<title>Homework 5. Listdiffs</title>
+<link rel='copyright' href='../copyright.html'>
+<link rev='made' href='mailto:eggert@cs.ucla.edu'>
+</head>
+
+<body>
+
+<h1>Homework 5. Listdiffs</h1>
+
+<p>A <dfn>listdiff</dfn> is a pair whose car is <var>L</var> and whose
+cdr is <samp>eq?</samp> to either <var>L</var>, or to <samp>(cdr
+</samp><var>L</var><samp>)</samp>, or to <samp>(cdr (cdr
+</samp><var>L</var><samp>)))</samp>, etc. The cdr of a listdiff need
+not be a list; it may be any object.</p>
+
+<p>A listdiff <var>D</var> represents the prefix of <samp>(car
+</samp><var>D</var><samp>)</samp> that precedes <samp>(cdr
+</samp><var>D</var><samp>)</samp>.  For example, suppose
+<samp>ils</samp> is the improper list <samp>(a e i o u
+. y)</samp>. Then <samp>(cons ils ils)</samp> returns an empty
+listdiff, <samp>(cons ils (cdr (cdr ils)))</samp> returns a listdiff
+with the same elements as the list <samp>(a e)</samp>, and <samp>(cons
+(cdr ils) 'y)</samp> returns a listdiff with the same elements as
+<samp>(e i o u)</samp>. Conversely, neither <samp>(cons '()
+ils)</samp> nor <samp>(cons ils (append '(a e i o u) 'y))</samp> returns a
+listdiff.</p>
+
+<p>Listdiffs are intended to be efficient representations for sublists.
+Normally if you want to represent a sublist of length <var>N</var>
+nondestructively, you must invoke <samp>cons</samp> <var>N</var> times
+to copy the <var>N</var> pairs in the sublist.  However, with a listdiff
+you must invoke <samp>cons</samp> only once, to create the pair whose
+car is the first element of the sublist and whose cdr is the first
+element after the end of the sublist.</p>
+
+<p>Define the following procedures, which are specified using the
+entry format described in <a
+href='http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-9.html#node_sec_6.2'>R6RS
+&sect;6.2</a>, except that the label "procedure" is
+omitted. All but the last three procedures have semantics similar to
+the standard Scheme procedures for lists; for example,
+<samp>cons-ld</samp> is to listdiffs as <samp>cons</samp> is to
+lists.</p>
+
+<dl>
+ <dt><samp>(null-ld? </samp><var>obj</var><samp>)</samp></dt>
+ <dd>Return <samp>#t</samp> if <var>obj</var> is an empty listdiff,
+  <samp>#f</samp> otherwise.</dd>
+
+ <dt><samp>(listdiff? </samp><var>obj</var><samp>)</samp></dt>
+ <dd>Return <samp>#t</samp> if <var>obj</var> is a listdiff,
+  <samp>#f</samp> otherwise.</dd>
+
+ <dt><samp>(cons-ld </samp><var>obj listdiff</var><samp>)</samp></dt>
+ <dd>Return a listdiff whose first element is
+  <var>obj</var> and whose remaining elements are
+  <var>listdiff</var>. (Unlike <samp>cons</samp>, the last argument
+  cannot be an arbitrary object; it must be a listdiff.)</dd>
+
+ <dt><samp>(car-ld </samp><var>listdiff</var><samp>)</samp></dt>
+ <dd>Return the first element of <var>listdiff</var>. It is an error
+ if <var>listdiff</var> has no elements. ("It is an error" means
+ the implementation can do anything it likes when this happens,
+ and we won't test this case when grading.)</dd>
+
+ <dt><samp>(cdr-ld </samp><var>listdiff</var><samp>)</samp></dt>
+ <dd>Return a listdiff containing all but the first element of <var>listdiff</var>.
+  It is an error if <var>listdiff</var> has no elements.</dd>
+
+ <dt><samp>(listdiff </samp><var>obj &hellip;</var><samp>)</samp></dt>
+ <dd>Return a newly allocated listdiff of its arguments.</dd>
+
+ <dt><samp>(length-ld </samp><var>listdiff</var><samp>)</samp></dt>
+ <dd>Return the length of <var>listdiff</var>.</dd>
+
+ <dt><samp>(append-ld </samp><var>listdiff
+ &hellip;</var><samp>)</samp></dt>
+ <dd>Return a listdiff consisting of the elements of the first
+  <var>listdiff</var> followed by the elements of the other
+  <var>listdiffs</var>. The resulting listdiff is always newly allocated,
+  except that it shares structure with the last argument.
+  (Unlike <samp>append</samp>, the last argument cannot
+  be an arbitrary object; it must be a listdiff.)</dd>
+
+ <dt><samp>(assq-ld </samp><var>obj alistdiff</var><samp>)</samp></dt>
+ <dd><var>alistdiff</var> must be a listdiff
+  whose members are all pairs. Find the first pair in <var>alistdiff</var> whose
+  car field is <samp>eq?</samp> to <var>obj</var>, and return that pair; if there is
+  no such pair, return <samp>#f</samp>.</dd>
+
+ <dt><samp>(list->listdiff </samp><var>list</var><samp>)</samp></dt>
+ <dd>Return a listdiff that represents the same elements as
+  <var>list</var>.</dd>
+
+ <dt><samp>(listdiff->list </samp><var>listdiff</var><samp>)</samp></dt>
+ <dd>Return a list that represents the same elements as
+  <var>listdiff</var>.</dd>
+
+ <dt><samp>(expr-returning </samp><var>listdiff</var><samp>)</samp></dt>
+ <dd>Return a Scheme expression that, when evaluated, will return a copy
+  of <var>listdiff</var>, that is, a listdiff that has the same top-level
+  data structure as <var>listdiff</var>. Your implementation can assume that
+  the argument listdiff contains only booleans, characters, numbers, and
+  symbols.</dd>
+</dl>
+
+<p>Your implementation of the above routines must be free of side
+effects. Also, except for <samp>expr-returning</samp>,
+your implementation should avoid using unnecessary
+storage: e.g., it should minimize the number of calls to
+<samp>cons</samp>, and when it uses recursion it should when possible use <a
+href='http://en.wikipedia.org/wiki/Tail_recursion'>
+tail recursion</a>. Returned values may share storage with arguments; they
+need not copy their arguments.</p>
+
+<p>The expressions that <samp>expr-returning</samp> returns should
+avoid generating objects that are not used in the final result, and should
+restrict themselves to the following tiny subset of Scheme:</p>
+
+<ul>
+ <li>Numerical constants, character constants,
+  and boolean constants.</li>
+ <li><samp>(quote <var>S</var>)</samp> where <samp><var>S</var></samp>
+  is a symbol, is <samp>()</samp>, or is one of the just-mentioned
+  constants.</li>
+ <li>Calls to <samp>cons</samp>, <samp>car</samp>, <samp>cdr</samp>,
+  and <samp>list</samp>.</li>
+</ul>
+
+<h2>Submit</h2>
+
+<p>Submit one file:</p>
+
+<dl>
+ <dt><samp>hw5.scm</samp></dt><dd>should contain your procedure definitions.
+  Your implementation should work on the SEASnet installation of
+  <a href='http://racket-lang.org/'><samp>racket</samp></a>,
+  the Scheme implementation installed on SEASnet.</dd>
+</dl>
+
+<p>Here are a few examples:</p>
+
+<pre><samp>(define ils (append '(a e i o u) 'y))
+(define d1 (cons ils (cdr (cdr ils))))
+(define d2 (cons ils ils))
+(define d3 (cons ils (append '(a e i o u) 'y)))
+(define d4 (cons '() ils))
+(define d5 0)
+(define d6 (listdiff ils d1 37))
+(define d7 (append-ld d1 d2 d6))
+(define e1 (expr-returning d1))
+
+(listdiff? d1)                         ===>  #t
+(listdiff? d2)                         ===>  #t
+(listdiff? d3)                         ===>  #f
+(listdiff? d4)                         ===>  #f
+(listdiff? d5)                         ===>  #f
+(listdiff? d6)                         ===>  #t
+(listdiff? d7)                         ===>  #t
+
+(null-ld? d1)                          ===>  #f
+(null-ld? d2)                          ===>  #t
+(null-ld? d3)                          ===>  #f
+(null-ld? d6)                          ===>  #f
+
+(car-ld d1)                            ===>  a
+(car-ld d2)                            ===>  <var>error</var>
+(car-ld d3)                            ===>  <var>error</var>
+(car-ld d6)                            ===>  (a e i o u . y)
+
+(length-ld d1)                         ===>  2
+(length-ld d2)                         ===>  0
+(length-ld d3)                         ===>  <var>error</var>
+(length-ld d6)                         ===>  3
+(length-ld d7)                         ===>  5
+
+(define kv1 (cons d1 'a))
+(define kv2 (cons d2 'b))
+(define kv3 (cons d3 'c))
+(define kv4 (cons d1 'd))
+(define d8 (listdiff kv1 kv2 kv3 kv4))
+(eq? (assq-ld d1 d8) kv1)              ===>  #t
+(eq? (assq-ld d2 d8) kv2)              ===>  #t
+(eq? (assq-ld d1 d8) kv4)              ===>  #f
+
+(eq? (car-ld d6) ils)                  ===>  #t
+(eq? (car-ld (cdr-ld d6)) d1)          ===>  #t
+(eqv? (car-ld (cdr-ld (cdr-ld d6))) 37)===>  #t
+(equal? (listdiff->list d6)
+        (list ils d1 37))              ===>  #t
+(eq? (list-tail (car d6) 3) (cdr d6))  ===>  #t
+
+(listdiff->list (eval e1))             ===>  (a e)
+(equal? (listdiff->list (eval e1))
+        (listdiff->list d1))           ===>  #t
+</samp></pre>
+
+<hr>
+<address>
+ &copy; 2009, 2016 <a href="../mail-eggert.html">Paul Eggert</a>.
+ See <a href="../copyright.html">copying rules</a>.<br />
+
+ $Id: hw5.html,v 1.48 2016/11/17 20:45:25 eggert Exp $
+
+</address>
+
+</body>
+</html>

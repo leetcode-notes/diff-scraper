@@ -1,0 +1,254 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+<title>Homework 4. Morse code data recovery</title>
+<link rel='copyright' href='../copyright.html'>
+<link rev='made' href='mailto:eggert@cs.ucla.edu'>
+</head>
+
+<body>
+
+<h1>Homework 4. Morse code data recovery</h1>
+
+<h2>Motivation</h2>
+
+<p>You are working for the <a href='https://www.loc.gov'>Library of
+Congress</a> and are helping to analyze some ancient audio recordings
+of <a href='http://en.wikipedia.org/wiki/Morse_code'>Morse code</a>
+operators in action. Someone else has written a program
+that takes the analog signals from these recordings and turns them
+into a digital representation of signal-on/signal-off.</p>
+
+<p>Morse code represents each letter using a string of <samp>.</samp> (dih)
+and <samp>-</samp> (dah) symbols. At the signal level, 1 (a signal-on of
+duration 1) represents dih, 111 (a signal-on of
+duration 3) represents dah, 0 (a signal-off of
+duration 1) separates dihs from dahs within a
+letter, 000 (signal-off of duration 3) represents the boundary between
+two letters, and 0000000 (signal-off of duration 7) represent the
+space between words.</p>
+
+<p>For example, if the message is <samp>MORSE CO</samp>, its Morse
+code is <samp>-- --- .-. ... .</samp> followed by a word space
+followed by <samp>-.-. ---</samp> and its signal representation
+is
+<samp>111011100011101110111000101110100010101000100000001110101110100011101110111</samp>; this last is the output of your colleague's program and
+the input to your program.</p>
+
+<p>Unfortunately, the audio recordings are of poor quality, and their
+low-level analysis sometimes produces instances of 11 (two adjacent 1s
+only); these are errors, and the original signals could have been
+either 1 or 111. Similarly, the input to your program sometimes
+contains instances of 00, which could have been either 0 or 000 in the
+original data; of 0000, which must have been 000; and of 00000, which
+could be either 000 or 0000000. When the input is ambiguous, you need
+to evaluate either possibility, though you'll prefer to guess the
+shorter alternative first. You should treat any sequence of more than
+five 0s as if it were 0000000, and any sequence of more than three 1s
+as if it were 111.</p>
+
+<p>For example, if the input is <samp>11100111001111</samp> you want to
+first guess that the actual data were <samp>11101110111</samp>; if
+this doesn't work you'll then fall back on <samp>1110111000111</samp>,
+<samp>1110001110111</samp>, and <samp>111000111000111</samp>,
+respectively.</p>
+
+<h2>Assignment</h2>
+
+<p>First, write a Prolog predicate <samp>signal_morse/2</samp> that converts
+a list of 1s and 0s to the corresponding list of <samp>.</samp>s,
+<samp>-</samp>s, <samp>^</samp>s, and <samp>#</samp>s. For example, the goal:</p>
+
+<pre><samp>?- signal_morse(
+     [1,1,1,0,1,1,1,
+      0,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,0,1,0,1,1,1,
+      0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,
+      1,1,1,0,1,0,1,1,1,0,1,0,0,0,1,1,1,0,1,1,1,
+      0,1,1,1],
+     M).
+</samp></pre>
+
+<p>should succeed with:</p>
+
+<pre><samp>M = [-,-,^,-,-,-,^,'.',-,'.',^,'.','.','.',^,'.',#,-,'.',-,'.',^,-,-,-]
+</samp></pre>
+
+<p>Here <samp>-</samp> and <samp>.</samp> stand for themselves;
+<samp>^</samp> stands for a boundary between letters, and
+<samp>#</samp> stands for a space between words. In this
+representation, a word is any nonempty sequence of tokens other
+than <samp>#</samp>.  (The GNU Prolog interpreter prints the
+atom <samp>.</samp> as <samp>'.'</samp>.)</p>
+
+<p>If <samp>signal_morse/2</samp> gets an ambiguous signal list, it
+should generate all possible solutions, preferring solutions with
+shorter leftmost alternatives, as described above.</p>
+
+<p>Second, write a Prolog predicate <samp>signal_message/2</samp>
+that converts a list of 1s and 0s to the corresponding list of
+letters, interpreted according to the following Morse code table,
+derived from <a
+href='http://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf'>Recommendation
+ITU-R M.1677-1 (2009)</a>.</p>
+
+<pre><samp>morse(a, [.,-]).           % A
+morse(b, [-,.,.,.]).	   % B
+morse(c, [-,.,-,.]).	   % C
+morse(d, [-,.,.]).	   % D
+morse(e, [.]).		   % E
+morse('e''', [.,.,-,.,.]). % &Eacute; (accented E)
+morse(f, [.,.,-,.]).	   % F
+morse(g, [-,-,.]).	   % G
+morse(h, [.,.,.,.]).	   % H
+morse(i, [.,.]).	   % I
+morse(j, [.,-,-,-]).	   % J
+morse(k, [-,.,-]).	   % K or invitation to transmit
+morse(l, [.,-,.,.]).	   % L
+morse(m, [-,-]).	   % M
+morse(n, [-,.]).	   % N
+morse(o, [-,-,-]).	   % O
+morse(p, [.,-,-,.]).	   % P
+morse(q, [-,-,.,-]).	   % Q
+morse(r, [.,-,.]).	   % R
+morse(s, [.,.,.]).	   % S
+morse(t, [-]).	 	   % T
+morse(u, [.,.,-]).	   % U
+morse(v, [.,.,.,-]).	   % V
+morse(w, [.,-,-]).	   % W
+morse(x, [-,.,.,-]).	   % X or multiplication sign
+morse(y, [-,.,-,-]).	   % Y
+morse(z, [-,-,.,.]).	   % Z
+morse(0, [-,-,-,-,-]).	   % 0
+morse(1, [.,-,-,-,-]).	   % 1
+morse(2, [.,.,-,-,-]).	   % 2
+morse(3, [.,.,.,-,-]).	   % 3
+morse(4, [.,.,.,.,-]).	   % 4
+morse(5, [.,.,.,.,.]).	   % 5
+morse(6, [-,.,.,.,.]).	   % 6
+morse(7, [-,-,.,.,.]).	   % 7
+morse(8, [-,-,-,.,.]).	   % 8
+morse(9, [-,-,-,-,.]).	   % 9
+morse(., [.,-,.,-,.,-]).   % . (period)
+morse(',', [-,-,.,.,-,-]). % , (comma)
+morse(:, [-,-,-,.,.,.]).   % : (colon or division sign)
+morse(?, [.,.,-,-,.,.]).   % ? (question mark)
+morse('''',[.,-,-,-,-,.]). % ' (apostrophe)
+morse(-, [-,.,.,.,.,-]).   % - (hyphen or dash or subtraction sign)
+morse(/, [-,.,.,-,.]).     % / (fraction bar or division sign)
+morse('(', [-,.,-,-,.]).   % ( (left-hand bracket or parenthesis)
+morse(')', [-,.,-,-,.,-]). % ) (right-hand bracket or parenthesis)
+morse('"', [.,-,.,.,-,.]). % " (inverted commas or quotation marks)
+morse(=, [-,.,.,.,-]).     % = (double hyphen)
+morse(+, [.,-,.,-,.]).     % + (cross or addition sign)
+morse(@, [.,-,-,.,-,.]).   % @ (commercial at)
+
+% Error.
+morse(error, [.,.,.,.,.,.,.,.]). % error - see below
+
+% Prosigns.
+morse(as, [.,-,.,.,.]).          % <span style='text-decoration:overline'>AS</span> (wait A Second)
+morse(ct, [-,.,-,.,-]).          % <span style='text-decoration:overline'>CT</span> (starting signal, Copy This)
+morse(sk, [.,.,.,-,.,-]).        % <span style='text-decoration:overline'>SK</span> (end of work, Silent Key)
+morse(sn, [.,.,.,-,.]).          % <span style='text-decoration:overline'>SN</span> (understood, Sho' 'Nuff)
+</samp></pre>
+
+<p>For example:</p>
+
+<pre><samp>?- signal_message(
+     [1,1,1,0,1,1,1,
+      0,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,0,1,0,1,1,1,
+      0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,
+      1,1,1,0,1,0,1,1,1,0,1,0,0,0,1,1,1,0,1,1,1,
+      0,1,1,1],
+     M).
+</samp></pre>
+
+<p>should succeed with:</p>
+
+<pre><samp>M = [m,o,r,s,e,#,c,o]
+</samp></pre>
+
+<p>Again, <samp>#</samp> stands for the space between words, but there
+is no <samp>^</samp> at this level because the boundary between
+letters is understood.</p>
+
+<p>If the signal contains noise, <samp>signal_message/2</samp> should
+backtrack among all possible messages that it can stand for,
+interpreted according to the above-mentioned disambiguation rules for
+noisy signals. However, <samp>signal_message/2</samp> should succeed
+only for disambiguated signals that correspond to a valid Morse code
+message.</p>
+
+<p>As a special case, if your <samp>signal_message/2</samp>
+implementation finds a word, followed by zero or more spaces, followed
+by an <samp>error</samp> token, it should omit the word, the spaces,
+and the error token; it should then start scanning again after the
+omitted tokens, looking for further errors. For example:</p>
+
+<pre><samp>?- signal_message(
+     [1,1,1,0,1,1,1, % m
+      0,0,0,
+      1,1,1,0,1,1,1,0,1,1,1, % o
+      0,0,0,
+      1,0,1,1,1,0,1, % r
+      0,0,0,
+      1,0,1,0,1, % s
+      0,0,0,
+      1, % e
+      0,0,0,0,0,0,0, % #
+      1,1,1,0,1,0,1,1,1,0,1, % c
+      0,0,0,
+      1,1,1,0,1,1,1,0,1,1,1, % o
+      0,0,0,
+      1,0,1,0,1,0,1,0,1,0,1,0,1,0,1, % error
+      0,0,0,
+      1,0,1,0,1,0,1,0,1,0,1,0,1,0,1, % error
+      0,0,0,
+      1,0,1,0,1,0,1,0,1,0,1,0,1,0,1, % error
+      0,0,0,
+      1,0,1,1,1,0,1,0,1,0,1,0 % as
+     ],
+     M).
+</samp></pre>
+
+<p>should succeed with <samp>M=[m,o,r,s,e,#,error,error,as]</samp>, because
+the partial word 'CO' was erased by the first error token. The later
+error tokens were not preceded by a word and optional spaces, so they are
+preserved in the output.</p>
+
+<p>Your implementations of <samp>signal_morse/2</samp> and
+<samp>signal_message/2</samp> may assume that their first arguments
+are <dfn><a href='https://en.wikipedia.org/wiki/Ground_term'>ground
+terms</a></dfn>, that is, terms that contain no logical variables.</p>
+
+<p>Your implementation should run on <a href='http://www.gprolog.org/'>GNU
+Prolog</a> 1.4.4 as installed on the SEASnet RHEL 7 hosts
+as <samp>gprolog</samp> in <samp>/usr/local/cs/bin</samp>.</p>
+
+<h2>Submit</h2>
+
+<p>To turn in your assignment, submit a file <samp>hw4.pl</samp>
+containing your definition of <samp>signal_morse/2</samp> and
+<samp>signal_message/2</samp> and any other auxiliary definitions.
+Your definitions must implement the same Morse code system that is
+specified in <samp>morse/2</samp> above (which you can include directly
+in your code).
+If any extra text information is needed, other
+than what's in the comments, please submit it as a separate text
+file <samp>hw4.txt</samp>. Please do not put your name, student ID, or
+other personally-identifying information in your files.</p>
+
+<hr>
+<address>
+ &copy; 2016 <a href='../mail-eggert.html'>Paul Eggert</a>.
+ See <a href='../copyright.html'>copying rules</a>.<br>
+
+ $Id: hw4.html,v 1.89 2016/10/25 20:48:36 eggert Exp $
+
+</address>
+
+</body>
+</html>
