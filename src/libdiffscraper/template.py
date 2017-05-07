@@ -26,11 +26,11 @@ def expand_segment(pivots, tokens_of, tentative_decision, rightward):
     """
     This function tries to expand a segment by looking at adjacent tokens from pivot points.
     If the adjacent tokens have the same value, they can be regarded as invariant tokens (they would get promoted).
-    :param pivots: 
-    :param tokens_of: 
-    :param tentative_decision: 
+    :param pivots:
+    :param tokens_of:
+    :param tentative_decision:
     :param rightward:
-    :return: 
+    :return:
     """
     current_pivots = pivots
     is_valid_pivots = True
@@ -78,10 +78,10 @@ def expand_segment(pivots, tokens_of, tentative_decision, rightward):
 def find_next_candidates(tokens_of, tokens_with_loc, current_line):
     """
     To find the next candidates from the current line
-    :param tokens_of: 
+    :param tokens_of:
     :param tokens_with_loc: an associative array containing key-value pairs of each token and its locations
-    :param current_line: 
-    :return: 
+    :param current_line:
+    :return:
     """
     candidates = []
     for doc_index, tokens in enumerate(tokens_of):
@@ -103,20 +103,21 @@ def find_next_candidates(tokens_of, tokens_with_loc, current_line):
                 next_token_idx = bisect.bisect_left(locs, current_line[another_doc_index])
                 next_token_pos = locs[next_token_idx]
                 invariant_token[another_doc_index] = next_token_pos
-            if invariant_token not in candidates:
-                candidates.append(tuple(invariant_token))
+            tuple_invariant_token = tuple(invariant_token)
+            if tuple_invariant_token not in candidates:
+                candidates.append(tuple_invariant_token)
     return candidates
 
 
 def find_unique_invariants(tokens_of, tokens_with_loc, current_line, candidate_tree, node_cache):
     """
     In order to find the candidate tree quickly
-    :param tokens_of: 
-    :param tokens_with_loc: 
-    :param current_line: 
-    :param candidate_tree: 
-    :param node_cache: 
-    :return: 
+    :param tokens_of:
+    :param tokens_with_loc:
+    :param current_line:
+    :param candidate_tree:
+    :param node_cache:
+    :return:
     """
 
     # current_line must be in the range of documents
@@ -126,6 +127,7 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line, candidate_t
                 return
         is_detected = False
         candidates = find_next_candidates(tokens_of, tokens_with_loc, current_line)
+
         for candidate in candidates:
             freq = []
             for doc_index, token_index in enumerate(candidate):
@@ -148,9 +150,9 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line, candidate_t
 
 def compute_tokens_with_loc(tokens_of):
     """
-    To make an associative array containing a pair of a token hash and its locations. (cache)  
-    :param tokens_of: 
-    :return: 
+    To make an associative array containing a pair of a token hash and its locations. (cache)
+    :param tokens_of:
+    :return:
     """
     tokens_with_loc = {}
     for doc_index, tokens in enumerate(tokens_of):
@@ -166,8 +168,8 @@ def invariant_matching_algorithm(documents):
     """
     Matching segments by referring to unique invariant tokens
     This algorithm can be applied to documents recursively.
-    :param documents: 
-    :return: a pair of invariant segment text and tentative decisions, which are for debug purpose. 
+    :param documents:
+    :return: a pair of invariant segment text and tentative decisions, which are for debug purpose.
     """
     num_of_docs = len(documents)
 
@@ -269,9 +271,9 @@ def __print_decision(tentative_decision):
 def generate(documents, prev_text = []):
     """
     To get the template recursively
-    :param documents: 
-    :param prev_text: 
-    :return: 
+    :param documents:
+    :param prev_text:
+    :return:
     """
     text, _ = invariant_matching_algorithm(documents)
     data_segments = list(map(lambda x: extract(text, x), documents))
@@ -296,9 +298,9 @@ def generate(documents, prev_text = []):
 def extract(invariant_segments_text, document):
     """
     To get data segments by removing invariant segments from the original document
-    :param invariant_segments_text: 
-    :param document: 
-    :return: 
+    :param invariant_segments_text:
+    :param document:
+    :return:
     """
     cur_segment_offset = 0
     prev_segment_offset = 0
