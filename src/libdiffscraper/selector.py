@@ -62,12 +62,12 @@ def tagattr(tag_name, attr_name, attr_value):
         return False
     return impl
 
-#
-# def class_(class_name):
-#     def impl(e):
-#         if "attrs" in e:
-#             for n, v in e["attrs"]:
-#                 if n == "class" and v.find(class_name) != -1:
-#                     return True
-#         return False
-#     return impl
+
+def class_(class_name):
+    def impl(e):
+        if "attrs" in e:
+            for n, v in e["attrs"]:
+                if n == "class" and v.find(class_name) != -1:
+                    return True
+        return False
+    return impl

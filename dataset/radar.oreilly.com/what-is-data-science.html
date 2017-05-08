@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>What is data science? - O&#39;Reilly Media</title>
+
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:site" content="@OReillyMedia" />
+      <meta property="twitter:title" content="What is data science?" />
+      <meta property="twitter:description" content="The future belongs to the companies and people that turn data into products." />
+      <meta property="description:site" content="The future belongs to the companies and people that turn data into products." />
+      <meta property="twitter:url" content="https://www.oreilly.com/ideas/what-is-data-science" />
+      <meta property="og:type" content="article" />
+      <meta property="og:site_name" content="O&#39;Reilly Media" />
+      <meta property="og:title" content="What is data science?" />
+      <meta property="og:description" content="The future belongs to the companies and people that turn data into products." />
+      <meta property="og:url" content="https://www.oreilly.com/ideas/what-is-data-science" />
+      <meta property="article:published_time" content="2010-06-02T14:52:00Z" />
+      <meta property="article:author" content="Mike Loukides" />
+      <meta name="description" content="The future belongs to the companies and people that turn data into products." />
+      <meta name="author" content="Mike Loukides" />
+      <meta name="date" content="2010-06-02" />
+      <meta property="og:image" content="https://d3tdunqjn7n0wj.cloudfront.net/1400x933/newyorkmap-2000px-1fc039cc202929cb0c938c12f512acec.jpg" />
+      <meta property="twitter:image" content="https://d3tdunqjn7n0wj.cloudfront.net/1400x933/newyorkmap-2000px-1fc039cc202929cb0c938c12f512acec.jpg" />
+      <meta name="thumbnail" content="https://d3tdunqjn7n0wj.cloudfront.net/360x240/newyorkmap-2000px-1fc039cc202929cb0c938c12f512acec.jpg" />
+      <meta name="graphic_medium" content="https://d3tdunqjn7n0wj.cloudfront.net/360x240/newyorkmap-2000px-1fc039cc202929cb0c938c12f512acec.jpg" />
+      <meta name="oreilly:topic" content="Data science" />
+      <meta name="oreilly:parent_topic" content="Data" />
+      <meta name="oreilly:keywords" content="data,science,data science,data scientist,data scientists,data tools" />
+  
+  
+
+  <!-- Assets -->
+  <script type="text/javascript" src="https://d3ebicv0uqgr7t.cloudfront.net/assets/application-8f2cd28b01.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://d3ebicv0uqgr7t.cloudfront.net/assets/application-6a8f319913.css">
+    
+  
+  <!-- Extra Assets -->
+  
+  
+  
+
+
+  <!-- Start Adobe Digital Tag Manager Header-->
+  <script type="text/javascript">
+    dataLayer = [];
+  </script>
+
+    <script src="//assets.adobedtm.com/cdb881fdfcc417bad9035bdbc61f4a2b2135b110/satelliteLib-2d3d7e7aff56a08b02334ccd859df32171807210.js"></script>
+  
+
+  <!-- End Adobe Digital Tag Manager Header-->
+
+  <script type="text/javascript">
+    // init app.events for all communication
+    app.events = new orm.Events();
+
+    var tempData = {"content_type":"text","flag":{"flag-slug":"data-science","flag-title":"Data science","flag-url":"/topics/data-science","parent-topic-slug":"data"},"gateway_api_url":"https://gateway.oreilly.com","icons-svg":"/assets/icons-b21895638b.svg","post_info":{"byline":{"authors":[{"first-name":"Mike","last-name":"Loukides","url":"/people/1b7da-mike-loukides"}]},"excerpt":"\u003cp data-cta-1=\"before\"\u003eWe\u0026#x2019;ve all heard it: according to Hal Varian, \u003ca href=\"http://www.nytimes.com/2009/08/06/technology/06stats.html\"\u003estatistics is the next sexy job\u003c/a\u003e. Five years ago, in \u003ca href=\"http://oreilly.com/web2/archive/what-is-web-20.html\"\u003eWhat is Web 2.0\u003c/a\u003e,\r\n    Tim O\u0026#x2019;Reilly said that \u0026#x201C;data is the next Intel Inside.\u0026#x201D; But what does that statement mean? Why do we suddenly care about statistics and about data?\u003c/p\u003e\r\n\u003cp\u003eIn this post, I examine the many sides of data science \u0026#x2014; the technologies, the companies and the unique skill sets.\u003c/p\u003e","title":"What is data science?"},"post_slug":"what-is-data-science","production":true,"segment_write":"c1bqZBPpSt05Stv3bKthxtFmC2etfgEK"};
+
+    var kalturaVideoId = "";
+    var kalturaAccount = "";
+    var kalturaPlayer = "";
+
+    // This should be genetated on the API directly.
+    tempData.allTopics = [{"flag-title":"Money","flag-slug":"money"},{"flag-title":"Internet of Things","flag-slug":"internet-of-things","parent-topic-slug":"data"},{"flag-title":"Open Source","flag-slug":"open-source","parent-topic-slug":"software-engineering"},{"flag-title":"Data marketplace","flag-slug":"data-marketplace","parent-topic-slug":"data"},{"flag-title":"Cognitive augmentation","flag-slug":"cognitive-augmentation","parent-topic-slug":"data"},{"flag-title":"Software Architecture","flag-slug":"software-architecture","parent-topic-slug":"software-engineering"},{"flag-title":"Economy","flag-slug":"economy"},{"flag-title":"Data science","flag-slug":"data-science","parent-topic-slug":"data"},{"flag-title":"Design and Business","flag-slug":"design-and-business","parent-topic-slug":"design"},{"flag-title":"Data perils","flag-slug":"data-perils","parent-topic-slug":"data"},{"flag-title":"Data design","flag-slug":"data-design","parent-topic-slug":"data"},{"flag-title":"Data","flag-slug":"data"},{"flag-title":"Data culture","flag-slug":"data-culture","parent-topic-slug":"data"},{"flag-title":"Software Engineering","flag-slug":"software-engineering"},{"flag-title":"Data Tools","flag-slug":"data-tools","parent-topic-slug":"data"},{"flag-title":"Design","flag-slug":"design"},{"flag-title":"Artificial intelligence","flag-slug":"artificial-intelligence","parent-topic-slug":"data"}];
+
+    // Add metrics, using a different write key for dev than for prod
+    injectSegment(tempData.segment_write)
+
+    $(function() {
+      app.metrics = new orm.Metrics();
+      app.metrics.pageView();
+
+      app.pageInit(tempData);
+
+      // load data into events so it dispatched 'data:loaded'
+      app.events.addData(tempData);
+    })
+  </script>
+
+  <!-- Start Visual Website Optimizer Asynchronous Code -->
+  <script type='text/javascript'>
+    var _vwo_code=(function(){
+    var account_id=244658,
+    settings_tolerance=2000,
+    library_tolerance=2500,
+    use_existing_jquery=false,
+  // DO NOT EDIT BELOW THIS LINE
+  f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+  </script>
+  <!-- End Visual Website Optimizer Asynchronous Code -->
+
+</head>
+<body class="body t-data" data-section="ideas" >
+  <div class="flashes"></div>
+    <header id="page-header">
+  <div id="header-bar" class="t-bkg">
+    <h1 class="logo t-bkg" >
+  <a href="/" class=" logo-white ">
+  <svg role="heading" aria-label="O'Reilly">
+    <title>O'Reilly</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#oreilly-logo"></use>
+  </svg>
+  </a>
+</h1>
+    <nav>
+              <a href="/ideas">Ideas</a>
+              <a href="/learning">Learning</a>
+              <a href="http://www.oreilly.com/conferences/">Events</a>
+              <a href="http://shop.oreilly.com/">Shop</a>
+      
+    </nav>
+    
+    
+    <div class="right invert">
+      <div id="search" class="hide">
+        <form class="search-form expanded" action="https://ssearch.oreilly.com" method="GET" target="_blank">
+  <label class="hide" for="text">Search </label> <input class="transparent" name="q" type="text" placeholder="Search..."/>
+  <a class="search-cta"><span class="icon icon-search   ">
+  <svg role="img">
+    <title>search</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#search"></use>
+  </svg>
+</span></a>
+  <input class="hide" type="submit" value="Submit"/>
+</form>
+      </div>
+      <div id="user">
+        <a href="#feedback"  class="t-c--d feedback" id="feedback">Feedback</a>
+        <a class="t-c--d login" id="log-in-loading">Loading...</a>
+        <a href="?log-in" class="t-c--d login" id="log-in">Log in</a>
+        <a href="?log-out" class="t-c--d capture_end_session login" id="log-out">Log out</a>
+        <a href="/user/preferences"  class="t-c--d login" id="preferences"><span class="icon icon-configure icon--small t-fill ">
+  <svg role="img">
+    <title>configure</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#configure"></use>
+  </svg>
+</span></a>
+      </div>
+    </div>
+    <a id="menu-toggle" class="invert" ><span class="icon icon-white icon-menu">
+  <svg role="img" id="close" class="is-hidden">
+    <title>Close Menu</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#close"></use>
+  </svg>
+  <svg role="img" id="open">
+    <title>Open Menu</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#menu"></use>
+  </svg>
+</span></a>
+  </div>
+     <div class="topics" >
+  <div class="scrollable">
+    <h3>On our radar</h3>
+    <div class="topics-list">
+              <div class="flag t-bkg--before bg-ai--before flag--xsmall">
+  
+            <a href="/topics/ai" >AI</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-business--before flag--xsmall">
+  
+            <a href="/topics/business" >Business</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-data--before flag--xsmall">
+  
+            <a href="/topics/data" >Data</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-design--before flag--xsmall">
+  
+            <a href="/topics/design" >Design</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-economy--before flag--xsmall">
+  
+            <a href="/topics/economy" >Economy</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-operations--before flag--xsmall">
+  
+            <a href="/topics/operations" >Operations</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-security--before flag--xsmall">
+  
+            <a href="/topics/security" >Security</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-software-engineering--before flag--xsmall">
+  
+            <a href="/topics/software-architecture" >Software Architecture</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-software-engineering--before flag--xsmall">
+  
+            <a href="/topics/software-engineering" >Software Engineering</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-web-programming--before flag--xsmall">
+  
+            <a href="/topics/web-programming" >Web Programming</a>
+    
+    
+  
+</div>
+      
+    </div>
+  </div>
+      <a href="/topics" class="t-bkg all-topics">See all</a>
+  
+</div>
+
+  
+  <div id="mobile-menu">
+    
+    <nav>
+              <a href="/ideas">Ideas</a>
+              <a href="/learning">Learning</a>
+              <a href="http://www.oreilly.com/conferences/">Events</a>
+              <a href="http://shop.oreilly.com/">Shop</a>
+      
+    </nav>
+    <form class="search-form expanded" action="https://ssearch.oreilly.com" method="GET" target="_blank">
+  <label class="hide" for="text">Search </label> <input class="transparent" name="q" type="text" placeholder="Search..."/>
+  <a class="search-cta"><span class="icon icon-search   ">
+  <svg role="img">
+    <title>search</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#search"></use>
+  </svg>
+</span></a>
+  <input class="hide" type="submit" value="Submit"/>
+</form>
+         <div class="topics" >
+  <div class="scrollable">
+    <h3>On our radar</h3>
+    <div class="topics-list">
+              <div class="flag t-bkg--before bg-ai--before flag--xsmall">
+  
+            <a href="/topics/ai" >AI</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-business--before flag--xsmall">
+  
+            <a href="/topics/business" >Business</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-data--before flag--xsmall">
+  
+            <a href="/topics/data" >Data</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-design--before flag--xsmall">
+  
+            <a href="/topics/design" >Design</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-economy--before flag--xsmall">
+  
+            <a href="/topics/economy" >Economy</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-operations--before flag--xsmall">
+  
+            <a href="/topics/operations" >Operations</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-security--before flag--xsmall">
+  
+            <a href="/topics/security" >Security</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-software-engineering--before flag--xsmall">
+  
+            <a href="/topics/software-architecture" >Software Architecture</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-software-engineering--before flag--xsmall">
+  
+            <a href="/topics/software-engineering" >Software Engineering</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-web-programming--before flag--xsmall">
+  
+            <a href="/topics/web-programming" >Web Programming</a>
+    
+    
+  
+</div>
+      
+    </div>
+  </div>
+      <a href="/topics" class="t-bkg all-topics">See all</a>
+  
+</div>
+
+    
+  </div>
+
+</header>
+
+
+  <main aria-live="polite">
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+              <header class="article-header">
+        <div class="flag-follow " data-status="" id="">
+      <div class="flag t-bkg--before bg-data--before flag--small">
+  
+            <a href="/topics/data-science" >Data science</a>
+    
+    
+  
+</div>
+  
+  <span class="cta">
+    <span class="icons">
+      
+      
+    </span>
+    <span class="messages">
+      
+      
+    </span>
+</span>
+</div>
+
+  
+  
+
+  
+
+  <h1 class="title t-c" itemprop="headline">What is data science?</h1>
+
+      <p class="dek" itemprop="alternativeHeadline">The future belongs to the companies and people that turn data into products.</p>
+  
+
+  <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/1b7da-mike-loukides" itemprop="name">Mike Loukides</a></span></div> <time class="date">June 2, 2010</time>
+
+</header>
+      
+
+      <div class="article-body" itemprop="articleBody">
+        
+                              <figure class="article-image right">
+  <img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/newyorkmap-2000px-1fc039cc202929cb0c938c12f512acec.jpg" alt="Maps are data made into a product." srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/newyorkmap-2000px-1fc039cc202929cb0c938c12f512acec.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/newyorkmap-2000px-1fc039cc202929cb0c938c12f512acec.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/newyorkmap-2000px-1fc039cc202929cb0c938c12f512acec.jpg 1440w" sizes="(min-width: 1390px) 420px, (min-width: 600px) 45vw, 100vw" class=""/>
+  <figcaption>Maps are data made into a product.
+          <span class="source-name">
+                  (source: <a class="secondary" target="_blank" href="http://publicdomainreview.org/collections/highlights-from-the-20000-maps-made-freely-available-online-by-new-york-public-library/">New York Public Library</a>).
+        
+        
+      </span>
+    
+    
+  <figcaption>
+</figure>
+          
+          
+        
+
+        
+
+        <p>We&#x2019;ve all heard it: according to Hal Varian, <a href="http://www.nytimes.com/2009/08/06/technology/06stats.html">statistics is the next sexy job</a>. Five years ago, in <a href="http://oreilly.com/web2/archive/what-is-web-20.html">What is Web 2.0</a>,
+    Tim O&#x2019;Reilly said that &#x201C;data is the next Intel Inside.&#x201D; But what does that statement mean? Why do we suddenly care about statistics and about data?</p>
+<p>In this post, I examine the many sides of data science &#x2014; the technologies, the companies and the unique skill sets.</p>
+<p>The web is full of &#x201C;data-driven apps.&#x201D; Almost any e-commerce application is a data-driven application. There&#x2019;s a database behind a web front end, and middleware that talks to a number of other databases and data services (credit card
+    processing companies, banks, and so on). But merely using data isn&#x2019;t really what we mean by &#x201C;data science.&#x201D; A data application acquires its value from the data itself, and creates more data as a result. It&#x2019;s not just an
+    application with data; it&#x2019;s a data product. Data science enables the creation of data products.</p>
+<p>One of the earlier data products on the Web was the <a href="http://en.wikipedia.org/wiki/CDDB">CDDB database</a>. The developers of CDDB realized that any CD had a unique signature, based on the exact length (in samples) of each track on the CD. Gracenote
+    built a database of track lengths, and coupled it to a database of album metadata (track titles, artists, album titles). If you&#x2019;ve ever used iTunes to rip a CD, you&#x2019;ve taken advantage of this database. Before it does anything else, iTunes
+    reads the length of every track, sends it to CDDB, and gets back the track titles. If you have a CD that&#x2019;s not in the database (including a CD you&#x2019;ve made yourself), you can create an entry for an unknown album. While this sounds simple
+    enough, it&#x2019;s revolutionary: CDDB views music as data, not as audio, and creates new value in doing so. Their business is fundamentally different from selling music, sharing music, or analyzing musical tastes (though these can also be &#x201C;data
+    products&#x201D;). CDDB arises entirely from viewing a musical problem as a data problem.</p>
+<p>Google is a master at creating data products. Here&#x2019;s a few examples:</p>
+<ul>
+    <li>Google&#x2019;s breakthrough was realizing that a search engine could use input other than the text on the page. Google&#x2019;s <a href="http://en.wikipedia.org/wiki/PageRank">PageRank</a> algorithm was among the first to use data outside of the
+        page itself, in particular, the number of links pointing to a page. Tracking links made Google searches much more useful, and PageRank has been a key ingredient to the company&#x2019;s success.</li>
+    <li>Spell checking isn&#x2019;t a terribly difficult problem, but by suggesting corrections to misspelled searches, and observing what the user clicks in response, Google made it much more accurate. They&#x2019;ve built a dictionary of common misspellings,
+        their corrections, and the contexts in which they occur.</li>
+    <li>Speech recognition has always been a hard problem, and it remains difficult. But Google has made huge strides by using the voice data they&#x2019;ve collected, and has been able to <a href="http://gdgt.com/discuss/voice-recognition-is-amazing-ive-only-68e/">integrate voice search</a>        into their core search engine.</li>
+    <li>During the Swine Flu epidemic of 2009, Google was able to track the progress of the epidemic <a href="http://www.google.org/flutrends/about/how.html">by following searches for flu-related topics</a>.</li>
+</ul>
+<figure><img src="http://s.radar.oreilly.com/2010/06/01/datascience-swing-flu.png" alt="">
+    <figcaption>Google was able to spot trends in the Swine Flu epidemic roughly two weeks before the Center for Disease Control by analyzing searches that people were making in different regions of the country.</figcaption>
+</figure>
+<p>Google isn&#x2019;t the only company that knows how to use data. <a href="http://www.facebook.com">Facebook</a> and <a href="http://www.linkedin.com">LinkedIn</a> use patterns of friendship relationships to suggest other people you may know, or should
+    know, with sometimes frightening accuracy. <a href="http://www.amazon.com">Amazon</a> saves your searches, correlates what you search for with what other users search for, and uses it to create surprisingly appropriate recommendations. These recommendations
+    are &#x201C;data products&#x201D; that help to drive Amazon&#x2019;s more traditional retail business. They come about because Amazon understands that a book isn&#x2019;t just a book, a camera isn&#x2019;t just a camera, and a customer isn&#x2019;t
+    just a customer; customers generate a trail of &#x201C;data exhaust&#x201D; that can be mined and put to use, and a camera is a cloud of data that can be correlated with the customers&#x2019; behavior, the data they leave every time they visit the
+    site.</p>
+<p>The thread that ties most of these applications together is that data collected from users provides added value. Whether that data is search terms, voice samples, or product reviews, the users are in a feedback loop in which they contribute to the products
+    they use. That&#x2019;s the beginning of data science.</p>
+<p>In the last few years, there has been an explosion in the amount of data that&#x2019;s available. Whether we&#x2019;re talking about web server logs, tweet streams, online transaction records, &#x201C;citizen science,&#x201D; data from sensors, government
+    data, or some other source, the problem isn&#x2019;t finding data, it&#x2019;s figuring out what to do with it. And it&#x2019;s not just companies using their own data, or the data contributed by their users. It&#x2019;s increasingly common to mashup
+    data from a number of sources. &#x201C;<a href="http://oreilly.com/catalog/9780596804787">Data Mashups in R</a>&#x201D; analyzes mortgage foreclosures in Philadelphia County by taking a public report from the county sheriff&#x2019;s office, extracting
+    addresses and using Yahoo to convert the addresses to latitude and longitude, then using the geographical data to place the foreclosures on a map (another data source), and group them by neighborhood, valuation, neighborhood per-capita income, and
+    other socio-economic factors.</p>
+<p>The question facing every company today, every startup, every non-profit, every project site that wants to attract a community, is how to use data effectively &#x2014; not just their own data, but all the data that&#x2019;s available and relevant. Using
+    data effectively requires something different from traditional statistics, where actuaries in business suits perform arcane but fairly well-defined kinds of analysis. What differentiates data science from statistics is that data science is a holistic
+    approach. We&#x2019;re increasingly finding data in the wild, and data scientists are involved with gathering data, massaging it into a tractable form, making it tell its story, and presenting that story to others.</p>
+<p>To get a sense for what skills are required, let&#x2019;s look at the data lifecycle: where it comes from, how you use it, and where it goes.</p>
+<h2 id="data-location">Where data comes from</h2>
+<p>Data is everywhere: your government, your web server, your business partners, <a href="http://www.nytimes.com/2010/05/02/magazine/02self-measurement-t.html?ref=magazine">even your body</a>. While we aren&#x2019;t drowning in a sea of data, we&#x2019;re
+    finding that almost everything can (or has) been instrumented. At O&#x2019;Reilly, we frequently combine publishing industry data from <a href="http://en.wikipedia.org/wiki/Nielsen_BookScan">Nielsen BookScan</a> with our own sales data, publicly available
+    Amazon data, and even job data to see what&#x2019;s happening in the publishing industry. Sites like <a href="http://infochimps.org/">Infochimps</a> and <a href="http://www.factual.com/">Factual</a> provide access to many large datasets, including
+    climate data, MySpace activity streams, and game logs from sporting events. Factual enlists users to update and improve its datasets, which cover topics as diverse as endocrinologists to hiking trails.</p>
+<figure class="right"><img src="http://s.radar.oreilly.com/2010/06/01/datascience-56-drive.jpg" alt="">
+    <figcaption>One of the first commercial disk drives from IBM. It has a 5 MB capacity and it&#x2019;s stored in a cabinet roughly the size of a luxury refrigerator. In contrast, a 32 GB microSD card measures around 5/8 x 3/8 inch and weighs about 0.5 gram.</figcaption>
+</figure>
+<p>Much of the data we currently work with is the direct consequence of Web 2.0, and of Moore&#x2019;s Law applied to data. The web has people spending more time online, and leaving a trail of data wherever they go. Mobile applications leave an even richer
+    data trail, since many of them are annotated with geolocation, or involve video or audio, all of which can be mined. Point-of-sale devices and frequent-shopper&#x2019;s cards make it possible to capture all of your retail transactions, not just the
+    ones you make online. All of this data would be useless if we couldn&#x2019;t store it, and that&#x2019;s where Moore&#x2019;s Law comes in. Since the early &#x2019;80s, processor speed has increased from <a href="http://en.wikipedia.org/wiki/Motorola_68000">10 MHz</a>    to 3.6 GHz &#x2014; an increase of 360 (not counting increases in word length and number of cores). But we&#x2019;ve seen much bigger increases in storage capacity, on every level. RAM has moved from $1,000/MB to roughly $25/GB &#x2014; a price reduction
+    of about 40000, to say nothing of the reduction in size and increase in speed. Hitachi made the <a href="http://news.cnet.com/2300-1010_3-6031405-6.html">first gigabyte disk drives</a> in 1982, weighing in at roughly 250 pounds; now terabyte drives
+    are consumer equipment, and a 32 GB microSD card weighs about half a gram. Whether you look at bits per gram, bits per dollar, or raw capacity, storage has more than kept pace with the increase of CPU speed.</p>
+<p>The importance of Moore&#x2019;s law as applied to data isn&#x2019;t just geek pyrotechnics. Data expands to fill the space you have to store it. The more storage is available, the more data you will find to put into it. The data exhaust you leave behind
+    whenever you surf the web, friend someone on Facebook, or make a purchase in your local supermarket, is all carefully collected and analyzed. Increased storage capacity demands increased sophistication in the analysis and use of that data. That&#x2019;s
+    the foundation of data science.</p>
+<p>So, how do we make that data useful? The first step of any data analysis project is &#x201C;data conditioning,&#x201D; or getting data into a state where it&#x2019;s usable. We are seeing more data in formats that are easier to consume: Atom data feeds,
+    web services, microformats, and other newer technologies provide data in formats that&#x2019;s directly machine-consumable. But old-style <a href="http://en.wikipedia.org/wiki/Data_scraping#Screen_scraping">screen scraping</a> hasn&#x2019;t died,
+    and isn&#x2019;t going to die. Many sources of &#x201C;wild data&#x201D; are extremely messy. They aren&#x2019;t well-behaved XML files with all the metadata nicely in place. The foreclosure data used in &#x201C;<a href="http://oreilly.com/catalog/9780596804787 id=hni2">Data Mashups in R</a>&#x201D;
+    was posted on a public website by the Philadelphia county sheriff&#x2019;s office. This data was presented as an HTML file that was probably generated automatically from a spreadsheet. If you&#x2019;ve ever seen the HTML that&#x2019;s generated by
+    Excel, you know that&#x2019;s going to be fun to process.</p>
+<p>Data conditioning can involve cleaning up messy HTML with tools like <a href="http://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>, natural language processing to parse plain text in English and other languages, or even getting humans to
+    do the dirty work. You&#x2019;re likely to be dealing with an array of data sources, all in different forms. It would be nice if there was a standard set of tools to do the job, but there isn&#x2019;t. To do data conditioning, you have to be ready
+    for whatever comes, and be willing to use anything from ancient Unix utilities such as <a href="http://oreilly.com/catalog/9780596000707">awk</a> to XML parsers and machine learning libraries. Scripting languages, such as <a href="http://oreilly.com/perl/">Perl</a>    and <a href="http://oreilly.com/python/">Python</a>, are essential.</p>
+<p>Once you&#x2019;ve parsed the data, you can start thinking about the quality of your data. Data is frequently missing or incongruous. If data is missing, do you simply ignore the missing points? That isn&#x2019;t always possible. If data is incongruous,
+    do you decide that something is wrong with badly behaved data (after all, equipment fails), or that the incongruous data is telling its own story, which may be more interesting? It&#x2019;s reported that the discovery of ozone layer depletion was
+    delayed because <a href="http://www.nas.nasa.gov/About/Education/Ozone/history.html">automated data collection tools discarded readings that were too low</a> <sup><a href="#footnote-1">1</a></sup>. In data science, what you have is frequently all
+    you&#x2019;re going to get. It&#x2019;s usually impossible to get &#x201C;better&#x201D; data, and you have no alternative but to work with the data at hand.</p>
+<p>If the problem involves human language, understanding the data adds another dimension to the problem. Roger Magoulas, who runs the data analysis group at O&#x2019;Reilly, was recently searching a database for Apple job listings requiring geolocation skills.
+    While that sounds like a simple task, the trick was disambiguating &#x201C;Apple&#x201D; from many job postings in the growing Apple industry. To do it well you need to understand the grammatical structure of a job posting; you need to be able to
+    parse the English. And that problem is showing up more and more frequently. Try using <a href="http://google.com/trends">Google Trends</a> to figure out what&#x2019;s happening with the <a href="http://google.com/trends?q=Cassandra">Cassandra</a>    database or the <a href="http://google.com/trends?q=Python">Python</a> language, and you&#x2019;ll get a sense of the problem. Google has indexed many, many websites about large snakes. Disambiguation is never an easy task, but tools like the <a href="http://www.nltk.org/">Natural Language Toolkit</a>    library can make it simpler.</p>
+<p>When natural language processing fails, you can replace artificial intelligence with human intelligence. That&#x2019;s where services like Amazon&#x2019;s <a href="https://www.mturk.com/mturk/welcome id=k3la">Mechanical Turk</a> come in. If you can split
+    your task up into a large number of subtasks that are easily described, you can use Mechanical Turk&#x2019;s marketplace for cheap labor. For example, if you&#x2019;re looking at job listings, and want to know which originated with Apple, you can
+    have real people do the classification for roughly $0.01 each. If you have already reduced the set to 10,000 postings with the word &#x201C;Apple,&#x201D; paying humans $0.01 to classify them only costs $100.</p>
+<h2 id="data-scale">Working with data at scale</h2>
+<p>We&#x2019;ve all heard a lot about &#x201C;big data,&#x201D; but &#x201C;big&#x201D; is really a red herring. Oil companies, telecommunications companies, and other data-centric industries have had huge datasets for a long time. And as storage capacity
+    continues to expand, today&#x2019;s &#x201C;big&#x201D; is certainly tomorrow&#x2019;s &#x201C;medium&#x201D; and next week&#x2019;s &#x201C;small.&#x201D; The most meaningful definition I&#x2019;ve heard: <em>&#x201C;big data&#x201D; is when the size of the data itself becomes part of the problem</em>.
+    We&#x2019;re discussing data problems ranging from gigabytes to petabytes of data. At some point, traditional techniques for working with data run out of steam.</p>
+<p>What are we trying to do with data that&#x2019;s different? According to Jeff Hammerbacher <sup><a href="#footnote-2">2</a></sup> (<a href="http://twitter.com/hackingdata">@hackingdata</a>), we&#x2019;re trying to build information platforms or dataspaces.
+    Information platforms are similar to traditional data warehouses, but different. They expose rich APIs, and are designed for exploring and understanding the data rather than for traditional analysis and reporting. They accept all data formats, including
+    the most messy, and their schemas evolve as the understanding of the data changes.</p>
+<p>Most of the organizations that have built data platforms have found it necessary to go beyond the relational database model. Traditional relational database systems stop being effective at this scale. Managing sharding and replication across a horde of
+    database servers is difficult and slow. The need to define a schema in advance conflicts with reality of multiple, unstructured data sources, in which you may not know what&#x2019;s important until after you&#x2019;ve analyzed the data. Relational
+    databases are designed for consistency, to support complex transactions that can easily be rolled back if any one of a complex set of operations fails. While rock-solid consistency is crucial to many applications, it&#x2019;s not really necessary
+    for the kind of analysis we&#x2019;re discussing here. Do you really care if you have 1,010 or 1,012 Twitter followers? Precision has an allure, but in most data-driven applications outside of finance, that allure is deceptive. Most data analysis
+    is comparative: if you&#x2019;re asking whether sales to Northern Europe are increasing faster than sales to Southern Europe, you aren&#x2019;t concerned about the difference between 5.92 percent annual growth and 5.93 percent.</p>
+<p>To store huge datasets effectively, we&#x2019;ve seen a new breed of databases appear. These are frequently called NoSQL databases, or Non-Relational databases, though neither term is very useful. They group together fundamentally dissimilar products
+    by telling you what they aren&#x2019;t. Many of these databases are the logical descendants of Google&#x2019;s <a href="http://labs.google.com/papers/bigtable.html">BigTable</a> and Amazon&#x2019;s <a href="http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html">Dynamo</a>,
+    and are designed to be distributed across many nodes, to provide &#x201C;eventual consistency&#x201D; but not absolute consistency, and to have very flexible schema. While there are two dozen or so products available (almost all of them open source),
+    a few leaders have established themselves:</p>
+<ul>
+    <li><a href="http://cassandra.apache.org/">Cassandra</a>: Developed at Facebook, in production use at Twitter, Rackspace, Reddit, and other large sites. Cassandra is designed for high performance, reliability, and automatic replication. It has a very
+        flexible data model. A new startup, <a href="http://www.riptano.com/">Riptano</a>, provides commercial support.</li>
+    <li><a href="http://hadoop.apache.org/hbase/">HBase</a>: Part of the Apache Hadoop project, and modelled on Google&#x2019;s BigTable. Suitable for extremely large databases (billions of rows, millions of columns), distributed across thousands of nodes.
+        Along with Hadoop, commercial support is provided by <a href="http://www.cloudera.com/">Cloudera</a>.</li>
+</ul>
+<p>Storing data is only part of building a data platform, though. Data is only useful if you can do something with it, and enormous datasets present computational problems. Google popularized the <a href="http://labs.google.com/papers/mapreduce.html">MapReduce</a>    approach, which is basically a divide-and-conquer strategy for distributing an extremely large problem across an extremely large computing cluster. In the &#x201C;map&#x201D; stage, a programming task is divided into a number of identical subtasks,
+    which are then distributed across many processors; the intermediate results are then combined by a single reduce task. In hindsight, MapReduce seems like an obvious solution to Google&#x2019;s biggest problem, creating large searches. It&#x2019;s
+    easy to distribute a search across thousands of processors, and then combine the results into a single set of answers. What&#x2019;s less obvious is that MapReduce has proven to be widely applicable to many large data problems, ranging from search
+    to machine learning.</p>
+<p>The most popular open source implementation of MapReduce is the <a href="http://hadoop.apache.org/">Hadoop project</a>. Yahoo&#x2019;s claim that they had built the <a href="http://developer.yahoo.net/blogs/hadoop/2008/02/yahoo-worlds-largest-production-hadoop.html">world&#x2019;s largest production Hadoop application</a>,
+    with 10,000 cores running Linux, brought it onto center stage. Many of the key Hadoop developers have found a home at <a href="http://www.cloudera.com/">Cloudera</a>, which provides commercial support. Amazon&#x2019;s <a href="http://aws.amazon.com/elasticmapreduce/">Elastic MapReduce</a>    makes it much easier to put Hadoop to work without investing in racks of Linux machines, by providing preconfigured Hadoop images for its EC2 clusters. You can allocate and de-allocate processors as needed, paying only for the time you use them.</p>
+<p><a href="http://oreilly.com/catalog/9780596521981">Hadoop</a> goes far beyond a simple MapReduce implementation (of which there are several); it&#x2019;s the key component of a data platform. It incorporates <a href="http://hadoop.apache.org/hdfs/">HDFS</a>,
+    a distributed filesystem designed for the performance and reliability requirements of huge datasets; the HBase database; <a href="http://hadoop.apache.org/hive/">Hive</a>, which lets developers explore Hadoop datasets using SQL-like queries; a high-level
+    dataflow language called <a href="http://hadoop.apache.org/pig/">Pig</a>; and other components. If anything can be called a one-stop information platform, Hadoop is it.</p>
+<p>Hadoop has been instrumental in enabling &#x201C;agile&#x201D; data analysis. In software development, &#x201C;agile practices&#x201D; are associated with faster product cycles, closer interaction between developers and consumers, and testing. Traditional
+    data analysis has been hampered by extremely long turn-around times. If you start a calculation, it might not finish for hours, or even days. But Hadoop (and particularly Elastic MapReduce) make it easy to build clusters that can perform computations
+    on long datasets quickly. Faster computations make it easier to test different assumptions, different datasets, and different algorithms. It&#x2019;s easer to consult with clients to figure out whether you&#x2019;re asking the right questions, and
+    it&#x2019;s possible to pursue intriguing possibilities that you&#x2019;d otherwise have to drop for lack of time.</p>
+<p>Hadoop is essentially a batch system, but <a href="http://code.google.com/p/hop/">Hadoop Online Prototype (HOP)</a> is an experimental project that enables stream processing. Hadoop processes data as it arrives, and delivers intermediate results in (near)
+    real-time. Near real-time data analysis enables features like <a href="http://search.twitter.com/">trending topics</a> on sites like <a href="http://twitter.com">Twitter</a>. These features only require soft real-time; reports on trending topics don&#x2019;t
+    require millisecond accuracy. As with the number of followers on Twitter, a &#x201C;trending topics&#x201D; report only needs to be current to within five minutes &#x2014; or even an hour. According to Hilary Mason (<a href="http://twitter.com/hmason">@hmason</a>),
+    data scientist at <a href="http://bit.ly/">bit.ly</a>, it&#x2019;s possible to precompute much of the calculation, then use one of the experiments in real-time MapReduce to get presentable results.</p>
+<p>Machine learning is another essential tool for the data scientist. We now expect web and mobile applications to incorporate recommendation engines, and building a recommendation engine is a quintessential artificial intelligence problem. You don&#x2019;t
+    have to look at many modern web applications to see classification, error detection, image matching (behind <a href="http://www.google.com/mobile/goggles/">Google Goggles</a> and <a href="http://www.snaptell.com/">SnapTell</a>) and even face detection
+    &#x2014; an ill-advised mobile application lets you take someone&#x2019;s picture with a cell phone, and look up that person&#x2019;s identity using photos available online. <a href="http://www.stanford.edu/class/cs229/">Andrew Ng&#x2019;s Machine Learning course</a>    is one of the most popular courses in computer science at Stanford, with hundreds of students (<a href="http://www.youtube.com/watch?v=UzxYlbK2c7E id=j0ha">this video is highly recommended</a>).</p>
+<p>There are many libraries available for machine learning: <a href="http://pybrain.org/">PyBrain</a> in Python, <a href="http://elefant.developer.nicta.com.au/">Elefant</a>, <a href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> in Java, and <a href="http://lucene.apache.org/mahout/">Mahout</a>    (coupled to Hadoop). Google has just announced their <a href="http://code.google.com/apis/predict/">Prediction API</a>, which exposes their machine learning algorithms for public use via a RESTful interface. For computer vision, the <a href="http://opencv.willowgarage.com/wiki/">OpenCV</a>    library is a de-facto standard.</p>
+<p><a href="https://www.mturk.com/mturk/welcome id=k3la">Mechanical Turk</a> is also an important part of the toolbox. Machine learning almost always requires a &#x201C;training set,&#x201D; or a significant body of known data with which to develop and tune
+    the application. The Turk is an excellent way to develop training sets. Once you&#x2019;ve collected your training data (perhaps a large collection of public photos from Twitter), you can have humans classify them inexpensively &#x2014; possibly sorting
+    them into categories, possibly drawing circles around faces, cars, or whatever interests you. It&#x2019;s an excellent way to classify a few thousand data points at a cost of a few cents each. Even a relatively large job only costs a few hundred dollars.</p>
+<p>While I haven&#x2019;t stressed traditional statistics, building statistical models plays an important role in any data analysis. According to <a href="http://www.dataspora.com/">Mike Driscoll</a> (<a href="http://twitter.com/dataspora">@dataspora</a>),
+    statistics is the &#x201C;grammar of data science.&#x201D; It is crucial to &#x201C;making data speak coherently.&#x201D; We&#x2019;ve all heard the joke that eating pickles causes death, because everyone who dies has eaten pickles. That joke doesn&#x2019;t
+    work if you understand what correlation means. More to the point, it&#x2019;s easy to notice that one advertisement for <em><a href="http://oreilly.com/catalog/9780596801717/">R in a Nutshell</a></em> generated 2 percent more conversions than another.
+    But it takes statistics to know whether this difference is significant, or just a random fluctuation. Data science isn&#x2019;t just about the existence of data, or making guesses about what that data might mean; it&#x2019;s about testing hypotheses
+    and making sure that the conclusions you&#x2019;re drawing from the data are valid. Statistics plays a role in everything from traditional business intelligence (BI) to understanding how Google&#x2019;s ad auctions work. Statistics has become a basic
+    skill. It isn&#x2019;t superseded by newer techniques from machine learning and other disciplines; it complements them.</p>
+<p>While there are many commercial statistical packages, the open source <a href="http://www.r-project.org/">R language</a> &#x2014; and its comprehensive package library, <a href="http://cran.r-project.org/">CRAN</a> &#x2014; is an essential tool. Although
+    R is an odd and quirky language, particularly to someone with a background in computer science, it comes close to providing &#x201C;one stop shopping&#x201D; for most statistical work. It has excellent graphics facilities; CRAN includes parsers for
+    many kinds of data; and newer extensions extend R into distributed computing. If there&#x2019;s a single tool that provides an end-to-end solution for statistics work, R is it.</p>
+<h2 id="data-story">Making data tell its story</h2>
+<p>A picture may or may not be worth a thousand words, but a picture is certainly worth a thousand numbers. The problem with most data analysis algorithms is that they generate a set of numbers. To understand what the numbers mean, the stories they are really
+    telling, you need to generate a graph. Edward Tufte&#x2019;s <a href="http://www.amazon.com/Visual-Display-Quantitative-Information-2nd/dp/0961392142/">Visual Display of Quantitative Information</a> is the classic for data visualization, and a foundational
+    text for anyone practicing data science. But that&#x2019;s not really what concerns us here. Visualization is crucial to each stage of the data scientist. According to Martin Wattenberg (<a href="http://twitter.com/wattenberg">@wattenberg</a>, founder
+    of <a>Flowing Media)</a>, visualization is key to data conditioning: if you want to find out just how bad your data is, try plotting it. Visualization is also frequently the first step in analysis. Hilary Mason says that when she gets a new data set,
+    she starts by making a dozen or more scatter plots, trying to get a sense of what might be interesting. Once you&#x2019;ve gotten some hints at what the data might be saying, you can follow it up with more detailed analysis.</p>
+<p>There are many packages for plotting and presenting data. <a href="http://www.gnuplot.info/">GnuPlot</a> is very effective; R incorporates a fairly comprehensive graphics package; Casey Reas&#x2019; and Ben Fry&#x2019;s <a href="http://processing.org/">Processing</a>    is the state of the art, particularly if you need to create animations that show how things change over time. At IBM&#x2019;s <a href="http://manyeyes.alphaworks.ibm.com/manyeyes/">Many Eyes</a>, many of the visualizations are full-fledged interactive
+    applications.</p>
+<p>Nathan Yau&#x2019;s <a href="http://flowingdata.com/">FlowingData</a> blog is a great place to look for creative visualizations. One of my favorites is this animation of the <a href="http://flowingdata.com/2010/04/07/watching-the-growth-of-walmart-now-with-100-more-sams-club/">growth of Walmart</a>    over time. And this is one place where &#x201C;art&#x201D; comes in: not just the aesthetics of the visualization itself, but how you understand it. Does it look like the spread of cancer throughout a body? Or the spread of a flu virus through a population?
+    Making data tell its story isn&#x2019;t just a matter of presenting results; it involves making connections, then going back to other data sources to verify them. Does a successful retail chain spread like an epidemic, and if so, does that give us
+    new insights into how economies work? That&#x2019;s not a question we could even have asked a few years ago. There was insufficient computing power, the data was all locked up in proprietary sources, and the tools for working with the data were insufficient.
+    It&#x2019;s the kind of question we now ask routinely.</p>
+<h2 id="data-scientists">Data scientists</h2>
+<p>Data science requires skills ranging from traditional computer science to mathematics to art. Describing the data science group he put together at Facebook (possibly the first data science group at a consumer-oriented web property), Jeff Hammerbacher
+    said:</p>
+<blockquote class="long-text">
+    <p>&#x2026; on any given day, a team member could author a multistage processing pipeline in Python, design a hypothesis test, perform a regression analysis over data samples with R, design and implement an algorithm for some data-intensive product or
+        service in Hadoop, or communicate the results of our analyses to other members of the organization <sup><a href="#footnote-3">3</a></sup></p>
+</blockquote>
+<p>Where do you find the people this versatile? According to DJ Patil, chief scientist at <a href="http://www.linkedin.com/">LinkedIn</a> (<a href="http://twitter.com/dpatil">@dpatil</a>), the best data scientists tend to be &#x201C;hard scientists,&#x201D;
+    particularly physicists, rather than computer science majors. Physicists have a strong mathematical background, computing skills, and come from a discipline in which survival depends on getting the most from the data. They have to think about the
+    big picture, the big problem. When you&#x2019;ve just spent a lot of grant money generating data, you can&#x2019;t just throw the data out if it isn&#x2019;t as clean as you&#x2019;d like. You have to make it tell its story. You need some creativity
+    for when the story the data is telling isn&#x2019;t what you think it&#x2019;s telling.</p>
+<p>Scientists also know how to break large problems up into smaller problems. Patil described the process of creating the group recommendation feature at LinkedIn. It would have been easy to turn this into a high-ceremony development project that would take
+    thousands of hours of developer time, plus thousands of hours of computing time to do massive correlations across LinkedIn&#x2019;s membership. But the process worked quite differently: it started out with a relatively small, simple program that looked
+    at members&#x2019; profiles and made recommendations accordingly. Asking things like, did you go to Cornell? Then you might like to join the Cornell Alumni group. It then branched out incrementally. In addition to looking at profiles, LinkedIn&#x2019;s
+    data scientists started looking at events that members attended. Then at books members had in their libraries. The result was a valuable data product that analyzed a huge database &#x2014; but it was never conceived as such. It started small, and
+    added value iteratively. It was an agile, flexible process that built toward its goal incrementally, rather than tackling a huge mountain of data all at once.</p>
+<p>This is the heart of what Patil calls &#x201C;data jiujitsu&#x201D; &#x2014; using smaller auxiliary problems to solve a large, difficult problem that appears intractable. CDDB is a great example of data jiujitsu: identifying music by analyzing an audio
+    stream directly is a very difficult problem (though not unsolvable &#x2014; see <a href="http://www.midomi.com/">midomi</a>, for example). But the CDDB staff used data creatively to solve a much more tractable problem that gave them the same result.
+    Computing a signature based on track lengths, and then looking up that signature in a database, is trivially simple.</p>
+<p>
+    <!-- hiring trends sidebar -->
+</p>
+<figure><img src="http://s.radar.oreilly.com/2010/06/01/datascience-jobs.png" alt="">
+    <figcaption>It&#x2019;s not easy to get a handle on jobs in data science. However, data from <a href="http://radar.oreilly.com/research/">O&#x2019;Reilly Research</a> shows a steady year-over-year increase in Hadoop and Cassandra job listings, which are good
+        proxies for the &#x201C;data science&#x201D; market as a whole. This graph shows the increase in Cassandra jobs, and the companies listing Cassandra positions, over time.</figcaption>
+</figure>
+<p>Entrepreneurship is another piece of the puzzle. Patil&#x2019;s first flippant answer to &#x201C;what kind of person are you looking for when you hire a data scientist?&#x201D; was &#x201C;someone you would start a company with.&#x201D; That&#x2019;s
+    an important insight: we&#x2019;re entering the era of products that are built on data. We don&#x2019;t yet know what those products are, but we do know that the winners will be the people, and the companies, that find those products. Hilary Mason
+    came to the same conclusion. Her job as scientist at bit.ly is really to investigate the data that bit.ly is generating, and find out how to build interesting products from it. No one in the nascent data industry is trying to build the 2012 Nissan
+    Stanza or Office 2015; they&#x2019;re all trying to find new products. In addition to being physicists, mathematicians, programmers, and artists, they&#x2019;re entrepreneurs.</p>
+<p>Data scientists combine entrepreneurship with patience, the willingness to build data products incrementally, the ability to explore, and the ability to iterate over a solution. They are inherently interdiscplinary. They can tackle all aspects of a problem,
+    from initial data collection and data conditioning to drawing conclusions. They can think outside the box to come up with new ways to view the problem, or to work with very broadly defined problems: &#x201C;here&#x2019;s a lot of data, what can you
+    make from it?&#x201D;</p>
+<p>The future belongs to the companies who figure out how to collect and use data successfully. Google, Amazon, Facebook, and LinkedIn have all tapped into their datastreams and made that the core of their success. They were the vanguard, but newer companies
+    like bit.ly are following their path. Whether it&#x2019;s mining your personal biology, building maps from the shared experience of millions of travellers, or studying the URLs that people pass to others, the next generation of successful businesses
+    will be built around data. <a href="http://www.mckinseyquarterly.com/Hal_Varian_on_how_the_Web_challenges_managers_2286">The part of Hal Varian&#x2019;s quote that nobody remembers says it all</a>:</p>
+<blockquote>
+    <p><strong>The ability to take data &#x2014; to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it &#x2014; that&#x2019;s going to be a hugely important skill in the next decades.</strong></p>
+</blockquote>
+<p>Data is indeed the new Intel Inside.</p>
+
+<p><sup>1</sup> The NASA article denies this, but also says that in 1984, they decided that the low values (whch went back to the 70s) were &#x201C;real.&#x201D; Whether humans or software decided to ignore anomalous data, it appears that data was ignored.</p>
+<p><sup>2 </sup> &#x201C;Information Platforms as Dataspaces,&#x201D; by Jeff Hammerbacher (in <em><a>Beautiful Data</a></em>)</p>
+<p><sup>3 </sup> &#x201C;Information Platforms as Dataspaces,&#x201D; by Jeff Hammerbacher (in <em><a>Beautiful Data</a></em>)</p>
+
+
+        
+                  
+        
+
+                      <div class="image-credit">
+  Article image: Maps are data made into a product.
+          <span class="source-name">
+                  (source: <a class="secondary" target="_blank" href="http://publicdomainreview.org/collections/highlights-from-the-20000-maps-made-freely-available-online-by-new-york-public-library/">New York Public Library</a>).
+        
+        
+      </span>
+    
+    
+</div>
+          
+
+          
+
+        </div>
+      </div>
+
+        <div class="article-meta">
+
+  
+
+  <ol class="article-share">
+  
+</ol>
+
+
+      <article class="block block-common with-img person">
+    <div class="thumb">
+    <div class="features">
+    
+    </div>
+        <a href="/people/1b7da-mike-loukides"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x360/mike-loukides-crop-b7719fefe24cc1ed26919575bde11961.jpg" alt="Mike Loukides" srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x360/mike-loukides-crop-b7719fefe24cc1ed26919575bde11961.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x720/mike-loukides-crop-b7719fefe24cc1ed26919575bde11961.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x1440/mike-loukides-crop-b7719fefe24cc1ed26919575bde11961.jpg 1440w"  class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/people/1b7da-mike-loukides">Mike Loukides</a>
+    
+    
+    </h2>
+    
+
+    
+          <p class="dek">Mike Loukides is Vice President of Content Strategy for O'Reilly Media, Inc. He's edited many highly regarded books on technical subjects that don't involve Windows programming. He's particularly interested in programming languages, Unix and what passes for Unix these days, and system and network administration. Mike is the author of System Performance Tuning and a coauthor of Unix Power Tools. Most recently, he's been fooling around with data and data analysis, languages like R, Mathematica, and Octave, and thinking about how to make books soc...</p>
+
+    
+  </div>
+</article>
+
+  
+
+</div>
+
+
+        <hr class="t-bkg section-divider" />
+
+
+        <aside class="article-related">
+      <section class="block-rows columns-4 ">
+
+    
+
+    <section class="block-group">
+                <article class="block block-common with-img inset-flag">
+    <div class="thumb">
+    <div class="features">
+    
+    </div>
+        <a href="/ideas/how-intelligent-data-platforms-are-powering-smart-cities"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/marina_bay_and_the_singapore_skyline_at_dusk_-_20110311-be0e3734d4b48afd99e42cdd89e4157a.jpg" alt="Marina Bay and the skyline of the Central Business District of Singapore at dusk, by William Cho." srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/marina_bay_and_the_singapore_skyline_at_dusk_-_20110311-be0e3734d4b48afd99e42cdd89e4157a.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/marina_bay_and_the_singapore_skyline_at_dusk_-_20110311-be0e3734d4b48afd99e42cdd89e4157a.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/marina_bay_and_the_singapore_skyline_at_dusk_-_20110311-be0e3734d4b48afd99e42cdd89e4157a.jpg 1440w" sizes="(min-width: 1390px) 310px, (min-width: 1000px) 25vw, (min-width: 600px) 50vw, 100vw" class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+      <div class="flag t-bkg--before flag--inset bg-data--before">
+  
+            <a href="/topics/data-science" >Data science</a>
+    
+    
+  
+</div>
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/ideas/how-intelligent-data-platforms-are-powering-smart-cities">How intelligent data platforms are powering smart cities</a>
+    
+    
+    </h2>
+    
+
+          <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/4e7ad-ben-lorica" itemprop="name">Ben Lorica</a></span></div>
+    
+          <p class="dek">Smart cities and smart nations run on data.</p>
+
+    
+  </div>
+</article>
+
+                <article class="block block-common with-img inset-flag">
+    <div class="thumb">
+    <div class="features">
+    
+    </div>
+        <a href="/ideas/beyond-algorithms-optimizing-the-search-experience"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/card_puncher_-_nara_-_513295-17a33e71f1a0f5d83ce3fd9b064d1f0b.jpg" alt="A woman posed with a Hollerith pantograph: the keyboard is for the 1920 population card, and a 1940 census form." srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/card_puncher_-_nara_-_513295-17a33e71f1a0f5d83ce3fd9b064d1f0b.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/card_puncher_-_nara_-_513295-17a33e71f1a0f5d83ce3fd9b064d1f0b.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/card_puncher_-_nara_-_513295-17a33e71f1a0f5d83ce3fd9b064d1f0b.jpg 1440w" sizes="(min-width: 1390px) 310px, (min-width: 1000px) 25vw, (min-width: 600px) 50vw, 100vw" class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+      <div class="flag t-bkg--before flag--inset bg-data--before">
+  
+            <a href="/topics/data-science" >Data science</a>
+    
+    
+  
+</div>
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/ideas/beyond-algorithms-optimizing-the-search-experience">Beyond algorithms: Optimizing the search experience</a>
+    
+    
+    </h2>
+    
+
+          <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/e9a1c-daniel-tunkelang" itemprop="name">Daniel Tunkelang</a></span></div>
+    
+          <p class="dek">Making search smarter through better human-computer interaction.</p>
+
+    
+  </div>
+</article>
+
+                <article class="block block-common with-img inset-flag">
+    <div class="thumb">
+    <div class="features">
+          <div class="feature">
+        <span class="name">Runnable code</span>
+        <span class="icon icon-code t-fill">
+  <svg role="img">
+    <title>code</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#code"></use>
+  </svg>
+</span>
+      </div>
+    
+    </div>
+        <a href="/learning/introducing-pandas-objects"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/pandas_objects-95b49105fb69c49cb1c7a119d6e897c5.png" alt="Pandas table" srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/pandas_objects-95b49105fb69c49cb1c7a119d6e897c5.png 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/pandas_objects-95b49105fb69c49cb1c7a119d6e897c5.png 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/pandas_objects-95b49105fb69c49cb1c7a119d6e897c5.png 1440w" sizes="(min-width: 1390px) 310px, (min-width: 1000px) 25vw, (min-width: 600px) 50vw, 100vw" class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+      <div class="flag t-bkg--before flag--inset bg-data--before">
+  
+            <a href="/topics/data-science" >Data science</a>
+    
+    
+  
+</div>
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/learning/introducing-pandas-objects">Introducing Pandas Objects</a>
+    
+    
+    </h2>
+    
+
+          <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/89c9c-jake-vanderplas" itemprop="name">Jake VanderPlas</a></span></div>
+    
+          <p class="dek">Python Data Science Handbook: Early Release</p>
+
+    
+  </div>
+</article>
+
+                <article class="block block-common with-img inset-flag">
+    <div class="thumb">
+    <div class="features">
+          <div class="feature">
+        <span class="name">Runnable code</span>
+        <span class="icon icon-code t-fill">
+  <svg role="img">
+    <title>code</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#code"></use>
+  </svg>
+</span>
+      </div>
+    
+    </div>
+        <a href="/learning/operations-in-pandas"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/operations-f6aa6c4ca1e69346953855399dfdf75e.jpg" alt="Pandas operations" srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/operations-f6aa6c4ca1e69346953855399dfdf75e.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/operations-f6aa6c4ca1e69346953855399dfdf75e.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/operations-f6aa6c4ca1e69346953855399dfdf75e.jpg 1440w" sizes="(min-width: 1390px) 310px, (min-width: 1000px) 25vw, (min-width: 600px) 50vw, 100vw" class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+      <div class="flag t-bkg--before flag--inset bg-data--before">
+  
+            <a href="/topics/data-science" >Data science</a>
+    
+    
+  
+</div>
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/learning/operations-in-pandas">Operations in Pandas</a>
+    
+    
+    </h2>
+    
+
+          <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/89c9c-jake-vanderplas" itemprop="name">Jake VanderPlas</a></span></div>
+    
+          <p class="dek">Python Data Science Handbook: Early Release</p>
+
+    
+  </div>
+</article>
+
+      
+  	</section>
+    
+
+</section>
+  
+</aside>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+
+
+
+
+
+
+
+  <footer role="contentinfo">
+  <div class="footer-inner">
+
+    <div class="about-us">
+      <h3 class="title">About Us</h3>
+      <ul>
+        <li><a href="http://oreilly.com/about/">Our Company</a></li>
+        <li><a href="http://oreilly.com/work-with-us.html">Teach/Speak/Write</a></li>
+        <li><a href="http://oreilly.com/careers/">Careers</a></li>
+        <li><a href="http://shop.oreilly.com/category/customer-service.do">Customer Service</a></li>
+        <li><a href="http://shop.oreilly.com/category/customer-service.do">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="site-map">
+      <h3 class="title">Site Map</h3>
+      <ul>
+        <li><a href="/ideas">Ideas</a></li>
+        <li><a href="/learning">Learning</a></li>
+        <li><a href="/topics">Topics</a></li>
+        <li><a href="/all">All</a></li>
+      </ul>
+    </div>
+    <div class="social">
+      <ul>
+        <li><a   class="icon-link " href="http://fb.co/OReilly"><span class="icon icon-facebook t-fill icon--white icon--large">
+  <svg role="img">
+    <title>facebook</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#facebook"></use>
+  </svg>
+</span></a>
+</li><li><a   class="icon-link " href="http://twitter.com/oreillymedia"><span class="icon icon-twitter t-fill icon--white icon--large">
+  <svg role="img">
+    <title>twitter</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#twitter"></use>
+  </svg>
+</span></a>
+</li><li><a   class="icon-link " href="https://www.youtube.com/user/OreillyMedia"><span class="icon icon-youtube-large t-fill icon--white icon--large">
+  <svg role="img">
+    <title>youtube-large</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#youtube-large"></use>
+  </svg>
+</span></a>
+</li><li><a   class="icon-link " href="https://plus.google.com/+oreillymedia"><span class="icon icon-google t-fill icon--white icon--large">
+  <svg role="img">
+    <title>google</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#google"></use>
+  </svg>
+</span></a>
+</li><li><a   class="icon-link " href="https://www.linkedin.com/company/o%27reilly-media"><span class="icon icon-linkedin t-fill icon--white icon--large">
+  <svg role="img">
+    <title>linkedin</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#linkedin"></use>
+  </svg>
+</span></a>
+</li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+	  <a href="/" class="logo logo-block t-bkg logo--medium">
+<svg>
+   <use xlink:href="/assets/icons-b21895638b.svg#oreilly-logo"></use>
+</svg>
+</a>
+  	<p class="copyright">&copy; 2017 O'Reilly Media, Inc. All trademarks and registered trademarks appearing on oreilly.com are the property of their respective owners.</p><br>
+  <a class="t-c" href="http://oreilly.com/terms/">Terms of Service</a>  <span class="bullet">&bull;</span>	<a class="t-c" href="http://oreilly.com/privacy.html">Privacy Policy</a> <span class="bullet">&bull;</span> <a class="t-c" href="http://www.oreilly.com/about/editorial_independence.html">Editorial Independence</a>
+	</div>
+	<figure class="animal"><img src="https://d3ebicv0uqgr7t.cloudfront.net/images/tarsier.png" class="animal-img" alt="Animal"></figure>
+</footer>
+
+
+
+  
+  
+    <!-- Start Adobe Digital Tag Manager -->
+  <script type="text/javascript">_satellite && _satellite.pageBottom();</script>
+  <!-- End Adobe Digital Tag Manager -->
+  
+</body>
+</html>

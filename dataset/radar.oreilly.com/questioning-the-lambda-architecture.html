@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Questioning the Lambda Architecture - O&#39;Reilly Media</title>
+
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:site" content="@OReillyMedia" />
+      <meta property="twitter:title" content="Questioning the Lambda Architecture" />
+      <meta property="twitter:description" content="The Lambda Architecture has its merits, but alternatives are worth exploring." />
+      <meta property="description:site" content="The Lambda Architecture has its merits, but alternatives are worth exploring." />
+      <meta property="twitter:url" content="https://www.oreilly.com/ideas/questioning-the-lambda-architecture" />
+      <meta property="og:type" content="article" />
+      <meta property="og:site_name" content="O&#39;Reilly Media" />
+      <meta property="og:title" content="Questioning the Lambda Architecture" />
+      <meta property="og:description" content="The Lambda Architecture has its merits, but alternatives are worth exploring." />
+      <meta property="og:url" content="https://www.oreilly.com/ideas/questioning-the-lambda-architecture" />
+      <meta property="article:published_time" content="2014-07-02T00:00:00Z" />
+      <meta property="article:author" content="Jay Kreps" />
+      <meta name="description" content="The Lambda Architecture has its merits, but alternatives are worth exploring." />
+      <meta name="author" content="Jay Kreps" />
+      <meta name="date" content="2014-07-02" />
+      <meta property="og:image" content="https://d3tdunqjn7n0wj.cloudfront.net/1400x933/16772552085_6ca0035565_o-1135861e4bfbd0fa723292b67dcf1bce.jpg" />
+      <meta property="twitter:image" content="https://d3tdunqjn7n0wj.cloudfront.net/1400x933/16772552085_6ca0035565_o-1135861e4bfbd0fa723292b67dcf1bce.jpg" />
+      <meta name="thumbnail" content="https://d3tdunqjn7n0wj.cloudfront.net/360x240/16772552085_6ca0035565_o-1135861e4bfbd0fa723292b67dcf1bce.jpg" />
+      <meta name="graphic_medium" content="https://d3tdunqjn7n0wj.cloudfront.net/360x240/16772552085_6ca0035565_o-1135861e4bfbd0fa723292b67dcf1bce.jpg" />
+      <meta name="oreilly:topic" content="Data Tools" />
+      <meta name="oreilly:parent_topic" content="Data" />
+      <meta name="oreilly:keywords" content="data engineer,data platform,data processing,stream processing,system architecture" />
+  
+  
+
+  <!-- Assets -->
+  <script type="text/javascript" src="https://d3ebicv0uqgr7t.cloudfront.net/assets/application-8f2cd28b01.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://d3ebicv0uqgr7t.cloudfront.net/assets/application-6a8f319913.css">
+    
+  
+  <!-- Extra Assets -->
+  
+  
+  
+
+
+  <!-- Start Adobe Digital Tag Manager Header-->
+  <script type="text/javascript">
+    dataLayer = [];
+  </script>
+
+    <script src="//assets.adobedtm.com/cdb881fdfcc417bad9035bdbc61f4a2b2135b110/satelliteLib-2d3d7e7aff56a08b02334ccd859df32171807210.js"></script>
+  
+
+  <!-- End Adobe Digital Tag Manager Header-->
+
+  <script type="text/javascript">
+    // init app.events for all communication
+    app.events = new orm.Events();
+
+    var tempData = {"content_type":"text","flag":{"flag-slug":"data-tools","flag-title":"Data Tools","flag-url":"/topics/data-tools","parent-topic-slug":"data"},"gateway_api_url":"https://gateway.oreilly.com","icons-svg":"/assets/icons-b21895638b.svg","post_info":{"byline":{"authors":[{"first-name":"Jay","last-name":"Kreps","url":"/people/02ea3-jay-kreps"}]},"title":"Questioning the Lambda Architecture"},"post_slug":"questioning-the-lambda-architecture","production":true,"segment_write":"c1bqZBPpSt05Stv3bKthxtFmC2etfgEK"};
+
+    var kalturaVideoId = "";
+    var kalturaAccount = "";
+    var kalturaPlayer = "";
+
+    // This should be genetated on the API directly.
+    tempData.allTopics = [{"flag-title":"Money","flag-slug":"money"},{"flag-title":"Internet of Things","flag-slug":"internet-of-things","parent-topic-slug":"data"},{"flag-title":"Open Source","flag-slug":"open-source","parent-topic-slug":"software-engineering"},{"flag-title":"Data marketplace","flag-slug":"data-marketplace","parent-topic-slug":"data"},{"flag-title":"Cognitive augmentation","flag-slug":"cognitive-augmentation","parent-topic-slug":"data"},{"flag-title":"Software Architecture","flag-slug":"software-architecture","parent-topic-slug":"software-engineering"},{"flag-title":"Economy","flag-slug":"economy"},{"flag-title":"Data science","flag-slug":"data-science","parent-topic-slug":"data"},{"flag-title":"Design and Business","flag-slug":"design-and-business","parent-topic-slug":"design"},{"flag-title":"Data perils","flag-slug":"data-perils","parent-topic-slug":"data"},{"flag-title":"Data design","flag-slug":"data-design","parent-topic-slug":"data"},{"flag-title":"Data","flag-slug":"data"},{"flag-title":"Data culture","flag-slug":"data-culture","parent-topic-slug":"data"},{"flag-title":"Software Engineering","flag-slug":"software-engineering"},{"flag-title":"Data Tools","flag-slug":"data-tools","parent-topic-slug":"data"},{"flag-title":"Design","flag-slug":"design"},{"flag-title":"Artificial intelligence","flag-slug":"artificial-intelligence","parent-topic-slug":"data"}];
+
+    // Add metrics, using a different write key for dev than for prod
+    injectSegment(tempData.segment_write)
+
+    $(function() {
+      app.metrics = new orm.Metrics();
+      app.metrics.pageView();
+
+      app.pageInit(tempData);
+
+      // load data into events so it dispatched 'data:loaded'
+      app.events.addData(tempData);
+    })
+  </script>
+
+  <!-- Start Visual Website Optimizer Asynchronous Code -->
+  <script type='text/javascript'>
+    var _vwo_code=(function(){
+    var account_id=244658,
+    settings_tolerance=2000,
+    library_tolerance=2500,
+    use_existing_jquery=false,
+  // DO NOT EDIT BELOW THIS LINE
+  f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+  </script>
+  <!-- End Visual Website Optimizer Asynchronous Code -->
+
+</head>
+<body class="body t-data" data-section="ideas" >
+  <div class="flashes"></div>
+    <header id="page-header">
+  <div id="header-bar" class="t-bkg">
+    <h1 class="logo t-bkg" >
+  <a href="/" class=" logo-white ">
+  <svg role="heading" aria-label="O'Reilly">
+    <title>O'Reilly</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#oreilly-logo"></use>
+  </svg>
+  </a>
+</h1>
+    <nav>
+              <a href="/ideas">Ideas</a>
+              <a href="/learning">Learning</a>
+              <a href="http://www.oreilly.com/conferences/">Events</a>
+              <a href="http://shop.oreilly.com/">Shop</a>
+      
+    </nav>
+    
+    
+    <div class="right invert">
+      <div id="search" class="hide">
+        <form class="search-form expanded" action="https://ssearch.oreilly.com" method="GET" target="_blank">
+  <label class="hide" for="text">Search </label> <input class="transparent" name="q" type="text" placeholder="Search..."/>
+  <a class="search-cta"><span class="icon icon-search   ">
+  <svg role="img">
+    <title>search</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#search"></use>
+  </svg>
+</span></a>
+  <input class="hide" type="submit" value="Submit"/>
+</form>
+      </div>
+      <div id="user">
+        <a href="#feedback"  class="t-c--d feedback" id="feedback">Feedback</a>
+        <a class="t-c--d login" id="log-in-loading">Loading...</a>
+        <a href="?log-in" class="t-c--d login" id="log-in">Log in</a>
+        <a href="?log-out" class="t-c--d capture_end_session login" id="log-out">Log out</a>
+        <a href="/user/preferences"  class="t-c--d login" id="preferences"><span class="icon icon-configure icon--small t-fill ">
+  <svg role="img">
+    <title>configure</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#configure"></use>
+  </svg>
+</span></a>
+      </div>
+    </div>
+    <a id="menu-toggle" class="invert" ><span class="icon icon-white icon-menu">
+  <svg role="img" id="close" class="is-hidden">
+    <title>Close Menu</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#close"></use>
+  </svg>
+  <svg role="img" id="open">
+    <title>Open Menu</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#menu"></use>
+  </svg>
+</span></a>
+  </div>
+     <div class="topics" >
+  <div class="scrollable">
+    <h3>On our radar</h3>
+    <div class="topics-list">
+              <div class="flag t-bkg--before bg-ai--before flag--xsmall">
+  
+            <a href="/topics/ai" >AI</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-business--before flag--xsmall">
+  
+            <a href="/topics/business" >Business</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-data--before flag--xsmall">
+  
+            <a href="/topics/data" >Data</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-design--before flag--xsmall">
+  
+            <a href="/topics/design" >Design</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-economy--before flag--xsmall">
+  
+            <a href="/topics/economy" >Economy</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-operations--before flag--xsmall">
+  
+            <a href="/topics/operations" >Operations</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-security--before flag--xsmall">
+  
+            <a href="/topics/security" >Security</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-software-engineering--before flag--xsmall">
+  
+            <a href="/topics/software-architecture" >Software Architecture</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-software-engineering--before flag--xsmall">
+  
+            <a href="/topics/software-engineering" >Software Engineering</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-web-programming--before flag--xsmall">
+  
+            <a href="/topics/web-programming" >Web Programming</a>
+    
+    
+  
+</div>
+      
+    </div>
+  </div>
+      <a href="/topics" class="t-bkg all-topics">See all</a>
+  
+</div>
+
+  
+  <div id="mobile-menu">
+    
+    <nav>
+              <a href="/ideas">Ideas</a>
+              <a href="/learning">Learning</a>
+              <a href="http://www.oreilly.com/conferences/">Events</a>
+              <a href="http://shop.oreilly.com/">Shop</a>
+      
+    </nav>
+    <form class="search-form expanded" action="https://ssearch.oreilly.com" method="GET" target="_blank">
+  <label class="hide" for="text">Search </label> <input class="transparent" name="q" type="text" placeholder="Search..."/>
+  <a class="search-cta"><span class="icon icon-search   ">
+  <svg role="img">
+    <title>search</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#search"></use>
+  </svg>
+</span></a>
+  <input class="hide" type="submit" value="Submit"/>
+</form>
+         <div class="topics" >
+  <div class="scrollable">
+    <h3>On our radar</h3>
+    <div class="topics-list">
+              <div class="flag t-bkg--before bg-ai--before flag--xsmall">
+  
+            <a href="/topics/ai" >AI</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-business--before flag--xsmall">
+  
+            <a href="/topics/business" >Business</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-data--before flag--xsmall">
+  
+            <a href="/topics/data" >Data</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-design--before flag--xsmall">
+  
+            <a href="/topics/design" >Design</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-economy--before flag--xsmall">
+  
+            <a href="/topics/economy" >Economy</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-operations--before flag--xsmall">
+  
+            <a href="/topics/operations" >Operations</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-security--before flag--xsmall">
+  
+            <a href="/topics/security" >Security</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-software-engineering--before flag--xsmall">
+  
+            <a href="/topics/software-architecture" >Software Architecture</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-software-engineering--before flag--xsmall">
+  
+            <a href="/topics/software-engineering" >Software Engineering</a>
+    
+    
+  
+</div>
+              <div class="flag t-bkg--before bg-web-programming--before flag--xsmall">
+  
+            <a href="/topics/web-programming" >Web Programming</a>
+    
+    
+  
+</div>
+      
+    </div>
+  </div>
+      <a href="/topics" class="t-bkg all-topics">See all</a>
+  
+</div>
+
+    
+  </div>
+
+</header>
+
+
+  <main aria-live="polite">
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+              <header class="article-header">
+        <div class="flag-follow " data-status="" id="">
+      <div class="flag t-bkg--before bg-data--before flag--small">
+  
+            <a href="/topics/data-tools" >Data Tools</a>
+    
+    
+  
+</div>
+  
+  <span class="cta">
+    <span class="icons">
+      
+      
+    </span>
+    <span class="messages">
+      
+      
+    </span>
+</span>
+</div>
+
+  
+  
+
+  
+
+  <h1 class="title t-c" itemprop="headline">Questioning the Lambda Architecture</h1>
+
+      <p class="dek" itemprop="alternativeHeadline">The Lambda Architecture has its merits, but alternatives are worth exploring.</p>
+  
+
+  <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/02ea3-jay-kreps" itemprop="name">Jay Kreps</a></span></div> <time class="date">July 2, 2014</time>
+
+</header>
+      
+
+      <div class="article-body" itemprop="articleBody">
+        
+                              <figure class="article-image right">
+  <img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/16772552085_6ca0035565_o-1135861e4bfbd0fa723292b67dcf1bce.jpg" alt="The actinomycetes" srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/16772552085_6ca0035565_o-1135861e4bfbd0fa723292b67dcf1bce.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/16772552085_6ca0035565_o-1135861e4bfbd0fa723292b67dcf1bce.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/16772552085_6ca0035565_o-1135861e4bfbd0fa723292b67dcf1bce.jpg 1440w" sizes="(min-width: 1390px) 420px, (min-width: 600px) 45vw, 100vw" class=""/>
+  <figcaption>The actinomycetes
+          <span class="source-name">
+                  (source: <a class="secondary" target="_blank" href="https://www.flickr.com/photos/internetarchivebookimages/16772552085/">Internet Archive Book Images</a>).
+        
+        
+      </span>
+    
+    
+  <figcaption>
+</figure>
+          
+                      <aside data-type="note">
+  <p>For more on how logs and stream-processing can form a backbone for data flow, ETL, and real-time data processing, check out <a href="https://www.safaribooksonline.com/library/view/i-logs/9781491908310/?utm_source=oreilly&utm_medium=newsite&utm_campaign=questioning-the-lambda-architecture-top-cta">I ❤ Logs: Apache Kafka and Real-time Data Integration</a> with Jay Kreps.</p>
+</aside>
+
+          
+        
+
+        
+
+        <p>Nathan Marz wrote a popular blog post describing an idea he called the Lambda Architecture (“<a href="http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html">How to beat the CAP theorem</a>“). The Lambda Architecture is an approach to building stream processing applications on top of MapReduce and <a href="http://storm.incubator.apache.org/">Storm</a> or similar systems. This has proven to be a surprisingly popular idea, with a dedicated <a href="http://lambda-architecture.net">website</a> and an <a href="http://www.manning.com/marz/">upcoming book</a>. Since I’ve been involved in building out the real-time data processing infrastructure at LinkedIn using <a href="http://kafka.apache.org">Kafka</a> and <a href="http://samza.incubator.apache.org">Samza</a>, I often get asked about the Lambda Architecture. I thought I would describe my thoughts and experiences.</p>
+<h2>What is a Lambda Architecture and how do I become one?</h2>
+<p>The Lambda Architecture looks something like this: </p>
+<figure class="center"><img src="https://dmgpayxepw99m.cloudfront.net/lambda-16338c9225c8e6b0c33a3f953133a4cb.png" alt="Lambda_Architecture" /></figure>
+<p>The way this works is that an immutable sequence of records is captured and fed into a batch system and a stream processing system in parallel. You implement your transformation logic twice, once in the batch system and once in the stream processing system. You stitch together the results from both systems at query time to produce a complete answer.</p>
+<p>There are a lot of variations on this, and I’m intentionally simplifying a bit. For example, you can swap in various similar systems for Kafka, Storm, and Hadoop, and people often use two different databases to store the output tables, one optimized for real time and the other optimized for batch updates.</p>
+<p>The Lambda Architecture is aimed at applications built around complex asynchronous transformations that need to run with low latency (say, a few seconds to a few hours). A good example would be a news recommendation system that needs to crawl various news sources, process and normalize all the input, and then index, rank, and store it for serving.</p>
+<p>I have been involved in building a number of real-time data systems and pipelines at LinkedIn. Some of these worked in this style, and upon reflection, it is not my favorite approach. I thought it would be worthwhile to describe what I see as the pros and cons of this architecture, and also give an alternative I prefer.</p>
+<h2>What’s good about this?</h2>
+<p>I like that the Lambda Architecture emphasizes retaining the input data unchanged. I think the discipline of modeling data transformation as a series of materialized stages from an original input has a lot of merit. This is one of the things that makes large MapReduce workflows tractable, as it enables you to debug each stage independently. I think this lesson translates well to the stream processing domain. I’ve written some of my thoughts about capturing and transforming immutable data streams <a href="http://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying">here</a>.</p>
+<p>I also like that this architecture highlights the problem of reprocessing data. Reprocessing is one of the key challenges of stream processing but is very often ignored. By “reprocessing,” I mean processing input data over again to re-derive output. This is a completely obvious but often ignored requirement. Code will always change. So, if you have code that derives output data from an input stream, whenever the code changes, you will need to recompute your output to see the effect of the change.</p>
+<p>Why does code change? It might change because your application evolves and you want to compute new output fields that you didn’t previously need. Or it might change because you found a bug and need to fix it. Regardless, when it does, you need to regenerate your output. I have found that many people who attempt to build real-time data processing systems don’t put much thought into this problem and end-up with a system that simply cannot evolve quickly because it has no convenient way to handle reprocessing. The Lambda Architecture deserves a lot of credit for highlighting this problem.</p>
+<p>There are a number of other motivations proposed for the Lambda Architecture, but I don’t think they make much sense. One is that real-time processing is inherently approximate, less powerful, and more lossy than batch processing. I actually do not think this is true. It is true that the existing set of stream processing frameworks are less mature than MapReduce, but there is no reason that a stream processing system can’t give as strong a semantic guarantee as a batch system.</p>
+<p>Another explanation I have heard is that the Lambda Architecture somehow “beats the CAP theorem” by allowing a mixture of different data systems with different trade-offs. Long story short, although there are definitely latency/availability trade-offs in stream processing, this is an architecture for asynchronous processing, so the results being computed are not kept immediately consistent with the incoming data. The CAP theorem, sadly, <a href="http://ferd.ca/beating-the-cap-theorem-checklist.html">remains intact</a>.</p>
+<h2>And the bad…</h2>
+<p>The problem with the Lambda Architecture is that maintaining code that needs to produce the same result in two complex distributed systems is exactly as painful as it seems like it would be. I don’t think this problem is fixable.</p>
+<p>Programming in distributed frameworks like Storm and Hadoop is complex. Inevitably, code ends up being specifically engineered toward the framework it runs on. The resulting operational complexity of systems implementing the Lambda Architecture is the one thing that seems to be universally agreed on by everyone doing it.</p>
+<p>Why can’t the stream processing system be improved to handle the full problem set in its target domain?One proposed approach to fixing this is to have a language or framework that abstracts over both the real-time and batch framework. You write your code using this higher level framework and then it “compiles down” to stream processing or MapReduce under the covers. <a href="http://github.com/twitter/summingbird">Summingbird</a> is a framework that does this. This definitely makes things a little better, but I don’t think it solves the problem. </p>
+<p>Ultimately, even if you can avoid coding your application twice, the operational burden of running and debugging two systems is going to be very high. And any new abstraction can only provide the features supported by the intersection of the two systems. Worse, committing to this new uber-framework walls off the rich ecosystem of tools and languages that makes Hadoop so powerful (Hive, Pig, Crunch, Cascading, Oozie, etc).</p>
+<p>By way of analogy, consider the notorious difficulties in making cross-database ORM really transparent. And consider that this is just a matter of abstracting over very similar systems providing virtually identical capabilities with a (nearly) standardized interface language. The problem of abstracting over totally divergent programming paradigms built on top of barely stable distributed systems is much harder.</p>
+<h2>We have done this experiment</h2>
+<p>We have actually been through a number of rounds of this at LinkedIn. We have built various hybrid-Hadoop architectures and even a domain-specific API that would allow code to be “transparently” run either in real time or in Hadoop. These approaches worked, but none were very pleasant or productive. Keeping code written in two different systems perfectly in sync was really, really hard. The API meant to hide the underlying frameworks proved to be the leakiest of abstractions. It ended up requiring deep Hadoop knowledge as well as deep knowledge of the real-time layer — and adding the new requirement that you understand enough about how the API would translate to these underlying systems whenever you were debugging problems or trying to reason about performance.</p>
+<p>These days, my advice is to use a batch processing framework like MapReduce if you aren’t latency sensitive, and use a stream processing framework if you are, but not to try to do both at the same time unless you absolutely must.</p>
+<p>So, why the excitement about the Lambda Architecture? I think the reason is because people increasingly need to build complex, low-latency processing systems. What they have at their disposal are two things that don’t quite solve their problem: a scalable high-latency batch system that can process historical data and a low-latency stream processing system that can’t reprocess results. By duct taping these two things together, they can actually build a working solution.</p>
+<p>In this sense, even though it can be painful, I think the Lambda Architecture solves an important problem that was otherwise generally ignored. But I don’t think this is a new paradigm or the future of big data. It is just a temporary state driven by the current limitation of off-the-shelf tools. I also think there are better alternatives.</p>
+<h2>An alternative</h2>
+<p>As someone who designs infrastructure, I think the glaring question is this: why can’t the stream processing system just be improved to handle the full problem set in its target domain? Why do you need to glue on another system? Why can’t you do both real-time processing and also handle the reprocessing when code changes? Stream processing systems already have a notion of parallelism; why not just handle reprocessing by increasing the parallelism and replaying history very, very fast? The answer is that you can do this, and I think this it is actually a reasonable alternative architecture if you are building this type of system today.</p>
+<p>When I’ve discussed this with people, they sometimes tell me that stream processing feels inappropriate for high-throughput processing of historical data. But I think this is an intuition based mostly on the limitations of systems they have used, which either scale poorly or can’t save historical data. This leaves them with a sense that a stream processing system is inherently something that computes results off some ephemeral streams and then throws all the underlying data away. But there is no reason this should be true. The fundamental abstraction in stream processing is data flow DAGs, which are exactly the same underlying abstraction in a traditional data warehouse (<em>a la</em> <a href="http://paperhub.s3.amazonaws.com/dace52a42c07f7f8348b08dc2b186061.pdf">Volcano</a>) as well as being the fundamental abstraction in the MapReduce successor <a href="http://hortonworks.com/hadoop/tez/">Tez</a>. Stream processing is just a generalization of this data-flow model that exposes checkpointing of intermediate results and continual output to the end user.</p>
+<p>So, how can we do the reprocessing directly from our stream processing job? My preferred approach is actually stupidly simple:</p>
+<ol>
+<li>Use Kafka or some other system that will let you retain the full log of the data you want to be able to reprocess and that allows for multiple subscribers. For example, if you want to reprocess up to 30 days of data, set your retention in Kafka to 30 days.</li>
+<li>When you want to do the reprocessing, start a second instance of your stream processing job that starts processing from the beginning of the retained data, but direct this output data to a new output table.</li>
+<li>When the second job has caught up, switch the application to read from the new table.</li>
+<li>Stop the old version of the job, and delete the old output table.</li>
+</ol>
+<p>This architecture looks something like this:</p>
+<figure class="center"><img src="https://dmgpayxepw99m.cloudfront.net/kappa-61d0afc292912b61ce62517fa2bd4309.png" alt="Kappa" /></figure>
+<p>Unlike the Lambda Architecture, in this approach you only do reprocessing when your processing code changes, and you actually need to recompute your results. And, of course, the job doing the re-computation is just an improved version of the same code, running on the same framework, taking the same input data. Naturally, you will want to bump up the parallelism on your reprocessing job so it completes very quickly.</p>
+<p>Maybe we could call this the Kappa Architecture, though it may be too simple of an idea to merit a Greek letter.</p>
+<p>Of course, you can optimize this further. In many cases, you could combine the two output tables. However, I think there are some benefits to having both for a short period of time. This allows you to revert back instantaneously to the old logic by just having a button that redirects the application to the old table. And in cases that are particularly important (your ad targeting criteria, say), you can control the cut-over with an automatic A/B test or <a href="http://shop.oreilly.com/product/0636920027393.do">bandit algorithm</a> to ensure whatever bug fix or code improvement you are rolling out hasn’t accidentally degraded things in comparison to the prior version.</p>
+<p>Note that this this doesn’t mean your data can’t go to HDFS; it just means that you don’t run your reprocessing there. Kafka has good integration with Hadoop, so mirroring any Kafka topic into HDFS is easy. It is often useful for the output or even intermediate streams from a stream processing job to be available in Hadoop for analysis in tools like Hive or for use as input for other, offline data processing flows.</p>
+<p>We have <a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/jobs/reprocessing.html">documented</a> implementing this approach as well as other variations on reprocessing architectures using Samza.</p>
+<h2>Some background</h2>
+<p>For those less familiar with Kafka, what I just described may not make sense. A quick refresher will hopefully straighten things out. Kafka maintains ordered logs like this: 
+<p>
+<figure class="center"><img src="https://dmgpayxepw99m.cloudfront.net/log-fa00884b8ef635ea9f32dc12180edd56.png" alt="Kafka_log" /></figure></p>
+
+<p>A Kafka “topic” is a collection of these logs:</p>
+
+<p><figure class="center"><img src="https://dmgpayxepw99m.cloudfront.net/partitioned_log-c74280b2059abf3b78d9bbddd657e0d7.png" alt="partitioned_log" /></figure></p>
+
+<p>
+A stream processor consuming this data just maintains an “offset,” which is the log entry number for the last record it has processed on each of these partitions. So, changing the consumer’s position to go back and reprocess data is as simple as restarting the job with a different offset. Adding a second consumer for the same data is just another reader pointing to a different position in the log.</p>
+<p>Kafka supports replication and fault-tolerance, runs on cheap, commodity hardware, and is glad to store many TBs of data per machine. So, retaining large amounts of data is a perfectly natural and economical thing to do and won’t hurt performance. LinkedIn keeps more than a petabyte of Kafka storage online, and a number of applications make good use of this long retention pattern for exactly this purpose.</p>
+<p>Cheap consumers and the ability to retain large amounts of data make adding the second “reprocessing” job just a matter of firing up a second instance of your code but starting from a different position in the log.</p>
+<p>This design is not an accident. We built Kafka with the intent of using it as a substrate for stream processing, and we had in mind exactly this model for handling reprocessing data. For the curious, you can find more information on Kafka <a href="https://kafka.apache.org/documentation.html#introduction">here</a>.</p>
+<p>Fundamentally, though, there is nothing that ties this idea to Kafka. You could substitute any system that supports long retention of ordered data (for example HDFS, or some kind of database). Indeed, a lot of people are familiar with similar patterns that go by the name <a href="http://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a> or <a href="http://martinfowler.com/bliki/CQRS.html">CQRS</a>. And, of course, the distributed database people will tell you this is just a slight rebranding of materialized view maintenance, which, as they will gladly remind you, they figured out <em>a long long time ago, sonny</em>.</p>
+<h2>Comparison</h2>
+<p>I know this approach works well using Samza as the stream processing system because we do it at LinkedIn. But I am not aware of any reason it shouldn’t work equally well in Storm or other stream processing systems. I’m not familiar enough with Storm to work through the practicalities, so I’d be glad to hear if others are doing this already. In any case, I think the general ideas are fairly system independent.</p>
+<p>The efficiency and resource trade-offs between the two approaches are somewhat of a wash. The Lambda Architecture requires running both reprocessing and live processing all the time, whereas what I have proposed only requires running the second copy of the job when you need reprocessing. However, my proposal requires temporarily having 2x the storage space in the output database and requires a database that supports high-volume writes for the re-load. In both cases, the extra load of the reprocessing would likely average out. If you had many such jobs, they wouldn’t all reprocess at once, so on a shared cluster with several dozen such jobs you might budget an extra few percent of capacity for the few jobs that would be actively reprocessing at any given time.</p>
+<p>The real advantage isn’t about efficiency at all, but rather about allowing people to develop, test, debug, and operate their systems on top of a single processing framework. So, in cases where simplicity is important, consider this approach as an alternative to the Lambda Architecture.</p>
+
+        
+                  
+        
+
+                      <div class="image-credit">
+  Article image: The actinomycetes
+          <span class="source-name">
+                  (source: <a class="secondary" target="_blank" href="https://www.flickr.com/photos/internetarchivebookimages/16772552085/">Internet Archive Book Images</a>).
+        
+        
+      </span>
+    
+    
+</div>
+          
+
+          
+
+        </div>
+      </div>
+
+        <div class="article-meta">
+
+  
+
+  <ol class="article-share">
+  
+</ol>
+
+
+      <article class="block block-common with-img person">
+    <div class="thumb">
+    <div class="features">
+    
+    </div>
+        <a href="/people/02ea3-jay-kreps"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x360/jay-e7698af2234325ef750d1fdd9e0926d5.jpg" alt="Jay Kreps" srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x360/jay-e7698af2234325ef750d1fdd9e0926d5.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x720/jay-e7698af2234325ef750d1fdd9e0926d5.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x1440/jay-e7698af2234325ef750d1fdd9e0926d5.jpg 1440w"  class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/people/02ea3-jay-kreps">Jay Kreps</a>
+    
+    
+    </h2>
+    
+
+    
+          <p class="dek">Jay Kreps is a Principal Staff Engineer at LinkedIn where he is the lead architect for online data infrastructure. He is among the original authors of several open source projects including a distributed key-value store called Project Voldemort, a messaging system called Kafka, and a stream processing system called Samza. Twitter: @jaykreps</p>
+
+    
+  </div>
+</article>
+
+  
+
+</div>
+
+
+        <hr class="t-bkg section-divider" />
+
+
+        <aside class="article-related">
+      <section class="block-rows columns-4 ">
+
+    
+
+    <section class="block-group">
+                <article class="block block-common with-img inset-flag">
+    <div class="thumb">
+    <div class="features">
+    
+    </div>
+        <a href="/ideas/accelerating-big-data-analytics-workloads-with-tachyon"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/train_approaches_warp_speed_joe_lanman_flickr-cfe12a467d74d11c7a1f47ff9b1439f1.jpg" alt="Train approaches warp speed." srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/train_approaches_warp_speed_joe_lanman_flickr-cfe12a467d74d11c7a1f47ff9b1439f1.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/train_approaches_warp_speed_joe_lanman_flickr-cfe12a467d74d11c7a1f47ff9b1439f1.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/train_approaches_warp_speed_joe_lanman_flickr-cfe12a467d74d11c7a1f47ff9b1439f1.jpg 1440w" sizes="(min-width: 1390px) 310px, (min-width: 1000px) 25vw, (min-width: 600px) 50vw, 100vw" class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+      <div class="flag t-bkg--before flag--inset bg-data--before">
+  
+            <a href="/topics/data-tools" >Data Tools</a>
+    
+    
+  
+</div>
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/ideas/accelerating-big-data-analytics-workloads-with-tachyon">Accelerating big data analytics workloads with Tachyon</a>
+    
+    
+    </h2>
+    
+
+          <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/shaoshan-liu" itemprop="name">Shaoshan Liu</a></span></div>
+    
+          <p class="dek">How Baidu combined Tachyon with Spark SQL to increase speed 30-fold</p>
+
+    
+  </div>
+</article>
+
+                <article class="block block-common with-img inset-flag">
+    <div class="thumb">
+    <div class="features">
+    
+    </div>
+        <a href="/ideas/analyzing-the-worlds_news_exploring_the_gdelt_project_through_google_bigquery"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/garni_gorge3-7b3579a2134ffa3820e39ad4687e261c.jpg" alt="Symphony of the Stones carved by the Goght River at Garni Gorge in Armenia is an example of an emergent natural structure." srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/garni_gorge3-7b3579a2134ffa3820e39ad4687e261c.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/garni_gorge3-7b3579a2134ffa3820e39ad4687e261c.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/garni_gorge3-7b3579a2134ffa3820e39ad4687e261c.jpg 1440w" sizes="(min-width: 1390px) 310px, (min-width: 1000px) 25vw, (min-width: 600px) 50vw, 100vw" class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+      <div class="flag t-bkg--before flag--inset bg-data--before">
+  
+            <a href="/topics/data-tools" >Data Tools</a>
+    
+    
+  
+</div>
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/ideas/analyzing-the-worlds_news_exploring_the_gdelt_project_through_google_bigquery">Analyzing the world’s news: Exploring the GDELT Project through Google BigQuery</a>
+    
+    
+    </h2>
+    
+
+          <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/53f07-kalev-leetaru" itemprop="name">Kalev Leetaru</a></span><span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/2b69a-felipe-hoffa" itemprop="name">Felipe Hoffa</a></span></div>
+    
+          <p class="dek">What it looks like to analyze, visualize, and even forecast human society using global news coverage.</p>
+
+    
+  </div>
+</article>
+
+                <article class="block block-common with-img inset-flag">
+    <div class="thumb">
+    <div class="features">
+          <div class="feature">
+        <span class="name">Video</span>
+        <span class="icon icon-play t-fill">
+  <svg role="img">
+    <title>play</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#play"></use>
+  </svg>
+</span>
+      </div>
+    
+    </div>
+        <a href="/learning/architecting-hadoop-applications"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/the_bridge_over_the_crim_dell_benuski_flickr-f6b0b6936ab08c157e981e230413e8ba.jpg" alt="The bridge over the Crim Dell at the College of William and Mary" srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/the_bridge_over_the_crim_dell_benuski_flickr-f6b0b6936ab08c157e981e230413e8ba.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/the_bridge_over_the_crim_dell_benuski_flickr-f6b0b6936ab08c157e981e230413e8ba.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/the_bridge_over_the_crim_dell_benuski_flickr-f6b0b6936ab08c157e981e230413e8ba.jpg 1440w" sizes="(min-width: 1390px) 310px, (min-width: 1000px) 25vw, (min-width: 600px) 50vw, 100vw" class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+      <div class="flag t-bkg--before flag--inset bg-data--before">
+  
+            <a href="/topics/data-tools" >Data Tools</a>
+    
+    
+  
+</div>
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/learning/architecting-hadoop-applications">Architecting Hadoop Applications</a>
+    
+    
+    </h2>
+    
+
+          <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/97a10-mark-grover" itemprop="name">Mark Grover</a></span><span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/31ffe-gwen-shapira" itemprop="name">Gwen Shapira</a></span><span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/d95e4-jonathan-seidman" itemprop="name">Jonathan Seidman</a></span><span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/129b9-ted-malaska" itemprop="name">Ted Malaska</a></span></div>
+    
+          <p class="dek">In this O'Reilly training video, the "Hadoop Application Architectures" authors present an end-to-end case study of a clickstream analytics engine to provide a concrete example of how to architect and implement a complete solution with Hadoop. In this segment, they provide an overview of the complete architecture. Presenters: Mark Grover, Gwen Shapira, Jonathan Seidman, Ted Malaska</p>
+
+    
+  </div>
+</article>
+
+                <article class="block block-common with-img inset-flag">
+    <div class="thumb">
+    <div class="features">
+          <div class="feature">
+        <span class="name">Video</span>
+        <span class="icon icon-play t-fill">
+  <svg role="img">
+    <title>play</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#play"></use>
+  </svg>
+</span>
+      </div>
+    
+    </div>
+        <a href="/learning/ab-testing-a-checklist"><img src="https://d3tdunqjn7n0wj.cloudfront.net/360x240/waterhouse-gather_ye_rosebuds-1909-71cb078c0b66d341e24b6b97940f5e4d.jpg" alt="Gather Ye Rosebuds While Ye May, by J.W. Waterhouse" srcset="https://d3tdunqjn7n0wj.cloudfront.net/360x240/waterhouse-gather_ye_rosebuds-1909-71cb078c0b66d341e24b6b97940f5e4d.jpg 360w, https://d3tdunqjn7n0wj.cloudfront.net/720x480/waterhouse-gather_ye_rosebuds-1909-71cb078c0b66d341e24b6b97940f5e4d.jpg 720w, https://d3tdunqjn7n0wj.cloudfront.net/1440x960/waterhouse-gather_ye_rosebuds-1909-71cb078c0b66d341e24b6b97940f5e4d.jpg 1440w" sizes="(min-width: 1390px) 310px, (min-width: 1000px) 25vw, (min-width: 600px) 50vw, 100vw" class=""/></a>
+    
+    
+  </div>
+  
+
+  
+
+      <div class="flag t-bkg--before flag--inset bg-data--before">
+  
+            <a href="/topics/data-tools" >Data Tools</a>
+    
+    
+  
+</div>
+  
+
+  <div class="text-group">
+    
+
+        <h2 class="block-title">
+          <a href="/learning/ab-testing-a-checklist">A/B Testing: a checklist</a>
+    
+    
+    </h2>
+    
+
+          <div class="byline">
+  
+  By
+  <span class="author" itemscope itemtype="http://schema.org/Person"><a href="/people/9ce19-lisa-qian" itemprop="name">Lisa Qian</a></span></div>
+    
+          <p class="dek">Lisa Qian lays out the process for a successful A/B test, from defining a goal and hypothesis, to knowing when to end the test. The most rigorous form of data-gathering when done right, A/B tests can't be run by guesswork or gut instinct. </p>
+
+    
+  </div>
+</article>
+
+      
+  	</section>
+    
+
+</section>
+  
+</aside>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+
+
+
+
+
+
+
+  <footer role="contentinfo">
+  <div class="footer-inner">
+
+    <div class="about-us">
+      <h3 class="title">About Us</h3>
+      <ul>
+        <li><a href="http://oreilly.com/about/">Our Company</a></li>
+        <li><a href="http://oreilly.com/work-with-us.html">Teach/Speak/Write</a></li>
+        <li><a href="http://oreilly.com/careers/">Careers</a></li>
+        <li><a href="http://shop.oreilly.com/category/customer-service.do">Customer Service</a></li>
+        <li><a href="http://shop.oreilly.com/category/customer-service.do">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="site-map">
+      <h3 class="title">Site Map</h3>
+      <ul>
+        <li><a href="/ideas">Ideas</a></li>
+        <li><a href="/learning">Learning</a></li>
+        <li><a href="/topics">Topics</a></li>
+        <li><a href="/all">All</a></li>
+      </ul>
+    </div>
+    <div class="social">
+      <ul>
+        <li><a   class="icon-link " href="http://fb.co/OReilly"><span class="icon icon-facebook t-fill icon--white icon--large">
+  <svg role="img">
+    <title>facebook</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#facebook"></use>
+  </svg>
+</span></a>
+</li><li><a   class="icon-link " href="http://twitter.com/oreillymedia"><span class="icon icon-twitter t-fill icon--white icon--large">
+  <svg role="img">
+    <title>twitter</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#twitter"></use>
+  </svg>
+</span></a>
+</li><li><a   class="icon-link " href="https://www.youtube.com/user/OreillyMedia"><span class="icon icon-youtube-large t-fill icon--white icon--large">
+  <svg role="img">
+    <title>youtube-large</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#youtube-large"></use>
+  </svg>
+</span></a>
+</li><li><a   class="icon-link " href="https://plus.google.com/+oreillymedia"><span class="icon icon-google t-fill icon--white icon--large">
+  <svg role="img">
+    <title>google</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#google"></use>
+  </svg>
+</span></a>
+</li><li><a   class="icon-link " href="https://www.linkedin.com/company/o%27reilly-media"><span class="icon icon-linkedin t-fill icon--white icon--large">
+  <svg role="img">
+    <title>linkedin</title>
+    <use xlink:href="/assets/icons-b21895638b.svg#linkedin"></use>
+  </svg>
+</span></a>
+</li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+	  <a href="/" class="logo logo-block t-bkg logo--medium">
+<svg>
+   <use xlink:href="/assets/icons-b21895638b.svg#oreilly-logo"></use>
+</svg>
+</a>
+  	<p class="copyright">&copy; 2017 O'Reilly Media, Inc. All trademarks and registered trademarks appearing on oreilly.com are the property of their respective owners.</p><br>
+  <a class="t-c" href="http://oreilly.com/terms/">Terms of Service</a>  <span class="bullet">&bull;</span>	<a class="t-c" href="http://oreilly.com/privacy.html">Privacy Policy</a> <span class="bullet">&bull;</span> <a class="t-c" href="http://www.oreilly.com/about/editorial_independence.html">Editorial Independence</a>
+	</div>
+	<figure class="animal"><img src="https://d3ebicv0uqgr7t.cloudfront.net/images/tarsier.png" class="animal-img" alt="Animal"></figure>
+</footer>
+
+
+
+  
+  
+    <!-- Start Adobe Digital Tag Manager -->
+  <script type="text/javascript">_satellite && _satellite.pageBottom();</script>
+  <!-- End Adobe Digital Tag Manager -->
+  
+</body>
+</html>

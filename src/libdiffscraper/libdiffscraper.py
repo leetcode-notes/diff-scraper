@@ -106,7 +106,14 @@ class Engine(object):
                                                                 "selector.tagattr(\"{}\", \"{}\", \"{}\")".format(tag_name, attr_name, attr_value),
                                                                 selected_index))
 
-                        selector_candidates = sorted(selector_candidates, key=lambda x: (abs(x[0]+1),x[1]))
+                        for candidate in class_candidates:
+                            selected_index = template.select(features_all, [selector.class_(candidate)], 0)
+                            if selected_index is not None:
+                                selector_candidates.append((selected_index - seg_index,
+                                                            "selector.class_(\"{}\")".format(candidate),
+                                                            selected_index))
+
+                        selector_candidates = sorted(selector_candidates, key=lambda x: (abs(x[0]+1),x[0], x[1]))
                         for candidate in selector_candidates:
                             print(candidate)
                         print("")
