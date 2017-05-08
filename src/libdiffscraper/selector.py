@@ -17,9 +17,9 @@ class SelectorStatus(Enum):
 def selector_status(count_found, index_found):
     """
     Depending on the count of matching selectors, it returns the status code and its corresponding index
-    :param count_found: 
-    :param index_found: 
-    :return: 
+    :param count_found:
+    :param index_found:
+    :return:
     """
     if count_found > 1:
         return SelectorStatus.FAILED_NOT_UNIQUE, None
@@ -69,5 +69,14 @@ def class_(class_name):
             for n, v in e["attrs"]:
                 if n == "class" and v.find(class_name) != -1:
                     return True
+        return False
+    return impl
+
+
+def inner_text(token):
+    def impl(e):
+        if "data" in e and "type" in e:
+            if token.lower() in e["data"].lower() and e["type"] == "data":
+                return True
         return False
     return impl

@@ -6,6 +6,7 @@
 """
 
 import os
+import string
 from . import fileloader, template, util, selector
 from .tokenizer import Tokenizer
 
@@ -72,7 +73,8 @@ class Engine(object):
                     if "data" in each_tag:
                         inner_text = each_tag["data"].strip()
                         if util.in_range(len(inner_text), 1, 80): # hardcoded (to ignore scripts)
-                            inner_text_candidates.add(inner_text)
+                            inner_word = [word.strip(string.punctuation) for word in inner_text.split()]
+                            inner_text_candidates.update(inner_word)
 
         for seg_index in range(len(invariant_segments)+1):
             found_index_data = index is None or seg_index == int(index[0])
@@ -113,9 +115,17 @@ class Engine(object):
                                                             "selector.class_(\"{}\")".format(candidate),
                                                             selected_index))
 
+                        for candidate in inner_text_candidates:
+                            selected_index = template.select(features_all, [selector.inner_text(candidate)], 0)
+                            if selected_index is not None:
+                                selector_candidates.append((selected_index - seg_index,
+                                                            "selector.inner_text(\"{}\")".format(candidate),
+                                                            selected_index))
+
                         selector_candidates = sorted(selector_candidates, key=lambda x: (abs(x[0]+1),x[0], x[1]))
                         for candidate in selector_candidates:
-                            print(candidate)
+                            if (abs(candidate[0])<5):
+                                print("{} # candidate {}".format(candidate[1],candidate[0]))
                         print("")
 
 
