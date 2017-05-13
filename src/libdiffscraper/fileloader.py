@@ -8,50 +8,51 @@
 import sys
 import os
 
+from . import cuihelper
 
-def load_document(path, preferred_encoding, logger=None):
-    try:
-        with open(path, "rb") as f:
-            content = f.read().decode(encoding=preferred_encoding, errors="replace")
-            stat_info = os.stat(path)
-            return content, stat_info.st_size
-    except KeyboardInterrupt:
-        raise
-    except:
-        if logger is not None:
-            logger.exception("Exception caught: {}".format(sys.exc_info()[1]))
+
+class FileLoader(object):
+    def __init__(self, engine_interactive):
+        self._engine_interactive = engine_interactive
         pass
 
-    return None, 0
-
-
-def load_binary(path, logger=None):
-    try:
-        with open(path, "rb") as f:
-            content = f.read()
-            stat_info = os.stat(path)
-            return content, stat_info.st_size
-    except KeyboardInterrupt:
-        raise
-    except:
-        if logger is not None:
-            logger.exception("Exception caught: {}".format(sys.exc_info()[1]))
-        pass
-
-    return None, 0
-
-
-def load_documents(filepaths, fileopen_mode, logger=None):
-    docs = list()
-    for path in filepaths:
-        if fileopen_mode == "text":
-            content, file_size = load_document(path, "utf-8", logger=logger)
-        elif fileopen_mode == "binary":
-            content, file_size = load_binary(path, logger=logger)
-        if content is None:
+    def load_document(self, filepath, preferred_encoding):
+        try:
+            with open(filepath, "rb") as f:
+                content = f.read().decode(encoding=preferred_encoding, errors="replace")
+                stat_info = os.stat(filepath)
+                return content, stat_info.st_size
+        except KeyboardInterrupt:
+            raise
+        except:
+            self._engine_interactive.print_exception_caught(sys.exc_info()[1])
             pass
-        else:
-            if logger is not None:
-                logger.info("Opening '{}' ({} bytes)".format(path, file_size))
-            docs.append({"path": path, "content": content, "file_size": file_size})
-    return docs
+        return None, 0
+
+    def load_binary(self, filepath):
+        try:
+            with open(filepath, "rb") as f:
+                content = f.read()
+                stat_info = os.stat(filepath)
+                return content, stat_info.st_size
+        except KeyboardInterrupt:
+            raise
+        except:
+            self._engine_interactive.print_exception_caught(sys.exc_info()[1])
+            pass
+
+        return None, 0
+
+    def load_documents(self, filepath_list, fileopen_mode):
+        docs = list()
+        for filepath in filepath_list:
+            if fileopen_mode == "text":
+                content, filesize = self.load_document(filepath, "utf-8")
+            elif fileopen_mode == "binary":
+                content, filesize = self.load_binary(filepath)
+            if content is None:
+                pass
+            else:
+                docs.append({"path": filepath, "content": content, "file_size": filesize})
+                self._engine_interactive.print_opening_file(filepath, filesize)
+        return docs

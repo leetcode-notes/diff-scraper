@@ -12,7 +12,7 @@ import logging
 import coloredlogs
 
 # my library
-from libdiffscraper import libdiffscraper
+from libdiffscraper import engine, cuihelper, localization
 
 coloredlogs.install(level='DEBUG')
 logger = logging.getLogger('diffscraper')
@@ -111,7 +111,7 @@ def main():
     # ==================
     # --force
 
-    print("\033[35mDiff-Scraper v0.1\033[0m")
+    print(localization.str_diff_scraper_logo_8437764c())
 
     parser = init_arg_parser()
     args = parser.parse_args()
@@ -126,16 +126,17 @@ def main():
     is_print_skeleton = args.print_skeleton is True
     is_force = args.force is True
 
-    engine = libdiffscraper.Engine(logger)
+    diffscraper_cuihelper = cuihelper.CUIHelper(logger)
+    diffscraper_engine = engine.Engine(diffscraper_cuihelper)
 
-    num_of_commands = int(is_generate) + \
-                      int(is_update) + \
-                      int(is_compress) + \
-                      int(is_decompress) + \
-                      int(is_suggest) + \
-                      int(is_print_unified) + \
-                      int(is_print_data_segments) + \
-                      int (is_print_skeleton)
+    num_of_commands = sum([int(c) for c in [is_generate,
+                                            is_update,
+                                            is_compress,
+                                            is_decompress,
+                                            is_suggest,
+                                            is_print_unified,
+                                            is_print_data_segments,
+                                            is_print_skeleton]])
 
     if num_of_commands == 1:
         try:
@@ -143,63 +144,46 @@ def main():
 
             if is_generate:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
-                ret = engine.generate(input_docs=args.files, output_template=args.generate[0], force=is_force)
+                ret = diffscraper_engine.generate(input_docs=args.files, output_template=args.generate[0], force=is_force)
             elif is_update:
                 assert_condition(len(args.files) == 1, "Only one input file is required.")
-                ret = engine.update(input_docs=args.files, input_template=args.template[0],
-                                    output_template=args.update[0], force=is_force)
+                ret = diffscraper_engine.update(input_docs=args.files, input_template=args.template[0],
+                                                output_template=args.update[0], force=is_force)
             elif is_compress:
                 assert_condition(len(args.files) >= 1, "At least one input file is required.")
-                ret = engine.compress(input_docs=args.files, input_template=args.template[0],
-                                      output_dir=args.output_dir[0], force=is_force)
+                ret = diffscraper_engine.compress(input_docs=args.files, input_template=args.template[0],
+                                                  output_dir=args.output_dir[0], force=is_force)
             elif is_decompress:
                 assert_condition(len(args.files) >= 1, "At least one input file is required.")
-                ret = engine.decompress(input_docs=args.files, input_template=args.template[0],
-                                        output_dir=args.output_dir[0], force=is_force)
+                ret = diffscraper_engine.decompress(input_docs=args.files, input_template=args.template[0],
+                                                    output_dir=args.output_dir[0], force=is_force)
             elif is_print_unified:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
-                ret = engine.suggest(mode="print-unified", input_docs=args.files, input_template=args.template,
-                                     exclude_invariant_segments=False, index=args.index, search=args.search, interactive=args.interactive)
+                ret = diffscraper_engine.suggest(command="print-unified", input_docs=args.files, input_template=args.template,
+                                                 exclude_invariant_segments=False, index=args.index, search=args.search, interactive=args.interactive)
             elif is_print_data_segments:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
-                ret = engine.suggest(mode="print-data-segments", input_docs=args.files, input_template=args.template,
-                                     exclude_invariant_segments=True, index=args.index, search=args.search, interactive=args.interactive)
+                ret = diffscraper_engine.suggest(command="print-data-segments", input_docs=args.files, input_template=args.template,
+                                                 exclude_invariant_segments=True, index=args.index, search=args.search, interactive=args.interactive)
             elif is_suggest:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
-                ret = engine.suggest(mode="suggest", input_docs=args.files, input_template=args.template,
-                                     exclude_invariant_segments=True, index=args.index, search=args.search, interactive=args.interactive)
+                ret = diffscraper_engine.suggest(command="suggest", input_docs=args.files, input_template=args.template,
+                                                 exclude_invariant_segments=True, index=args.index, search=args.search, interactive=args.interactive)
             elif is_print_skeleton:
-                skeleton_code = """
-def diffscraper(T, raw_html):
-    item = {}
-    F = list(map(lambda x: Tokenizer.feature("html", x), T))
-    D = template.extract(T, raw_html)
-    ts = lambda x, y: D[template.select(F, x, y)]
-    ###############################################################
-    # Copy the suggested code snippet for a proper selector
-    # ex: item["title"] = ts([selector.starttag("title")], 1)
-    ###############################################################
-        
-    ###############################################################
-    return item
-    """
-                print(skeleton_code)
+                diffscraper_cuihelper.print_skeleton()
             else:
                 raise Exception("Unreachable code")
 
             if ret is not None:
                 if ret[0] is False:
-                    logger.error("Failed, reason: {}".format(ret[1]))
+                    diffscraper_cuihelper.print_fail_command(ret[1])
         except KeyboardInterrupt:
             raise
         except:
-            logger.exception("Exception caught: {}".format(sys.exc_info()[1]))
+            diffscraper_cuihelper.print_exception_caught(sys.exc_info()[1])
             pass
-    elif num_of_commands == 0:
-        logger.warning("Nothing to do. Which command do you want to run? {generate, incremental, compress, decompress, suggest, print-unified, print-data-segments}")
-        parser.print_usage()
     else:
-        logger.warning("Ambiguous command. Please choose a single command to be executed.")
+        diffscraper_cuihelper.print_ambiguous_command()
         parser.print_usage()
     pass
 
