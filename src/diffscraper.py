@@ -55,6 +55,10 @@ def init_arg_parser():
                         action="store_true",
                         help="print data segments")
 
+    parser.add_argument("--print-skeleton",
+                        action="store_true",
+                        help="print skeleton code")
+
     parser.add_argument("--template",
                         nargs=1,
                         help="specify a template file for incremental/compress/decompress/print-* commands")
@@ -95,12 +99,13 @@ def main():
     # =================
     # <docs...> --suggest --index <N>
     # <docs...> --suggest --search <keyword>
+    # <docs...> --print-unified
+    # <docs...> --print-data-segments
+    # --print-skeleton
 
     # Debugging features
     # ==================
     # --force
-    # <docs...> --print-unified
-    # <docs...> --print-data-segments
 
     print("\033[35mDiff-Scraper v0.1\033[0m")
 
@@ -114,6 +119,7 @@ def main():
     is_suggest = args.suggest is True
     is_print_unified = args.print_unified is True
     is_print_data_segments = args.print_data_segments is True
+    is_print_skeleton = args.print_skeleton is True
     is_force = args.force is True
 
     engine = libdiffscraper.Engine(logger)
@@ -124,7 +130,8 @@ def main():
                       int(is_decompress) + \
                       int(is_suggest) + \
                       int(is_print_unified) + \
-                      int(is_print_data_segments)
+                      int(is_print_data_segments) + \
+                      int (is_print_skeleton)
 
     if num_of_commands == 1:
         try:
@@ -157,6 +164,22 @@ def main():
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
                 ret = engine.suggest(mode="suggest", input_docs=args.files, input_template=args.template,
                                      exclude_invariant_segments=True, index=args.index, search=args.search)
+            elif is_print_skeleton:
+                skeleton_code = """
+def diffscraper(T, raw_html):
+    item = {}
+    F = list(map(lambda x: Tokenizer.feature("html", x), T))
+    D = template.extract(T, raw_html)
+    ts = lambda x, y: D[template.select(F, x, y)]
+    ###############################################################
+    # Copy the suggested code snippet for a proper selector
+    # ex: item["title"] = ts([selector.starttag("title")], 1)
+    ###############################################################
+        
+    ###############################################################
+    return item
+    """
+                print(skeleton_code)
             else:
                 raise Exception("Unreachable code")
 

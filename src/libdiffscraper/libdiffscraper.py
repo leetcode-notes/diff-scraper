@@ -109,7 +109,7 @@ class Engine(object):
                         is_found = True
                         break
                 if is_found:
-                    print("## Data Segment {} ##".format(seg_index))
+                    print("========== Data Segment {} ==========".format(seg_index))
                     for doc_index, data_segments in enumerate(data):
                         print("{}{}\033[0m".format(color_set["data_seg"][doc_index % len(color_set["data_seg"])], data_segments[seg_index].strip()))
 
@@ -146,15 +146,15 @@ class Engine(object):
 
                         selector_candidates = sorted(selector_candidates, key=lambda x: (abs(x[0]-1),x[0], x[1]))
                         for candidate in selector_candidates:
-                            if (abs(candidate[0])<5):
-                                print("([{}], {})".format(candidate[1],candidate[0]))
+                            if (abs(candidate[0]) < 5):
+                                print("ts([{}], {})".format(candidate[1],candidate[0]))
                         print("")
 
 
             if found_index_invariant:
                 if exclude_invariant_segments is False:
                     if seg_index < len(invariant_segments):
-                        print("## Invariant Segment {} ##".format(seg_index))
+                        print("========== Invariant Segment {} ==========".format(seg_index))
                         print("{}{}\033[0m".format(color_set["invariant_seg"],
                                                        invariant_segments[seg_index]))
 
