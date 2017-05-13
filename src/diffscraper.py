@@ -71,6 +71,10 @@ def init_arg_parser():
                         nargs=1,
                         help="specify a keyword")
 
+    parser.add_argument("--interactive",
+                        action="store_true",
+                        help="interactive suggestion mode")
+
     parser.add_argument("--output-dir",
                         nargs=1,
                         help="specify an output directory for compress/decompress commands")
@@ -97,8 +101,8 @@ def main():
 
     # Advanced Features
     # =================
-    # <docs...> --suggest --index <N>
-    # <docs...> --suggest --search <keyword>
+    # <docs...> --suggest --index <N> [--interactive]
+    # <docs...> --suggest --search <keyword> [--interactive]
     # <docs...> --print-unified
     # <docs...> --print-data-segments
     # --print-skeleton
@@ -155,15 +159,15 @@ def main():
             elif is_print_unified:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
                 ret = engine.suggest(mode="print-unified", input_docs=args.files, input_template=args.template,
-                                     exclude_invariant_segments=False, index=args.index, search=args.search)
+                                     exclude_invariant_segments=False, index=args.index, search=args.search, interactive=args.interactive)
             elif is_print_data_segments:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
                 ret = engine.suggest(mode="print-data-segments", input_docs=args.files, input_template=args.template,
-                                     exclude_invariant_segments=True, index=args.index, search=args.search)
+                                     exclude_invariant_segments=True, index=args.index, search=args.search, interactive=args.interactive)
             elif is_suggest:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
                 ret = engine.suggest(mode="suggest", input_docs=args.files, input_template=args.template,
-                                     exclude_invariant_segments=True, index=args.index, search=args.search)
+                                     exclude_invariant_segments=True, index=args.index, search=args.search, interactive=args.interactive)
             elif is_print_skeleton:
                 skeleton_code = """
 def diffscraper(T, raw_html):

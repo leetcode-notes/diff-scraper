@@ -7,6 +7,7 @@
 
 import os
 import string
+
 from . import fileloader, template, util, selector
 from .tokenizer import Tokenizer
 
@@ -97,6 +98,12 @@ class Engine(object):
                         if util.in_range(len(inner_text), 1, 80): # hardcoded (to ignore scripts)
                             inner_word = [word.strip(string.punctuation) for word in inner_text.split()]
                             inner_text_candidates.update(inner_word)
+
+            print("========== The number of Features ==========")
+            print("tagname_candidates: \033[1;32m{}\033[0m".format(len(tagname_candidates)))
+            print("tagattr_candidates: \033[1;32m{}\033[0m".format(len(tagattr_candidates)))
+            print("class_candidates: \033[1;32m{}\033[0m".format(len(class_candidates)))
+            print("inner_text_candidates: \033[1;32m{}\033[0m".format(len(inner_text_candidates)))
 
         for seg_index in range(len(invariant_segments)+1):
             found_index_data = index is None or seg_index == int(index[0])
