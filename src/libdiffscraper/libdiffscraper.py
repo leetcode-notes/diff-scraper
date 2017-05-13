@@ -35,6 +35,28 @@ class Engine(object):
 
         return True, ""
 
+
+    def update(self, input_docs, input_template, output_template, force=False):
+        if force is False:
+            if os.path.exists(output_template):
+                return False, "The output file already exists."
+
+        documents, _ = self.load_documents(input_docs, "text", "update")
+        _, template_object = self.load_template(input_template)
+        invariant_segments = template_object["inv_seg"]
+        template_text = "".join(invariant_segments)
+        documents.append(template_text)
+        new_invariant_segments = template.generate(documents)
+        merkle_tree = util.merkle_tree(new_invariant_segments)
+        template_object = template.make_template_object(new_invariant_segments, merkle_tree.get_root_hash())
+        serialized = template.serialize_object(template_object)
+        self.verbose_template_file(template_object, serialized, "update")
+        with open(output_template,"wb") as f:
+            f.write(serialized)
+            f.flush()
+        return True, ""
+
+
     def suggest(self, mode, input_docs, input_template, exclude_invariant_segments, index, search):
         color_set = {"invariant_seg": "\033[0;32m",
                      "data_seg": ["\033[41m\033[30m\033[1;37m",
@@ -135,14 +157,6 @@ class Engine(object):
                         print("## Invariant Segment {} ##".format(seg_index))
                         print("{}{}\033[0m".format(color_set["invariant_seg"],
                                                        invariant_segments[seg_index]))
-
-    def incremental(self, input_docs, input_template, output_template, force=False):
-        # if force is False:
-        #     if os.path.exists(output_template):
-        #         return False, "The output file already exists."
-        # docs = fileloader.load_documents(input_docs, logger=self.logger)
-        # self.logger.info("incremental: {} files are loaded.".format(len(docs)))
-        return True, ""
 
     def compress(self, input_docs, input_template, output_dir, force=False):
         documents, document_files = self.load_documents(input_docs, "text", "compress")

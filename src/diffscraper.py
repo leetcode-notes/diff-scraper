@@ -31,7 +31,7 @@ def init_arg_parser():
                         nargs=1,
                         help="generate a template file from input documents")
 
-    parser.add_argument("--incremental",
+    parser.add_argument("--update",
                         nargs=1,
                         help="update an old template file with new input files")
 
@@ -108,7 +108,7 @@ def main():
     args = parser.parse_args()
 
     is_generate = args.generate is not None
-    is_incremental = args.incremental is not None
+    is_update = args.update is not None
     is_compress = args.compress is True
     is_decompress = args.decompress is True
     is_suggest = args.suggest is True
@@ -119,7 +119,7 @@ def main():
     engine = libdiffscraper.Engine(logger)
 
     num_of_commands = int(is_generate) + \
-                      int(is_incremental) + \
+                      int(is_update) + \
                       int(is_compress) + \
                       int(is_decompress) + \
                       int(is_suggest) + \
@@ -133,10 +133,10 @@ def main():
             if is_generate:
                 assert_condition(len(args.files) >= 2, "At least two input files are required.")
                 ret = engine.generate(input_docs=args.files, output_template=args.generate[0], force=is_force)
-            elif is_incremental:
+            elif is_update:
                 assert_condition(len(args.files) == 1, "Only one input file is required.")
-                ret = engine.incremental(input_docs=args.files, input_template=args.template[0],
-                                         output_template=args.incremental[0], force=is_force)
+                ret = engine.update(input_docs=args.files, input_template=args.template[0],
+                                    output_template=args.update[0], force=is_force)
             elif is_compress:
                 assert_condition(len(args.files) >= 1, "At least one input file is required.")
                 ret = engine.compress(input_docs=args.files, input_template=args.template[0],

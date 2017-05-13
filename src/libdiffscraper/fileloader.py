@@ -41,12 +41,12 @@ def load_binary(path, logger=None):
     return None, 0
 
 
-def load_documents(paths, mode, logger=None):
+def load_documents(filepaths, fileopen_mode, logger=None):
     docs = list()
-    for path in paths:
-        if mode == "text":
+    for path in filepaths:
+        if fileopen_mode == "text":
             content, file_size = load_document(path, "utf-8", logger=logger)
-        elif mode == "binary":
+        elif fileopen_mode == "binary":
             content, file_size = load_binary(path, logger=logger)
         if content is None:
             pass

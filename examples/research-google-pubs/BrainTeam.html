@@ -1,0 +1,2794 @@
+<!DOCTYPE html>
+<html class="google" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script>
+    (function(H){H.className=H.className.replace(/\bgoogle\b/,'google-js')})(document.documentElement)
+    </script>
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+    <title>
+      Google Brain Team - Research at Google
+    </title>
+    <script src="//www.google.com/js/google.js">
+    </script>
+    <script>
+    new gweb.analytics.AutoTrack({profile:"UA-5974346-1"});
+    </script>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" rel=
+    "stylesheet">
+    <link href="/css/research.css" rel="stylesheet">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href=
+    '//fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic|Product+Sans:400'
+    rel='stylesheet' type='text/css'>
+    <link href="/app/app.css" rel="stylesheet">
+    <style>
+    .app-scope a{color:#4285f4}.app-scope a:hover{color:#3367D6}.app-scope .button-primary{background-color:#4285F4;color:rga(255,255,255,.89);font-weight:400}.app-scope .button-primary:hover{background-color:#3367D6}.app-scope .button-dark{background-color:#005F71;color:#fff;font-weight:400}.app-scope .button-dark:hover{background-color:#004f61;color:#fff}.app-scope header{height:80px}.app-scope header nav{width:635px}.app-scope .header-subnav ul li a{font-weight:400}.app-scope .header-title{padding-top:40px}.app-scope .logo{background:url("/app/images/logo.2x.png");background-size:290px 43px;height:43px;position:relative;top:40px;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);width:290px}@media(min-width:768px){.app-scope .logo{background:url("/app/images/logo.mini.2x.png");background-size:40px 43px;height:43px;width:40px}}@media(min-width:1024px){.app-scope .logo{background:url("/app/images/logo.2x.png");background-size:290px 43px;height:43px;width:290px}}.app-scope .logo img{display:none}.app-scope .nav-toggle.hamburger{height:20px;top:40px;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);width:20px}.app-scope .quote p{color:#445a64}.app-scope .slick-slider{-khtml-user-select:all;-moz-user-select:all;-ms-user-select:all;-webkit-user-select:all;user-select:all;-webkit-touch-callout:default;-ms-touch-action:auto;touch-action:auto}.app-scope a.text-link,.app-scope span.text-link{font-weight:400}@media (min-width:768px){.app-scope .search{float:left;width:16px;height:80px;margin-top:0;margin-left:10px;line-height:80px;overflow:hidden}.app-scope .search.search-open{width:auto}.app-scope .search.transition{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form{width:16px;height:50px;margin-top:15px}.app-scope .search.search-open .search-form{width:150px}.app-scope .search.transition .search-form{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form:after{width:0}.app-scope .search.search-open .search-form:after{width:100%}.app-scope .search.transition .search-form:after{-webkit-transition:width .4s cubic-bezier(.7,0,.3,1) .1s;transition:width .4s cubic-bezier(.7,0,.3,1) .1s}.app-scope .search-input{position:absolute;top:0;right:0;margin:0;width:100%;opacity:0}.app-scope .search.search-open .search-input{opacity:1}.app-scope .search.transition .search-input{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-submit,.app-scope .search-toggle{bottom:17px}.app-scope .search.transition .search-submit,.app-scope .search.transition .search-toggle{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-toggle{visibility:visible;z-index:5;opacity:.8}.app-scope .search-submit,.app-scope .search.search-open .search-toggle{z-index:4;opacity:0}.app-scope .search.search-open .search-submit{z-index:5;opacity:1}.app-scope .search-close{opacity:0}.app-scope .search.search-open .search-close{opacity:.8}.app-scope .search.transition .search-close{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .flyout-container{position:relative;right:auto;width:100%;height:80px;padding:0;background:0 0;overflow:hidden}.app-scope .nav-wrapper{float:right}.app-scope .nav-wrapper>ul{float:left;display:inline-block;height:80px;line-height:80px}.app-scope .nav-wrapper>ul li{display:inline-block;margin-left:10px}.app-scope .nav-wrapper>ul li+li{margin-top:0}.app-scope .nav-wrapper>ul li a{font-size:13px;font-weight:400;color:rgba(255,255,255,.8)}.app-scope .nav-wrapper>ul a:hover,.app-scope .nav-wrapper>ul li.active a{color:#fff}.app-scope .nav-toggle{display:none}.app-scope .flyout-secondary-nav{display:none}}@media (min-width:1024px){.app-scope .search{float:left;width:16px;height:80px;margin-top:0;margin-left:10px;line-height:80px;overflow:hidden}.app-scope .search.search-open{width:auto}.app-scope .search.transition{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form{width:16px;height:50px;margin-top:15px}.app-scope .search.search-open .search-form{width:150px}.app-scope .search.transition .search-form{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form:after{width:0}.app-scope .search.search-open .search-form:after{width:100%}.app-scope .search.transition .search-form:after{-webkit-transition:width .4s cubic-bezier(.7,0,.3,1) .1s;transition:width .4s cubic-bezier(.7,0,.3,1) .1s}.app-scope .search-input{position:absolute;top:0;right:0;margin:0;width:100%;opacity:0}.app-scope .search.search-open .search-input{opacity:1}.app-scope .search.transition .search-input{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-submit,.app-scope .search-toggle{bottom:17px}.app-scope .search.transition .search-submit,.app-scope .search.transition .search-toggle{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-toggle{visibility:visible;z-index:5;opacity:.8}.app-scope .search-submit,.app-scope .search.search-open .search-toggle{z-index:4;opacity:0}.app-scope .search.search-open .search-submit{z-index:5;opacity:1}.app-scope .search-close{opacity:0}.app-scope .search.search-open .search-close{opacity:.8}.app-scope .search.transition .search-close{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .flyout-container{position:relative;right:auto;width:100%;height:80px;padding:0;background:0 0;overflow:hidden}.app-scope .nav-wrapper{float:right}.app-scope .nav-wrapper>ul{float:left;display:inline-block;height:80px;line-height:80px}.app-scope .nav-wrapper>ul li{display:inline-block;margin-left:10px}.app-scope .nav-wrapper>ul li+li{margin-top:0}.app-scope .nav-wrapper>ul li a{font-size:13px;font-weight:400;color:rgba(255,255,255,.8)}.app-scope .nav-wrapper>ul a:hover,.app-scope .nav-wrapper>ul li.active a{color:#fff}.app-scope .nav-toggle{display:none}.app-scope .flyout-secondary-nav{display:none}}@media (min-width:1170px){.app-scope .search{float:left;width:16px;height:80px;margin-top:0;margin-left:10px;line-height:80px;overflow:hidden}.app-scope .search.search-open{width:auto}.app-scope .search.transition{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form{width:16px;height:50px;margin-top:15px}.app-scope .search.search-open .search-form{width:150px}.app-scope .search.transition .search-form{-webkit-transition:width .5s cubic-bezier(.7,0,.3,1);transition:width .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-form:after{width:0}.app-scope .search.search-open .search-form:after{width:100%}.app-scope .search.transition .search-form:after{-webkit-transition:width .4s cubic-bezier(.7,0,.3,1) .1s;transition:width .4s cubic-bezier(.7,0,.3,1) .1s}.app-scope .search-input{position:absolute;top:0;right:0;margin:0;width:100%;opacity:0}.app-scope .search.search-open .search-input{opacity:1}.app-scope .search.transition .search-input{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-submit,.app-scope .search-toggle{bottom:17px}.app-scope .search.transition .search-submit,.app-scope .search.transition .search-toggle{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1),visibility .5s cubic-bezier(.7,0,.3,1)}.app-scope .search-toggle{visibility:visible;z-index:5;opacity:.8}.app-scope .search-submit,.app-scope .search.search-open .search-toggle{z-index:4;opacity:0}.app-scope .search.search-open .search-submit{z-index:5;opacity:1}.app-scope .search-close{opacity:0}.app-scope .search.search-open .search-close{opacity:.8}.app-scope .search.transition .search-close{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.app-scope .flyout-container{position:relative;right:auto;width:100%;height:80px;padding:0;background:0 0;overflow:hidden}.app-scope .nav-wrapper{float:right}.app-scope .nav-wrapper>ul{float:left;display:inline-block;height:80px;line-height:80px}.app-scope .nav-wrapper>ul li{display:inline-block;margin-left:10px}.app-scope .nav-wrapper>ul li+li{margin-top:0}.app-scope .nav-wrapper>ul li a{font-size:13px;font-weight:400;color:rgba(255,255,255,.8)}.app-scope .nav-wrapper>ul a:hover,.app-scope .nav-wrapper>ul li.active a{color:#fff}.app-scope .nav-toggle{display:none}.app-scope .flyout-secondary-nav{display:none}}
+    </style>
+    <style>
+    .app-scope.header-v2 .body{position:fixed;top:0;width:100%;background-color:#fff;z-index:1000}.app-scope.header-v2 .body.is-scrolled{box-shadow:0 1px 2px #ddd}.app-scope.header-v2 .top-padding{height:75px}.app-scope.header-v2 .top-padding.subnav-active{height:106px}@media (min-width:650px){.app-scope.header-v2 .top-padding{height:117px}.app-scope.header-v2 .top-padding.subnav-active{height:148px}}.app-scope.header-v2 .logo-wrapper-v2{border-bottom:1px solid #ddd}.app-scope.header-v2 .nav-wrapper-v2{border-bottom:1px solid #ddd}.app-scope.header-v2 .subnav-wrapper-v2{border-bottom:1px solid #ddd}.app-scope.header-v2 .logo-wrapper-v2,.app-scope.header-v2 .subnav-wrapper-v2{background:#fafafa;background:-moz-linear-gradient(top,#fafafa,#f5f5f5);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fafafa),color-stop(1,#f5f5f5));background:-webkit-linear-gradient(top,#fafafa,#f5f5f5);background:-o-linear-gradient(top,#fafafa,#f5f5f5 100%);background:-ms-linear-gradient(top,#fafafa,#f5f5f5 100%);background:linear-gradient(to top,#fafafa,#f5f5f5);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#f5f5f5',GradientType=1)}.app-scope.header-v2 .logo-v2{display:inline-block;margin:13px 0 13px 0}.app-scope.header-v2 .logo-v2 .wide-logo{display:none;height:43px;width:315px}.app-scope.header-v2 .logo-v2 .narrow-logo{display:block;height:43px;width:40px}@media (min-width:400px){.app-scope.header-v2 .logo-v2 .wide-logo{display:block}.app-scope.header-v2 .logo-v2 .narrow-logo{display:none}}.app-scope.header-v2 .search-v2{display:none;position:absolute;right:15px;top:22px}@media (min-width:650px){.app-scope.header-v2 .search-v2{display:block}}@media (min-width:768px){.app-scope.header-v2 .search-v2{right:30px}}@media (min-width:1230px){.app-scope.header-v2 .search-v2{right:0}}.app-scope.header-v2 .search-v2 .search-button{background:url(/app/images/search-icon.png);background-color:#4285F4;background-size:15px 15px;background-position:center;background-repeat:no-repeat;border:none;border-top-right-radius:2px;border-bottom-right-radius:2px;width:30px;height:30px;vertical-align:top}.app-scope.header-v2 .search-v2 .search-box{width:160px;height:30px;padding:3px;border:solid 1px #ccc;border-top-left-radius:2px;border-bottom-left-radius:2px;vertical-align:top}.app-scope.header-v2 .hamburger-v2{display:block;position:absolute;right:15px;top:30px;font-size:16px}@media (min-width:650px){.app-scope.header-v2 .hamburger-v2{display:none}}.app-scope.header-v2 .nav-wrapper-v2{display:none}@media (min-width:650px){.app-scope.header-v2 .nav-wrapper-v2{display:block}}.app-scope.header-v2 .nav-wrapper-v2 li{display:inline-block}.app-scope.header-v2 .nav-wrapper-v2 li a{color:#63666a;font-size:16px;font-weight:400;padding:7px 0;margin-right:20px;display:block;-webkit-transition:border-color .4s ease-in-out;-moz-transition:border-color .4s ease-in-out;-ms-transition:border-color .4s ease-in-out;-o-transition:border-color .4s ease-in-out;transition:border-color .4s ease-in-out;border-bottom:4px solid #fff}.app-scope.header-v2 .nav-wrapper-v2 li a.active{border-bottom:4px solid #4285F4}.app-scope.header-v2 .nav-wrapper-v2 li a:hover{border-bottom:4px solid #4285F4}.app-scope.header-v2 .subnav-wrapper-v2{display:none;overflow-x:auto}.app-scope.header-v2 .subnav-wrapper-v2>.inner{min-width:768px}.app-scope.header-v2 .subnav-wrapper-v2.active{display:block}.app-scope.header-v2 .subnav-wrapper-v2 li{display:inline-block}.app-scope.header-v2 .subnav-wrapper-v2 li a{color:#63666a;font-size:13px;font-weight:400;padding:7px 0;margin-right:20px;display:block;-webkit-transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-ms-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out;transition:color .4s ease-in-out}.app-scope.header-v2 .subnav-wrapper-v2 li a.active{color:#4285F4}.app-scope.header-v2 .subnav-wrapper-v2 li a:hover{color:#4285F4}.app-scope.header-v2 .flyout-container{position:fixed;width:300px;right:-300px;height:100%}.app-scope.header-v2 .flyout-secondary-nav .secondary-nav-block{margin:10px 0}.app-scope.header-v2 .expanding-list .title{font-size:16px;color:#fff;text-transform:uppercase;letter-spacing:.02em}.app-scope.header-v2 .expanding-list .svg-icon{float:right;width:inherit;height:inherit;color:#fff}.app-scope.header-v2 .expanding-list .icon-chevron-down{-webkit-transition:transform .3s linear,color .3s linear;-ms-transition:transform .3s linear,color .3s linear;transition:transform .3s linear,color .3s linear}.app-scope.header-v2 .expanding-list .links-visible .icon-chevron-down{-webkit-transform:translateY(-50%) rotateX(180deg);-ms-transform:translateY(-50%) rotate(180deg);transform:translateY(-50%) rotateX(180deg)}.app-scope.header-v2 .expanding-list ul{margin-top:15px}.app-scope.header-v2 .expanding-list ul li{margin-left:10px}.app-scope.header-v2 .expanding-list ul li:before{content:"-";color:#fff}.app-scope.header-v2 .expanding-list ul a{text-transform:none;font-size:14px}.ng-cloak{display:none !important}
+    </style>
+  </head>
+  <body>
+    <div class="app-scope header-v2" ng-controller="HeaderCtrlV2 as vm">
+      <div class="body" ng-class="{'is-scrolled': isScrolled}">
+        <div class="logo-wrapper-v2">
+          <div class="inner">
+            <a class="logo-v2" href="/"><img alt="Research at Google" class="narrow-logo" src=
+            "/app/images/logo.mini.2x.png"> <img alt="Research at Google" class="wide-logo" src=
+            "/app/images/logo-v2.2x.png"></a>
+            <div class="search-v2">
+              <form ng-submit="vm.search()">
+                <input class="search-box" ng-model="vm.searchText" placeholder=
+                " Search"><button class="search-button" ng-click="vm.search()">&nbsp;</button>
+              </form>
+            </div>
+            <div class="hamburger-v2">
+              <span class="svg-icon icon-hamburger" ng-click="toggle = !toggle">&nbsp;</span>
+            </div>
+          </div>
+        </div>
+        <div class="nav-wrapper-v2 ng-cloak">
+          <div class="inner">
+            <ul>
+              <li ng-repeat="link in mainLinks">
+                <a gr-main-nav-active-link="true" href="{{link.href}}" target=
+                "{{link.target || '_self'}}">{{link.text}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="subnav-wrapper-v2 ng-cloak" ng-class="{'active': subNavActive}">
+          <div class="inner">
+            <ul>
+              <li ng-repeat="link in subNavLinks">
+                <a gr-sub-nav-active-link="true" href="{{link.href}}">{{link.text}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <nav ng-class="{'open' : toggle}">
+        <div class="flyout-container" id="flyoutMenu">
+          <div class="nav-wrapper">
+            <ul>
+              <li>
+                <a class="dark" gr-active-link="true" href="/">Home</a>
+              </li>
+              <li>
+                <a gr-active-link="true" href="/pubs/papers.html" ng-click=
+                "toggle = false; searchToggle = false">Publications</a>
+              </li>
+              <li>
+                <a gr-active-link="true" href="/researchers.html" ng-click=
+                "toggle = false; searchToggle = false">People</a>
+              </li>
+              <li>
+                <a gr-active-link="true" href="/teams/" ng-click=
+                "toggle = false; searchToggle = false">Teams</a>
+              </li>
+              <li>
+                <div expanding-list="true" links="outreachLinks" title="Outreach">
+                  &nbsp;
+                </div>
+              </li>
+              <li>
+                <a href="http://googleresearch.blogspot.com/" ng-click=
+                "toggle = false; searchToggle = false" target="_blank">Blog</a>
+              </li>
+              <li>
+                <a gr-active-link="true" href="/workatgoogle.html" ng-click=
+                "toggle = false; searchToggle = false">Work at Google</a>
+              </li>
+            </ul>
+            <div class="search transition" ng-class="{'search-open' : searchToggle}">
+              <form class="search-form" ng-submit="vm.search();">
+                <input class="search-input" id="search" name="search" ng-model="vm.searchText"
+                placeholder="Search" type="search" value=""> <input class="search-submit" ng-click=
+                "toggle = false" type="submit" value=""> <label class="search-toggle" for="search"
+                ng-click="searchToggle = !searchToggle">&nbsp;</label>
+                <div class="search-close" ng-click="searchToggle = false">
+                  <span class="svg-icon icon-close">&nbsp;</span>
+                </div>
+              </form>
+            </div>
+            <div class="flyout-secondary-nav">
+              <div class="secondary-nav-block">
+                <span>More</span>
+                <ul>
+                  <li>
+                    <a class="dark" href="http://scholar.google.com/" target="_blank">Google
+                    Scholar</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://www.youtube.com/user/GoogleTechTalks/featured"
+                    target="_blank">YouTube Tech Talks</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="secondary-nav-block">
+                <span>Follow Us</span>
+                <ul>
+                  <li>
+                    <a class="dark" href="https://plus.google.com/+ResearchatGoogle" target=
+                    "_blank">Google+</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://twitter.com/googleresearch" target=
+                    "_blank">Twitter</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="secondary-nav-block">
+                <span>Google</span>
+                <ul>
+                  <li>
+                    <a class="dark" href="http://google.com" target="_blank">Google</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://www.google.com/intl/en/about/" target=
+                    "_blank">About Google</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://www.google.com/intl/en/policies/privacy/" target=
+                    "_blank">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a class="dark" href="http://www.google.com/intl/en/policies/terms/" target=
+                    "_blank">Terms</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="nav-toggle close" ng-click="toggle = !toggle">
+            <span class="svg-icon icon-close">&nbsp;</span>
+          </div>
+        </div>
+      </nav>
+      <div class="top-padding" ng-class="{'subnav-active': subNavActive}">
+        &nbsp;
+      </div>
+    </div>
+    <div id="maia-main" role="main">
+      <div class="maia-teleport" id="content"></div>
+      <div id="cse">
+        &nbsp;
+      </div>
+      <h1>
+        Google Brain Team
+      </h1>
+      <div class="maia-cols">
+        <div class="maia-col-4">
+          <div>
+            <div class="sidebar">
+              <p>
+                The Google Brain Team is a machine intelligence team focused on deep learning. We
+                believe that openly disseminating research is critical to a healthy exchange of
+                ideas, which in turn leads to rapid and innovative progress in the field as a
+                whole. Listed here are the Google Brain team publications from leading CS
+                conferences and journals. To learn more about the work we do, visit the <a href=
+                "/teams/brain/">Google Brain team page</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="maia-col-8">
+          <div class="mainbar">
+            <h2>
+              130 Publications
+            </h2>
+            <div class="section">
+              <ul class="pub-list">
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Deep+Reinforcement+Learning+for+Robotic+Manipulation+with+Asynchronous+Off-Policy+Updates+Gu+Holly+Lillicrap+Levine"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1610.00633" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45807.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45807.html">Deep Reinforcement Learning for Robotic
+                    Manipulation with Asynchronous Off-Policy Updates</a>
+                  </p>
+                  <p>
+                    Shixiang Gu, Ethan Holly, Timothy Lillicrap, Sergey Levine
+                  </p>
+                  <p>
+                    ICRA (2017) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Unsupervised+Pixel-level+Domain+Adaptation+with+Generative+Adversarial+Networks+Bousmalis+Silberman+Dohan+Erhan+Krishnan"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1612.05424" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45840.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45840.html">Unsupervised Pixel-level Domain Adaptation with
+                    Generative Adversarial Networks</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/KonstantinosBousmalis.html">Konstantinos Bousmalis</a>, Nathan
+                    Silberman, David Dohan, <a href="/pubs/DumitruErhan.html">Dumitru Erhan</a>,
+                    Dilip Krishnan
+                  </p>
+                  <p>
+                    arXiv (2017)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=A+Learned+Representation+For+Artistic+Style+Dumoulin+Shlens+Kudlur"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1610.07629" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45832.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45832.html">A Learned Representation For Artistic Style</a>
+                  </p>
+                  <p>
+                    Vincent Dumoulin, <a href="/pubs/JonathonShlens.html">Jonathon Shlens</a>,
+                    <a href="/pubs/ManjunathKudlur.html">Manjunath Kudlur</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=A+Neural+Transducer+Jaitly+Sussillo+Le+Vinyals+Sutskever+Bengio"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1511.04868" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45549.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45549.html">A Neural Transducer</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>, <a href=
+                    "/pubs/DavidSussillo.html">David Sussillo</a>, <a href="/pubs/QuocLe.html">Quoc
+                    V. Le</a>, <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>, Ilya Sutskever,
+                    <a href="/pubs/bengio.html">Samy Bengio</a>
+                  </p>
+                  <p>
+                    NIPS 2016 (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Accelerating+Eulerian+Fluid+Simulation+With+Convolutional+Networks+Tompson+Schlachter+Sprechmann+Perlin"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1607.03597" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45806.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45806.html">Accelerating Eulerian Fluid Simulation With
+                    Convolutional Networks</a>
+                  </p>
+                  <p>
+                    Jonathan Tompson, Kristofer Schlachter, Pablo Sprechmann, Ken Perlin
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Adversarial+Autoencoders+Makhzani+Shlens+Jaitly+Goodfellow"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1511.05644" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44904.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44904.html">Adversarial Autoencoders</a>
+                  </p>
+                  <p>
+                    Alireza Makhzani, <a href="/pubs/JonathonShlens.html">Jonathon Shlens</a>,
+                    <a href="/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>, Ian Goodfellow
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Adversarial+Machine+Learning+at+Scale+Kurakin+Goodfellow+Bengio"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.01236" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45816.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45816.html">Adversarial Machine Learning at Scale</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/AlexeyKurakin.html">Alexey Kurakin</a>, Ian J. Goodfellow,
+                    <a href="/pubs/bengio.html">Samy Bengio</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Adversarial+Training+Methods+for+Semi-Supervised+Text+Classification+Miyato+Dai+Goodfellow"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1605.07725" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45839.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45839.html">Adversarial Training Methods for Semi-Supervised
+                    Text Classification</a>
+                  </p>
+                  <p>
+                    Takeru Miyato, <a href="/pubs/AndrewDai.html">Andrew M. Dai</a>, Ian Goodfellow
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Adversarial+examples+in+the+physical+world+Kurakin+Goodfellow+Bengio"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1607.02533" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45818.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45818.html">Adversarial examples in the physical world</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/AlexeyKurakin.html">Alexey Kurakin</a>, Ian Goodfellow, <a href=
+                    "/pubs/bengio.html">Samy Bengio</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Attend,+Infer,+Repeat:+Fast+Scene+Understanding+with+Generative+Models+Eslami+Heess+Weber+Tassa+Szepesvari+Kavukcuoglu+Hinton"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1603.08575" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45554.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45554.html">Attend, Infer, Repeat: Fast Scene Understanding
+                    with Generative Models</a>
+                  </p>
+                  <p>
+                    S. M. Ali Eslami, Nicolas Heess, Theophane Weber, Yuval Tassa, David
+                    Szepesvari, Koray Kavukcuoglu, <a href="/pubs/GeoffreyHinton.html">Geoffrey E.
+                    Hinton</a>
+                  </p>
+                  <p>
+                    NIPS (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Categorical+Reparameterization+with+Gumbel-Softmax+Jang+Gu+Poole"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.01144" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45822.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45822.html">Categorical Reparameterization with
+                    Gumbel-Softmax</a>
+                  </p>
+                  <p>
+                    Eric Jang, Shixiang Gu, Ben Poole
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Collective+Entity+Resolution+with+Multi-Focal+Attention+Globerson+Lazic+Chakrabarti+Subramanya+Ringaard+Pereira"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45395.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45395.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45395.html">Collective Entity Resolution with Multi-Focal
+                    Attention</a>
+                  </p>
+                  <p>
+                    Amir Globerson, <a href="/pubs/104936.html">Nevena Lazic</a>, Soumen
+                    Chakrabarti, <a href="/pubs/author38552.html">Amarnag Subramanya</a>, <a href=
+                    "/pubs/author38358.html">Michael Ringaard</a>, <a href=
+                    "/pubs/author1092.html">Fernando Pereira</a>
+                  </p>
+                  <p>
+                    ACL (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Conditional+Image+Synthesis+With+Auxiliary+Classifier+GANs+Odena+Olah+Shlens"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1610.09585" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45830.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45830.html">Conditional Image Synthesis With Auxiliary
+                    Classifier GANs</a>
+                  </p>
+                  <p>
+                    Augustus Odena, <a href="/pubs/ChristopherOlah.html">Christopher Olah</a>,
+                    <a href="/pubs/JonathonShlens.html">Jonathon Shlens</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Continuous+Deep+Q-Learning+with+Model-based+Acceleration+Gu+Lillicrap+Sutskever+Levine"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://jmlr.org/proceedings/papers/v48/gu16.pdf" target=
+                  "_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45440.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45440.html">Continuous Deep Q-Learning with Model-based
+                    Acceleration</a>
+                  </p>
+                  <p>
+                    Shixiang Gu, Timothy Lillicrap, Ilya Sutskever, Sergey Levine
+                  </p>
+                  <p>
+                    International Conference on Machine Learning (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Deep+Learning+Games+Schuurmans+Zinkevich"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45550.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45550.html">Deep Learning Games</a>
+                  </p>
+                  <p>
+                    Dale Schuurmans, Martin Zinkevich
+                  </p>
+                  <p>
+                    NIPS 2016 (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Deep+Learning+with+Differential+Privacy+Abadi+Chu+Goodfellow+McMahan+Mironov+Talwar+Zhang"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45428.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45428.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45428.html">Deep Learning with Differential Privacy</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/abadi.html">Martin Abadi</a>, Andy Chu, Ian Goodfellow, <a href=
+                    "/pubs/author35837.html">Brendan McMahan</a>, <a href=
+                    "/pubs/IlyaMironov.html">Ilya Mironov</a>, <a href=
+                    "/pubs/KunalTalwar.html">Kunal Talwar</a>, <a href="/pubs/LiZhang.html">Li
+                    Zhang</a>
+                  </p>
+                  <p>
+                    23rd ACM Conference on Computer and Communications Security (ACM CCS) (2016),
+                    pp. 308-318
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=DeepMath+-+Deep+Sequence+Models+for+Premise+Selection+Alemi+Chollet+Irving+Szegedy+Urban"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45402.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45402.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45402.html">DeepMath - Deep Sequence Models for Premise
+                    Selection</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/104980.html">Alex A. Alemi</a>, <a href=
+                    "/pubs/105096.html">Francois Chollet</a>, <a href=
+                    "/pubs/GeoffreyIrving.html">Geoffrey Irving</a>, <a href=
+                    "/pubs/ChristianSzegedy.html">Christian Szegedy</a>, Josef Urban
+                  </p>
+                  <p>
+                    NIPS (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Density+Estimation+using+Real+NVP+Dinh+Sohl-Dickstein+Bengio"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1605.08803" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45373.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45373.html">Density Estimation using Real NVP</a>
+                  </p>
+                  <p>
+                    Laurent Dinh, <a href="/pubs/JaschaSohldickstein.html">Jascha
+                    Sohl-Dickstein</a>, <a href="/pubs/bengio.html">Samy Bengio</a>
+                  </p>
+                  <p>
+                    arXiv preprint (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Development+and+Validation+of+a+Deep+Learning+Algorithm+for+Detection+of+Diabetic+Retinopathy+in+Retinal+Fundus+Photographs+Gulshan+Peng+Coram+Stumpe+Wu+Narayanaswamy+Venugopalan+Widner+Madams+Cuadros+Kim+Raman+Nelson+Mega+Webster"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45732.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45732.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45732.html">Development and Validation of a Deep Learning
+                    Algorithm for Detection of Diabetic Retinopathy in Retinal Fundus
+                    Photographs</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/105170.html">Varun Gulshan</a>, <a href=
+                    "/pubs/LilyPeng.html">Lily Peng</a>, Marc Coram, <a href=
+                    "/pubs/MartinStumpe.html">Martin C Stumpe</a>, Derek Wu, <a href=
+                    "/pubs/105157.html">Arunachalam Narayanaswamy</a>, Subhashini Venugopalan,
+                    Kasumi Widner, Tom Madams, Jorge Cuadros, Ramasamy Kim, Rajiv Raman, Philip Q
+                    Nelson, Jessica Mega, <a href="/pubs/DaleWebster.html">Dale Webster</a>
+                  </p>
+                  <p>
+                    JAMA (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Domain+Separation+Networks+Bousmalis+Trigeorgis+Silberman+Krishnan+Erhan"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1608.06019" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45545.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45545.html">Domain Separation Networks</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/KonstantinosBousmalis.html">Konstantinos Bousmalis</a>, George
+                    Trigeorgis, Nathan Silberman, Dilip Krishnan, <a href=
+                    "/pubs/DumitruErhan.html">Dumitru Erhan</a>
+                  </p>
+                  <p>
+                    NIPS 2016 (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=End-to-End+Text-Dependent+Speaker+Verification+Heigold+Moreno+Bengio+Shazeer"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44681.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44681.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44681.html">End-to-End Text-Dependent Speaker
+                    Verification</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/GeorgHeigold.html">Georg Heigold</a>, <a href=
+                    "/pubs/IgnacioLopezMoreno.html">Ignacio Moreno</a>, <a href=
+                    "/pubs/bengio.html">Samy Bengio</a>, Noam M. Shazeer
+                  </p>
+                  <p>
+                    International Conference on Acoustics, Speech and Signal Processing (ICASSP),
+                    IEEE (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Equality+of+Opportunity+in+Supervised+Learning+Hardt+Price+Srebro"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1610.02413" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45661.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45661.html">Equality of Opportunity in Supervised
+                    Learning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/104937.html">Moritz Hardt</a>, Eric Price, Nathan Srebro
+                  </p>
+                  <p>
+                    Google (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Exploring+the+limits+of+language+modeling+Jozefowicz+Vinyals+Schuster+Shazeer+Wu"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45446.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45446.html">Exploring the limits of language modeling</a>
+                  </p>
+                  <p>
+                    Rafal Jozefowicz, <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/MikeSchuster.html">Mike Schuster</a>, Noam Shazeer, <a href=
+                    "/pubs/104868.html">Yonghui Wu</a>
+                  </p>
+                  <p>
+                    Google Inc. (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Exponential+expressivity+in+deep+neural+networks+through+transient+chaos+Poole+Lahiri+Raghu+Sohl-Dickstein+Ganguli"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1606.05340" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45551.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45551.html">Exponential expressivity in deep neural networks
+                    through transient chaos</a>
+                  </p>
+                  <p>
+                    Ben Poole, Subhaneil Lahiri, Maithra Raghu, <a href=
+                    "/pubs/JaschaSohldickstein.html">Jascha Sohl-Dickstein</a>, Surya Ganguli
+                  </p>
+                  <p>
+                    NIPS 2016 (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Generating+Sentences+from+a+Continuous+Space+Bowman+Vilnis+Vinyals+Dai+Jozefowicz+Bengio"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45404.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45404.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45404.html">Generating Sentences from a Continuous Space</a>
+                  </p>
+                  <p>
+                    Samuel R. Bowman, Luke Vilnis, <a href="/pubs/OriolVinyals.html">Oriol
+                    Vinyals</a>, <a href="/pubs/AndrewDai.html">Andrew M. Dai</a>, Rafal
+                    Jozefowicz, <a href="/pubs/bengio.html">Samy Bengio</a>
+                  </p>
+                  <p>
+                    CoNLL (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=HyperNetworks+Ha+Dai+Le"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1609.09106" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45823.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45823.html">HyperNetworks</a>
+                  </p>
+                  <p>
+                    David Ha, <a href="/pubs/AndrewDai.html">Andrew Dai</a>, <a href=
+                    "/pubs/QuocLe.html">Quoc V. Le</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Identity+Matters+in+Deep+Learning+Hardt+Ma"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.04231" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45833.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45833.html">Identity Matters in Deep Learning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/104937.html">Moritz Hardt</a>, Tengyu Ma
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Improving+Policy+Gradient+by+Exploring+Under-appreciated+Rewards+Nachum+Norouzi+Schuurmans"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.09321" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45837.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45837.html">Improving Policy Gradient by Exploring
+                    Under-appreciated Rewards</a>
+                  </p>
+                  <p>
+                    Ofir Nachum, <a href="/pubs/MohammadNorouzi.html">Mohammad Norouzi</a>, Dale
+                    Schuurmans
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Inception-v4,+Inception-ResNet+and+the+Impact+of+Residual+Connections+on+Learning+Szegedy+Ioffe+Vanhoucke+Alemi"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45169.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45169.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45169.html">Inception-v4, Inception-ResNet and the Impact of
+                    Residual Connections on Learning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/ChristianSzegedy.html">Christian Szegedy</a>, Sergey Ioffe,
+                    <a href="/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>, <a href=
+                    "/pubs/104980.html">Alex A. Alemi</a>
+                  </p>
+                  <p>
+                    ICLR 2016 Workshop (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Incremental,+iterative+data+processing+with+timely+dataflow+Murray+McSherry+Isard+Isaacs+Barham+Abadi"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dl.acm.org/citation.cfm?id=3001840.2983551&amp;coll=portal&amp;dl=ACM"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45620.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45620.html">Incremental, iterative data processing with
+                    timely dataflow</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/DerekMurray.html">Derek G. Murray</a>, Frank McSherry, <a href=
+                    "/pubs/MichaelIsard.html">Michael Isard</a>, <a href=
+                    "/pubs/RebeccaIsaacs.html">Rebecca Isaacs</a>, <a href=
+                    "/pubs/PaulBarham.html">Paul Barham</a>, <a href="/pubs/abadi.html">Martin
+                    Abadi</a>
+                  </p>
+                  <p>
+                    Communications of the ACM, vol. 59 (2016), pp. 75-83
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Intelligible+Language+Modeling+with+Input+Switched+Affine+Networks+Foerster+Gilmer+Chorowski+Sohl-Dickstein+Sussillo"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.09434" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45831.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45831.html">Intelligible Language Modeling with Input
+                    Switched Affine Networks</a>
+                  </p>
+                  <p>
+                    Jakob N. Foerster, Justin Gilmer, Jan Chorowski, <a href=
+                    "/pubs/JaschaSohldickstein.html">Jascha Sohl-Dickstein</a>, <a href=
+                    "/pubs/DavidSussillo.html">David Sussillo</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Latent+Sequence+Decompositions+Chan+Zhang+Le+Jaitly"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1610.03035" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45834.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45834.html">Latent Sequence Decompositions</a>
+                  </p>
+                  <p>
+                    William Chan, Yu Zhang, <a href="/pubs/QuocLe.html">Quoc Le</a>, <a href=
+                    "/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Learning+Hand-Eye+Coordination+for+Robotic+Grasping+with+Deep+Learning+and+Large-Scale+Data+Collection+Levine+Sampedro+Krizhevsky+Quillen"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/pdf/1603.02199v3" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45450.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45450.html">Learning Hand-Eye Coordination for Robotic
+                    Grasping with Deep Learning and Large-Scale Data Collection</a>
+                  </p>
+                  <p>
+                    Sergey Levine, Peter Pastor Sampedro, Alex Krizhevsky, Deirdre Quillen
+                  </p>
+                  <p>
+                    International Symposium on Experimental Robotics (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Learning+a+Natural+Language+Interface+with+Neural+Programmer+Neelakantan+Le+Abadi+McCallum+Amodei"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.08945" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45825.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45825.html">Learning a Natural Language Interface with Neural
+                    Programmer</a>
+                  </p>
+                  <p>
+                    Arvind Neelakantan, <a href="/pubs/QuocLe.html">Quoc V. Le</a>, <a href=
+                    "/pubs/abadi.html">Martin Abadi</a>, Andrew McCallum, Dario Amodei
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Learning+to+Protect+Communications+with+Adversarial+Neural+Cryptography+Abadi+Andersen"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1610.06918" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45827.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45827.html">Learning to Protect Communications with
+                    Adversarial Neural Cryptography</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/abadi.html">Martín Abadi</a>, David G. Andersen
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Listen,+Attend+and+Spell:+A+Neural+Network+for+Large+Vocabulary+Conversational+Speech+Recognition+Chan+Jaitly+Le+Vinyals"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44926.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44926.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44926.html">Listen, Attend and Spell: A Neural Network for
+                    Large Vocabulary Conversational Speech Recognition</a>
+                  </p>
+                  <p>
+                    William Chan, <a href="/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>, <a href=
+                    "/pubs/QuocLe.html">Quoc V. Le</a>, <a href="/pubs/OriolVinyals.html">Oriol
+                    Vinyals</a>
+                  </p>
+                  <p>
+                    ICASSP (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Mastering+the+game+of+Go+with+deep+neural+networks+and+tree+search+Silver+Huang+Maddison+Guez+Sifre+Van+Den+Driessche+Schrittwieser+Antonoglou+Panneershelvam+Lanctot+Dieleman+Grewe+Nham+Kalchbrenner+Sutskever+Lillicrap+Leach+Kavukcuoglu+Graepel+Hassabis"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://www.nature.com/nature/journal/v529/n7587/full/nature16961.html" target=
+                  "_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub44806.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44806.html">Mastering the game of Go with deep neural
+                    networks and tree search</a>
+                  </p>
+                  <p>
+                    David Silver, Aja Huang, Christopher J. Maddison, Arthur Guez, Laurent Sifre,
+                    George van den Driessche, Julian Schrittwieser, Ioannis Antonoglou, Veda
+                    Panneershelvam, Marc Lanctot, Sander Dieleman, Dominik Grewe, John Nham, Nal
+                    Kalchbrenner, Ilya Sutskever, Timothy Lillicrap, Madeleine Leach, Koray
+                    Kavukcuoglu, Thore Graepel, Demis Hassabis
+                  </p>
+                  <p>
+                    Nature, vol. 529 (2016), pp. 484-503
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=MuProp:+Unbiased+Backpropagation+for+Stochastic+Neural+Networks+Gu+Levine+Sutskever+Mnih"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/pdf/1511.05176v3.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45442.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45442.html">MuProp: Unbiased Backpropagation for Stochastic
+                    Neural Networks</a>
+                  </p>
+                  <p>
+                    Shixiang Gu, Sergey Levine, Ilya Sutskever, Andriy Mnih
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Multi-task+Sequence+to+Sequence+Learning+Luong+Le+Sutskever+Vinyals+Kaiser"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44928.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44928.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44928.html">Multi-task Sequence to Sequence Learning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/105176.html">Thang Luong</a>, <a href="/pubs/QuocLe.html">Quoc
+                    V. Le</a>, Ilya Sutskever, <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>,
+                    <a href="/pubs/LukaszKaiser.html">Lukasz Kaiser</a>
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Multilingual+Language+Processing+From+Bytes+Gillick+Brunk+Vinyals+Subramanya"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45170.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45170.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45170.html">Multilingual Language Processing From Bytes</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/DanGillick.html">Dan Gillick</a>, Cliff Brunk, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/author38552.html">Amarnag Subramanya</a>
+                  </p>
+                  <p>
+                    NAACL (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Net2Net:+Accelerating+Learning+via+Knowledge+Transfer+Chen+Goodfellow+Shlens"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1511.05641" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44905.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44905.html">Net2Net: Accelerating Learning via Knowledge
+                    Transfer</a>
+                  </p>
+                  <p>
+                    Tianqi Chen, Ian Goodfellow, <a href="/pubs/JonathonShlens.html">Jonathon
+                    Shlens</a>
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Neural+Architecture+Search+with+Reinforcement+Learning+Zoph+Le"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.01578" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45826.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45826.html">Neural Architecture Search with Reinforcement
+                    Learning</a>
+                  </p>
+                  <p>
+                    Barret Zoph, <a href="/pubs/QuocLe.html">Quoc V. Le</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Neural+GPUs+Learn+Algorithms+Kaiser+Sutskever"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45139.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Neural GPUs Learn Algorithms
+                  </p>
+                  <p>
+                    <a href="/pubs/LukaszKaiser.html">Lukasz Kaiser</a>, Ilya Sutskever
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Neural+Programmer:+Inducing+Latent+Programs+with+Gradient+Descent+neelakantan+Le+Sutskever"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44927.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44927.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44927.html">Neural Programmer: Inducing Latent Programs with
+                    Gradient Descent</a>
+                  </p>
+                  <p>
+                    arvind neelakantan, <a href="/pubs/QuocLe.html">Quoc V. Le</a>, Ilya Sutskever
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Neural+Random-Access+Machines+Kurach+Andrychowicz+Sutskever"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45472.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45472.html">Neural Random-Access Machines</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/KarolKurach.html">Karol Kurach</a>, Marcin Andrychowicz, Ilya
+                    Sutskever
+                  </p>
+                  <p>
+                    CoRR, vol. abs/1511.06392 (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Order+matters:+Sequence+to+sequence+for+sets+Vinyals+Bengio+Kudlur"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44871.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44871.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44871.html">Order matters: Sequence to sequence for sets</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/bengio.html">Samy Bengio</a>, <a href=
+                    "/pubs/ManjunathKudlur.html">Manjunath Kudlur</a>
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (ICLR) (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Q-Prop:+Sample-Efficient+Policy+Gradient+with+An+Off-Policy+Critic+Gu+Lillicrap+Ghahramani+Turner+Levine"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.02247" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45838.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45838.html">Q-Prop: Sample-Efficient Policy Gradient with An
+                    Off-Policy Critic</a>
+                  </p>
+                  <p>
+                    Shixiang Gu, Timothy Lillicrap, Zoubin Ghahramani, Richard E. Turner, Sergey
+                    Levine
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Regularizing+Neural+Networks+by+Penalizing+Confident+Output+Distributions+Pereyra+Tucker+Chorowski+Kaiser+Hinton"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1701.06548" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45835.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45835.html">Regularizing Neural Networks by Penalizing
+                    Confident Output Distributions</a>
+                  </p>
+                  <p>
+                    Gabriel Pereyra, George Tucker, Jan Chorowski, <a href=
+                    "/pubs/LukaszKaiser.html">Łukasz Kaiser</a>, <a href=
+                    "/pubs/GeoffreyHinton.html">Geoffrey Hinton</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Rethinking+the+Inception+Architecture+for+Computer+Vision+Szegedy+Vanhoucke+Ioffe+Shlens+Wojna"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44903.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44903.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44903.html">Rethinking the Inception Architecture for
+                    Computer Vision</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/ChristianSzegedy.html">Christian Szegedy</a>, <a href=
+                    "/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>, Sergey Ioffe, <a href=
+                    "/pubs/JonathonShlens.html">Jonathon Shlens</a>, Zbigniew Wojna
+                  </p>
+                  <p>
+                    Proceedings of IEEE Conference on Computer Vision and Pattern Recognition,
+                    (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Revisiting+Distributed+Synchronous+SGD+Chen+Monga+Bengio+Jozefowicz"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45187.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45187.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45187.html">Revisiting Distributed Synchronous SGD</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/JianminChen.html">Jianmin Chen</a>, <a href=
+                    "/pubs/RajatMonga.html">Rajat Monga</a>, <a href="/pubs/bengio.html">Samy
+                    Bengio</a>, Rafal Jozefowicz
+                  </p>
+                  <p>
+                    International Conference on Learning Representations Workshop Track (2016) (to
+                    appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Reward+Augmented+Maximum+Likelihood+for+Neural+Structured+Prediction+Norouzi+Bengio+Chen+Jaitly+Schuster+Wu+Schuurmans"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45580.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45580.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45580.html">Reward Augmented Maximum Likelihood for Neural
+                    Structured Prediction</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/MohammadNorouzi.html">Mohammad Norouzi</a>, <a href=
+                    "/pubs/bengio.html">Samy Bengio</a>, <a href="/pubs/author8126.html">Zhifeng
+                    Chen</a>, <a href="/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>, <a href=
+                    "/pubs/MikeSchuster.html">Mike Schuster</a>, <a href=
+                    "/pubs/104868.html">Yonghui Wu</a>, Dale Schuurmans
+                  </p>
+                  <p>
+                    NIPS (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Semi-supervised+Knowledge+Transfer+for+Deep+Learning+from+Private+Training+Data+Papernot+Abadi+Erlingsson+Goodfellow+Talwar"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1610.05755" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45828.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45828.html">Semi-supervised Knowledge Transfer for Deep
+                    Learning from Private Training Data</a>
+                  </p>
+                  <p>
+                    Nicolas Papernot, <a href="/pubs/abadi.html">Martín Abadi</a>, <a href=
+                    "/pubs/ulfar.html">Úlfar Erlingsson</a>, Ian Goodfellow, <a href=
+                    "/pubs/KunalTalwar.html">Kunal Talwar</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=TensorFlow:+A+system+for+large-scale+machine+learning+Abadi+Barham+Chen+Chen+Davis+Dean+Devin+Ghemawat+Irving+Isard+Kudlur+Levenberg+Monga+Moore+Murray+Steiner+Tucker+Vasudevan+Warden+Wicke+Yu+Zheng"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://www.usenix.org/system/files/conference/osdi16/osdi16-abadi.pdf" target=
+                  "_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45381.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45381.html">TensorFlow: A system for large-scale machine
+                    learning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/abadi.html">Martin Abadi</a>, <a href=
+                    "/pubs/PaulBarham.html">Paul Barham</a>, <a href=
+                    "/pubs/JianminChen.html">Jianmin Chen</a>, <a href=
+                    "/pubs/author8126.html">Zhifeng Chen</a>, <a href="/pubs/104876.html">Andy
+                    Davis</a>, <a href="/pubs/jeff.html">Jeffrey Dean</a>, <a href=
+                    "/pubs/104860.html">Matthieu Devin</a>, <a href=
+                    "/pubs/SanjayGhemawat.html">Sanjay Ghemawat</a>, <a href=
+                    "/pubs/GeoffreyIrving.html">Geoffrey Irving</a>, <a href=
+                    "/pubs/MichaelIsard.html">Michael Isard</a>, <a href=
+                    "/pubs/ManjunathKudlur.html">Manjunath Kudlur</a>, <a href=
+                    "/pubs/JoshLevenberg.html">Josh Levenberg</a>, <a href=
+                    "/pubs/RajatMonga.html">Rajat Monga</a>, <a href="/pubs/104893.html">Sherry
+                    Moore</a>, <a href="/pubs/DerekMurray.html">Derek G. Murray</a>, <a href=
+                    "/pubs/BenoitSteiner.html">Benoit Steiner</a>, <a href=
+                    "/pubs/PaulTucker.html">Paul Tucker</a>, <a href=
+                    "/pubs/VijayVasudevan.html">Vijay Vasudevan</a>, <a href=
+                    "/pubs/PeteWarden.html">Pete Warden</a>, <a href=
+                    "/pubs/MartinWicke.html">Martin Wicke</a>, <a href="/pubs/104812.html">Yuan
+                    Yu</a>, <a href="/pubs/XiaoqiangZheng.html">Xiaoqiang Zheng</a>
+                  </p>
+                  <p>
+                    12th USENIX Symposium on Operating Systems Design and Implementation (OSDI 16),
+                    USENIX Association (2016), pp. 265-283
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=TensorFlow:+Learning+Functions+at+Scale+Abadi"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://dl.acm.org/citation.cfm?id=2976746" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45842.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45842.html">TensorFlow: Learning Functions at Scale</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/abadi.html">Martin Abadi</a>
+                  </p>
+                  <p>
+                    ICFP (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=The+Applied+Pi+Calculus:+Mobile+Values,+New+Names,+and+Secure+Communication+Abadi+Blanchet+Fournet"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1609.03003" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45841.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45841.html">The Applied Pi Calculus: Mobile Values, New
+                    Names, and Secure Communication</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/abadi.html">Martin Abadi</a>, Bruno Blanchet, Cedric Fournet
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Toward+Deeper+Understanding+of+Neural+Networks:+The+Power+of+Initialization+and+a+Dual+View+on+Expressivity+Daniely+Frostig+Singer"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1602.05897" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45553.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45553.html">Toward Deeper Understanding of Neural Networks:
+                    The Power of Initialization and a Dual View on Expressivity</a>
+                  </p>
+                  <p>
+                    Amit Daniely, Roy Frostig, <a href="/pubs/author28.html">Yoram Singer</a>
+                  </p>
+                  <p>
+                    NIPS 2016 (2016) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Understanding+deep+learning+requires+rethinking+generalization+Zhang+Bengio+Hardt+Recht+Vinyals"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.03530" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45820.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45820.html">Understanding deep learning requires rethinking
+                    generalization</a>
+                  </p>
+                  <p>
+                    Chiyuan Zhang, <a href="/pubs/bengio.html">Samy Bengio</a>, <a href=
+                    "/pubs/104937.html">Moritz Hardt</a>, Benjamin Recht, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Unrolled+Generative+Adversarial+Networks+Metz+Poole+Pfau+Sohl-Dickstein"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.02163" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45829.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45829.html">Unrolled Generative Adversarial Networks</a>
+                  </p>
+                  <p>
+                    Luke Metz, Ben Poole, David Pfau, <a href=
+                    "/pubs/JaschaSohldickstein.html">Jascha Sohl-Dickstein</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Unsupervised+Learning+for+Physical+Interaction+through+Video+Prediction+Finn+Goodfellow+Levine"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1605.07157" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45441.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45441.html">Unsupervised Learning for Physical Interaction
+                    through Video Prediction</a>
+                  </p>
+                  <p>
+                    Chelsea Finn, Ian Goodfellow, Sergey Levine
+                  </p>
+                  <p>
+                    arXiv e-prints (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Unsupervised+Perceptual+Rewards+for+Imitation+Learning+Sermanet+Xu+Levine"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1612.06699" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45836.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45836.html">Unsupervised Perceptual Rewards for Imitation
+                    Learning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/PierreSermanet.html">Pierre Sermanet</a>, Kelvin Xu, Sergey
+                    Levine
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Unsupervised+Pretraining+for+Sequence+to+Sequence+Learning+Ramachandran+Liu+Le"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1611.02683" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45824.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45824.html">Unsupervised Pretraining for Sequence to Sequence
+                    Learning</a>
+                  </p>
+                  <p>
+                    Prajit Ramachandran, Peter J. Liu, <a href="/pubs/QuocLe.html">Quoc V. Le</a>
+                  </p>
+                  <p>
+                    arXiv (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Using+Fast+Weights+to+Attend+to+the+Recent+Past+Ba+Hinton+Mnih+Leibo+Ionescu"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1610.06258" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45662.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45662.html">Using Fast Weights to Attend to the Recent
+                    Past</a>
+                  </p>
+                  <p>
+                    Jimmy Ba, <a href="/pubs/GeoffreyHinton.html">Geoffrey Hinton</a>, Volodymyr
+                    Mnih, Joel Z. Leibo, Catalin Ionescu
+                  </p>
+                  <p>
+                    Google (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Virtual+Adversarial+Training+for+Semi-Supervised+Text+Classification+Miayto+Dai+Goodfellow"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45403.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45403.html">Virtual Adversarial Training for Semi-Supervised
+                    Text Classification</a>
+                  </p>
+                  <p>
+                    Takeru Miayto, <a href="/pubs/AndrewDai.html">Andrew M. Dai</a>, Ian Goodfellow
+                  </p>
+                  <p>
+                    arXiv preprint (2016)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=A+Neural+Conversational+Model+Vinyals+Le"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44925.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44925.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44925.html">A Neural Conversational Model</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/QuocLe.html">Quoc V. Le</a>
+                  </p>
+                  <p>
+                    ICML Deep Learning Workshop (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=A+Simple+Way+to+Initialize+Recurrent+Networks+of+Rectified+Linear+Units+Le+Jaitly+Hinton"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44961.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    A Simple Way to Initialize Recurrent Networks of Rectified Linear Units
+                  </p>
+                  <p>
+                    <a href="/pubs/QuocLe.html">Quoc V. Le</a>, <a href=
+                    "/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>, <a href=
+                    "/pubs/GeoffreyHinton.html">Geoffrey E. Hinton</a>
+                  </p>
+                  <p>
+                    CoRR, vol. abs/1504.00941 (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=A+Unified+Approach+to+Boundedness+Properties+in+MSO+Kaiser+0001+Le%C3%9Fenich+L%C3%B6ding"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    A Unified Approach to Boundedness Properties in MSO
+                  </p>
+                  <p>
+                    <a href="/pubs/LukaszKaiser.html">Lukasz Kaiser</a>, Martin Lang 0001, Simon
+                    Leßenich, Christof Löding
+                  </p>
+                  <p>
+                    CSL (2015), pp. 441-456
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Adding+Gradient+Noise+Improves+Learning+for+Very+Deep+Networks+neelakantan+Vilnis+Le+Sutskever+Kaiser+Kurach+Martens"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45137.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Adding Gradient Noise Improves Learning for Very Deep Networks
+                  </p>
+                  <p>
+                    arvind neelakantan, Luke Vilnis, <a href="/pubs/QuocLe.html">Quoc V. Le</a>,
+                    Ilya Sutskever, <a href="/pubs/LukaszKaiser.html">Lukasz Kaiser</a>, <a href=
+                    "/pubs/KarolKurach.html">Karol Kurach</a>, James Martens
+                  </p>
+                  <p>
+                    CoRR, vol. abs/1511.06807 (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Addressing+the+Rare+Word+Problem+in+Neural+Machine+Translation+Luong+Sutskever+Le+Vinyals+Zaremba"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44929.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44929.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44929.html">Addressing the Rare Word Problem in Neural
+                    Machine Translation</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/105176.html">Thang Luong</a>, Ilya Sutskever, <a href=
+                    "/pubs/QuocLe.html">Quoc V. Le</a>, <a href="/pubs/OriolVinyals.html">Oriol
+                    Vinyals</a>, Wojciech Zaremba
+                  </p>
+                  <p>
+                    ACL (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=An+Online+Sequence-to-Sequence+Model+Using+Partial+Conditioning+Jaitly+Le+Vinyals+Bengio"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45167.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45167.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45167.html">An Online Sequence-to-Sequence Model Using
+                    Partial Conditioning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>, <a href=
+                    "/pubs/QuocLe.html">Quoc V. Le</a>, <a href="/pubs/OriolVinyals.html">Oriol
+                    Vinyals</a>, <a href="/pubs/bengio.html">Samy Bengio</a>
+                  </p>
+                  <p>
+                    ARXIV (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=An+empirical+exploration+of+recurrent+network+architectures+Jozefowicz+Zaremba+Sutskever"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45473.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45473.html">An empirical exploration of recurrent network
+                    architectures</a>
+                  </p>
+                  <p>
+                    Rafal Jozefowicz, Wojciech Zaremba, Ilya Sutskever
+                  </p>
+                  <p>
+                    Journal of Machine Learning Research (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Attention+for+fine-grained+categorization+Sermanet+Frome+Real"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1412.7054" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44891.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44891.html">Attention for fine-grained categorization</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/PierreSermanet.html">Pierre Sermanet</a>, Andrea Frome, <a href=
+                    "/pubs/EstebanReal.html">Esteban Real</a>
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (ICLR) workshop, Arxiv
+                    (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Beyond+Short+Snippets:+Deep+Networks+for+Video+Classification+Ng+Hausknecht+Vijayanarasimhan+Vinyals+Monga+Toderici"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43793.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43793.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43793.html">Beyond Short Snippets: Deep Networks for Video
+                    Classification</a>
+                  </p>
+                  <p>
+                    Joe Yue-Hei Ng, Matthew Hausknecht, Sudheendra Vijayanarasimhan, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/RajatMonga.html">Rajat Monga</a>, <a href=
+                    "/pubs/author38233.html">George Toderici</a>
+                  </p>
+                  <p>
+                    Computer Vision and Pattern Recognition (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=BilBOWA:+Fast+Bilingual+Distributed+Representations+without+Word+Alignments+Gouws+Bengio+Corrado"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45190.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45190.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45190.html">BilBOWA: Fast Bilingual Distributed
+                    Representations without Word Alignments</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/StephanGouws.html">Stephan Gouws</a>, Yoshua Bengio, <a href=
+                    "/pubs/GregCorrado.html">Greg Corrado</a>
+                  </p>
+                  <p>
+                    Proceedings of the 32nd International Conference on Machine Learning (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Characterising+Choiceless+Polynomial+Time+with+First-Order+Interpretations+Gr%C3%A4del+Pakusa+Schalth%C3%B6fer+Kaiser"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Characterising Choiceless Polynomial Time with First-Order Interpretations
+                  </p>
+                  <p>
+                    Erich Grädel, Wied Pakusa, Svenja Schalthöfer, <a href=
+                    "/pubs/LukaszKaiser.html">Lukasz Kaiser</a>
+                  </p>
+                  <p>
+                    LICS (2015), pp. 677-688
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Convolutional,+Long+Short-Term+Memory,+Fully+Connected+Deep+Neural+Networks+Sainath+Vinyals+Senior+Sak"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43455.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Convolutional, Long Short-Term Memory, Fully Connected Deep Neural Networks
+                  </p>
+                  <p>
+                    <a href="/pubs/TaraSainath.html">Tara Sainath</a>, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/author37792.html">Andrew Senior</a>, <a href="/pubs/HasimSak.html">Hasim
+                    Sak</a>
+                  </p>
+                  <p>
+                    ICASSP (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Deep+Networks+With+Large+Output+Spaces+Vijayanarasimhan+Shlens+Monga+Yagnik"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1412.7479" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44902.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44902.html">Deep Networks With Large Output Spaces</a>
+                  </p>
+                  <p>
+                    Sudheendra Vijayanarasimhan, <a href="/pubs/JonathonShlens.html">Jonathon
+                    Shlens</a>, <a href="/pubs/RajatMonga.html">Rajat Monga</a>, <a href=
+                    "/pubs/author36197.html">Jay Yagnik</a>
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Explaining+and+Harnessing+Adversarial+Examples+Goodfellow+Shlens+Szegedy"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1412.6572" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Explaining and Harnessing Adversarial Examples
+                  </p>
+                  <p>
+                    Ian Goodfellow, <a href="/pubs/JonathonShlens.html">Jonathon Shlens</a>,
+                    <a href="/pubs/ChristianSzegedy.html">Christian Szegedy</a>
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Going+Deeper+with+Convolutions+Szegedy+Liu+Jia+Sermanet+Reed+Anguelov+Erhan+Vanhoucke+Rabinovich"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43022.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43022.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43022.html">Going Deeper with Convolutions</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/ChristianSzegedy.html">Christian Szegedy</a>, Wei Liu, <a href=
+                    "/pubs/YangqingJia.html">Yangqing Jia</a>, <a href=
+                    "/pubs/PierreSermanet.html">Pierre Sermanet</a>, Scott Reed, Dragomir Anguelov,
+                    <a href="/pubs/DumitruErhan.html">Dumitru Erhan</a>, <a href=
+                    "/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>, <a href=
+                    "/pubs/AndrewRabinovich.html">Andrew Rabinovich</a>
+                  </p>
+                  <p>
+                    Computer Vision and Pattern Recognition (CVPR) (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Grammar+as+a+Foreign+Language+Vinyals+Kaiser+Koo+Petrov+Sutskever+Hinton"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43799.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Grammar as a Foreign Language
+                  </p>
+                  <p>
+                    <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/LukaszKaiser.html">Lukasz Kaiser</a>, Terry Koo, <a href=
+                    "/pubs/author38945.html">Slav Petrov</a>, Ilya Sutskever, <a href=
+                    "/pubs/GeoffreyHinton.html">Geoffrey Hinton</a>
+                  </p>
+                  <p>
+                    NIPS (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Graph+Searching+Games+and+Width+Measures+for+Directed+Graphs+Amiri+Kaiser+Kreutzer+Rabinovich+Siebertz"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Graph Searching Games and Width Measures for Directed Graphs
+                  </p>
+                  <p>
+                    Saeed Akhoondian Amiri, <a href="/pubs/LukaszKaiser.html">Lukasz Kaiser</a>,
+                    Stephan Kreutzer, Roman Rabinovich, Sebastian Siebertz
+                  </p>
+                  <p>
+                    STACS (2015), pp. 34-47
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Guest+Editorial:+Deep+Learning+Ranzato+Hinton+LeCun"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Guest Editorial: Deep Learning
+                  </p>
+                  <p>
+                    Marc'Aurelio Ranzato, <a href="/pubs/GeoffreyHinton.html">Geoffrey E.
+                    Hinton</a>, Yann LeCun
+                  </p>
+                  <p>
+                    International Journal of Computer Vision, vol. 113 (2015), pp. 1-2
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Learning+semantic+relationships+for+better+action+retrieval+in+images+Ramanathan+Li+Deng+Han+Li+Gu+Song+Bengio+Rosenberg+Fei-Fei"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43443.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Learning semantic relationships for better action retrieval in images
+                  </p>
+                  <p>
+                    Vignesh Ramanathan, <a href="/pubs/CongcongLi.html">Congcong Li</a>, Jia Deng,
+                    Wei Han, <a href="/pubs/ZhenLi.html">Zhen Li</a>, Kunlong Gu, <a href=
+                    "/pubs/author38270.html">Yang Song</a>, <a href="/pubs/bengio.html">Samy
+                    Bengio</a>, <a href="/pubs/author30937.html">Chuck Rosenberg</a>, Li Fei-Fei
+                  </p>
+                  <p>
+                    CVPR (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Learning+the+Speech+Front-end+with+Raw+Waveform+CLDNNs+Sainath+Weiss+Wilson+Senior+Vinyals"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43960.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Learning the Speech Front-end with Raw Waveform CLDNNs
+                  </p>
+                  <p>
+                    <a href="/pubs/TaraSainath.html">Tara Sainath</a>, <a href=
+                    "/pubs/RonWeiss.html">Ron J. Weiss</a>, <a href="/pubs/KevinWilson.html">Kevin
+                    Wilson</a>, <a href="/pubs/author37792.html">Andrew W. Senior</a>, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>
+                  </p>
+                  <p>
+                    Interspeech (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Learning+to+Execute+Zaremba+Sutskever"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45474.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45474.html">Learning to Execute</a>
+                  </p>
+                  <p>
+                    Wojciech Zaremba, Ilya Sutskever
+                  </p>
+                  <p>
+                    arXiv (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Move+evaluation+in+go+using+deep+convolutional+neural+networks+Maddison+Huang+Sutskever+Silver"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45480.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45480.html">Move evaluation in go using deep convolutional
+                    neural networks</a>
+                  </p>
+                  <p>
+                    Chris J. Maddison, Aja Huang, Ilya Sutskever, David Silver
+                  </p>
+                  <p>
+                    ICLR, ICLR (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Pedestrian+Detection+with+a+Large-Field-Of-View+Deep+Network+Angelova+Krizhevsky+Vanhoucke"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43849.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43849.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43849.html">Pedestrian Detection with a Large-Field-Of-View
+                    Deep Network</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/AneliaAngelova.html">Anelia Angelova</a>, Alex Krizhevsky,
+                    <a href="/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>
+                  </p>
+                  <p>
+                    Proceedings of ICRA 2015
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Pointer+Networks+Vinyals+Fortunato+Jaitly"
+                  target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Pointer Networks
+                  </p>
+                  <p>
+                    <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>, Meire Fortunato, <a href=
+                    "/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>
+                  </p>
+                  <p>
+                    CoRR, vol. abs/1506.03134 (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Qualitatively+Characterizing+Neural+Network+Optimization+Problems+Goodfellow+Vinyals+Saxe"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1412.6544" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Qualitatively Characterizing Neural Network Optimization Problems
+                  </p>
+                  <p>
+                    Ian Goodfellow, <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>, Andrew
+                    Saxe
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Real-Time+Grasp+Detection+Using+Convolutional+Neural+Networks+Redmon+Angelova"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43875.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43875.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43875.html">Real-Time Grasp Detection Using Convolutional
+                    Neural Networks</a>
+                  </p>
+                  <p>
+                    Joseph Redmon, <a href="/pubs/AneliaAngelova.html">Anelia Angelova</a>
+                  </p>
+                  <p>
+                    International Conference on Robotics and Automation (ICRA), IEEE (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Real-Time+Pedestrian+Detection+With+Deep+Network+Cascades+Angelova+Krizhevsky+Vanhoucke+Ogale+Ferguson"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43850.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43850.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43850.html">Real-Time Pedestrian Detection With Deep Network
+                    Cascades</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/AneliaAngelova.html">Anelia Angelova</a>, Alex Krizhevsky,
+                    <a href="/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>, Abhijit Ogale,
+                    Dave Ferguson
+                  </p>
+                  <p>
+                    Proceedings of BMVC 2015
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Reinforcement+learning+neural+Turing+machines+Zaremba+Sutskever"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45478.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45478.html">Reinforcement learning neural Turing machines</a>
+                  </p>
+                  <p>
+                    Wojciech Zaremba, Ilya Sutskever
+                  </p>
+                  <p>
+                    Google Inc. (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Scheduled+Sampling+for+Sequence+Prediction+with+Recurrent+Neural+Networks+Bengio+Vinyals+Jaitly+Shazeer"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43984.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43984.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43984.html">Scheduled Sampling for Sequence Prediction with
+                    Recurrent Neural Networks</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/bengio.html">Samy Bengio</a>, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>, Noam M. Shazeer
+                  </p>
+                  <p>
+                    Advances in Neural Information Processing Systems, NIPS (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Semi-supervised+sequence+learning+Dai+Le"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44267.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44267.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44267.html">Semi-supervised sequence learning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/AndrewDai.html">Andrew M. Dai</a>, <a href=
+                    "/pubs/QuocLe.html">Quoc V. Le</a>
+                  </p>
+                  <p>
+                    Advances in Neural Information Processing Systems, NIPS (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Sentence+Compression+by+Deletion+with+LSTMs+Filippova+Alfonseca+Colmenares+Kaiser+Vinyals"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43852.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43852.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43852.html">Sentence Compression by Deletion with LSTMs</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/author39008.html">Katja Filippova</a>, <a href=
+                    "/pubs/author35866.html">Enrique Alfonseca</a>, <a href=
+                    "/pubs/CarlosColmenares.html">Carlos Colmenares</a>, <a href=
+                    "/pubs/LukaszKaiser.html">Lukasz Kaiser</a>, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>
+                  </p>
+                  <p>
+                    Proceedings of the 2015 Conference on Empirical Methods in Natural Language
+                    Processing (EMNLP'15)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Show+and+tell:+A+neural+image+caption+generator+Vinyals+Toshev+Bengio+Erhan"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43274.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43274.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43274.html">Show and tell: A neural image caption
+                    generator</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/AlexanderToshev.html">Alexander Toshev</a>, <a href=
+                    "/pubs/bengio.html">Samy Bengio</a>, <a href="/pubs/DumitruErhan.html">Dumitru
+                    Erhan</a>
+                  </p>
+                  <p>
+                    Computer Vision and Pattern Recognition (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=TensorFlow:+Large-Scale+Machine+Learning+on+Heterogeneous+Distributed+Systems+Abadi+Agarwal+Barham+Brevdo+Chen+Citro+Corrado+Davis+Dean+Devin+Ghemawat+Goodfellow+Harp+Irving+Isard+Jia+Jozefowicz+Kaiser+Kudlur+Levenberg+Man%C3%A9+Monga+Moore+Murray+Olah+Schuster+Shlens+Steiner+Sutskever+Talwar+Tucker+Vanhoucke+Vasudevan+Vi%C3%A9gas+Vinyals+Warden+Wattenberg+Wicke+Yu+Zheng"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/45166.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45166.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45166.html">TensorFlow: Large-Scale Machine Learning on
+                    Heterogeneous Distributed Systems</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/abadi.html">Martín Abadi</a>, Ashish Agarwal, <a href=
+                    "/pubs/PaulBarham.html">Paul Barham</a>, <a href=
+                    "/pubs/EugeneBrevdo.html">Eugene Brevdo</a>, <a href=
+                    "/pubs/author8126.html">Zhifeng Chen</a>, <a href="/pubs/CraigCitro.html">Craig
+                    Citro</a>, <a href="/pubs/GregCorrado.html">Greg Corrado</a>, <a href=
+                    "/pubs/104876.html">Andy Davis</a>, <a href="/pubs/jeff.html">Jeffrey Dean</a>,
+                    <a href="/pubs/104860.html">Matthieu Devin</a>, <a href=
+                    "/pubs/SanjayGhemawat.html">Sanjay Ghemawat</a>, Ian Goodfellow, <a href=
+                    "/pubs/AndrewHarp.html">Andrew Harp</a>, <a href=
+                    "/pubs/GeoffreyIrving.html">Geoffrey Irving</a>, <a href=
+                    "/pubs/MichaelIsard.html">Michael Isard</a>, <a href=
+                    "/pubs/YangqingJia.html">Yangqing Jia</a>, Rafal Jozefowicz, <a href=
+                    "/pubs/LukaszKaiser.html">Lukasz Kaiser</a>, <a href=
+                    "/pubs/ManjunathKudlur.html">Manjunath Kudlur</a>, <a href=
+                    "/pubs/JoshLevenberg.html">Josh Levenberg</a>, Dan Mané, <a href=
+                    "/pubs/RajatMonga.html">Rajat Monga</a>, <a href="/pubs/104893.html">Sherry
+                    Moore</a>, <a href="/pubs/DerekMurray.html">Derek Murray</a>, <a href=
+                    "/pubs/ChristopherOlah.html">Chris Olah</a>, <a href=
+                    "/pubs/MikeSchuster.html">Mike Schuster</a>, <a href=
+                    "/pubs/JonathonShlens.html">Jonathon Shlens</a>, <a href=
+                    "/pubs/BenoitSteiner.html">Benoit Steiner</a>, Ilya Sutskever, <a href=
+                    "/pubs/KunalTalwar.html">Kunal Talwar</a>, <a href="/pubs/PaulTucker.html">Paul
+                    Tucker</a>, <a href="/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>,
+                    <a href="/pubs/VijayVasudevan.html">Vijay Vasudevan</a>, <a href=
+                    "/pubs/FernandaViegas.html">Fernanda Viégas</a>, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/PeteWarden.html">Pete Warden</a>, <a href=
+                    "/pubs/MartinWattenberg.html">Martin Wattenberg</a>, <a href=
+                    "/pubs/MartinWicke.html">Martin Wicke</a>, <a href="/pubs/104812.html">Yuan
+                    Yu</a>, <a href="/pubs/XiaoqiangZheng.html">Xiaoqiang Zheng</a>
+                  </p>
+                  <p>
+                    tensorflow.org (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Towards+Principled+Unsupervised+Learning+Sutskever+Jozefowicz+Gregor+Rezende+Lillicrap+Vinyals"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1511.06440" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45451.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45451.html">Towards Principled Unsupervised Learning</a>
+                  </p>
+                  <p>
+                    Ilya Sutskever, Rafal Jozefowicz, Karol Gregor, Danilo Rezende, Tim Lillicrap,
+                    <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>
+                  </p>
+                  <p>
+                    Google Inc. (2015)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Training+Deep+Neural+Networks+on+Noisy+Labels+with+Bootstrapping+Reed+Lee+Anguelov+Szegedy+Erhan+Rabinovich"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43273.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43273.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43273.html">Training Deep Neural Networks on Noisy Labels
+                    with Bootstrapping</a>
+                  </p>
+                  <p>
+                    Scott E. Reed, Honglak Lee, Dragomir Anguelov, <a href=
+                    "/pubs/ChristianSzegedy.html">Christian Szegedy</a>, <a href=
+                    "/pubs/DumitruErhan.html">Dumitru Erhan</a>, <a href=
+                    "/pubs/AndrewRabinovich.html">Andrew Rabinovich</a>
+                  </p>
+                  <p>
+                    ICLR 2015
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Asynchronous+Stochastic+Optimization+for+Sequence+Training+of+Deep+Neural+Networks+Heigold+McDermott+Vanhoucke+Senior+Bacchiani"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42248.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42248.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42248.html">Asynchronous Stochastic Optimization for Sequence
+                    Training of Deep Neural Networks</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/GeorgHeigold.html">Georg Heigold</a>, <a href=
+                    "/pubs/ErikMcDermott.html">Erik McDermott</a>, <a href=
+                    "/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>, <a href=
+                    "/pubs/author37792.html">Andrew Senior</a>, <a href=
+                    "/pubs/MichielBacchiani.html">Michiel Bacchiani</a>
+                  </p>
+                  <p>
+                    Proceedings of the IEEE International Conference on Acoustics, Speech, and
+                    Signal Processing (ICASSP), IEEE, Firenze, Italy (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Autoregressive+Product+of+Multi-frame+Predictions+Can+Improve+the+Accuracy+of+Hybrid+Models+Jaitly+Vanhoucke+Hinton"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42947.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42947.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42947.html">Autoregressive Product of Multi-frame Predictions
+                    Can Improve the Accuracy of Hybrid Models</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>, <a href=
+                    "/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>, <a href=
+                    "/pubs/GeoffreyHinton.html">Geoffrey Hinton</a>
+                  </p>
+                  <p>
+                    Proceedings of Interspeech 2014
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Distilling+the+Knowledge+in+a+Neural+Network+Hinton+Vinyals+Dean"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44873.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44873.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44873.html">Distilling the Knowledge in a Neural Network</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/GeoffreyHinton.html">Geoffrey Hinton</a>, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href="/pubs/jeff.html">Jeffrey
+                    Dean</a>
+                  </p>
+                  <p>
+                    NIPS Deep Learning and Representation Learning Workshop (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Distributed+Representations+of+Sentences+and+Documents+Le+Mikolov"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44930.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44930.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44930.html">Distributed Representations of Sentences and
+                    Documents</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/QuocLe.html">Quoc V. Le</a>, Tomas Mikolov
+                  </p>
+                  <p>
+                    International Conference on Machine Learning (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Intriguing+properties+of+neural+networks+Szegedy+Zaremba+Sutskever+Bruna+Erhan+Goodfellow+Fergus"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42503.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42503.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42503.html">Intriguing properties of neural networks</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/ChristianSzegedy.html">Christian Szegedy</a>, Wojciech Zaremba,
+                    Ilya Sutskever, Joan Bruna, <a href="/pubs/DumitruErhan.html">Dumitru
+                    Erhan</a>, Ian Goodfellow, Rob Fergus
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Large-Scale+Object+Classification+Using+Label+Relation+Graphs+Deng+Ding+Jia+Frome+Murphy+Bengio+Li+Neven+Adam"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42854.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Large-Scale Object Classification Using Label Relation Graphs
+                  </p>
+                  <p>
+                    Jia Deng, <a href="/pubs/NanDing.html">Nan Ding</a>, <a href=
+                    "/pubs/YangqingJia.html">Yangqing Jia</a>, Andrea Frome, <a href=
+                    "/pubs/KevinMurphy.html">Kevin Murphy</a>, <a href="/pubs/bengio.html">Samy
+                    Bengio</a>, Yuan Li, <a href="/pubs/HartmutNeven.html">Hartmut Neven</a>,
+                    <a href="/pubs/author37870.html">Hartwig Adam</a>
+                  </p>
+                  <p>
+                    European Conference on Computer Vision (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Learning+Factored+Representations+in+a+Deep+Mixture+of+Experts+Eigen+Ranzato+Sutskever"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45479.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45479.html">Learning Factored Representations in a Deep
+                    Mixture of Experts</a>
+                  </p>
+                  <p>
+                    David Eigen, Marc'Aurelio Ranzato, Ilya Sutskever
+                  </p>
+                  <p>
+                    arVix (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Local+Collaborative+Ranking+Lee+Bengio+Kim+Lebanon+Singer"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42242.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42242.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42242.html">Local Collaborative Ranking</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/JoonseokLee.html">Joonseok Lee</a>, <a href=
+                    "/pubs/bengio.html">Samy Bengio</a>, <a href=
+                    "/pubs/SeungyeonKim.html">Seungyeon Kim</a>, Guy Lebanon, <a href=
+                    "/pubs/author28.html">Yoram Singer</a>
+                  </p>
+                  <p>
+                    Proceedings of the 23rd International World Wide Web Conference (WWW), ACM
+                    (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=On+Learning+Where+to+Look+Ranzato"
+                  target="_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45477.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45477.html">On Learning Where to Look</a>
+                  </p>
+                  <p>
+                    Marc'Aurelio Ranzato
+                  </p>
+                  <p>
+                    Google Inc. (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Random+Walk+Initialization+for+Training+Very+Deep+Feedforward+Networks+Sussillo+Abbott"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://arxiv.org/abs/1412.6558" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45184.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45184.html">Random Walk Initialization for Training Very Deep
+                    Feedforward Networks</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/DavidSussillo.html">David Sussillo</a>, L.F. Abbott
+                  </p>
+                  <p>
+                    arXiv preprint, Google Inc. (2014), pp. 1-10
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Recurrent+Neural+Network+Regularization+Zaremba+Sutskever+Vinyals"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "https://arxiv.org/abs/1409.2329" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub45452.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45452.html">Recurrent Neural Network Regularization</a>
+                  </p>
+                  <p>
+                    Wojciech Zaremba, Ilya Sutskever, <a href="/pubs/OriolVinyals.html">Oriol
+                    Vinyals</a>
+                  </p>
+                  <p>
+                    Google Inc. (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Sequence+Discriminative+Distributed+Training+of+Long+Short-Term+Memory+Recurrent+Neural+Networks+Sak+Vinyals+Heigold+Senior+McDermott+Monga+Mao"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42547.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42547.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42547.html">Sequence Discriminative Distributed Training of
+                    Long Short-Term Memory Recurrent Neural Networks</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/HasimSak.html">Hasim Sak</a>, <a href=
+                    "/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/GeorgHeigold.html">Georg Heigold</a>, Andrew Senior, <a href=
+                    "/pubs/ErikMcDermott.html">Erik McDermott</a>, <a href=
+                    "/pubs/RajatMonga.html">Rajat Monga</a>, Mark Mao
+                  </p>
+                  <p>
+                    Interspeech (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Sequence+to+Sequence+Learning+with+Neural+Networks+Sutskever+Vinyals+Le"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/43155.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub43155.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub43155.html">Sequence to Sequence Learning with Neural
+                    Networks</a>
+                  </p>
+                  <p>
+                    Ilya Sutskever, <a href="/pubs/OriolVinyals.html">Oriol Vinyals</a>, <a href=
+                    "/pubs/QuocLe.html">Quoc V. Le</a>
+                  </p>
+                  <p>
+                    Proc. NIPS, Montreal, CA (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Training+Highly+Multi-class+Linear+Classifiers+Gupta+Bengio+Weston"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/41872.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41872.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41872.html">Training Highly Multi-class Linear
+                    Classifiers</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/MayaGupta.html">Maya R. Gupta</a>, <a href=
+                    "/pubs/bengio.html">Samy Bengio</a>, Jason Weston
+                  </p>
+                  <p>
+                    Journal Machine Learning Research (JMLR) (2014), 1461-−1492
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Word+Embeddings+for+Speech+Recognition+Bengio+Heigold"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42543.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42543.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42543.html">Word Embeddings for Speech Recognition</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/bengio.html">Samy Bengio</a>, <a href=
+                    "/pubs/GeorgHeigold.html">Georg Heigold</a>
+                  </p>
+                  <p>
+                    Proceedings of the 15th Conference of the International Speech Communication
+                    Association, Interspeech (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Zero-Shot+Learning+by+Convex+Combination+of+Semantic+Embeddings+Norouzi+Mikolov+Bengio+Singer+Shlens+Frome+Corrado+Dean"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42371.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42371.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42371.html">Zero-Shot Learning by Convex Combination of
+                    Semantic Embeddings</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/MohammadNorouzi.html">Mohammad Norouzi</a>, Tomas Mikolov,
+                    <a href="/pubs/bengio.html">Samy Bengio</a>, <a href=
+                    "/pubs/author28.html">Yoram Singer</a>, <a href=
+                    "/pubs/JonathonShlens.html">Jonathon Shlens</a>, Andrea Frome, <a href=
+                    "/pubs/GregCorrado.html">Greg Corrado</a>, <a href="/pubs/jeff.html">Jeffrey
+                    Dean</a>
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2014)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=An+Empirical+study+of+learning+rates+in+deep+neural+networks+for+speech+recognition+Senior+Heigold+Ranzato+Yang"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/40808.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    An Empirical study of learning rates in deep neural networks for speech
+                    recognition
+                  </p>
+                  <p>
+                    <a href="/pubs/author37792.html">Andrew Senior</a>, <a href=
+                    "/pubs/GeorgHeigold.html">Georg Heigold</a>, Marc'aurelio Ranzato, <a href=
+                    "/pubs/author61.html">Ke Yang</a>
+                  </p>
+                  <p>
+                    Proceedings of the IEEE International Conference on Acoustics, Speech, and
+                    Signal Processing (ICASSP), IEEE, Vancouver, CA (2013) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=DeViSE:+A+Deep+Visual-Semantic+Embedding+Model+Frome+Corrado+Shlens+Bengio+Dean+Ranzato+Mikolov"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/41869.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41869.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41869.html">DeViSE: A Deep Visual-Semantic Embedding
+                    Model</a>
+                  </p>
+                  <p>
+                    Andrea Frome, <a href="/pubs/GregCorrado.html">Greg Corrado</a>, <a href=
+                    "/pubs/JonathonShlens.html">Jonathon Shlens</a>, <a href=
+                    "/pubs/bengio.html">Samy Bengio</a>, <a href="/pubs/jeff.html">Jeffrey
+                    Dean</a>, Marc’Aurelio Ranzato, Tomas Mikolov
+                  </p>
+                  <p>
+                    Neural Information Processing Systems (NIPS) (2013)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Distributed+Representations+of+Words+and+Phrases+and+their+Compositionality+Mikolov+Sutskever+Chen+Corrado+Dean"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44876.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Distributed Representations of Words and Phrases and their Compositionality
+                  </p>
+                  <p>
+                    Tomas Mikolov, Ilya Sutskever, <a href="/pubs/KaiChen.html">Kai Chen</a>,
+                    <a href="/pubs/GregCorrado.html">Greg Corrado</a>, <a href=
+                    "/pubs/jeff.html">Jeffrey Dean</a>
+                  </p>
+                  <p>
+                    Neural and Information Processing System (NIPS) (2013)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Efficient+Estimation+of+Word+Representations+in+Vector+Space+Mikolov+Chen+Corrado+Dean"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/41224.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41224.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41224.html">Efficient Estimation of Word Representations in
+                    Vector Space</a>
+                  </p>
+                  <p>
+                    Tomas Mikolov, <a href="/pubs/KaiChen.html">Kai Chen</a>, <a href=
+                    "/pubs/GregCorrado.html">Greg S. Corrado</a>, <a href="/pubs/jeff.html">Jeffrey
+                    Dean</a>
+                  </p>
+                  <p>
+                    International Conference on Learning Representations (2013)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Exploiting+Similarities+among+Languages+for+Machine+Translation+Mikolov+Le+Sutskever"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/44931.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub44931.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub44931.html">Exploiting Similarities among Languages for
+                    Machine Translation</a>
+                  </p>
+                  <p>
+                    Tomas Mikolov, <a href="/pubs/QuocLe.html">Quoc V. Le</a>, Ilya Sutskever
+                  </p>
+                  <p>
+                    ARXIV (2013)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Fastfood-computing+hilbert+space+expansions+in+loglinear+time+Le+Sarlos+Smola"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://www-cs.stanford.edu/~quocle/LeSarlosSmola_ICML13.pdf" target=
+                  "_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45445.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45445.html">Fastfood-computing hilbert space expansions in
+                    loglinear time</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/QuocLe.html">Quoc V. Le</a>, <a href=
+                    "/pubs/TamasSarlos.html">Tamas Sarlos</a>, Alex Smola
+                  </p>
+                  <p>
+                    International Conference on Machine Learning (2013) (to appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Grounded+compositional+semantics+for+finding+and+describing+images+with+sentences+Socher+Karpathy+Le+Manning+Ng"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "http://nlp.stanford.edu/~socherr/SocherKarpathyLeManningNg_TACL2013.pdf" target=
+                  "_blank">&nbsp;</a><a class="abstract-icon tooltip" href=
+                  "/pubs/pub45443.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub45443.html">Grounded compositional semantics for finding and
+                    describing images with sentences</a>
+                  </p>
+                  <p>
+                    Richard Socher, Andrej Karpathy, <a href="/pubs/QuocLe.html">Quoc V. Le</a>,
+                    Chris D. Manning, Andrew Y. Ng
+                  </p>
+                  <p>
+                    Transactions of the Association for Computational Linguistics (2013) (to
+                    appear)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Multiframe+Deep+Neural+Networks+for+Acoustic+Modeling+Vanhoucke+Devin+Heigold"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/40810.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Multiframe Deep Neural Networks for Acoustic Modeling
+                  </p>
+                  <p>
+                    <a href="/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>, <a href=
+                    "/pubs/104860.html">Matthieu Devin</a>, <a href="/pubs/GeorgHeigold.html">Georg
+                    Heigold</a>
+                  </p>
+                  <p>
+                    Proceedings of the IEEE International Conference on Acoustics, Speech, and
+                    Signal Processing (ICASSP), IEEE, Vancouver, CA (2013)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Multilingual+acoustic+models+using+distributed+deep+neural+networks+Heigold+Vanhoucke+Senior+Nguyen+Ranzato+Devin+Dean"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/40807.pdf" target="_blank">&nbsp;</a>
+                  <p class="pub-title">
+                    Multilingual acoustic models using distributed deep neural networks
+                  </p>
+                  <p>
+                    <a href="/pubs/GeorgHeigold.html">Georg Heigold</a>, <a href=
+                    "/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>, <a href=
+                    "/pubs/author37792.html">Andrew Senior</a>, Patrick Nguyen, Marc'aurelio
+                    Ranzato, <a href="/pubs/104860.html">Matthieu Devin</a>, <a href=
+                    "/pubs/jeff.html">Jeff Dean</a>
+                  </p>
+                  <p>
+                    Proceedings of the IEEE International Conference on Acoustics, Speech, and
+                    Signal Processing (ICASSP), IEEE, Vancouver, CA (2013)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=On+Rectified+Linear+Units+For+Speech+Processing+Zeiler+Ranzato+Monga+Mao+Yang+Le+Nguyen+Senior+Vanhoucke+Dean+Hinton"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/40811.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub40811.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub40811.html">On Rectified Linear Units For Speech
+                    Processing</a>
+                  </p>
+                  <p>
+                    M.D. Zeiler, M. Ranzato, <a href="/pubs/RajatMonga.html">R. Monga</a>, M. Mao,
+                    <a href="/pubs/author61.html">K. Yang</a>, <a href="/pubs/QuocLe.html">Q.V.
+                    Le</a>, P. Nguyen, <a href="/pubs/author37792.html">A. Senior</a>, <a href=
+                    "/pubs/VincentVanhoucke.html">V. Vanhoucke</a>, <a href="/pubs/jeff.html">J.
+                    Dean</a>, <a href="/pubs/GeoffreyHinton.html">G.E. Hinton</a>
+                  </p>
+                  <p>
+                    38th International Conference on Acoustics, Speech and Signal Processing
+                    (ICASSP), Vancouver (2013)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=One+Billion+Word+Benchmark+for+Measuring+Progress+in+Statistical+Language+Modeling+Chelba+Mikolov+Schuster+Ge+Brants+Koehn+Robinson"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/41880.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub41880.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub41880.html">One Billion Word Benchmark for Measuring Progress
+                    in Statistical Language Modeling</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/author6342.html">Ciprian Chelba</a>, Tomas Mikolov, <a href=
+                    "/pubs/MikeSchuster.html">Mike Schuster</a>, Qi Ge, Thorsten Brants, Phillipp
+                    Koehn, Tony Robinson
+                  </p>
+                  <p>
+                    ArXiv, Google (2013)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Using+Web+Co-occurrence+Statistics+for+Improving+Image+Categorization+Bengio+Dean+Erhan+Ie+Le+Rabinovich+Shlens+Singer"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/42244.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub42244.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub42244.html">Using Web Co-occurrence Statistics for Improving
+                    Image Categorization</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/bengio.html">Samy Bengio</a>, <a href="/pubs/jeff.html">Jeffrey
+                    Dean</a>, <a href="/pubs/DumitruErhan.html">Dumitru Erhan</a>, <a href=
+                    "/pubs/author10168.html">Eugene Ie</a>, <a href="/pubs/QuocLe.html">Quoc
+                    Le</a>, <a href="/pubs/AndrewRabinovich.html">Andrew Rabinovich</a>, <a href=
+                    "/pubs/JonathonShlens.html">Jonathon Shlens</a>, <a href=
+                    "/pubs/author28.html">Yoram Singer</a>
+                  </p>
+                  <p>
+                    arXiv (2013)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Application+Of+Pretrained+Deep+Neural+Networks+To+Large+Vocabulary+Speech+Recognition+Jaitly+Nguyen+Senior+Vanhoucke"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/38130.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub38130.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub38130.html">Application Of Pretrained Deep Neural Networks To
+                    Large Vocabulary Speech Recognition</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/NavdeepJaitly.html">Navdeep Jaitly</a>, Patrick Nguyen, <a href=
+                    "/pubs/author37792.html">Andrew Senior</a>, <a href=
+                    "/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>
+                  </p>
+                  <p>
+                    Proceedings of Interspeech 2012
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Building+high-level+features+using+large+scale+unsupervised+learning+Le+Ranzato+Monga+Devin+Chen+Corrado+Dean+Ng"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/38115.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub38115.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub38115.html">Building high-level features using large scale
+                    unsupervised learning</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/QuocLe.html">Quoc Le</a>, Marc'Aurelio Ranzato, <a href=
+                    "/pubs/RajatMonga.html">Rajat Monga</a>, <a href="/pubs/104860.html">Matthieu
+                    Devin</a>, <a href="/pubs/KaiChen.html">Kai Chen</a>, <a href=
+                    "/pubs/GregCorrado.html">Greg Corrado</a>, <a href="/pubs/jeff.html">Jeff
+                    Dean</a>, Andrew Ng
+                  </p>
+                  <p>
+                    International Conference in Machine Learning (2012)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Deep+Neural+Networks+for+Acoustic+Modeling+in+Speech+Recognition+Hinton+Deng+Yu+Dahl+Mohamed+Jaitly+Senior+Vanhoucke+Nguyen+Sainath+Kingsbury"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/38131.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub38131.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub38131.html">Deep Neural Networks for Acoustic Modeling in
+                    Speech Recognition</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/GeoffreyHinton.html">Geoffrey Hinton</a>, Li Deng, Dong Yu,
+                    George Dahl, Abdel-rahman Mohamed, <a href="/pubs/NavdeepJaitly.html">Navdeep
+                    Jaitly</a>, <a href="/pubs/author37792.html">Andrew Senior</a>, <a href=
+                    "/pubs/VincentVanhoucke.html">Vincent Vanhoucke</a>, Patrick Nguyen, <a href=
+                    "/pubs/TaraSainath.html">Tara Sainath</a>, Brian Kingsbury
+                  </p>
+                  <p>
+                    Signal Processing Magazine (2012)
+                  </p>
+                </li>
+                <li>
+                  <a class="search-icon tooltip" href=
+                  "https://www.google.com/search?lr&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Large+Scale+Distributed+Deep+Networks+Dean+Corrado+Monga+Chen+Devin+Le+Mao+Ranzato+Senior+Tucker+Yang+Ng"
+                  target="_blank">&nbsp;</a><a class="pdf-icon tooltip" href=
+                  "/pubs/archive/40565.pdf" target="_blank">&nbsp;</a><a class=
+                  "abstract-icon tooltip" href="/pubs/pub40565.html">&nbsp;</a>
+                  <p class="pub-title">
+                    <a href="/pubs/pub40565.html">Large Scale Distributed Deep Networks</a>
+                  </p>
+                  <p>
+                    <a href="/pubs/jeff.html">Jeffrey Dean</a>, <a href=
+                    "/pubs/GregCorrado.html">Greg S. Corrado</a>, <a href=
+                    "/pubs/RajatMonga.html">Rajat Monga</a>, <a href="/pubs/KaiChen.html">Kai
+                    Chen</a>, <a href="/pubs/104860.html">Matthieu Devin</a>, <a href=
+                    "/pubs/QuocLe.html">Quoc V. Le</a>, Mark Z. Mao, Marc’Aurelio Ranzato, <a href=
+                    "/pubs/author37792.html">Andrew Senior</a>, <a href=
+                    "/pubs/PaulTucker.html">Paul Tucker</a>, <a href="/pubs/author61.html">Ke
+                    Yang</a>, Andrew Y. Ng
+                  </p>
+                  <p>
+                    NIPS (2012)
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+    .app-scope footer{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;clear:both;position:relative;width:100%;font-size:14px;background:#fafafa;background:-moz-linear-gradient(top,#fafafa,#f5f5f5);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fafafa),color-stop(1,#f5f5f5));background:-webkit-linear-gradient(top,#fafafa,#f5f5f5);background:-o-linear-gradient(top,#fafafa,#f5f5f5 100%);background:-ms-linear-gradient(top,#fafafa,#f5f5f5 100%);background:linear-gradient(to top,#fafafa,#f5f5f5);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#f5f5f5',GradientType=1)}.columns{padding:16px}.app-scope footer .secondary-nav-block{margin:0 32px 32px 0}@media (min-width:768px){.app-scope footer .secondary-nav{width:968px;margin:auto}.app-scope footer .secondary-nav-block{float:left;width:20%;margin:0 32px 0 0}.app-scope footer .secondary-nav-block:first-of-type{width:30%}.app-scope footer .secondary-nav-block:nth-of-type(3n){margin-right:0}}@media (min-width:768px){.app-scope footer .secondary-nav-block+.secondary-nav-block{margin-top:0}}.app-scope footer .secondary-nav-block span{text-transform:uppercase;font-weight:400;margin-left:16px;white-space:nowrap;color:#616161}.app-scope footer ul.first-column{margin-bottom:8px}@media (min-width:768px){.app-scope footer ul.first-column{float:left;width:50%}.app-scope footer ul.second-column{float:right;width:50%}}.app-scope footer .secondary-nav-block li{padding-left:16px}.app-scope footer .secondary-nav-block li+li{margin-top:8px}.app-scope footer .secondary-nav-block li a{color:#616161;font-weight:300;font-size:12px}.app-scope footer .secondary-nav-block li a:hover{text-decoration:underline}.app-scope footer .secondary-nav-block .svg-icon{display:inline-block;width:20px;margin-right:5px;vertical-align:middle}.app-scope footer .secondary-nav-block .icon-google-plus{font-size:18px;vertical-align:text-bottom}@media (min-width:768px){.app-scope footer .secondary-nav-block::before{content:'';display:block;position:absolute;top:0;bottom:0;border-left:1px solid #e0e0e0;z-index:1}.app-scope footer .secondary-nav-block:first-of-type::before{display:none}}.app-scope footer .section-nav{padding:36px 0;margin:auto}.app-scope footer .section-logo{padding:16px 0 0 0;background-color:#eceff1}.app-scope footer .section-logo .footer-items{width:100%}.app-scope footer .section-logo .footer-logo{float:left}.app-scope footer .section-logo .footer-logo img{opacity:.54}.app-scope footer .section-logo .footer-links{float:right}.app-scope footer .section-logo .footer-links a{font-size:12px;font-weight:300}.app-scope footer .section-logo .footer-links a::after{content:'\b7';padding:6px;font-weight:400}.app-scope footer .section-logo .footer-links a:last-of-type::after{display:none}.app-scope footer .ribbon{position:absolute;top:-36px;right:0;height:4px;width:128px}.app-scope footer .ribbon table{height:100%}.app-scope footer .ribbon-color{width:32px;height:100%;border:0}.ribbon-color.blue{background-color:#4285f4}.ribbon-color.red{background-color:#db4437}.ribbon-color.yellow{background-color:#f4b400}.ribbon-color.green{background-color:#0f9d58}
+    </style>
+    <div class="app-scope">
+      <div class="body">
+        <footer>
+          <section class="section-nav">
+            <div class="inner">
+              <div class="secondary-nav">
+                <div class="secondary-nav-block">
+                  <span>Research At Google</span>
+                  <div class="columns">
+                    <ul class="first-column">
+                      <li>
+                        <a href="/">Home</a>
+                      </li>
+                      <li>
+                        <a href="/pubs/papers.html">Publications</a>
+                      </li>
+                      <li>
+                        <a href="/researchers.html">People</a>
+                      </li>
+                      <li>
+                        <a href="/teams/">Teams</a>
+                      </li>
+                    </ul>
+                    <ul class="second-column">
+                      <li>
+                        <a href="/research-outreach.html#/research-outreach">Outreach</a>
+                      </li>
+                      <li>
+                        <a href="http://googleresearch.blogspot.com/" target="_blank">Blog</a>
+                      </li>
+                      <li>
+                        <a href="/workatgoogle.html">Work at Google</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="secondary-nav-block">
+                  <span>More</span>
+                  <div class="columns">
+                    <ul>
+                      <li>
+                        <a href="http://scholar.google.com/" target="_blank">Google Scholar</a>
+                      </li>
+                      <li>
+                        <a href="http://www.youtube.com/user/GoogleTechTalks/featured" target=
+                        "_blank">YouTube Tech Talks</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="secondary-nav-block">
+                  <span>Follow Us</span>
+                  <div class="columns">
+                    <ul>
+                      <li>
+                        <a href="https://plus.google.com/+ResearchatGoogle" target=
+                        "_blank">Google+</a>
+                      </li>
+                      <li>
+                        <a href="http://twitter.com/googleresearch" target="_blank">Twitter</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="ribbon">
+                <table>
+                  <tr>
+                    <td class="ribbon-color blue"></td>
+                    <td class="ribbon-color red"></td>
+                    <td class="ribbon-color yellow"></td>
+                    <td class="ribbon-color green"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </section>
+          <section class="section-logo">
+            <div class="inner">
+              <div class="footer-items">
+                <div class="footer-logo">
+                  <a href="https://www.google.com"><img alt="Google" src=
+                  "https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_dark_color_42x16dp.png"></a>
+                </div>
+                <div class="footer-links">
+                  <a href="https://www.google.com">Google</a> <a href=
+                  "https://www.google.com/intl/en/about/">About Google</a> <a href=
+                  "https://www.google.com/intl/en/policies/privacy/">Privacy</a> <a href=
+                  "http://www.google.com/intl/en/policies/terms/">Terms</a> <a href="" onclick=
+                  "sendFeedback()">Feedback</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </footer>
+      </div>
+    </div>
+    <script>
+    function sendFeedback() {
+    var config = {
+      'productId': '720193',
+      'bucket': 'site',
+      'allowNonLoggedInFeedback' : true
+    };
+    userfeedback.api.startFeedback(config);
+  }
+    </script> 
+    <script src="//www.google.com/jsapi">
+    </script> 
+    <script src="/js/research.view.js">
+    </script> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script> 
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js">
+    </script> 
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js">
+    </script> 
+    <script src="//rgc-deps.appspot.com/slick-carousel/1.5.9/slick.min.js">
+    </script> 
+    <script src=
+    "//rgc-deps.appspot.com/angular-slick/1d3215bb32fbdd2ccf311fd49e80db1f1ec415df/slick.js">
+    </script> 
+    <script src=
+    "//rgc-deps.appspot.com/angularUtils/5fd576f747f9f233ab9752fdc38908f5899ddc9c/dirPagination.js">
+    </script> 
+    <script src="/app/app.js">
+    </script> 
+    <script src="/app/research-outreach/research-outreach.js">
+    </script> 
+    <script src="/app/research-outreach/research-outreach.service.js">
+    </script> 
+    <script src="/app/research-outreach/faq/faq.controller.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/faculty-engagement/visiting-faculty-program/visiting-faculty.controller.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/faculty-engagement/visiting-faculty-program/visiting-faculty.service.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/faculty-engagement/faculty-research-award-recipients/faculty-research-award-recipients.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/faculty-engagement/faculty-research-award-recipients/faculty-research-award-recipients.service.js">
+    </script> 
+    <script src=
+    "/app/research-outreach/graduate-fellowship-award-recipients/graduate-fellowship-award-recipients.js">
+    </script> 
+    <script src="/app/components/subnav.directive.js">
+    </script> 
+    <script src="/app/components/active-links.directive.js">
+    </script> 
+    <script src="/app/components/header-v2.js">
+    </script> 
+    <script src="/app/components/to-trusted.filter.js">
+    </script> 
+    <script src="/app/components/faq-item.directive.js">
+    </script> 
+    <script src="/app/components/sidebar-nav.directive.js">
+    </script> 
+    <script src="/app/components/cards.directive.js">
+    </script> 
+    <script>
+    var videoUnit= new gweb.ui.LightBox('video-lightbox', 'Some tech-talks in Google Brain Team');
+  videoUnit.setAnimate(true);
+  videoUnit.setScaleImages(true);
+  videoUnit.setOutsideNav(true);
+  videoUnit.setCloseText('CLOSE');
+  videoUnit.setItemCount(true);
+  videoUnit.init();
+    </script> 
+    <script>
+    angular.bootstrap(document, ['googleResearch']);
+    </script> 
+    <script src="//www.gstatic.com/feedback/api.js">
+    </script> 
+    <script src="//www.google.com/js/maia.js">
+    </script>
+  </body>
+</html>
