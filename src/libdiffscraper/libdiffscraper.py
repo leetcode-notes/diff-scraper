@@ -37,11 +37,11 @@ class Engine(object):
 
     def suggest(self, mode, input_docs, input_template, exclude_invariant_segments, index, search):
         color_set = {"invariant_seg": "\033[0;32m",
-                     "data_seg": ["\033[41m\033[30m",
-                                  "\033[42m\033[30m",
-                                  "\033[43m\033[30m",
-                                  "\033[44m\033[30m",
-                                  "\033[45m\033[30m"]}
+                     "data_seg": ["\033[41m\033[30m\033[1;37m",
+                                  "\033[42m\033[30m\033[1;37m",
+                                  "\033[43m\033[30m\033[1;37m",
+                                  "\033[44m\033[30m\033[1;37m",
+                                  "\033[45m\033[30m\033[1;37m"]}
         documents, _ = self.load_documents(input_docs, "text", mode)
         if input_template is None:
             invariant_segments = template.generate(documents)
@@ -96,7 +96,7 @@ class Engine(object):
                         for candidate in tagname_candidates:
                             selected_index = template.select(features_all, [selector.starttag(candidate)], 0)
                             if selected_index is not None:
-                                selector_candidates.append((selected_index - seg_index,
+                                selector_candidates.append((-selected_index + seg_index,
                                                             "selector.starttag(\"{}\")".format(candidate),
                                                             selected_index))
 
@@ -104,28 +104,28 @@ class Engine(object):
                             if attr_name == "id":
                                 selected_index = template.select(features_all, [selector.tagattr(tag_name, attr_name, attr_value)], 0)
                                 if selected_index is not None:
-                                    selector_candidates.append((selected_index - seg_index,
+                                    selector_candidates.append((-selected_index + seg_index,
                                                                 "selector.tagattr(\"{}\", \"{}\", \"{}\")".format(tag_name, attr_name, attr_value),
                                                                 selected_index))
 
                         for candidate in class_candidates:
                             selected_index = template.select(features_all, [selector.class_(candidate)], 0)
                             if selected_index is not None:
-                                selector_candidates.append((selected_index - seg_index,
+                                selector_candidates.append((- selected_index + seg_index,
                                                             "selector.class_(\"{}\")".format(candidate),
                                                             selected_index))
 
                         for candidate in inner_text_candidates:
                             selected_index = template.select(features_all, [selector.inner_text(candidate)], 0)
                             if selected_index is not None:
-                                selector_candidates.append((selected_index - seg_index,
+                                selector_candidates.append((- selected_index + seg_index,
                                                             "selector.inner_text(\"{}\")".format(candidate),
                                                             selected_index))
 
-                        selector_candidates = sorted(selector_candidates, key=lambda x: (abs(x[0]+1),x[0], x[1]))
+                        selector_candidates = sorted(selector_candidates, key=lambda x: (abs(x[0]-1),x[0], x[1]))
                         for candidate in selector_candidates:
                             if (abs(candidate[0])<5):
-                                print("{} # candidate {}".format(candidate[1],candidate[0]))
+                                print("([{}], {})".format(candidate[1],candidate[0]))
                         print("")
 
 
