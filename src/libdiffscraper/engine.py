@@ -142,11 +142,7 @@ class Engine(object):
                     f.write(serialized)
                     f.flush()
 
-                    self._cuihelper.print_decompression_ratio(document_meta["file_size"], len(serialized))
-            # else:
-            #     self.logger.warning(
-            #         "Hash mismatch -- actual:{} / expected:{}".format(util.hex_digest_from(original_hash),
-            #                                                      util.hex_digest_from(data_object["original_hash"])))
+                self._cuihelper.print_decompression_ratio(document_meta["file_size"], len(serialized))
 
         if cnt_fail_count == 0:
             return True, ""
