@@ -68,3 +68,19 @@ def str_skipping_existing_file_67972e49(filename):
 
 def str_compression_ratio_42c0c48b(original, compressed):
     return "Compression ratio (original/compressed) = {:.2f}x, original = {} bytes, compressed = {} bytes".format(original/compressed, original, compressed)
+
+
+def str_decompression_ratio(compressed, decompressed):
+    return "compressed = {} bytes, decompressed = {} bytes".format(compressed, decompressed)
+
+
+def str_hash_mismatch(hash_type, actual_hash, expected_hash):
+    return "Hash ({}) mismatch, actual = {}, expected = {}".format(hash_type, actual_hash, expected_hash)
+
+
+def str_compress_failed(cnt_fail_count):
+    return "{} file(s) are not compressed.".format(cnt_fail_count)
+
+
+def str_decompress_failed(cnt_fail_count):
+    return "{} file(s) are not decompressed.".format(cnt_fail_count)

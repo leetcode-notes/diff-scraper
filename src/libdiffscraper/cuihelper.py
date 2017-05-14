@@ -126,3 +126,13 @@ class CUIHelper(object):
         if self.logger is None:
             return
         self.logger.info(localization.str_compression_ratio_42c0c48b(original, compressed))
+
+    def print_decompression_ratio(self, compressed, decompressed):
+        if self.logger is None:
+            return
+        self.logger.info(localization.str_decompression_ratio(compressed, decompressed))
+
+    def print_hash_mismatch(self, hash_type, actual_hash, expected_hash):
+        if self.logger is None:
+            return
+        self.logger.error(localization.str_hash_mismatch(hash_type, actual_hash, expected_hash))
