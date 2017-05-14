@@ -307,6 +307,10 @@ def generate(documents, prev_text = []):
     :param prev_text:
     :return:
     """
+
+    if not documents:
+        return None
+
     text, _ = invariant_matching_algorithm(documents)
     data_segments = list(map(lambda x: extract(text, x), documents))
     data = [list(i) for i in zip(*data_segments)]

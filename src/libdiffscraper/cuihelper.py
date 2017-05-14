@@ -5,7 +5,7 @@
     Author: Seunghyun Yoo (shyoo1st@cs.ucla.edu)
 """
 
-from . import localization
+from . import localization, util
 
 
 class CUIHelper(object):
@@ -18,39 +18,42 @@ class CUIHelper(object):
                                        "\033[44m\033[30m\033[1;37m",
                                        "\033[45m\033[30m\033[1;37m"]}
 
-    def verbose_template_file(self, template_object, serialized):
+    def print_template_file(self, template_object, serialized):
         if self.logger is None:
             return
 
-        self.logger.debug(
-            "template: the size of serialized data: \033[1;32m{}\033[0m".format(len(serialized)))
-        self.logger.debug("template: # of invariant segments: \033[1;32m{}\033[0m".format(len(
-            template_object["inv_seg"])))
-        self.logger.debug("template: merkle_root_hash: \033[1;32m{}\033[0m".format(util.hex_digest_from(
-            template_object["mk_root"])))
+        self.logger.debug("Template size: {} bytes".format(len(serialized)))
+        self.logger.debug("# of Invariant Segments: {}".format(len(template_object["inv_seg"])))
+        self.logger.debug("Merkle Tree Hash: {}".format(util.hex_digest_from(template_object["mk_root"])))
 
-    def verbose_data_file(self, data_object, serialized, module_name):
-        if self.logger is None:
-            return
+    #
+    # def verbose_data_file(self, data_object, serialized, module_name):
+    #     if self.logger is None:
+    #         return
+    #
+    #     self.logger.debug(
+    #         "({}) data: the size of serialized data: \033[1;32m{}\033[0m".format(module_name, len(serialized)))
+    #     self.logger.debug(
+    #         "({}) data: # of data segments: \033[1;32m{}\033[0m".format(module_name, len(data_object["data_seg"])))
+    #     self.logger.debug(
+    #         "({}) data: merkle_root_hash_template: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
+    #             data_object["mk_root_template"]
+    #         )))
+    #     self.logger.debug(
+    #         "({}) data: merkle_root_hash_data: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
+    #             data_object["mk_root_data"]
+    #         )))
+    #     self.logger.debug(
+    #         "({}) data: hash of the original document: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
+    #             data_object["original_hash"]
+    #         )))
 
-        self.logger.debug(
-            "({}) data: the size of serialized data: \033[1;32m{}\033[0m".format(module_name, len(serialized)))
-        self.logger.debug(
-            "({}) data: # of data segments: \033[1;32m{}\033[0m".format(module_name, len(data_object["data_seg"])))
-        self.logger.debug(
-            "({}) data: merkle_root_hash_template: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
-                data_object["mk_root_template"]
-            )))
-        self.logger.debug(
-            "({}) data: merkle_root_hash_data: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
-                data_object["mk_root_data"]
-            )))
-        self.logger.debug(
-            "({}) data: hash of the original document: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
-                data_object["original_hash"]
-            )))
+    def print_feature_statistics(self, candidates):
+        tagname_candidates = candidates["tagname"]
+        tagattr_candidates = candidates["tagatrr"]
+        class_candidates = candidates["class"]
+        inner_text_candidates = candidates["inner_text"]
 
-    def print_feature_statistics(self):
         print("========== The number of Features ==========")
         print("tagname_candidates: \033[1;32m{}\033[0m".format(len(tagname_candidates)))
         print("tagattr_candidates: \033[1;32m{}\033[0m".format(len(tagattr_candidates)))
@@ -61,6 +64,11 @@ class CUIHelper(object):
         if self.logger is None:
             return
         self.logger.exception(localization.str_exception_caught_fd14bf07(reason))
+
+    def print_successful_command(self):
+        if self.logger is None:
+            return
+        self.logger.info(localization.str_successful_command_1db3bf6b())
 
     def print_fail_command(self, reason):
         if self.logger is None:
@@ -114,6 +122,7 @@ class CUIHelper(object):
                                    invariant_segments[segment_index]))
 
     def print_proper_selectors(self, sorted_proper_selectors):
+        print("---------- Proper Selectors ----------")
         for proper_selector in sorted_proper_selectors:
             if (abs(proper_selector[0]) < 5):
                 print("ts([{}], {})".format(proper_selector[1], proper_selector[0]))

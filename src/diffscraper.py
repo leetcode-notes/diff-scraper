@@ -84,9 +84,9 @@ def init_arg_parser():
                         help="force to execute a command -- safety check will not be performed")
 
     parser.add_argument("files",
-                        metavar="<input...>",
+                        metavar="<input docs>",
                         type=str,
-                        nargs="+",
+                        nargs="*",
                         help="input file(s)")
     return parser
 
@@ -147,6 +147,7 @@ def main():
                 ret = diffscraper_engine.generate(input_docs=args.files, output_template=args.generate[0], force=is_force)
             elif is_update:
                 assert_condition(len(args.files) == 1, "Only one input file is required.")
+                assert_condition(args.template is not None and len(args.template) == 1, "The current template file is required.")
                 ret = diffscraper_engine.update(input_docs=args.files, input_template=args.template[0],
                                                 output_template=args.update[0], force=is_force)
             elif is_compress:
@@ -177,6 +178,8 @@ def main():
             if ret is not None:
                 if ret[0] is False:
                     diffscraper_cuihelper.print_fail_command(ret[1])
+                elif ret[0] is True:
+                    diffscraper_cuihelper.print_successful_command()
         except KeyboardInterrupt:
             raise
         except:
