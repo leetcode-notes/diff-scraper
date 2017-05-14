@@ -143,31 +143,33 @@ def main():
             ret = None
 
             if is_generate:
-                assert_condition(len(args.files) >= 2, "At least two input files are required.")
+                assert_condition(len(args.files) >= 2, localization.str_two_input_files_9610593a())
                 ret = diffscraper_engine.generate(input_docs=args.files, output_template=args.generate[0], force=is_force)
             elif is_update:
-                assert_condition(len(args.files) == 1, "Only one input file is required.")
-                assert_condition(args.template is not None and len(args.template) == 1, "The current template file is required.")
+                assert_condition(len(args.files) == 1, localization.str_only_one_input_file_47547222())
+                assert_condition(args.template is not None and len(args.template) == 1, localization.str_template_file_is_required_3628ad8c())
                 ret = diffscraper_engine.update(input_docs=args.files, input_template=args.template[0],
                                                 output_template=args.update[0], force=is_force)
             elif is_compress:
-                assert_condition(len(args.files) >= 1, "At least one input file is required.")
+                assert_condition(len(args.files) >= 1, localization.str_one_input_file_2b1a06ef())
+                assert_condition(args.template is not None and len(args.template) == 1, localization.str_template_file_is_required_3628ad8c())
+                assert_condition(args.output_dir is not None and len(args.output_dir) == 1, localization.str_output_dir_is_required_51ed2ebe())
                 ret = diffscraper_engine.compress(input_docs=args.files, input_template=args.template[0],
                                                   output_dir=args.output_dir[0], force=is_force)
             elif is_decompress:
-                assert_condition(len(args.files) >= 1, "At least one input file is required.")
+                assert_condition(len(args.files) >= 1, localization.str_one_input_file_2b1a06ef())
                 ret = diffscraper_engine.decompress(input_docs=args.files, input_template=args.template[0],
                                                     output_dir=args.output_dir[0], force=is_force)
             elif is_print_unified:
-                assert_condition(len(args.files) >= 2, "At least two input files are required.")
+                assert_condition(len(args.files) >= 2, localization.str_two_input_files_9610593a())
                 ret = diffscraper_engine.suggest(command="print-unified", input_docs=args.files, input_template=args.template,
                                                  exclude_invariant_segments=False, index=args.index, search=args.search, interactive=args.interactive)
             elif is_print_data_segments:
-                assert_condition(len(args.files) >= 2, "At least two input files are required.")
+                assert_condition(len(args.files) >= 2, localization.str_two_input_files_9610593a())
                 ret = diffscraper_engine.suggest(command="print-data-segments", input_docs=args.files, input_template=args.template,
                                                  exclude_invariant_segments=True, index=args.index, search=args.search, interactive=args.interactive)
             elif is_suggest:
-                assert_condition(len(args.files) >= 2, "At least two input files are required.")
+                assert_condition(len(args.files) >= 2, localization.str_two_input_files_9610593a())
                 ret = diffscraper_engine.suggest(command="suggest", input_docs=args.files, input_template=args.template,
                                                  exclude_invariant_segments=True, index=args.index, search=args.search, interactive=args.interactive)
             elif is_print_skeleton:

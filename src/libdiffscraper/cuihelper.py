@@ -26,27 +26,16 @@ class CUIHelper(object):
         self.logger.debug("# of Invariant Segments: {}".format(len(template_object["inv_seg"])))
         self.logger.debug("Merkle Tree Hash: {}".format(util.hex_digest_from(template_object["mk_root"])))
 
-    #
-    # def verbose_data_file(self, data_object, serialized, module_name):
-    #     if self.logger is None:
-    #         return
-    #
-    #     self.logger.debug(
-    #         "({}) data: the size of serialized data: \033[1;32m{}\033[0m".format(module_name, len(serialized)))
-    #     self.logger.debug(
-    #         "({}) data: # of data segments: \033[1;32m{}\033[0m".format(module_name, len(data_object["data_seg"])))
-    #     self.logger.debug(
-    #         "({}) data: merkle_root_hash_template: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
-    #             data_object["mk_root_template"]
-    #         )))
-    #     self.logger.debug(
-    #         "({}) data: merkle_root_hash_data: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
-    #             data_object["mk_root_data"]
-    #         )))
-    #     self.logger.debug(
-    #         "({}) data: hash of the original document: \033[1;32m{}\033[0m".format(module_name, util.hex_digest_from(
-    #             data_object["original_hash"]
-    #         )))
+
+    def print_data_file(self, data_object, serialized):
+        if self.logger is None:
+            return
+
+        self.logger.debug("Data size: {} bytes".format(len(serialized)))
+        self.logger.debug("# of Data Segments: {}".format(len(data_object["data_seg"])))
+        self.logger.debug("Merkle Tree Hash (template): {}".format(util.hex_digest_from(data_object["mk_root_template"])))
+        self.logger.debug("Merkle Tree Hash (data): {}".format(util.hex_digest_from(data_object["mk_root_data"])))
+        self.logger.debug("Hash of the original document: {}".format(util.hex_digest_from(data_object["original_hash"])))
 
     def print_feature_statistics(self, candidates):
         tagname_candidates = candidates["tagname"]
@@ -127,3 +116,13 @@ class CUIHelper(object):
             if (abs(proper_selector[0]) < 5):
                 print("ts([{}], {})".format(proper_selector[1], proper_selector[0]))
         print("")
+
+    def print_skipping_existing_file(self, filename):
+        if self.logger is None:
+            return
+        self.logger.warning(localization.str_skipping_existing_file_67972e49(filename))
+
+    def print_compression_ratio(self, original, compressed):
+        if self.logger is None:
+            return
+        self.logger.info(localization.str_compression_ratio_42c0c48b(original, compressed))
