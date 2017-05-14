@@ -16,7 +16,8 @@ class CUIHelper(object):
                                        "\033[42m\033[30m\033[1;37m",
                                        "\033[43m\033[30m\033[1;37m",
                                        "\033[44m\033[30m\033[1;37m",
-                                       "\033[45m\033[30m\033[1;37m"]}
+                                       "\033[45m\033[30m\033[1;37m",
+                                       "\033[46m\033[30m\033[1;37m"]}
 
     def print_template_file(self, template_object, serialized):
         if self.logger is None:
@@ -113,7 +114,9 @@ class CUIHelper(object):
     def print_proper_selectors(self, sorted_proper_selectors):
         print("---------- Proper Selectors ----------")
         for proper_selector in sorted_proper_selectors:
-            if (abs(proper_selector[0]) < 5):
+            if proper_selector[0] == 1:
+                print("ts([{}], {}) # recommended".format(proper_selector[1], proper_selector[0]))
+            elif (abs(proper_selector[0]) < 5):
                 print("ts([{}], {})".format(proper_selector[1], proper_selector[0]))
         print("")
 
