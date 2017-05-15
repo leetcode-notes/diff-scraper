@@ -155,11 +155,16 @@ class CUIHelper(object):
             user_selected_index = prompt_toolkit.prompt("Proper selector index ({} <= index <=  {})? ".format(0, max_index-1))
             if user_selected_index.isdigit():
                 user_selected_index = int(user_selected_index)
-                return user_selected_index
+                if 0 <= user_selected_index < max_index:
+                    return user_selected_index
+                else:
+                    print("Invalid range.")
+                    user_selected_index = None
             else:
                 user_selected_index = None
             if cnt_trial >= 3:
                 print("Aborted.")
                 return None
+
         return user_selected_index
 
