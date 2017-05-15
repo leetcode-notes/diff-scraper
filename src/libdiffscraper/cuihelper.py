@@ -85,7 +85,7 @@ class CUIHelper(object):
             return
         self.logger.warning(localization.str_ambiguous_command_a640a4e4())
 
-    def print_skeleton(self):
+    def print_skeleton(self, items=[]):
         skeleton_code = """def diffscraper(T, raw_html):
     item = {}
     F = list(map(lambda x: tokenizer.Tokenizer.feature("html", x), T))
@@ -94,9 +94,8 @@ class CUIHelper(object):
     ###############################################################
     # Copy the suggested code snippet for a proper selector
     # ex: item["title"] = ts([selector.starttag("title")], 1)
-    ###############################################################
-    
-    ###############################################################
+    ###############################################################\n""" + "\n".join(items) + \
+    """###############################################################
     return item"""
         print(skeleton_code)
 
@@ -111,12 +110,14 @@ class CUIHelper(object):
         print("{}{}\033[0m".format(self.color_set["invariant_seg"],
                                    invariant_segments[segment_index]))
 
-    def print_proper_selectors(self, sorted_proper_selectors):
-        print("---------- Proper Selectors ----------")
-        for proper_selector in sorted_proper_selectors:
+    def print_proper_selectors(self, sorted_proper_selectors, interactive):
+        print("---------- Proper Selectors (interactive mode: {})----------".format(interactive))
+        for index, proper_selector in enumerate(sorted_proper_selectors):
+            if interactive:
+                print("[{}] ".format(index), end='')
             if proper_selector[0] == 1:
                 print("ts([{}], {}) # recommended".format(proper_selector[1], proper_selector[0]))
-            elif (abs(proper_selector[0]) < 5):
+            else:
                 print("ts([{}], {})".format(proper_selector[1], proper_selector[0]))
         print("")
 
@@ -139,3 +140,26 @@ class CUIHelper(object):
         if self.logger is None:
             return
         self.logger.error(localization.str_hash_mismatch(hash_type, actual_hash, expected_hash))
+
+    def ask_include_data_segment(self):
+        import prompt_toolkit
+        from . import prompt_toolkit_helper
+        return prompt_toolkit_helper.confirm_without_ctrl_c("Do you want to include this data segment? (y or n) ")
+
+    def ask_which_proper_selector(self, max_index):
+        import prompt_toolkit
+        user_selected_index = None
+        cnt_trial = 0
+        while user_selected_index is None:
+            cnt_trial += 1
+            user_selected_index = prompt_toolkit.prompt("Proper selector index ({} <= index <=  {})? ".format(0, max_index-1))
+            if user_selected_index.isdigit():
+                user_selected_index = int(user_selected_index)
+                return user_selected_index
+            else:
+                user_selected_index = None
+            if cnt_trial >= 3:
+                print("Aborted.")
+                return None
+        return user_selected_index
+

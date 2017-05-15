@@ -250,11 +250,24 @@ class Engine(object):
                 if is_found:
                     self._cuihelper.print_data_segment(segment_index, data_segments_of)
 
+                    is_include_data_segment = True # Default: to suggest proper selectors
+
                     if command == "suggest":
-                        proper_selectors = self.generate_proper_selectors(tokenized_invariant_segments, candidates,
-                                                                          segment_index)
-                        sorted_proper_selectors = sorted(proper_selectors, key=lambda x: (abs(x[0] - 1), x[0], x[1]))
-                        self._cuihelper.print_proper_selectors(sorted_proper_selectors)
+                        if interactive:
+                            is_include_data_segment = self._cuihelper.ask_include_data_segment()
+
+                        if is_include_data_segment:
+                            proper_selectors = self.generate_proper_selectors(tokenized_invariant_segments, candidates,
+                                                                            segment_index)
+                            sorted_proper_selectors = sorted(proper_selectors, key=lambda x: (abs(x[0] - 1), x[0], x[1]))
+                            sorted_proper_selectors = list(filter(lambda x: abs(x[0]) < 5, sorted_proper_selectors))
+                            self._cuihelper.print_proper_selectors(sorted_proper_selectors, interactive)
+
+                            user_selected_index = self._cuihelper.ask_which_proper_selector(len(sorted_proper_selectors))
+                            print (user_selected_index)
+                            raise
+
+
 
             if found_index_invariant:
                 if exclude_invariant_segments is False:
