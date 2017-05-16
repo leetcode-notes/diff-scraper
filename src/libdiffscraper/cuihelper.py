@@ -152,7 +152,7 @@ class CUIHelper(object):
         cnt_trial = 0
         while user_selected_index is None:
             cnt_trial += 1
-            user_selected_index = prompt_toolkit.prompt("Proper selector index ({} <= index <=  {})? ".format(0, max_index-1))
+            user_selected_index = prompt_toolkit.prompt("Proper selector index ({} <= index <= {})? ".format(0, max_index-1))
             if user_selected_index.isdigit():
                 user_selected_index = int(user_selected_index)
                 if 0 <= user_selected_index < max_index:

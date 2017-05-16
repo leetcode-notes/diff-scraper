@@ -237,6 +237,8 @@ class Engine(object):
             tokenized_invariant_segments = list(map(lambda x: tokenizer.Tokenizer.feature("html", x), invariant_segments))
             candidates = self.generate_features(tokenized_invariant_segments)
 
+        list_user_selected_proper_selectors = list()
+
         for segment_index in range(len(invariant_segments) + 1):
             found_index_data = index is None or segment_index == int(index[0])
             found_index_invariant = index is None or segment_index == int(index[0]) - 1
@@ -264,12 +266,11 @@ class Engine(object):
                             self._cuihelper.print_proper_selectors(sorted_proper_selectors, interactive)
 
                             user_selected_index = self._cuihelper.ask_which_proper_selector(len(sorted_proper_selectors))
-                            print (user_selected_index)
-                            raise
-
-
+                            list_user_selected_proper_selectors.append(sorted_proper_selectors[user_selected_index])
 
             if found_index_invariant:
                 if exclude_invariant_segments is False:
                     if segment_index < len(invariant_segments):
                         self._cuihelper.print_invariant_segment(segment_index, invariant_segments)
+
+        print(list_user_selected_proper_selectors)
