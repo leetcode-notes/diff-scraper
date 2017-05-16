@@ -86,17 +86,15 @@ class CUIHelper(object):
         self.logger.warning(localization.str_ambiguous_command_a640a4e4())
 
     def print_skeleton(self, items=[]):
+        print("========== Synthesized Script ==========")
         skeleton_code = """def diffscraper(T, raw_html):
     item = {}
     F = list(map(lambda x: tokenizer.Tokenizer.feature("html", x), T))
     D = template.extract(T, raw_html)
     ts = lambda x, y: D[template.select(F, x, y)]
-    ###############################################################
     # Copy the suggested code snippet for a proper selector
-    # ex: item["title"] = ts([selector.starttag("title")], 1)
-    ###############################################################\n""" + "\n".join(items) + \
-    """###############################################################
-    return item"""
+    # ex: item["title"] = ts([selector.starttag("title")], 1)\n""" + "\n".join(items) + \
+"""\n    return item"""
         print(skeleton_code)
 
     def print_data_segment(self, segment_index, data_segments_of):
@@ -110,15 +108,20 @@ class CUIHelper(object):
         print("{}{}\033[0m".format(self.color_set["invariant_seg"],
                                    invariant_segments[segment_index]))
 
+    def convert_to_code(self, proper_selector):
+        if proper_selector[0] == 1:
+            return "ts([{}], {}) # recommended".format(proper_selector[1], proper_selector[0])
+        else:
+            return "ts([{}], {})".format(proper_selector[1], proper_selector[0])
+
     def print_proper_selectors(self, sorted_proper_selectors, interactive):
         print("---------- Proper Selectors (interactive mode: {})----------".format(interactive))
         for index, proper_selector in enumerate(sorted_proper_selectors):
             if interactive:
                 print("[{}] ".format(index), end='')
-            if proper_selector[0] == 1:
-                print("ts([{}], {}) # recommended".format(proper_selector[1], proper_selector[0]))
-            else:
-                print("ts([{}], {})".format(proper_selector[1], proper_selector[0]))
+
+            print(self.convert_to_code(proper_selector))
+
         print("")
 
     def print_skipping_existing_file(self, filename):

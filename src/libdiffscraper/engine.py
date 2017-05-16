@@ -265,12 +265,14 @@ class Engine(object):
                             sorted_proper_selectors = list(filter(lambda x: abs(x[0]) < 5, sorted_proper_selectors))
                             self._cuihelper.print_proper_selectors(sorted_proper_selectors, interactive)
 
-                            user_selected_index = self._cuihelper.ask_which_proper_selector(len(sorted_proper_selectors))
-                            list_user_selected_proper_selectors.append(sorted_proper_selectors[user_selected_index])
+                            if interactive:
+                                user_selected_index = self._cuihelper.ask_which_proper_selector(len(sorted_proper_selectors))
+                                list_user_selected_proper_selectors.append(sorted_proper_selectors[user_selected_index])
 
             if found_index_invariant:
                 if exclude_invariant_segments is False:
                     if segment_index < len(invariant_segments):
                         self._cuihelper.print_invariant_segment(segment_index, invariant_segments)
 
-        print(list_user_selected_proper_selectors)
+        if interactive:
+            self._cuihelper.print_skeleton(list(map(lambda x: "    " + self._cuihelper.convert_to_code(x), list_user_selected_proper_selectors)))
