@@ -5,18 +5,13 @@
     Author: Seunghyun Yoo (shyoo1st@cs.ucla.edu)
 """
 
-import hashlib
 import bisect
 import pickle
-from enum import Enum
+import enum
 
-from .selector import *
-from .util import *
-from .tokenizer import *
-from .tree import *
+from . import selector, util, tokenizer, tree
 
-
-class TokenType(Enum):
+class TokenType(enum.Enum):
     VARIANT = 0
     NOT_UNIQUE_INVARIANT = 1
     UNIQUE_INVARIANT = 2
@@ -37,13 +32,13 @@ def expand_segment(pivots, tokens_of, tentative_decision, rightward):
 
     while is_valid_pivots:
         if rightward:
-            current_pivots = get_next_line(current_pivots)
+            current_pivots = util.get_next_line(current_pivots)
         else:
-            current_pivots = get_prev_line(current_pivots)
+            current_pivots = util.get_prev_line(current_pivots)
 
         # First of all, pivot points should be in the valid range.
         for doc_index in range(len(tokens_of)):
-            if not in_range(current_pivots[doc_index], 0, len(tokens_of[doc_index])):
+            if not util.in_range(current_pivots[doc_index], 0, len(tokens_of[doc_index])):
                 is_valid_pivots = False
                 break
 
@@ -87,10 +82,10 @@ def find_next_candidates(tokens_of, tokens_with_loc, current_line):
     for doc_index, tokens in enumerate(tokens_of):
         if current_line[doc_index] < len(tokens):
             token_current = tokens[current_line[doc_index]]
-            hash_current = compute_hash(token_current)
+            hash_current = util.compute_hash(token_current)
             is_data_token = False
             for another_doc_index, _ in enumerate(tokens_of):
-                if compute_freq(tokens_with_loc[hash_current][another_doc_index], current_line[another_doc_index]) == 0:
+                if util.compute_freq(tokens_with_loc[hash_current][another_doc_index], current_line[another_doc_index]) == 0:
                     is_data_token = True
                     break
             if is_data_token:
@@ -117,7 +112,7 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line):
     :param current_line:
     :return:
     """
-    candidate_tree = nary_tree() # the root node
+    candidate_tree = tree.nary_tree() # the root node
     candidate_tree.set_value("<root>")
     node_cache = dict()
     working_set = list()
@@ -142,17 +137,17 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line):
         for candidate in candidates:
             freq = []
             for doc_index, token_index in enumerate(candidate):
-                token_hash = compute_hash(tokens_of[doc_index][token_index])
-                token_freq = compute_freq(tokens_with_loc[token_hash][doc_index], token_index)
+                token_hash = util.compute_hash(tokens_of[doc_index][token_index])
+                token_freq = util.compute_freq(tokens_with_loc[token_hash][doc_index], token_index)
                 freq.append(token_freq)
 #            print(candidate, freq)
             if all(map(lambda x:x == 1, freq)): # only for unique invariant tokens
                 if candidate not in node_cache: # do not recompute the path that was already searched
-                    new_branch = nary_tree()
+                    new_branch = tree.nary_tree()
                     new_branch.set_value(candidate)
                     node_cache[candidate] = new_branch
                     is_detected = True
-                    working_set.append((get_next_line(candidate), candidate))
+                    working_set.append((util.get_next_line(candidate), candidate))
 
                 node_cache[origin_line].insert(node_cache[candidate])
 #                print("{} -> {}".format(origin_line, candidate))
@@ -160,7 +155,7 @@ def find_unique_invariants(tokens_of, tokens_with_loc, current_line):
 
         if not is_detected:
  #           print("***")
-            working_set.append((get_next_line(current_line), origin_line))
+            working_set.append((util.get_next_line(current_line), origin_line))
 
 #        print(working_set)
 #        input()
@@ -193,9 +188,9 @@ def compute_tokens_with_loc(tokens_of):
     tokens_with_loc = {}
     for doc_index, tokens in enumerate(tokens_of):
         for token_index, token in enumerate(tokens):
-            token_hash = compute_hash(token)
+            token_hash = util.compute_hash(token)
             if token_hash not in tokens_with_loc:
-                tokens_with_loc[token_hash] = make_empty_array(len(tokens_of))
+                tokens_with_loc[token_hash] = util.make_empty_array(len(tokens_of))
             tokens_with_loc[token_hash][doc_index].append(token_index)
     return tokens_with_loc
 
@@ -212,7 +207,7 @@ def invariant_matching_algorithm(documents):
     # Tokenize raw documents
     tokens_of = []
     for doc_index, raw_html in enumerate(documents):
-        tokens = Tokenizer.tokenize("html", raw_html)
+        tokens = tokenizer.Tokenizer.tokenize("html", raw_html)
         tokens_of.append(tokens)
 
     # Cache each token's locations
@@ -229,7 +224,7 @@ def invariant_matching_algorithm(documents):
             max_length_of = len(candidate)
             best_candidate = candidate
 
-    tentative_decision = make_empty_array(num_of_docs)
+    tentative_decision = util.make_empty_array(num_of_docs)
     for doc_index, tokens in enumerate(tokens_of):
         tentative_decision[doc_index] = [TokenType.VARIANT] * len(tokens)
 
@@ -254,7 +249,7 @@ def invariant_matching_algorithm(documents):
     while is_searching:
         for doc_index in range(num_of_docs):
             while tentative_decision[doc_index][current_loc[doc_index]] == TokenType.VARIANT:
-                if in_range(current_loc[doc_index], 0, len(tokens_of[doc_index]) - 1):
+                if util.in_range(current_loc[doc_index], 0, len(tokens_of[doc_index]) - 1):
                     current_loc[doc_index] += 1  # Skipping variant tokens (they can't be a part of the template)
                 else:
                     is_searching = False
@@ -271,7 +266,7 @@ def invariant_matching_algorithm(documents):
                     current_loc[doc_index] += 1
                 is_in_range = True
                 for doc_index in range(num_of_docs):
-                    if not in_range(current_loc[doc_index], 0, len(tokens_of[doc_index])):
+                    if not util.in_range(current_loc[doc_index], 0, len(tokens_of[doc_index])):
                         is_in_range = False
                         break
                 if not is_in_range:
@@ -366,8 +361,8 @@ def reconstruct(invariant_segments, data_segments):
 
 
 def select(features, combined_predicates, offset):
-    status_code, selected_index = selector_impl(features, combined_predicates)
-    if status_code == SelectorStatus.SUCCESS:
+    status_code, selected_index = selector.selector_impl(features, combined_predicates)
+    if status_code == selector.SelectorStatus.SUCCESS:
         return selected_index + offset
     else:
         return None

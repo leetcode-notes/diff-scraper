@@ -6,7 +6,8 @@
 """
 
 from unittest import TestCase
-from src.libdiffscraper.template import *
+from diffscraper.libdiffscraper.template import *
+from diffscraper.libdiffscraper import util
 
 
 # class TestTemplate(TestCase):
@@ -27,25 +28,25 @@ from src.libdiffscraper.template import *
 
 class TestTemplateUtil(TestCase):
     def test_compute_freq(self):
-        if compute_freq([], 0) != 0:
+        if util.compute_freq([], 0) != 0:
             self.fail()
-        if compute_freq([10], 0) != 1:
+        if util.compute_freq([10], 0) != 1:
             self.fail()
-        if compute_freq([10, 20], 0) != 2:
+        if util.compute_freq([10, 20], 0) != 2:
             self.fail()
-        if compute_freq([10, 20], 10) != 2:
+        if util.compute_freq([10, 20], 10) != 2:
             self.fail()
-        if compute_freq([10, 20], 20) != 1:
+        if util.compute_freq([10, 20], 20) != 1:
             self.fail()
-        if compute_freq([10, 20, 30], 0) != 3:
+        if util.compute_freq([10, 20, 30], 0) != 3:
             self.fail()
-        if compute_freq([10, 20, 30], 10) != 3:
+        if util.compute_freq([10, 20, 30], 10) != 3:
             self.fail()
-        if compute_freq([10, 20, 30], 20) != 2:
+        if util.compute_freq([10, 20, 30], 20) != 2:
             self.fail()
-        if compute_freq([10, 20, 30], 30) != 1:
+        if util.compute_freq([10, 20, 30], 30) != 1:
             self.fail()
-        if compute_freq([10, 20, 30], 40) != 0:
+        if util.compute_freq([10, 20, 30], 40) != 0:
             self.fail()
 
 
@@ -79,9 +80,9 @@ class TestComputeTokensWithLoc(TestCase):
     def test_default(self):
         tokens_of = [["a", "b", "c", "c"], ["b", "c", "a"], ["c", "b", "a"]]
         tokens_with_loc = compute_tokens_with_loc(tokens_of)
-        hash_of_a = compute_hash("a")
-        hash_of_b = compute_hash("b")
-        hash_of_c = compute_hash("c")
+        hash_of_a = util.compute_hash("a")
+        hash_of_b = util.compute_hash("b")
+        hash_of_c = util.compute_hash("c")
         if (tokens_with_loc[hash_of_a]) != [[0], [2], [2]]:
             self.fail()
         if (tokens_with_loc[hash_of_b]) != [[1], [0], [1]]:

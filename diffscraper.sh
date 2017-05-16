@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 src/diffscraper.py "$@"
+python3 -m diffscraper.main "$@"

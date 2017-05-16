@@ -5,7 +5,7 @@
     Author: Seunghyun Yoo (shyoo1st@cs.ucla.edu)
 """
 
-from . import localization, util
+from diffscraper.libdiffscraper import localization, util
 
 
 class CUIHelper(object):

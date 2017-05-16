@@ -7,11 +7,11 @@
 
 from unittest import TestCase
 
-from src.libdiffscraper.tokenizer import *
+from diffscraper.libdiffscraper import tokenizer
 
 
 class TestTokenizer(TestCase):
     def test_default(self):
-        tokens = Tokenizer.tokenize("html", "<html><body></body></html>")
+        tokens = tokenizer.Tokenizer.tokenize("html", "<html><body></body></html>")
         if tokens != ['<html>', '<body>', '</body>', '</html>']:
             self.fail()

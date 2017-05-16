@@ -14,7 +14,7 @@ DiffScraper is a data extraction framework, which aims to reduce the time and co
 
 ### Recipes (to be updated)
 ```
-python3 src/diffscraper.py
+python3 -m diffscraper.main
 ```
 
 

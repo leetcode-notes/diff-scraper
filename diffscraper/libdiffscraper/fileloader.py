@@ -5,10 +5,9 @@
     Author: Seunghyun Yoo (shyoo1st@cs.ucla.edu)
 """
 
-import sys
 import os
 
-from . import cuihelper, template
+from . import template
 
 
 class FileLoader(object):

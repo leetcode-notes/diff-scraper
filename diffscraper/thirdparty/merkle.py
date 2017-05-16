@@ -7,7 +7,6 @@ standardized in http://www.bittorrent.org/beps/bep_0030.html (yay!)
 """
 
 from math import log, pow, floor
-import sys
 import hashlib
 
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e '\033[1;31mNative module is not supported yet.\033[0m'
-echo -e '$ \033[1;32mpython3 src/diffscraper.py\033[0m'
+echo -e '$ \033[1;32mpython3 -m diffscraper.main\033[0m'
 
 exit
 

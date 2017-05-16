@@ -6,13 +6,14 @@
     Author: Seunghyun Yoo (shyoo1st@cs.ucla.edu)
 """
 
-import hashlib
 import binascii
 import bisect
 import errno
+import hashlib
 import os
 
-from .thirdparty import merkle
+from diffscraper.thirdparty import merkle
+
 
 def make_empty_array(length):
     """

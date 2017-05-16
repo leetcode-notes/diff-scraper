@@ -12,7 +12,7 @@ import logging
 import coloredlogs
 
 # my library
-from libdiffscraper import engine, cuihelper, localization
+from diffscraper.libdiffscraper import engine, cuihelper, localization
 
 coloredlogs.install(level='DEBUG')
 logger = logging.getLogger('diffscraper')

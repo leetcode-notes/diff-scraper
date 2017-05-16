@@ -9,8 +9,8 @@ import os
 import string
 import sys
 
-from . import template, util, selector, tokenizer, cuihelper
 from . import fileloader, localization
+from . import template, util, selector, tokenizer
 
 
 class Engine(object):
