@@ -59,6 +59,8 @@ class Engine(object):
         cnt_fail_count = 0
 
         for document, document_meta in zip(documents, document_files):
+            self._cuihelper.print_current_file(document_meta["path"])
+
             data_segments = template.extract(invariant_segments, document)
             merkle_tree_data = util.merkle_tree(data_segments)
             data_object = template.make_data_object(data_segments, template_object["mk_root"], merkle_tree_data.get_root_hash(), util.compute_hash(document))

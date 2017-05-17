@@ -171,3 +171,8 @@ class CUIHelper(object):
 
         return user_selected_index
 
+    def print_current_file(self, filename):
+        if self.logger is None:
+            return
+
+        self.logger.info("Processing {}...".format(filename))
