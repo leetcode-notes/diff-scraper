@@ -8,6 +8,7 @@
 import os
 import string
 import sys
+import importlib
 
 from . import fileloader, localization
 from . import template, util, selector, tokenizer
@@ -276,3 +277,17 @@ class Engine(object):
 
         if interactive:
             self._cuihelper.print_skeleton(list(map(lambda x: "    " + self._cuihelper.convert_to_code(x), list_user_selected_proper_selectors)))
+
+    def scrape(self, input_module, input_template, input_docs):
+        module_name = "diffscraper.crawling.{}".format(input_module[0])
+        imported_script =  __import__(module_name)
+        crawling = getattr(imported_script, "crawling")
+        target_module = getattr(crawling, input_module[0])
+
+        template_object, serialized = self._fileloader.load_template(input_template)
+        documents, document_files = self._fileloader.load_documents_contents_only(input_docs, "text")
+
+        print(documents)
+
+        #target_module.diffscraper()
+        # input_docs = args.files, input_module = args.scrape, input_template = args.template

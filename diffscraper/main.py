@@ -47,6 +47,11 @@ def init_arg_parser():
                         action="store_true",
                         help="suggest a code snippet for a data segment in which you are interested")
 
+    parser.add_argument("--scrape",
+                        nargs=1,
+                        help="load and run a synthesized script"
+                        )
+
     parser.add_argument("--print-unified",
                         action="store_true",
                         help="print a unified input documents")
@@ -103,6 +108,7 @@ def main():
     # =================
     # <docs...> --suggest --index <N> [--interactive]
     # <docs...> --suggest --search <keyword> [--interactive]
+    # <docs...> --scrape <module_INPUT> --template <template_INPUT>
     # <docs...> --print-unified
     # <docs...> --print-data-segments
     # --print-skeleton
@@ -121,6 +127,7 @@ def main():
     is_compress = args.compress is True
     is_decompress = args.decompress is True
     is_suggest = args.suggest is True
+    is_scrape = args.scrape is not None
     is_print_unified = args.print_unified is True
     is_print_data_segments = args.print_data_segments is True
     is_print_skeleton = args.print_skeleton is True
@@ -134,6 +141,7 @@ def main():
                                             is_compress,
                                             is_decompress,
                                             is_suggest,
+                                            is_scrape,
                                             is_print_unified,
                                             is_print_data_segments,
                                             is_print_skeleton]])
@@ -185,6 +193,11 @@ def main():
                 ret = diffscraper_engine.suggest(command="suggest", input_docs=args.files, input_template=args.template,
                                                  exclude_invariant_segments=True, index=args.index, search=args.search,
                                                  interactive=args.interactive)
+            elif is_scrape:
+                assert_condition(len(args.files) >= 1, localization.str_one_input_file_2b1a06ef())
+                assert_condition(args.template is not None and len(args.template) == 1,
+                                 localization.str_template_file_is_required_3628ad8c())
+                ret = diffscraper_engine.scrape(input_docs=args.files, input_module=args.scrape, input_template=args.template)
             elif is_print_skeleton:
                 diffscraper_cuihelper.print_skeleton()
             else:
