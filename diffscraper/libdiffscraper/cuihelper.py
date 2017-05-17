@@ -91,7 +91,7 @@ class CUIHelper(object):
     item = {}
     F = list(map(lambda x: tokenizer.Tokenizer.feature("html", x), T))
     D = template.extract(T, raw_html)
-    ts = lambda x, y: D[template.select(F, x, y)]
+    ts = lambda x, y: D[template.select(F, x, y)].strip()
     # Copy the suggested code snippet for a proper selector
     # ex: item["title"] = ts([selector.starttag("title")], 1)\n""" + "\n".join(items) + \
 """\n    return item"""
