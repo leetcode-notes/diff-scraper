@@ -57,7 +57,7 @@ def tagattr(tag_name, attr_name, attr_value):
         if "tag" in e and "attrs" in e:
             if e["tag"] == tag_name:
                 for n, v in e["attrs"]:
-                    if attr_name == n and attr_value == v:
+                    if n == attr_name and v == attr_value:
                         return True
         return False
     return impl
@@ -67,7 +67,7 @@ def class_(class_name):
     def impl(e):
         if "attrs" in e:
             for n, v in e["attrs"]:
-                if n == "class" and v.find(class_name) != -1:
+                if n == "class" and v == class_name:
                     return True
         return False
     return impl

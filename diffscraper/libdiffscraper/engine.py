@@ -8,6 +8,7 @@
 import os
 import string
 import sys
+import json
 import importlib
 
 from . import fileloader, localization
@@ -293,7 +294,7 @@ class Engine(object):
         documents, document_files = self._fileloader.load_documents_contents_only(input_docs, "text")
 
         for document, document_meta in zip(documents, document_files):
-            print(target_module.diffscraper(T, document))
+            print(json.dumps(target_module.diffscraper(T, document), indent=4, sort_keys=True))
 
         #target_module.diffscraper()
         # input_docs = args.files, input_module = args.scrape, input_template = args.template
