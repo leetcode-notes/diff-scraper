@@ -231,7 +231,7 @@ class Engine(object):
         if input_template is None:
             invariant_segments = template.generate(documents)
         else:
-            _, template_object = self._fileloader.load_template(input_template[0])
+            template_object, _ = self._fileloader.load_template(input_template[0])
             invariant_segments = template_object["inv_seg"]
 
         data_segments_of = []
@@ -288,10 +288,12 @@ class Engine(object):
         crawling = getattr(imported_script, "crawling")
         target_module = getattr(crawling, input_module[0])
 
-        template_object, serialized = self._fileloader.load_template(input_template)
+        template_object, serialized = self._fileloader.load_template(input_template[0])
+        T = template_object["inv_seg"]
         documents, document_files = self._fileloader.load_documents_contents_only(input_docs, "text")
 
-        print(documents)
+        for document, document_meta in zip(documents, document_files):
+            print(target_module.diffscraper(T, document))
 
         #target_module.diffscraper()
         # input_docs = args.files, input_module = args.scrape, input_template = args.template
