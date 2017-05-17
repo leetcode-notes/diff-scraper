@@ -19,5 +19,8 @@ DiffScraper is a data extraction framework, which aims to reduce the time and co
 ```
 python3 -m diffscraper.main
 ```
-
 ### Recipes (to be updated)
+
+### Troubleshooting
+
+  * At this moment, the text encoding of input documents must be UTF-8.

@@ -96,6 +96,8 @@ class Engine(object):
         cnt_fail_count = 0
 
         for document, document_meta in zip(documents, document_files):
+            self._cuihelper.print_current_file(document_meta["path"])
+
             data_object = template.deserialize_object(document)
             self._cuihelper.print_data_file(data_object, document)
 
