@@ -175,4 +175,10 @@ class CUIHelper(object):
         if self.logger is None:
             return
 
-        self.logger.info("Processing {}...".format(filename))
+        self.logger.info("Processing ({})...".format(filename))
+
+    def print_loading_module(self, modulename):
+        if self.logger is None:
+            return
+
+        self.logger.info("Loading Python module ({})...".format(modulename))

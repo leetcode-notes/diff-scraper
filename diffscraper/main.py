@@ -108,7 +108,7 @@ def main():
     # =================
     # <docs...> --suggest --index <N> [--interactive]
     # <docs...> --suggest --search <keyword> [--interactive]
-    # <docs...> --scrape <module_INPUT> --template <template_INPUT>
+    # <docs...> --scrape <module_INPUT> --template <template_INPUT> --output-dir <directory>
     # <docs...> --print-unified
     # <docs...> --print-data-segments
     # --print-skeleton
@@ -197,7 +197,11 @@ def main():
                 assert_condition(len(args.files) >= 1, localization.str_one_input_file_2b1a06ef())
                 assert_condition(args.template is not None and len(args.template) == 1,
                                  localization.str_template_file_is_required_3628ad8c())
-                ret = diffscraper_engine.scrape(input_docs=args.files, input_module=args.scrape, input_template=args.template)
+                assert_condition(args.output_dir is not None and len(args.output_dir) == 1,
+                                 localization.str_output_dir_is_required_51ed2ebe())
+                ret = diffscraper_engine.scrape(input_docs=args.files, input_module=args.scrape,
+                                                input_template=args.template, output_dir=args.output_dir[0],
+                                                force=is_force)
             elif is_print_skeleton:
                 diffscraper_cuihelper.print_skeleton()
             else:

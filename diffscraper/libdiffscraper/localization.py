@@ -5,8 +5,10 @@
     Author: Seunghyun Yoo (shyoo1st@cs.ucla.edu)
 """
 
+
 def str_output_file_exists_69eabc8f(filepath):
-    return "The output file '{}' already exists. If you want to overwrite the existing file, please consider using --force flag.".format(filepath)
+    return "The output file '{}' already exists. If you want to overwrite the existing file, please consider using --force flag.".format(
+        filepath)
 
 
 def str_exception_caught_fd14bf07(reason):
@@ -67,7 +69,8 @@ def str_skipping_existing_file_67972e49(filename):
 
 
 def str_compression_ratio_42c0c48b(original, compressed):
-    return "Compression ratio (original/compressed) = {:.2f}x, original = {} bytes, compressed = {} bytes".format(original/compressed, original, compressed)
+    return "Compression ratio (original/compressed) = {:.2f}x, original = {} bytes, compressed = {} bytes".format(
+        original / compressed, original, compressed)
 
 
 def str_decompression_ratio(compressed, decompressed):
@@ -84,3 +87,7 @@ def str_compress_failed(cnt_fail_count):
 
 def str_decompress_failed(cnt_fail_count):
     return "{} file(s) are not decompressed.".format(cnt_fail_count)
+
+
+def str_scrape_failed(cnt_fail_count):
+    return "{} item(s) are not scraped.".format(cnt_fail_count)

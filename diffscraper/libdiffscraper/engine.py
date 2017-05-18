@@ -20,6 +20,7 @@ class Engine(object):
         self._cuihelper = cuihelper
         self._fileloader = fileloader.FileLoader(self._cuihelper)
         self._compressed_extension = "data"
+        self._scraped_item_extension = "item"
 
     def generate_impl(self, mode, input_docs, input_template, output_template, force):
         try:
@@ -30,7 +31,7 @@ class Engine(object):
 
             if mode == "generate":
                 invariant_segments = template.generate(documents)
-            elif mode =="update":
+            elif mode == "update":
                 template_object, _ = self._fileloader.load_template(input_template)
                 documents.append("".join(template_object["inv_seg"]))
                 invariant_segments = template.generate(documents)
@@ -283,8 +284,9 @@ class Engine(object):
         if interactive:
             self._cuihelper.print_skeleton(list(map(lambda x: "    " + self._cuihelper.convert_to_code(x), list_user_selected_proper_selectors)))
 
-    def scrape(self, input_module, input_template, input_docs):
+    def scrape(self, input_module, input_template, input_docs, output_dir, force):
         module_name = "diffscraper.crawling.{}".format(input_module[0])
+        self._cuihelper.print_loading_module(module_name)
         imported_script =  __import__(module_name)
         crawling = getattr(imported_script, "crawling")
         target_module = getattr(crawling, input_module[0])
@@ -293,8 +295,29 @@ class Engine(object):
         T = template_object["inv_seg"]
         documents, document_files = self._fileloader.load_documents_contents_only(input_docs, "text")
 
-        for document, document_meta in zip(documents, document_files):
-            print(json.dumps(target_module.diffscraper(T, document), indent=4, sort_keys=True))
+        util.mkdir_p(output_dir)
 
-        #target_module.diffscraper()
-        # input_docs = args.files, input_module = args.scrape, input_template = args.template
+        cnt_fail_count = 0
+
+        for document, document_meta in zip(documents, document_files):
+            self._cuihelper.print_current_file(document_meta["path"])
+
+            output_doc = os.path.join(output_dir,
+                                      os.path.basename(document_meta["path"]) + "." + self._scraped_item_extension)
+
+            if force is False:
+                if os.path.exists(output_doc):
+                    self._cuihelper.print_skipping_existing_file(output_doc)
+                    cnt_fail_count += 1
+                    continue
+
+            serialized = template.serialize_object(target_module.diffscraper(T, document))
+
+            with open(output_doc, "wb") as f:
+                f.write(serialized)
+                f.flush()
+
+        if cnt_fail_count == 0:
+            return True, ""
+        else:
+            return False, localization.str_scrape_failed(cnt_fail_count)
